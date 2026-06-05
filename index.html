@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUSCREN Academy | Professional Device Repair Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary:       #262E3D;
+      --primary-light: #1E2738;
+      --secondary:     #005843;
+      --brand:         #FF6900;
+      --brand-h:       #E05500;
+      --teal:          #007A5E;
+      --teal-d:        #005843;
+      --dark:          #1a1a1a;
+      --mid:           #555;
+      --light-bg:      #f6f6f6;
+      --border:        #e2e2e2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--primary);
+      height: 66px;
+      display: flex; align-items: center;
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.45); }
+    .nav-in {
+      width: 100%; max-width: 1280px;
+      margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .logo { text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 0.55rem; }
+    .logo-badge { height: 42px; width: auto; }
+    .logo-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .nav-srch {
+      flex: 1; max-width: 360px; position: relative;
+    }
+    .nav-srch input {
+      width: 100%;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.17);
+      border-radius: 3px;
+      padding: 0.45rem 0.875rem 0.45rem 2.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; color: #fff; outline: none;
+      transition: background 0.2s;
+    }
+    .nav-srch input::placeholder { color: rgba(255,255,255,0.42); }
+    .nav-srch input:focus { background: rgba(255,255,255,0.17); }
+    .srch-ico {
+      position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,0.45); pointer-events: none;
+    }
+    .nav-links { display: flex; gap: 0.1rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none; font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.6rem; border-radius: 3px;
+      transition: color 0.18s, background 0.18s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-gap { flex: 1; }
+    .nav-auth { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .btn-si {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.42rem 0.875rem; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.32);
+      outline: none; box-shadow: none;
+      display: inline-flex; align-items: center;
+      background: transparent;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .btn-si:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    .btn-reg {
+      background: var(--brand); color: #fff; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.42rem 0.875rem; border-radius: 3px;
+      transition: background 0.18s;
+    }
+    .btn-reg:hover { background: var(--brand-h); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px; margin-left: auto;
+    }
+    .hamburger span {
+      display: block; width: 21px; height: 2px;
+      background: #fff; border-radius: 2px;
+    }
+
+    /* Mobile overlay */
+    #mob-menu {
+      display: none; position: fixed;
+      top: 66px; left: 0; right: 0; bottom: 0;
+      background: var(--primary); z-index: 998;
+      padding: 1.25rem 1.5rem; overflow-y: auto;
+    }
+    #mob-menu.open { display: block; }
+    .mob-srch {
+      display: flex; border-radius: 3px; overflow: hidden; margin-bottom: 1.25rem;
+    }
+    .mob-srch input {
+      flex: 1; padding: 0.7rem 0.875rem; border: none; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem;
+    }
+    .mob-srch button {
+      background: var(--brand); border: none; padding: 0 0.875rem; cursor: pointer; color: #fff;
+    }
+    .mob-links { list-style: none; margin-bottom: 1.25rem; }
+    .mob-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mob-links a {
+      display: block; padding: 0.825rem 0;
+      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+    }
+    .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
+    .mob-auth a {
+      text-align: center; padding: 0.7rem; border-radius: 3px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    }
+    .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    .mob-auth .btn-reg { background: var(--brand); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--primary);
+      padding: 6.5rem 1.5rem 4rem;
+      margin-top: 66px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 65% at 85% 50%, rgba(255,105,0,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 45% at 15% 30%, rgba(0,88,67,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-in {
+      max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 3rem;
+    }
+    /* Right column — logo showcase */
+    .hero-logo-col {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-logo-scene {
+      position: relative; width: 340px; height: 340px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Layered glowing halos */
+    .hero-logo-scene::before,
+    .hero-logo-scene::after {
+      content: ''; position: absolute;
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-logo-scene::before {
+      /* outer green halo */
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(0,88,67,0.38) 0%, transparent 70%);
+      filter: blur(42px);
+      animation: halo-breathe 4s ease-in-out infinite;
+    }
+    .hero-logo-scene::after {
+      /* inner orange halo — offset slightly */
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(255,105,0,0.42) 0%, transparent 65%);
+      filter: blur(30px);
+      animation: halo-breathe 4s ease-in-out infinite 0.6s;
+    }
+    @keyframes halo-breathe {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50%       { opacity: 1;    transform: scale(1.08); }
+    }
+    .hero-logo-img {
+      position: relative; z-index: 2;
+      width: 260px; height: auto;
+      filter:
+        drop-shadow(0 0 28px rgba(255,105,0,0.55))
+        drop-shadow(0 0 60px rgba(255,105,0,0.22))
+        drop-shadow(0 24px 40px rgba(0,0,0,0.55));
+      animation: logo-float 5s ease-in-out infinite;
+    }
+    @keyframes logo-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    /* 3-D depth shadow ring on the "floor" */
+    .hero-logo-shadow {
+      position: absolute; bottom: 12px; left: 50%;
+      transform: translateX(-50%);
+      width: 160px; height: 18px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.45) 0%, transparent 70%);
+      filter: blur(8px);
+      animation: shadow-breathe 5s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes shadow-breathe {
+      0%, 100% { opacity: 0.7; width: 160px; }
+      50%       { opacity: 0.35; width: 120px; }
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: rgba(255,105,0,0.15); border: 1px solid rgba(255,105,0,0.35);
+      border-radius: 3px; padding: 0.28rem 0.75rem; margin-bottom: 1.375rem;
+      font-size: 0.72rem; font-weight: 700; color: var(--brand);
+      letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.75rem);
+      font-weight: 800; color: #fff; line-height: 1.08;
+      letter-spacing: -0.035em; margin-bottom: 1rem; max-width: 680px;
+    }
+    .hero h1 em { color: var(--brand); font-style: normal; }
+    .hero-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.72;
+      max-width: 540px; margin-bottom: 2rem;
+    }
+    .hero-form {
+      display: flex; max-width: 540px;
+      border-radius: 3px; overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.35);
+      margin-bottom: 2.25rem;
+    }
+    .hero-form input {
+      flex: 1; padding: 0.875rem 1.125rem;
+      border: none; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem;
+      color: var(--dark); background: #fff;
+    }
+    .hero-form input::placeholder { color: #999; }
+    .hero-form button {
+      background: var(--brand); color: #fff; border: none;
+      padding: 0.875rem 1.375rem;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 0.35rem;
+      white-space: nowrap; transition: background 0.18s;
+    }
+    .hero-form button:hover { background: var(--brand-h); }
+    .partner-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+    }
+    .partner-lbl {
+      font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-right: 0.2rem;
+    }
+    .partner-chip {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 26px; padding: 0 0.7rem;
+      background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 2px; font-size: 0.68rem; font-weight: 700;
+      color: rgba(255,255,255,0.68); letter-spacing: 0.03em;
+      cursor: pointer; transition: background 0.18s;
+    }
+    .partner-chip:hover { background: rgba(255,255,255,0.17); }
+
+    /* ── SECTION UTIL ── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .sec-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
+    }
+    .sec-h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2;
+    }
+
+    /* ── COURSE CARDS STRIP ── */
+    .courses-strip { background: var(--primary-light); padding: 3rem 1.5rem; }
+    .strip-hd {
+      max-width: 1280px; margin: 0 auto 1.375rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .strip-hd-title { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .strip-hd-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .strip-more {
+      color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.8rem;
+      font-weight: 500; display: flex; align-items: center; gap: 0.25rem;
+      transition: color 0.18s;
+    }
+    .strip-more:hover { color: #fff; }
+    .courses-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .c-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px; overflow: hidden; cursor: pointer;
+      transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
+    }
+    .c-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.42);
+      border-color: rgba(255,105,0,0.4);
+    }
+    .c-thumb {
+      height: 118px; display: flex; align-items: center; justify-content: center;
+      padding: 1rem; text-align: center;
+    }
+    .c-thumb-1 { background: linear-gradient(135deg,#005843,#008560); }
+    .c-thumb-2 { background: linear-gradient(135deg,#3D2000,#A05000); }
+    .c-thumb-3 { background: linear-gradient(135deg,#1A2050,#2E45A0); }
+    .c-thumb-4 { background: linear-gradient(135deg,#1E2738,#3A4A6A); }
+    .c-thumb-name { font-size: 0.78rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 0.25rem; }
+    .c-thumb-partner { font-size: 0.62rem; color: rgba(255,255,255,0.5); }
+    .c-body { padding: 0.8rem; }
+    .c-badge {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.35rem; display: block;
+    }
+    .c-name { font-size: 0.82rem; font-weight: 600; color: #fff; line-height: 1.35; margin-bottom: 0.25rem; }
+    .c-partner { font-size: 0.7rem; color: rgba(255,255,255,0.42); }
+    .c-meta {
+      display: flex; gap: 0.4rem; margin-top: 0.45rem;
+      font-size: 0.67rem; color: rgba(255,255,255,0.38);
+    }
+
+    /* ── LEARNING PATH ── */
+    .lp-section { padding: 4rem 1.5rem; background: #fff; }
+    .lp-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 3.5rem; align-items: center;
+    }
+    .lp-txt h2 { color: var(--dark); margin-bottom: 0.75rem; }
+    .lp-txt p { font-size: 0.875rem; color: var(--mid); line-height: 1.72; margin-bottom: 1.25rem; }
+    .btn-teal {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--brand); color: #fff; text-decoration: none;
+      font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
+      border-radius: 3px; transition: background 0.18s;
+    }
+    .btn-teal:hover { background: var(--brand-h); }
+    .lp-card {
+      border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.24s, box-shadow 0.24s; cursor: pointer;
+    }
+    .lp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+    .lp-thumb {
+      height: 190px; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      text-align: center; padding: 1.5rem;
+    }
+    .lp-thumb-title { font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 0.4rem; }
+    .lp-thumb-sub { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
+    .lp-body { padding: 1.125rem; background: #fff; }
+    .lp-badge {
+      display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; background: rgba(255,105,0,0.1); color: var(--brand);
+      padding: 0.16rem 0.45rem; border-radius: 2px; margin-bottom: 0.45rem;
+    }
+    .lp-name { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .lp-partner { font-size: 0.72rem; color: #888; }
+
+    /* ── FORMAT ── */
+    .format-section { padding: 4rem 1.5rem; background: var(--light-bg); }
+    .fmt-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+    }
+    .fmt-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 4px;
+      padding: 1.375rem; cursor: pointer;
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+    }
+    .fmt-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.09); border-color: var(--brand); }
+    .fmt-ico {
+      width: 42px; height: 42px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; margin-bottom: 0.75rem;
+    }
+    .i1 { background: rgba(255,105,0,0.1); }
+    .i2 { background: rgba(0,88,67,0.1); }
+    .i3 { background: rgba(38,46,61,0.1); }
+    .i4 { background: rgba(255,105,0,0.07); }
+    .fmt-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .fmt-card p  { font-size: 0.78rem; color: #666; line-height: 1.55; }
+
+    /* ── SUBJECTS ── */
+    .subj-section { padding: 4rem 1.5rem; background: #fff; }
+    .subj-pills {
+      max-width: 1280px; margin: 0 auto 1.75rem;
+      display: flex; flex-wrap: wrap; gap: 0.45rem;
+    }
+    .pill {
+      padding: 0.4rem 0.95rem; border-radius: 24px;
+      border: 1.5px solid #d0d0d0; font-size: 0.8rem; font-weight: 500;
+      color: #444; cursor: pointer; background: #fff;
+      transition: background 0.16s, border-color 0.16s, color 0.16s;
+    }
+    .pill:hover, .pill.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .subj-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+    }
+    .subj-card {
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 1.125rem; cursor: pointer; background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .subj-card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.08); border-color: var(--brand); }
+    .subj-ico { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .subj-card h3 { font-size: 0.875rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .subj-cnt { font-size: 0.72rem; color: #888; }
+
+    /* ── STATS ── */
+    .stats-section { background: var(--secondary); padding: 4rem 1.5rem; }
+    .stats-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center;
+    }
+    .stats-copy h2 { font-size: 1.55rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: 1.2; }
+    .stats-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--brand); color: #fff; text-decoration: none;
+      font-size: 0.82rem; font-weight: 700; padding: 0.65rem 1.25rem;
+      border-radius: 3px; transition: background 0.18s;
+    }
+    .btn-white:hover { background: var(--brand-h); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .stat-box {
+      text-align: center; padding: 1.375rem 1rem;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+    .stat-n { font-size: 2.1rem; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; display: block; margin-bottom: 0.3rem; line-height: 1; }
+    .stat-l { font-size: 0.75rem; color: rgba(255,255,255,0.58); line-height: 1.35; }
+
+    /* ── GROUP PLAN ── */
+    .gplan-section { background: var(--primary); padding: 4rem 1.5rem; }
+    .gplan-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .gplan-copy h2 { font-size: 1.7rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: 1.18; margin-bottom: 0.875rem; }
+    .gplan-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
+    .btn-outline-w {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      border: 1.5px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none;
+      font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
+      border-radius: 3px; transition: background 0.18s, border-color 0.18s;
+    }
+    .btn-outline-w:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.65); }
+    .gplan-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+    .gfeat {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 4px; padding: 1.125rem;
+    }
+    .gfeat-ico { font-size: 1.2rem; margin-bottom: 0.45rem; }
+    .gfeat h4 { font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .gfeat p  { font-size: 0.72rem; color: rgba(255,255,255,0.48); line-height: 1.5; }
+
+    /* ── DISCOVER ── */
+    .discover-section { padding: 4rem 1.5rem; background: #fff; }
+    .discover-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .disc-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .disc-tile {
+      border-radius: 4px; padding: 1.125rem;
+      display: flex; flex-direction: column; justify-content: flex-end; min-height: 96px;
+    }
+    .dt1 { background: linear-gradient(135deg, var(--primary), var(--secondary)); grid-row: span 2; min-height: auto; }
+    .dt2 { background: linear-gradient(135deg, #3D2000, #A05000); }
+    .dt3 { background: linear-gradient(135deg, #005843, #008560); }
+    .dt4 { background: linear-gradient(135deg, #1E2738, #3A4A6A); grid-column: span 2; min-height: 72px; }
+    .dt-n { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.2rem; }
+    .dt-l { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.68); text-transform: uppercase; letter-spacing: 0.05em; }
+    .disc-copy h2 { font-size: 1.65rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.875rem; }
+    .disc-copy p  { font-size: 0.875rem; color: var(--mid); line-height: 1.72; margin-bottom: 1rem; }
+    .disc-list { list-style: none; margin-bottom: 1.5rem; }
+    .disc-list li {
+      display: flex; gap: 0.55rem; font-size: 0.82rem; color: #444; margin-bottom: 0.55rem;
+    }
+    .disc-list li::before { content: '✓'; color: var(--brand); font-weight: 700; flex-shrink: 0; }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--primary); color: #fff; text-decoration: none;
+      font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
+      border-radius: 3px; transition: background 0.18s;
+    }
+    .btn-dark:hover { background: var(--secondary); }
+
+    /* ── BROWSE ── */
+    .browse-section { padding: 3.5rem 1.5rem; background: var(--light-bg); }
+    .browse-cats { max-width: 1280px; margin: 1.5rem auto 0; }
+    .bcat { border-bottom: 1px solid #ddd; }
+    .bcat:last-child { border-bottom: none; }
+    .bcat-hd {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 0; cursor: pointer; user-select: none;
+    }
+    .bcat-title {
+      font-size: 0.9rem; font-weight: 700; color: var(--dark);
+      display: flex; align-items: center; gap: 0.625rem;
+    }
+    .bcat-cnt { font-size: 0.7rem; font-weight: 500; color: #999; }
+    .bchev { color: #aaa; transition: transform 0.2s; }
+    .bcat-hd.open .bchev { transform: rotate(180deg); }
+    .bcat-links { display: none; flex-wrap: wrap; gap: 0.4rem 1.375rem; padding-bottom: 1rem; }
+    .bcat-links.open { display: flex; }
+    .bcat-links a {
+      font-size: 0.8rem; color: #555; text-decoration: none;
+      transition: color 0.18s;
+    }
+    .bcat-links a:hover { color: var(--brand); text-decoration: underline; }
+
+    /* ── REGISTER CTA ── */
+    .reg-cta { background: var(--brand); padding: 4.5rem 1.5rem; position: relative; overflow: hidden; }
+    .reg-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 55%);
+    }
+    .reg-in {
+      max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .reg-copy h2 { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 0.75rem; }
+    .reg-copy p  { font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.7; }
+    .reg-form { display: flex; flex-direction: column; gap: 0.7rem; }
+    .reg-input {
+      padding: 0.825rem 0.95rem; border-radius: 3px; border: none;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--dark);
+      background: #fff; outline: none;
+    }
+    .reg-input:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.45); }
+    .btn-reg-cta {
+      background: var(--primary); color: #fff; border: none;
+      padding: 0.875rem 1.25rem; font-family: 'Inter', sans-serif;
+      font-size: 0.875rem; font-weight: 700; border-radius: 3px;
+      cursor: pointer; transition: background 0.18s;
+    }
+    .btn-reg-cta:hover { background: var(--secondary); }
+    .reg-terms { font-size: 0.7rem; color: rgba(255,255,255,0.75); text-align: center; }
+    .reg-terms a { color: rgba(255,255,255,0.92); text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer { background: #111; padding: 3.5rem 1.5rem 2rem; }
+    .foot-in { max-width: 1280px; margin: 0 auto; }
+    .foot-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+      gap: 2.5rem; padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 1.75rem;
+    }
+    .foot-brand .foot-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .foot-logo-badge { height: 38px; width: auto; }
+    .foot-logo-name {
+      font-size: 1.2rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .foot-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.65; max-width: 200px; margin-bottom: 1rem; }
+    .foot-social { display: flex; gap: 0.45rem; }
+    .soc {
+      width: 30px; height: 30px; background: rgba(255,255,255,0.08); border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: background 0.16s, color 0.16s;
+    }
+    .soc:hover { background: var(--brand); color: #fff; }
+    .foot-col h5 {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #fff; margin-bottom: 0.825rem;
+    }
+    .foot-col ul { list-style: none; }
+    .foot-col li { margin-bottom: 0.45rem; }
+    .foot-col a {
+      color: rgba(255,255,255,0.42); text-decoration: none;
+      font-size: 0.78rem; transition: color 0.16s;
+    }
+    .foot-col a:hover { color: var(--brand); }
+    .foot-btm {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+    }
+    .foot-btm-links { display: flex; gap: 1.375rem; }
+    .foot-btm a { color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.16s; }
+    .foot-btm a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── REVEAL ── */
+    .r { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .r.on { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── SIGNIN MODAL ── */
+    #signin-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #signin-overlay.open { display: flex; }
+    #signin-modal {
+      width: 100%; max-width: 880px; height: 560px;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @keyframes si-modal-in {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Left panel */
+    .si-left {
+      background: var(--primary); position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; padding: 2rem;
+    }
+    .si-left::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 25% 75%, rgba(255,105,0,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 75% 25%, rgba(0,88,67,0.18) 0%, transparent 60%);
+    }
+    .si-ripples { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .si-ripples span {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: si-ripple 3.5s ease-in-out infinite;
+    }
+    @keyframes si-ripple {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.35; }
+      50%       { transform: translate(-50%, -50%) scale(0.92); opacity: 0.18; }
+    }
+    .si-float {
+      position: absolute; font-size: 1.4rem;
+      animation: si-float 4s ease-in-out infinite;
+      opacity: 0.4; z-index: 1;
+    }
+    .si-float:nth-child(1) { top: 14%; left: 10%; animation-delay: 0s; }
+    .si-float:nth-child(2) { top: 16%; right: 10%; animation-delay: 0.9s; }
+    .si-float:nth-child(3) { bottom: 18%; left: 9%; animation-delay: 1.7s; }
+    .si-float:nth-child(4) { bottom: 14%; right: 12%; animation-delay: 2.4s; }
+    @keyframes si-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-9px); }
+    }
+    .si-left-cnt {
+      position: relative; z-index: 2; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    }
+    .si-badge-img { height: 68px; width: auto; }
+    .si-brand-name {
+      font-size: 1.4rem; font-weight: 800; letter-spacing: 0.06em;
+      color: #fff; text-transform: uppercase;
+    }
+    .si-brand-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 190px; }
+    .si-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.25rem; }
+    .si-stat {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 3px;
+      background: rgba(255,105,0,0.14); border: 1px solid rgba(255,105,0,0.28);
+      color: var(--brand);
+    }
+
+    /* Right panel */
+    .si-right {
+      background: #fff; display: flex; flex-direction: column;
+      justify-content: center; padding: 2.25rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .si-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .si-close:hover { color: #333; background: #f2f2f2; }
+
+    /* Box-reveal animation */
+    .br { overflow: hidden; position: relative; }
+    .br-cover {
+      position: absolute; inset: 0; z-index: 2;
+      background: #e8e8e8; border-radius: 3px;
+      animation: br-sweep 0.42s ease forwards;
+    }
+    .br-inner { animation: br-up 0.42s ease 0.2s both; }
+    @keyframes br-sweep { from { left: 0; } to { left: 100%; } }
+    @keyframes br-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Stagger delays */
+    .si-row:nth-child(1) .br-cover, .si-row:nth-child(1) .br-inner { animation-delay: 0.08s; }
+    .si-row:nth-child(2) .br-cover, .si-row:nth-child(2) .br-inner { animation-delay: 0.18s; }
+    .si-row:nth-child(3) .br-cover, .si-row:nth-child(3) .br-inner { animation-delay: 0.28s; }
+    .si-row:nth-child(4) .br-cover, .si-row:nth-child(4) .br-inner { animation-delay: 0.38s; }
+    .si-row:nth-child(5) .br-cover, .si-row:nth-child(5) .br-inner { animation-delay: 0.48s; }
+    .si-row:nth-child(6) .br-cover, .si-row:nth-child(6) .br-inner { animation-delay: 0.58s; }
+    .si-row:nth-child(7) .br-cover, .si-row:nth-child(7) .br-inner { animation-delay: 0.65s; }
+
+    /* Form */
+    .si-h2 { font-size: 1.6rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; }
+    .si-sub { font-size: 0.8rem; color: var(--mid); }
+    .si-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.7rem; }
+    .si-label { font-size: 0.75rem; font-weight: 600; color: var(--dark); }
+    .si-label span { color: #e53e3e; }
+    .si-input-wrap {
+      border-radius: 8px; padding: 2px;
+      transition: background 0.25s;
+    }
+    .si-input {
+      width: 100%; background: #f7f7f7; border: none; outline: none;
+      border-radius: 6px; padding: 0.6rem 2.4rem 0.6rem 0.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--dark);
+      box-shadow: 0 0 0 1px rgba(25,28,33,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .si-input::placeholder { color: #bbb; }
+    .si-input:focus { box-shadow: 0 0 0 2px var(--brand); }
+    .si-eye {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #bbb; padding: 0.15rem;
+      transition: color 0.18s; line-height: 1;
+    }
+    .si-eye:hover { color: var(--dark); }
+    .si-err { font-size: 0.68rem; color: #e53e3e; display: none; margin-top: 0.1rem; }
+    .si-err.show { display: block; }
+    .si-submit {
+      width: 100%; padding: 0.68rem;
+      background: var(--brand); color: #fff; border: none;
+      border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.84rem; font-weight: 700; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: background 0.18s;
+      margin-top: 0.1rem;
+    }
+    .si-submit:hover { background: var(--brand-h); }
+    .si-submit::after {
+      content: ''; position: absolute; bottom: 0; left: 10%; right: 10%;
+      height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .si-submit:hover::after { opacity: 1; }
+    .si-footer { font-size: 0.71rem; color: #999; text-align: center; margin-top: 0.75rem; }
+    .si-footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
+    .si-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      #signin-modal { grid-template-columns: 1fr; height: auto; max-height: 95dvh; overflow-y: auto; }
+      .si-left { display: none; }
+      .si-right { padding: 2rem 1.5rem; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .courses-grid { grid-template-columns: repeat(2,1fr); }
+      .fmt-grid     { grid-template-columns: repeat(2,1fr); }
+      .subj-grid    { grid-template-columns: repeat(3,1fr); }
+      .stats-in     { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stats-grid   { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-srch { display: none; }
+      .hamburger { display: flex; }
+      .hero-in   { grid-template-columns: 1fr; }
+      .hero-logo-col { margin-top: 2rem; }
+      .hero-logo-scene { width: 220px; height: 220px; }
+      .hero-logo-img { width: 170px; }
+      .hero-logo-scene::before { width: 210px; height: 210px; }
+      .hero-logo-scene::after  { width: 140px; height: 140px; }
+      .lp-in     { grid-template-columns: 1fr; }
+      .gplan-in  { grid-template-columns: 1fr; gap: 2.5rem; }
+      .discover-in { grid-template-columns: 1fr; gap: 2.5rem; }
+      .reg-in    { grid-template-columns: 1fr; gap: 2rem; }
+      .foot-top  { grid-template-columns: 1fr 1fr; }
+      .subj-grid { grid-template-columns: repeat(2,1fr); }
+      .strip-hd  { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+    @media (max-width: 540px) {
+      .courses-grid { grid-template-columns: 1fr; }
+      .fmt-grid     { grid-template-columns: 1fr; }
+      .subj-grid    { grid-template-columns: 1fr 1fr; }
+      .stats-grid   { grid-template-columns: 1fr 1fr; }
+      .gplan-feats  { grid-template-columns: 1fr; }
+      .foot-top     { grid-template-columns: 1fr; }
+      .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="#" class="logo">
+      <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="logo-badge">
+      <span class="logo-wordmark">TRUSCREN</span>
+    </a>
+
+    <div class="nav-srch">
+      <svg class="srch-ico" width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" placeholder="Search courses, skills, repairs...">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Locations</a></li>
+      <li><a href="#">Corporate</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+
+    <div class="nav-gap"></div>
+
+    <div class="nav-auth">
+      <a href="#" class="btn-si">Sign In</a>
+      <a href="#register" class="btn-reg">Enrol Now</a>
+    </div>
+
+    <button class="hamburger" id="ham-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mob-menu">
+  <div class="mob-srch">
+    <input type="text" placeholder="Search courses, skills, repairs...">
+    <button>
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="mob-links">
+    <li><a href="#">Courses</a></li>
+    <li><a href="#">Certifications</a></li>
+    <li><a href="#">Locations</a></li>
+    <li><a href="#">Corporate Training</a></li>
+    <li><a href="#">About TRUSCREN</a></li>
+  </ul>
+  <div class="mob-auth">
+    <a href="#" class="btn-si">Sign In</a>
+    <a href="#register" class="btn-reg">Enrol in the 2026 Cohort</a>
+  </div>
+</div>
+
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-in">
+
+    <!-- Left: copy -->
+    <div class="hero-copy">
+      <div class="hero-tag">🔧 Now Enrolling — 2026 Cohorts Open</div>
+      <h1 class="r">Let Repair Be Easier.<br><em>We Train You.</em></h1>
+      <p class="hero-sub r d1">TRUSCREN Academy is Africa's leading hands-on training school for phone screen replacement, battery repair, circuit board micro-soldering, and device diagnostics. Get certified. Get hired. Start your repair business.</p>
+
+      <div class="hero-form r d2">
+        <input type="text" placeholder="Choose your track (e.g. Screen Repair, Soldering, EV Battery)">
+        <button>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+            <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Find Course
+        </button>
+      </div>
+
+      <div class="partner-row r d3">
+        <span class="partner-lbl">Campuses in:</span>
+        <span class="partner-chip">Accra</span>
+        <span class="partner-chip">Kumasi</span>
+        <span class="partner-chip">Takoradi</span>
+        <span class="partner-chip">Weekend Classes</span>
+        <span class="partner-chip">Evening Classes</span>
+        <span class="partner-chip">Online Theory</span>
+      </div>
+    </div>
+
+    <!-- Right: shining logo -->
+    <div class="hero-logo-col r d2">
+      <div class="hero-logo-scene">
+        <img
+          src="Brand_assets/extracted/truscren_badge.png"
+          alt="TRUSCREN Academy"
+          class="hero-logo-img"
+        >
+        <div class="hero-logo-shadow"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════ FEATURED COURSES ══════════ -->
+<section class="courses-strip">
+  <div class="strip-hd r">
+    <div>
+      <div class="strip-hd-title">Our Repair Training Programmes</div>
+      <div class="strip-hd-sub">Hands-on, industry-standard courses that get you job-ready</div>
+    </div>
+    <a href="#" class="strip-more">View all programmes →</a>
+  </div>
+
+  <div class="courses-grid">
+    <div class="c-card r">
+      <div class="c-thumb c-thumb-1">
+        <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">Bestseller · Certificate</span>
+        <div class="c-name">Phone Screen &amp; Display Repair — Complete Course</div>
+        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-meta"><span>Hands-on</span><span>·</span><span>4 weeks</span><span>·</span><span>★ 4.9</span></div>
+      </div>
+    </div>
+
+    <div class="c-card r d1">
+      <div class="c-thumb c-thumb-2">
+        <div><div class="c-thumb-name">Laptop Repair &amp; Servicing</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">Most Popular</span>
+        <div class="c-name">Laptop Repair &amp; Servicing — Beginner to Advanced</div>
+        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-meta"><span>Classroom</span><span>·</span><span>6 weeks</span><span>·</span><span>★ 4.8</span></div>
+      </div>
+    </div>
+
+    <div class="c-card r d2">
+      <div class="c-thumb c-thumb-3">
+        <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">Advanced · Certificate</span>
+        <div class="c-name">Circuit Board Soldering &amp; Board-Level Repair</div>
+        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-meta"><span>Lab-based</span><span>·</span><span>8 weeks</span><span>·</span><span>★ 4.9</span></div>
+      </div>
+    </div>
+
+    <div class="c-card r d3">
+      <div class="c-thumb c-thumb-4">
+        <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">New · Specialist</span>
+        <div class="c-name">EV Battery Diagnostics &amp; Repair Technology</div>
+        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-meta"><span>Workshop</span><span>·</span><span>5 weeks</span><span>·</span><span>★ 4.8</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ LEARNING PATH ══════════ -->
+<section class="lp-section">
+  <div class="lp-in">
+    <div class="lp-txt r">
+      <div class="sec-label">Featured Learning Path</div>
+      <h2 class="sec-h2" style="color:var(--dark);margin-bottom:0.75rem;">From beginner to certified repair technician — step by step</h2>
+      <p>Our structured learning paths bundle multiple courses, live lab sessions, and assessments into a clear, progressive curriculum — so you go from zero hands-on experience to a fully certified, job-ready technician in months, not years.</p>
+      <a href="#" class="btn-teal">Explore All Learning Paths →</a>
+    </div>
+    <div class="lp-card r d1">
+      <div class="lp-thumb">
+        <div><div class="lp-thumb-title">Complete Device Repair<br>Technician Path</div><div class="lp-thumb-sub">TRUSCREN Academy · 4 courses · ~5 months</div></div>
+      </div>
+      <div class="lp-body">
+        <span class="lp-badge">Learning Path</span>
+        <div class="lp-name">Become a Certified Device Repair Technician</div>
+        <div class="lp-partner">TRUSCREN Academy — Professional Certification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ FORMAT ══════════ -->
+<section class="format-section">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:1.75rem;">
+      <h2 class="sec-h2">Training that fits your schedule</h2>
+      <p style="font-size:0.875rem;color:#666;margin-top:0.4rem;">Whether you're a full-time student, working professional, or repair shop owner — we have a format that works for you.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="fmt-grid">
+      <div class="fmt-card r"><div class="fmt-ico i1">🔬</div><h3>Hands-On Lab</h3><p>Work on real devices in our fully equipped repair labs. Every lesson is practical — no theory-only classes here.</p></div>
+      <div class="fmt-card r d1"><div class="fmt-ico i2">🏫</div><h3>Full-Time Classroom</h3><p>Intensive daytime programmes at our Accra, Kumasi, and Takoradi campuses. Fastest route to certification.</p></div>
+      <div class="fmt-card r d2"><div class="fmt-ico i3">🌙</div><h3>Evening &amp; Weekend</h3><p>Structured evening and Saturday classes designed for working professionals who can't pause their income.</p></div>
+      <div class="fmt-card r d3"><div class="fmt-ico i4">🏢</div><h3>Corporate Training</h3><p>Custom on-site repair training for your business, repair shop, or electronics retail team. Group rates available.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ SUBJECTS ══════════ -->
+<section class="subj-section">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:1.5rem;">
+      <h2 class="sec-h2">What skill do you want to master?</h2>
+      <p style="font-size:0.875rem;color:#666;margin-top:0.4rem;">Browse every repair discipline we teach — from beginner fundamentals to advanced board-level work</p>
+    </div>
+    <div class="subj-pills r">
+      <span class="pill active">All Skills</span>
+      <span class="pill">Screens</span>
+      <span class="pill">Soldering</span>
+      <span class="pill">Batteries</span>
+      <span class="pill">Water Damage</span>
+      <span class="pill">Laptops</span>
+      <span class="pill">Data Recovery</span>
+      <span class="pill">Diagnostics</span>
+      <span class="pill">Software</span>
+      <span class="pill">EV Tech</span>
+    </div>
+    <div class="subj-grid">
+      <div class="subj-card r"><div class="subj-ico">📱</div><h3>Screen Replacement</h3><div class="subj-cnt">All major brands covered</div></div>
+      <div class="subj-card r d1"><div class="subj-ico">🔧</div><h3>Micro-Soldering</h3><div class="subj-cnt">BGA, IC &amp; component-level</div></div>
+      <div class="subj-card r d2"><div class="subj-ico">🔋</div><h3>Battery &amp; Charging Repair</h3><div class="subj-cnt">Phone, laptop &amp; EV cells</div></div>
+      <div class="subj-card r d3"><div class="subj-ico">💧</div><h3>Water Damage Recovery</h3><div class="subj-cnt">Ultrasonic &amp; chemical cleaning</div></div>
+      <div class="subj-card r"><div class="subj-ico">🖥️</div><h3>Board-Level Diagnostics</h3><div class="subj-cnt">Schematic reading &amp; testing</div></div>
+      <div class="subj-card r d1"><div class="subj-ico">💾</div><h3>Data Recovery</h3><div class="subj-cnt">NAND, chip-off &amp; software</div></div>
+      <div class="subj-card r d2"><div class="subj-ico">🛠️</div><h3>Tool Mastery</h3><div class="subj-cnt">Multimeters, hot air, JTAG</div></div>
+      <div class="subj-card r d3"><div class="subj-ico">⚡</div><h3>Software &amp; Flashing</h3><div class="subj-cnt">Unlock, flash &amp; OS restore</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ STATS ══════════ -->
+<section class="stats-section">
+  <div class="stats-in">
+    <div class="stats-copy r">
+      <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN Academy</h2>
+      <p>We've trained thousands of technicians across Ghana who now run successful repair businesses, work in top electronics shops, and service corporate clients — all with the skills and certification they earned at TRUSCREN.</p>
+      <a href="#register" class="btn-white">Enrol for 2026 →</a>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box r"><span class="stat-n">3,500+</span><span class="stat-l">Certified technicians trained across our campuses</span></div>
+      <div class="stat-box r d1"><span class="stat-n">&lt;0.5%</span><span class="stat-l">Defect rate on repairs performed by our graduates</span></div>
+      <div class="stat-box r d2"><span class="stat-n">12-Mo</span><span class="stat-l">Quality guarantee on all training programme outcomes</span></div>
+      <div class="stat-box r"><span class="stat-n">3</span><span class="stat-l">Training campuses — Accra, Kumasi &amp; Takoradi</span></div>
+      <div class="stat-box r d1"><span class="stat-n">92%</span><span class="stat-l">Graduate employment or business launch rate within 3 months</span></div>
+      <div class="stat-box r d2"><span class="stat-n">100%</span><span class="stat-l">Hands-on practical training — real devices, real repairs</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ GROUP PLAN ══════════ -->
+<section class="gplan-section">
+  <div class="gplan-in">
+    <div class="gplan-copy r">
+      <h2>Upskill your entire<br>repair team with<br>TRUSCREN Corporate</h2>
+      <p>Whether you run a phone shop, electronics retail chain, or corporate IT department — TRUSCREN Academy delivers customised, on-site repair training that turns your staff into certified professionals. Group enrolment discounts available.</p>
+      <a href="#" class="btn-outline-w">Explore Corporate Training →</a>
+    </div>
+    <div class="gplan-feats">
+      <div class="gfeat r"><div class="gfeat-ico">📊</div><h4>Track Competency</h4><p>Monitor your team's skill progression and certification status from a dedicated employer dashboard.</p></div>
+      <div class="gfeat r d1"><div class="gfeat-ico">🎯</div><h4>Custom Curriculum</h4><p>We tailor the training content to the specific devices and repair types your business handles daily.</p></div>
+      <div class="gfeat r d2"><div class="gfeat-ico">🏆</div><h4>Verified Certificates</h4><p>Every graduate receives a TRUSCREN Academy certificate recognised by leading electronics employers.</p></div>
+      <div class="gfeat r d3"><div class="gfeat-ico">🤝</div><h4>Dedicated Trainer</h4><p>A dedicated TRUSCREN instructor runs on-site at your location for the full duration of the programme.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ DISCOVER ══════════ -->
+<section class="discover-section">
+  <div class="discover-in">
+    <div class="disc-visual r">
+      <div class="disc-tile dt1"><div class="dt-n">3,500+</div><div class="dt-l">Technicians Certified</div></div>
+      <div class="disc-tile dt2"><div class="dt-n">&lt;0.5%</div><div class="dt-l">Defect Rate</div></div>
+      <div class="disc-tile dt3"><div class="dt-n">3</div><div class="dt-l">Training Campuses</div></div>
+      <div class="disc-tile dt4"><div class="dt-n">12-Month</div><div class="dt-l">Quality Guarantee</div></div>
+    </div>
+    <div class="disc-copy r d1">
+      <div class="sec-label">Why TRUSCREN Academy?</div>
+      <h2 class="sec-h2">More than a course — a career-changing repair education</h2>
+      <p style="margin-top:0.875rem;">TRUSCREN Academy exists because Africa's device repair industry needs properly trained, certified professionals. We deliver that — with real tools, real devices, and instructors who repair for a living.</p>
+      <ul class="disc-list" style="margin-top:1rem;">
+        <li>Industry-standard tools and equipment provided in every lab session</li>
+        <li>Learn from active repair professionals, not just classroom instructors</li>
+        <li>Small cohort sizes ensure you get hands-on time, not just observation</li>
+        <li>Career placement support and repair business start-up guidance for all graduates</li>
+      </ul>
+      <a href="#register" class="btn-dark">Enrol Today →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ BROWSE ══════════ -->
+<section class="browse-section">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="sec-h2">Browse by Repair Category</h2>
+      <p style="font-size:0.875rem;color:#666;margin-top:0.4rem;">Explore every discipline we cover across all our campuses</p>
+    </div>
+
+    <div class="browse-cats">
+      <div class="bcat r">
+        <div class="bcat-hd" onclick="togCat(this)">
+          <div class="bcat-title">📱 Screen &amp; Display Repair <span class="bcat-cnt">All major devices</span></div>
+          <svg class="bchev" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bcat-links">
+          <a href="#">iPhone Screen Replacement</a><a href="#">Samsung AMOLED Repair</a><a href="#">LCD vs OLED Identification</a>
+          <a href="#">Digitiser Calibration</a><a href="#">Backlight Repair</a><a href="#">Touch IC Diagnosis</a>
+          <a href="#">Laptop Screen Swap</a><a href="#">Tablet Display Repair</a>
+        </div>
+      </div>
+
+      <div class="bcat r">
+        <div class="bcat-hd" onclick="togCat(this)">
+          <div class="bcat-title">🔧 Board-Level &amp; Micro-Soldering <span class="bcat-cnt">Advanced track</span></div>
+          <svg class="bchev" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bcat-links">
+          <a href="#">Hot Air Rework Station</a><a href="#">BGA Reballing</a><a href="#">IC Chip Replacement</a>
+          <a href="#">Schematic Reading</a><a href="#">Power IC Repair</a><a href="#">Charging Port Solder</a>
+          <a href="#">NAND Flash Swap</a><a href="#">CPU &amp; GPU Reflow</a>
+        </div>
+      </div>
+
+      <div class="bcat r">
+        <div class="bcat-hd" onclick="togCat(this)">
+          <div class="bcat-title">🔋 Battery &amp; Charging Systems <span class="bcat-cnt">Phones, laptops &amp; EV</span></div>
+          <svg class="bchev" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bcat-links">
+          <a href="#">Battery Health Testing</a><a href="#">Swollen Battery Removal</a><a href="#">Charging Port Diagnosis</a>
+          <a href="#">Wireless Charging Repair</a><a href="#">Fast Charge IC Fault</a><a href="#">Laptop Battery Calibration</a>
+          <a href="#">EV Battery Cell Testing</a><a href="#">BMS Fault Diagnosis</a>
+        </div>
+      </div>
+
+      <div class="bcat r">
+        <div class="bcat-hd" onclick="togCat(this)">
+          <div class="bcat-title">💧 Water Damage Recovery <span class="bcat-cnt">Liquid damage specialist</span></div>
+          <svg class="bchev" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bcat-links">
+          <a href="#">Ultrasonic Cleaning</a><a href="#">Corrosion Removal</a><a href="#">Chemical Wash Process</a>
+          <a href="#">Board Inspection Under Microscope</a><a href="#">Component Identification</a><a href="#">Drying &amp; Testing Protocol</a>
+          <a href="#">Preventive Conformal Coating</a>
+        </div>
+      </div>
+
+      <div class="bcat r">
+        <div class="bcat-hd" onclick="togCat(this)">
+          <div class="bcat-title">💾 Data Recovery &amp; Software <span class="bcat-cnt">Software specialist track</span></div>
+          <svg class="bchev" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="bcat-links">
+          <a href="#">Android Data Recovery</a><a href="#">iPhone Data Extraction</a><a href="#">Chip-Off Recovery</a>
+          <a href="#">JTAG &amp; ISP Methods</a><a href="#">OS Flashing &amp; Restore</a><a href="#">SIM Unlock</a>
+          <a href="#">MDM Removal</a><a href="#">Forensic Imaging</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ REGISTER CTA ══════════ -->
+<section class="reg-cta" id="register">
+  <div class="reg-in">
+    <div class="reg-copy r">
+      <h2>Enrol in TRUSCREN<br>Academy — 2026 Cohort</h2>
+      <p>Secure your place in Ghana's most respected device repair training programme. Cohort sizes are strictly limited to ensure every student gets maximum hands-on lab time with their instructor.</p>
+    </div>
+    <div class="reg-form r d1">
+      <input class="reg-input" type="text" placeholder="Full name">
+      <input class="reg-input" type="email" placeholder="Email address">
+      <input class="reg-input" type="tel" placeholder="Phone number">
+      <button class="btn-reg-cta">Reserve My Spot in the 2026 Cohort →</button>
+      <div class="reg-terms">
+        By submitting you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. &nbsp;
+        Already enrolled? <a href="#">Sign in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">
+          <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="foot-logo-badge">
+          <span class="foot-logo-name">TRUSCREN</span>
+        </div>
+        <p>TRUSCREN Academy — Ghana's leading professional device repair training school. Campuses in Accra, Kumasi, and Takoradi.</p>
+        <div class="foot-social">
+          <a href="#" class="soc">f</a>
+          <a href="#" class="soc">𝕏</a>
+          <a href="#" class="soc">in</a>
+          <a href="#" class="soc">▶</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Training</h5>
+        <ul>
+          <li><a href="#">Screen Repair</a></li>
+          <li><a href="#">Laptop Repair</a></li>
+          <li><a href="#">Micro-Soldering</a></li>
+          <li><a href="#">EV Battery Tech</a></li>
+          <li><a href="#">Data Recovery</a></li>
+          <li><a href="#">Software &amp; Flashing</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="#">Starter Certificate</a></li>
+          <li><a href="#">Advanced Diploma</a></li>
+          <li><a href="#">Full-Time Cohort</a></li>
+          <li><a href="#">Weekend Intensive</a></li>
+          <li><a href="#">Evening Classes</a></li>
+          <li><a href="#">Corporate Training</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>TRUSCREN For</h5>
+        <ul>
+          <li><a href="#">Individual Technicians</a></li>
+          <li><a href="#">Repair Shop Owners</a></li>
+          <li><a href="#">Electronics Retailers</a></li>
+          <li><a href="#">Corporate IT Teams</a></li>
+          <li><a href="#">Schools &amp; Colleges</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About TRUSCREN</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Graduate Stories</a></li>
+          <li><a href="#">Locations</a></li>
+          <li><a href="#">Become an Instructor</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-btm">
+      <span>© 2026 TRUSCREN Academy. All rights reserved.</span>
+      <div class="foot-btm-links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Settings</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════ SIGN IN MODAL ══════════ -->
+<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="Sign In to TRUSCREN Academy">
+  <div id="signin-modal">
+
+    <!-- Left: brand panel -->
+    <div class="si-left">
+      <div class="si-ripples">
+        <span style="width:70px;height:70px;animation-delay:0s"></span>
+        <span style="width:150px;height:150px;animation-delay:0.2s"></span>
+        <span style="width:230px;height:230px;animation-delay:0.4s"></span>
+        <span style="width:310px;height:310px;animation-delay:0.6s"></span>
+        <span style="width:390px;height:390px;animation-delay:0.8s;border-style:dashed"></span>
+      </div>
+      <span class="si-float">🔧</span>
+      <span class="si-float">🔋</span>
+      <span class="si-float">📱</span>
+      <span class="si-float">🖥️</span>
+      <div class="si-left-cnt">
+        <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="si-badge-img">
+        <div class="si-brand-name">TRUSCREN</div>
+        <div class="si-brand-tagline">Professional Device Repair Training — Accra · Kumasi · Takoradi</div>
+        <div class="si-stats">
+          <span class="si-stat">&lt;0.5% Defect Rate</span>
+          <span class="si-stat">3,500+ Graduates</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form panel -->
+    <div class="si-right">
+      <button class="si-close" id="si-close-btn" aria-label="Close sign in">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div id="si-anim-wrap">
+        <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
+          <h2 class="si-h2">Welcome back.</h2>
+        </div></div></div>
+
+        <div class="si-row" style="margin-bottom:1.25rem;"><div class="br"><div class="br-cover"></div><div class="br-inner">
+          <p class="si-sub">Sign in to your TRUSCREN Academy account</p>
+        </div></div></div>
+
+        <form id="si-form" novalidate>
+
+          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
+            <div class="si-field">
+              <label class="si-label" for="si-email">Email Address <span>*</span></label>
+              <div class="si-input-wrap" id="si-email-wrap">
+                <input class="si-input" type="email" id="si-email" placeholder="Enter your email address" autocomplete="email">
+              </div>
+              <span class="si-err" id="si-email-err">Please enter a valid email address.</span>
+            </div>
+          </div></div></div>
+
+          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
+            <div class="si-field">
+              <label class="si-label" for="si-pw">Password <span>*</span></label>
+              <div class="si-input-wrap" id="si-pw-wrap" style="position:relative;">
+                <input class="si-input" type="password" id="si-pw" placeholder="Enter your password" autocomplete="current-password">
+                <button type="button" class="si-eye" id="si-eye-btn" aria-label="Toggle password visibility">
+                  <svg id="si-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="si-err" id="si-pw-err">Password must be at least 6 characters.</span>
+            </div>
+          </div></div></div>
+
+          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
+            <button type="submit" class="si-submit">Sign In →</button>
+          </div></div></div>
+
+          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
+            <div class="si-footer">
+              <a href="#" id="si-forgot">Forgot your password?</a>
+              &nbsp;·&nbsp;
+              No account? <a href="#register" id="si-enrol">Enrol Now</a>
+            </div>
+          </div></div></div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  // Navbar scroll shadow
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+  // Mobile menu
+  const hamBtn = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+  // Subject pills
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+    });
+  });
+
+  // Browse accordion
+  function togCat(hd) {
+    const links = hd.nextElementSibling;
+    const wasOpen = links.classList.contains('open');
+    document.querySelectorAll('.bcat-links').forEach(l => l.classList.remove('open'));
+    document.querySelectorAll('.bcat-hd').forEach(h => h.classList.remove('open'));
+    if (!wasOpen) { links.classList.add('open'); hd.classList.add('open'); }
+  }
+
+  // Fallback: reveal all after 800ms
+  setTimeout(() => document.querySelectorAll('.r:not(.on)').forEach(el => el.classList.add('on')), 800);
+
+  // ── SIGN IN MODAL ──
+  (function () {
+    const overlay  = document.getElementById('signin-overlay');
+    const closeBtn = document.getElementById('si-close-btn');
+    const form     = document.getElementById('si-form');
+    const eyeBtn   = document.getElementById('si-eye-btn');
+    const eyeSvg   = document.getElementById('si-eye-svg');
+    const pwInput  = document.getElementById('si-pw');
+
+    const EYE_OPEN   = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    const EYE_CLOSED = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+
+    function resetAnims() {
+      document.querySelectorAll('#si-anim-wrap .br-cover, #si-anim-wrap .br-inner').forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth; // reflow
+        el.style.animation = '';
+      });
+    }
+
+    function openModal() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      resetAnims();
+      setTimeout(() => { const e = document.getElementById('si-email'); if (e) e.focus(); }, 450);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Trigger on every "Sign In" button
+    document.querySelectorAll('.btn-si').forEach(btn => {
+      btn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+    // Password eye toggle
+    eyeBtn.addEventListener('click', () => {
+      const show = pwInput.type === 'password';
+      pwInput.type = show ? 'text' : 'password';
+      eyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
+
+    // Mouse-glow on inputs (mimics motion radial gradient)
+    document.querySelectorAll('.si-input-wrap').forEach(wrap => {
+      wrap.addEventListener('mousemove', e => {
+        const r = wrap.getBoundingClientRect();
+        wrap.style.background = `radial-gradient(90px circle at ${e.clientX - r.left}px ${e.clientY - r.top}px, rgba(255,105,0,0.28), transparent 80%)`;
+      });
+      wrap.addEventListener('mouseleave', () => { wrap.style.background = 'transparent'; });
+    });
+
+    // Form validation
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email    = document.getElementById('si-email');
+      const pw       = document.getElementById('si-pw');
+      const emailErr = document.getElementById('si-email-err');
+      const pwErr    = document.getElementById('si-pw-err');
+      let ok = true;
+
+      if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+        emailErr.classList.add('show'); ok = false;
+      } else { emailErr.classList.remove('show'); }
+
+      if (!pw.value || pw.value.length < 6) {
+        pwErr.classList.add('show'); ok = false;
+      } else { pwErr.classList.remove('show'); }
+
+      if (ok) { console.log('Sign in:', email.value); closeModal(); }
+    });
+
+    // "Enrol Now" → close modal, scroll to register section
+    document.getElementById('si-enrol').addEventListener('click', e => {
+      e.preventDefault();
+      closeModal();
+      setTimeout(() => {
+        const reg = document.getElementById('register');
+        if (reg) reg.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    });
+  })();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); mobMenu.classList.remove('open'); }
+    });
+  });
+</script>
+</body>
+</html>
