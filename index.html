@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     :root {
       --primary:       #262E3D;
@@ -765,6 +766,149 @@
     .si-footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
     .si-footer a:hover { text-decoration: underline; }
 
+    /* ── AUTH MODAL OVERRIDES (tabs) ── */
+    #signin-modal { height: auto; min-height: 520px; max-height: 92dvh; }
+    .si-right { justify-content: flex-start; overflow-y: auto; padding: 2rem 2.25rem; }
+    .si-tabs {
+      display: flex; background: #f0f0f0; border-radius: 8px;
+      padding: 3px; margin-bottom: 1.375rem;
+    }
+    .si-tab {
+      flex: 1; padding: 0.5rem 0.75rem; border: none; background: none;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600;
+      color: #888; cursor: pointer; border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .si-tab.active { background: #fff; color: var(--dark); box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+    .si-panel { display: none; }
+    .si-panel.active { display: block; }
+    .si-auth-err {
+      font-size: 0.75rem; color: #c0392b; background: #fdf0ee;
+      border: 1px solid #f5c6c2; border-radius: 6px;
+      padding: 0.6rem 0.8rem; margin-bottom: 0.875rem; display: none;
+    }
+    .si-auth-err.show { display: block; }
+    .si-input-select {
+      width: 100%; background: #f7f7f7; border: none; outline: none;
+      border-radius: 6px; padding: 0.6rem 2rem 0.6rem 0.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--dark);
+      box-shadow: 0 0 0 1px rgba(25,28,33,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s; appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.8rem center;
+    }
+    .si-input-select:focus { box-shadow: 0 0 0 2px var(--brand); }
+    .si-signup-success {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; gap: 0.75rem; padding: 1.25rem 0;
+    }
+    .si-signup-success.show { display: flex; }
+    .si-signup-success-ico {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(0,88,67,0.1); border: 2px solid rgba(0,88,67,0.22);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .si-signup-success h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); }
+    .si-signup-success p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; max-width: 280px; }
+    .si-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── NAV LOGGED-IN STATE ── */
+    .nav-student-name {
+      font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;
+    }
+    .btn-dashboard {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      padding: 0.42rem 0.875rem; border-radius: 3px; cursor: pointer;
+      transition: background 0.18s; white-space: nowrap;
+    }
+    .btn-dashboard:hover { background: rgba(255,255,255,0.18); }
+    .btn-logout-nav {
+      background: none; font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.2); padding: 0.42rem 0.875rem;
+      border-radius: 3px; cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .btn-logout-nav:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+    /* ── DASHBOARD MODAL ── */
+    #dash-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2100;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #dash-overlay.open { display: flex; }
+    #dash-modal {
+      width: 100%; max-width: 440px; max-height: 92dvh; overflow-y: auto;
+      background: #fff; border-radius: 12px; padding: 2rem;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+    }
+    .dash-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .dash-close:hover { color: #333; background: #f2f2f2; }
+    .dash-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.375rem; }
+    .dash-avatar {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 800; color: #fff; flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .dash-header-info h2 { font-size: 1.05rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
+    .dash-header-info p { font-size: 0.76rem; color: #888; margin-top: 0.15rem; }
+    .dash-sec-label {
+      font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #bbb; margin: 1.125rem 0 0.45rem;
+    }
+    .dash-course-card {
+      background: var(--primary); border-radius: 8px; padding: 0.875rem 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    .dash-course-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
+    .dash-level-pill {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem; border-radius: 3px;
+      background: rgba(255,105,0,0.18); border: 1px solid rgba(255,105,0,0.32);
+      color: var(--brand); white-space: nowrap; flex-shrink: 0;
+    }
+    .dash-progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; color: #888; margin-bottom: 0.4rem;
+    }
+    .dash-progress-track {
+      height: 8px; background: #f0f0f0; border-radius: 100px; overflow: hidden;
+    }
+    .dash-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--secondary), var(--brand));
+      border-radius: 100px; transition: width 0.85s cubic-bezier(0.22,1,0.36,1);
+    }
+    .dash-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-top: 0.375rem;
+    }
+    .dash-info-item { background: #f8f8f8; border-radius: 6px; padding: 0.7rem; }
+    .dash-info-item label {
+      display: block; font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em; color: #bbb; margin-bottom: 0.18rem;
+    }
+    .dash-info-item span { font-size: 0.82rem; font-weight: 600; color: var(--dark); word-break: break-all; }
+    .btn-dash-logout {
+      width: 100%; margin-top: 1.375rem; padding: 0.7rem;
+      background: none; border: 1.5px solid #e2e2e2;
+      font-family: 'Inter', sans-serif; font-size: 0.84rem; font-weight: 600;
+      color: #888; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .btn-dash-logout:hover { border-color: #c0392b; color: #c0392b; background: rgba(192,57,43,0.04); }
+
     @media (max-width: 600px) {
       #signin-modal { grid-template-columns: 1fr; height: auto; max-height: 95dvh; overflow-y: auto; }
       .si-left { display: none; }
@@ -942,9 +1086,14 @@
 
     <div class="nav-gap"></div>
 
-    <div class="nav-auth">
+    <div class="nav-auth" id="nav-auth-out">
       <a href="#" class="btn-si">Sign In</a>
       <a href="#enrol" class="btn-reg">Enrol Now</a>
+    </div>
+    <div class="nav-auth" id="nav-auth-in" style="display:none;">
+      <span class="nav-student-name" id="nav-student-name"></span>
+      <button class="btn-dashboard" id="btn-open-dash">Dashboard</button>
+      <button class="btn-logout-nav" id="btn-logout-nav">Log Out</button>
     </div>
 
     <button class="hamburger" id="ham-btn" aria-label="Menu">
@@ -971,9 +1120,14 @@
     <li><a href="#">Corporate Training</a></li>
     <li><a href="#">About TRUSCREN</a></li>
   </ul>
-  <div class="mob-auth">
+  <div class="mob-auth" id="mob-auth-out">
     <a href="#" class="btn-si">Sign In</a>
     <a href="#enrol" class="btn-reg">Enrol in the 2026 Cohort</a>
+  </div>
+  <div class="mob-auth" id="mob-auth-in" style="display:none;">
+    <p id="mob-student-name" style="color:rgba(255,255,255,0.55);font-size:0.8rem;padding:0.2rem 0;font-weight:500;"></p>
+    <button id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;">My Dashboard</button>
+    <button id="mob-logout" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:none;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.25);width:100%;">Log Out</button>
   </div>
 </div>
 
@@ -1480,8 +1634,8 @@
 </footer>
 
 
-<!-- ══════════ SIGN IN MODAL ══════════ -->
-<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="Sign In to TRUSCREN Academy">
+<!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
+<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN Academy Account">
   <div id="signin-modal">
 
     <!-- Left: brand panel -->
@@ -1508,66 +1662,182 @@
       </div>
     </div>
 
-    <!-- Right: form panel -->
+    <!-- Right: tab panel -->
     <div class="si-right">
-      <button class="si-close" id="si-close-btn" aria-label="Close sign in">
+      <button class="si-close" id="si-close-btn" aria-label="Close">
         <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
           <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
       </button>
 
-      <div id="si-anim-wrap">
-        <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
-          <h2 class="si-h2">Welcome back.</h2>
-        </div></div></div>
+      <!-- Tabs -->
+      <div class="si-tabs">
+        <button class="si-tab active" data-panel="panel-signin">Sign In</button>
+        <button class="si-tab" data-panel="panel-signup">Sign Up</button>
+      </div>
 
-        <div class="si-row" style="margin-bottom:1.25rem;"><div class="br"><div class="br-cover"></div><div class="br-inner">
-          <p class="si-sub">Sign in to your TRUSCREN Academy account</p>
-        </div></div></div>
-
+      <!-- ── SIGN IN PANEL ── -->
+      <div class="si-panel active" id="panel-signin">
+        <h2 class="si-h2">Welcome back.</h2>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Sign in to your TRUSCREN Academy account</p>
+        <div class="si-auth-err" id="si-login-err"></div>
         <form id="si-form" novalidate>
-
-          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
-            <div class="si-field">
-              <label class="si-label" for="si-email">Email Address <span>*</span></label>
-              <div class="si-input-wrap" id="si-email-wrap">
-                <input class="si-input" type="email" id="si-email" placeholder="Enter your email address" autocomplete="email">
-              </div>
-              <span class="si-err" id="si-email-err">Please enter a valid email address.</span>
+          <div class="si-field">
+            <label class="si-label" for="si-email">Email Address <span>*</span></label>
+            <div class="si-input-wrap" style="position:relative;">
+              <input class="si-input" type="email" id="si-email" placeholder="Enter your email address" autocomplete="email">
             </div>
-          </div></div></div>
-
-          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
-            <div class="si-field">
-              <label class="si-label" for="si-pw">Password <span>*</span></label>
-              <div class="si-input-wrap" id="si-pw-wrap" style="position:relative;">
-                <input class="si-input" type="password" id="si-pw" placeholder="Enter your password" autocomplete="current-password">
-                <button type="button" class="si-eye" id="si-eye-btn" aria-label="Toggle password visibility">
-                  <svg id="si-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
-                </button>
-              </div>
-              <span class="si-err" id="si-pw-err">Password must be at least 6 characters.</span>
+            <span class="si-err" id="si-email-err">Please enter a valid email address.</span>
+          </div>
+          <div class="si-field" style="margin-bottom:1rem;">
+            <label class="si-label" for="si-pw">Password <span>*</span></label>
+            <div class="si-input-wrap" id="si-pw-wrap" style="position:relative;">
+              <input class="si-input" type="password" id="si-pw" placeholder="Enter your password" autocomplete="current-password">
+              <button type="button" class="si-eye" id="si-eye-btn" aria-label="Toggle password visibility">
+                <svg id="si-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
             </div>
-          </div></div></div>
-
-          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
-            <button type="submit" class="si-submit">Sign In →</button>
-          </div></div></div>
-
-          <div class="si-row"><div class="br"><div class="br-cover"></div><div class="br-inner">
-            <div class="si-footer">
-              <a href="#" id="si-forgot">Forgot your password?</a>
-              &nbsp;·&nbsp;
-              No account? <a href="#enrol" id="si-enrol">Enrol Now</a>
-            </div>
-          </div></div></div>
-
+            <span class="si-err" id="si-pw-err">Password must be at least 6 characters.</span>
+          </div>
+          <button type="submit" class="si-submit" id="si-login-btn">Sign In →</button>
+          <div class="si-footer" style="margin-top:0.875rem;">
+            No account? <a href="#" id="si-switch-signup">Create one free →</a>
+          </div>
         </form>
+      </div>
+
+      <!-- ── SIGN UP PANEL ── -->
+      <div class="si-panel" id="panel-signup">
+        <h2 class="si-h2">Create account.</h2>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Join TRUSCREN Academy — free to sign up</p>
+        <!-- Success state -->
+        <div class="si-signup-success" id="si-signup-ok">
+          <div class="si-signup-success-ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Check your email!</h3>
+          <p>We've sent a confirmation link. Click it to activate your account, then sign in.</p>
+          <div class="si-footer" style="margin-top:0.5rem;"><a href="#" id="si-goto-login">Go to Sign In →</a></div>
+        </div>
+        <div class="si-auth-err" id="si-signup-err"></div>
+        <form id="su-form" novalidate>
+          <div class="si-field">
+            <label class="si-label" for="su-name">Full Name <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="text" id="su-name" placeholder="e.g. Kwame Asante" autocomplete="name">
+            </div>
+            <span class="si-err" id="su-name-err">Full name is required.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-phone">Phone Number <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="text" id="su-phone" placeholder="e.g. 0244 000 000" autocomplete="tel">
+            </div>
+            <span class="si-err" id="su-phone-err">Phone number is required.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-email">Email Address <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="email" id="su-email" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <span class="si-err" id="su-email-err">Please enter a valid email.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-pw">Password <span>*</span></label>
+            <div class="si-input-wrap" style="position:relative;">
+              <input class="si-input" type="password" id="su-pw" placeholder="At least 6 characters" autocomplete="new-password">
+              <button type="button" class="si-eye" id="su-eye-btn" aria-label="Toggle password visibility">
+                <svg id="su-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="si-err" id="su-pw-err">Password must be at least 6 characters.</span>
+          </div>
+          <div class="si-field" style="margin-bottom:1rem;">
+            <label class="si-label" for="su-course">Course <span>*</span></label>
+            <div class="si-input-wrap">
+              <select class="si-input si-input-select" id="su-course">
+                <option value="">Select a course...</option>
+                <optgroup label="Phone Screen Repair">
+                  <option value="Phone Screen Repair|Beginner">Phone Screen Repair — Beginner</option>
+                  <option value="Phone Screen Repair|Advanced">Phone Screen Repair — Advanced</option>
+                </optgroup>
+                <optgroup label="Laptop Repair">
+                  <option value="Laptop Repair|Beginner">Laptop Repair — Beginner</option>
+                  <option value="Laptop Repair|Advanced">Laptop Repair — Advanced</option>
+                </optgroup>
+                <optgroup label="Circuit Board Soldering">
+                  <option value="Circuit Board Soldering|Beginner">Circuit Board Soldering — Beginner</option>
+                  <option value="Circuit Board Soldering|Advanced">Circuit Board Soldering — Advanced</option>
+                </optgroup>
+                <optgroup label="EV Battery Diagnostics">
+                  <option value="EV Battery Diagnostics|Beginner">EV Battery Diagnostics — Beginner</option>
+                  <option value="EV Battery Diagnostics|Advanced">EV Battery Diagnostics — Advanced</option>
+                </optgroup>
+              </select>
+            </div>
+            <span class="si-err" id="su-course-err">Please select a course.</span>
+          </div>
+          <button type="submit" class="si-submit" id="su-submit-btn">Create Account →</button>
+          <div class="si-footer" style="margin-top:0.875rem;">
+            Already have an account? <a href="#" id="si-switch-login">Sign in →</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ DASHBOARD MODAL ══════════ -->
+<div id="dash-overlay" role="dialog" aria-modal="true" aria-label="Student Dashboard">
+  <div id="dash-modal">
+    <button class="dash-close" id="dash-close-btn" aria-label="Close dashboard">
+      <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="dash-header">
+      <div class="dash-avatar" id="dash-avatar">S</div>
+      <div class="dash-header-info">
+        <h2 id="dash-name">—</h2>
+        <p id="dash-email">—</p>
       </div>
     </div>
 
+    <div class="dash-sec-label">Enrolled Course</div>
+    <div class="dash-course-card">
+      <div class="dash-course-name" id="dash-course">—</div>
+      <div class="dash-level-pill" id="dash-level">—</div>
+    </div>
+
+    <div class="dash-sec-label">Progress</div>
+    <div class="dash-progress-meta">
+      <span>Course completion</span>
+      <span id="dash-pct">0%</span>
+    </div>
+    <div class="dash-progress-track">
+      <div class="dash-progress-fill" id="dash-progress-fill" style="width:0%"></div>
+    </div>
+
+    <div class="dash-sec-label">Contact Info</div>
+    <div class="dash-info-grid">
+      <div class="dash-info-item">
+        <label>Phone</label>
+        <span id="dash-phone">—</span>
+      </div>
+      <div class="dash-info-item">
+        <label>Enrolled</label>
+        <span id="dash-since">—</span>
+      </div>
+    </div>
+
+    <button class="btn-dash-logout" id="dash-logout-btn">Log Out</button>
   </div>
 </div>
 
@@ -1608,92 +1878,253 @@
   // Fallback: reveal all after 800ms
   setTimeout(() => document.querySelectorAll('.r:not(.on)').forEach(el => el.classList.add('on')), 800);
 
-  // ── SIGN IN MODAL ──
+  // ── SUPABASE AUTH + DASHBOARD ──
   (function () {
-    const overlay  = document.getElementById('signin-overlay');
-    const closeBtn = document.getElementById('si-close-btn');
-    const form     = document.getElementById('si-form');
-    const eyeBtn   = document.getElementById('si-eye-btn');
-    const eyeSvg   = document.getElementById('si-eye-svg');
-    const pwInput  = document.getElementById('si-pw');
+    const SUPA_URL = 'https://dudbrvrbzpgzjqngvjim.supabase.co';
+    const SUPA_KEY = 'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19';
+    const { createClient } = supabase;
+    const sb = createClient(SUPA_URL, SUPA_KEY);
+
+    // ── DOM refs ──
+    const overlay      = document.getElementById('signin-overlay');
+    const closeBtn     = document.getElementById('si-close-btn');
+    const loginForm    = document.getElementById('si-form');
+    const signupForm   = document.getElementById('su-form');
+    const loginErrEl   = document.getElementById('si-login-err');
+    const signupErrEl  = document.getElementById('si-signup-err');
+    const signupOkEl   = document.getElementById('si-signup-ok');
+    const loginBtn     = document.getElementById('si-login-btn');
+    const suBtn        = document.getElementById('su-submit-btn');
+    const eyeBtn       = document.getElementById('si-eye-btn');
+    const eyeSvg       = document.getElementById('si-eye-svg');
+    const pwInput      = document.getElementById('si-pw');
+    const suEyeBtn     = document.getElementById('su-eye-btn');
+    const suEyeSvg     = document.getElementById('su-eye-svg');
+    const suPwInput    = document.getElementById('su-pw');
+    const navAuthOut   = document.getElementById('nav-auth-out');
+    const navAuthIn    = document.getElementById('nav-auth-in');
+    const navName      = document.getElementById('nav-student-name');
+    const mobAuthOut   = document.getElementById('mob-auth-out');
+    const mobAuthIn    = document.getElementById('mob-auth-in');
+    const mobName      = document.getElementById('mob-student-name');
+    const dashOverlay  = document.getElementById('dash-overlay');
+    const dashCloseBtn = document.getElementById('dash-close-btn');
+    const dashLogout   = document.getElementById('dash-logout-btn');
+    const btnOpenDash  = document.getElementById('btn-open-dash');
+    const mobOpenDash  = document.getElementById('mob-open-dash');
+    const btnLogoutNav = document.getElementById('btn-logout-nav');
+    const mobLogoutBtn = document.getElementById('mob-logout');
 
     const EYE_OPEN   = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
     const EYE_CLOSED = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
 
-    function resetAnims() {
-      document.querySelectorAll('#si-anim-wrap .br-cover, #si-anim-wrap .br-inner').forEach(el => {
-        el.style.animation = 'none';
-        void el.offsetWidth; // reflow
-        el.style.animation = '';
-      });
-    }
+    let currentProfile = null;
+    let currentUser    = null;
 
-    function openModal() {
+    // ── MODAL OPEN / CLOSE ──
+    function openModal(tab) {
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
-      resetAnims();
-      setTimeout(() => { const e = document.getElementById('si-email'); if (e) e.focus(); }, 450);
+      switchTab(tab || 'signin');
+      setTimeout(() => {
+        const f = tab === 'signup' ? document.getElementById('su-name') : document.getElementById('si-email');
+        if (f) f.focus();
+      }, 150);
     }
-
     function closeModal() {
       overlay.classList.remove('open');
       document.body.style.overflow = '';
     }
 
-    // Trigger on every "Sign In" button
     document.querySelectorAll('.btn-si').forEach(btn => {
-      btn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+      if (btn.id === 'btn-logout-nav') return;
+      btn.addEventListener('click', e => { e.preventDefault(); openModal('signin'); });
     });
-
     closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (overlay.classList.contains('open'))    closeModal();
+        if (dashOverlay.classList.contains('open')) closeDash();
+      }
+    });
 
-    // Password eye toggle
+    // ── TABS ──
+    function switchTab(name) {
+      document.querySelectorAll('.si-tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.panel === 'panel-' + name));
+      document.querySelectorAll('.si-panel').forEach(p =>
+        p.classList.toggle('active', p.id === 'panel-' + name));
+      loginErrEl.classList.remove('show');
+      signupErrEl.classList.remove('show');
+    }
+    document.querySelectorAll('.si-tab').forEach(tab =>
+      tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('panel-', ''))));
+    document.getElementById('si-switch-signup').addEventListener('click', e => { e.preventDefault(); switchTab('signup'); });
+    document.getElementById('si-switch-login').addEventListener('click',  e => { e.preventDefault(); switchTab('signin'); });
+    document.getElementById('si-goto-login').addEventListener('click',    e => { e.preventDefault(); switchTab('signin'); });
+
+    // ── EYE TOGGLES ──
     eyeBtn.addEventListener('click', () => {
       const show = pwInput.type === 'password';
       pwInput.type = show ? 'text' : 'password';
       eyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
     });
+    suEyeBtn.addEventListener('click', () => {
+      const show = suPwInput.type === 'password';
+      suPwInput.type = show ? 'text' : 'password';
+      suEyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
 
-    // Mouse-glow on inputs (mimics motion radial gradient)
+    // ── MOUSE GLOW ──
     document.querySelectorAll('.si-input-wrap').forEach(wrap => {
-      wrap.addEventListener('mousemove', e => {
+      wrap.addEventListener('mousemove', ev => {
         const r = wrap.getBoundingClientRect();
-        wrap.style.background = `radial-gradient(90px circle at ${e.clientX - r.left}px ${e.clientY - r.top}px, rgba(255,105,0,0.28), transparent 80%)`;
+        wrap.style.background = `radial-gradient(90px circle at ${ev.clientX - r.left}px ${ev.clientY - r.top}px, rgba(255,105,0,0.18), transparent 80%)`;
       });
       wrap.addEventListener('mouseleave', () => { wrap.style.background = 'transparent'; });
     });
 
-    // Form validation
-    form.addEventListener('submit', e => {
+    // ── HELPERS ──
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function setErr(id, msg) { const el = document.getElementById(id); el.textContent = msg || el.textContent; el.classList.add('show'); }
+    function clrErr(id) { document.getElementById(id).classList.remove('show'); }
+    function friendlyErr(msg) {
+      if (!msg) return 'Something went wrong. Please try again.';
+      const m = msg.toLowerCase();
+      if (m.includes('invalid login') || m.includes('invalid credentials') || m.includes('email not confirmed'))
+        return 'Incorrect email or password, or your email is not yet confirmed.';
+      if (m.includes('already registered') || m.includes('user already exists'))
+        return 'This email is already registered. Try signing in instead.';
+      if (m.includes('rate limit') || m.includes('email rate'))
+        return 'Too many attempts. Please wait a moment and try again.';
+      return msg;
+    }
+
+    // ── SIGN IN ──
+    loginForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const email    = document.getElementById('si-email');
-      const pw       = document.getElementById('si-pw');
-      const emailErr = document.getElementById('si-email-err');
-      const pwErr    = document.getElementById('si-pw-err');
+      loginErrEl.classList.remove('show');
+      const email = document.getElementById('si-email').value.trim();
+      const pw    = document.getElementById('si-pw').value;
       let ok = true;
-
-      if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-        emailErr.classList.add('show'); ok = false;
-      } else { emailErr.classList.remove('show'); }
-
-      if (!pw.value || pw.value.length < 6) {
-        pwErr.classList.add('show'); ok = false;
-      } else { pwErr.classList.remove('show'); }
-
-      if (ok) { console.log('Sign in:', email.value); closeModal(); }
+      if (!validEmail(email)) { setErr('si-email-err', 'Please enter a valid email address.'); ok = false; } else clrErr('si-email-err');
+      if (pw.length < 6)      { setErr('si-pw-err', 'Password must be at least 6 characters.'); ok = false; } else clrErr('si-pw-err');
+      if (!ok) return;
+      loginBtn.disabled = true; loginBtn.textContent = 'Signing in...';
+      const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+      loginBtn.disabled = false; loginBtn.textContent = 'Sign In →';
+      if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
+      else closeModal();
     });
 
-    // "Enrol Now" → close modal, scroll to register section
-    document.getElementById('si-enrol').addEventListener('click', e => {
+    // ── SIGN UP ──
+    signupForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      closeModal();
-      setTimeout(() => {
-        const reg = document.getElementById('enrol');
-        if (reg) reg.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      signupErrEl.classList.remove('show');
+      const name      = document.getElementById('su-name').value.trim();
+      const phone     = document.getElementById('su-phone').value.trim();
+      const email     = document.getElementById('su-email').value.trim();
+      const pw        = document.getElementById('su-pw').value;
+      const courseRaw = document.getElementById('su-course').value;
+      let ok = true;
+      if (!name)           { setErr('su-name-err',   'Full name is required.');              ok = false; } else clrErr('su-name-err');
+      if (!phone)          { setErr('su-phone-err',  'Phone number is required.');           ok = false; } else clrErr('su-phone-err');
+      if (!validEmail(email)) { setErr('su-email-err', 'Please enter a valid email.');       ok = false; } else clrErr('su-email-err');
+      if (pw.length < 6)   { setErr('su-pw-err',    'Password must be at least 6 characters.'); ok = false; } else clrErr('su-pw-err');
+      if (!courseRaw)      { setErr('su-course-err', 'Please select a course.');             ok = false; } else clrErr('su-course-err');
+      if (!ok) return;
+      const [course, level] = courseRaw.split('|');
+      suBtn.disabled = true; suBtn.textContent = 'Creating account...';
+      const { data, error } = await sb.auth.signUp({ email, password: pw });
+      if (error) {
+        signupErrEl.textContent = friendlyErr(error.message);
+        signupErrEl.classList.add('show');
+        suBtn.disabled = false; suBtn.textContent = 'Create Account →';
+        return;
+      }
+      if (data.user) {
+        await sb.from('profiles').insert({ id: data.user.id, full_name: name, phone, course, level, progress: 0 });
+      }
+      suBtn.disabled = false; suBtn.textContent = 'Create Account →';
+      signupForm.style.display = 'none';
+      signupOkEl.classList.add('show');
     });
+
+    // ── AUTH STATE → NAV UPDATE ──
+    function updateNav(user, profile) {
+      currentUser    = user;
+      currentProfile = profile;
+      const loggedIn = !!(user && profile);
+      navAuthOut.style.display = loggedIn ? 'none' : 'flex';
+      navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+      mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
+      mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+      if (loggedIn) {
+        const first = profile.full_name.split(' ')[0];
+        navName.textContent = first;
+        mobName.textContent = 'Signed in as ' + profile.full_name;
+      }
+    }
+
+    async function loadProfile(user) {
+      const { data } = await sb.from('profiles').select('*').eq('id', user.id).single();
+      return data;
+    }
+
+    sb.auth.onAuthStateChange(async (_event, session) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      } else {
+        updateNav(null, null);
+      }
+    });
+
+    sb.auth.getSession().then(async ({ data: { session } }) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      }
+    });
+
+    // ── SIGN OUT ──
+    async function signOut() {
+      await sb.auth.signOut();
+      closeDash();
+    }
+    btnLogoutNav.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    mobLogoutBtn.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    dashLogout.addEventListener('click',   signOut);
+
+    // ── DASHBOARD ──
+    function openDash() {
+      if (!currentProfile || !currentUser) return;
+      const p = currentProfile;
+      document.getElementById('dash-avatar').textContent = (p.full_name || 'S')[0].toUpperCase();
+      document.getElementById('dash-name').textContent   = p.full_name || '—';
+      document.getElementById('dash-email').textContent  = currentUser.email || '—';
+      document.getElementById('dash-course').textContent = p.course || '—';
+      document.getElementById('dash-level').textContent  = p.level  || '—';
+      const pct = Math.min(100, Math.max(0, p.progress || 0));
+      document.getElementById('dash-pct').textContent    = pct + '%';
+      setTimeout(() => { document.getElementById('dash-progress-fill').style.width = pct + '%'; }, 80);
+      document.getElementById('dash-phone').textContent  = p.phone || '—';
+      const since = p.created_at
+        ? new Date(p.created_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
+        : '—';
+      document.getElementById('dash-since').textContent = since;
+      dashOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDash() {
+      dashOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    btnOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); });
+    mobOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); mobMenu.classList.remove('open'); });
+    dashCloseBtn.addEventListener('click', closeDash);
+    dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
   })();
 
   // Smooth scroll
