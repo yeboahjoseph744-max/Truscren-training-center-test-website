@@ -771,6 +771,95 @@
       .si-right { padding: 2rem 1.5rem; }
     }
 
+    /* ── ENROL SECTION ── */
+    .enrol-section {
+      background: var(--primary); padding: 5rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .enrol-section::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 70% at 92% 45%, rgba(255,105,0,0.11) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 55% at 8% 75%, rgba(0,88,67,0.14) 0%, transparent 60%);
+    }
+    .enrol-in {
+      max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1.25fr; gap: 4.5rem; align-items: center;
+    }
+    .enrol-copy .sec-label { color: rgba(255,105,0,0.85); }
+    .enrol-copy h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem); font-weight: 800;
+      color: #fff; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 0.875rem;
+    }
+    .enrol-copy p { font-size: 0.875rem; color: rgba(255,255,255,0.62); line-height: 1.72; margin-bottom: 1.25rem; }
+    .enrol-perks { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .enrol-perks li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.7);
+    }
+    .enrol-perks li::before { content: '✓'; color: var(--brand); font-weight: 700; flex-shrink: 0; margin-top: 0.05em; }
+    .enrol-card {
+      background: #fff; border-radius: 10px; padding: 2.25rem 2rem;
+      box-shadow: 0 28px 72px rgba(0,0,0,0.35);
+    }
+    .enrol-card-title { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 0.2rem; letter-spacing: -0.02em; }
+    .enrol-card-sub { font-size: 0.78rem; color: #888; margin-bottom: 1.5rem; }
+    .ef-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+    .ef-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .ef-label { font-size: 0.73rem; font-weight: 600; color: var(--dark); }
+    .ef-label span { color: #e53e3e; }
+    .ef-input, .ef-select, .ef-textarea {
+      width: 100%; padding: 0.68rem 0.85rem; border-radius: 6px;
+      border: 1.5px solid #e2e2e2; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.84rem; color: var(--dark);
+      background: #fafafa; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+    .ef-input:focus, .ef-select:focus, .ef-textarea:focus {
+      border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,105,0,0.13); background: #fff;
+    }
+    .ef-select {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.8rem center; padding-right: 2.4rem;
+    }
+    .ef-textarea { resize: vertical; min-height: 80px; }
+    .ef-err { font-size: 0.68rem; color: #e53e3e; display: none; margin-top: 0.1rem; }
+    .ef-err.show { display: block; }
+    .ef-net-err {
+      font-size: 0.78rem; color: #c0392b; background: #fdf0ee;
+      border: 1px solid #f5c6c2; border-radius: 5px;
+      padding: 0.65rem 0.85rem; display: none; margin-bottom: 0.75rem;
+    }
+    .ef-net-err.show { display: block; }
+    .btn-enrol-submit {
+      width: 100%; padding: 0.85rem;
+      background: var(--brand); color: #fff; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700;
+      cursor: pointer; transition: background 0.18s; margin-top: 0.35rem;
+      letter-spacing: 0.01em;
+    }
+    .btn-enrol-submit:hover:not(:disabled) { background: var(--brand-h); }
+    .btn-enrol-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .enrol-terms { font-size: 0.68rem; color: #aaa; text-align: center; margin-top: 0.65rem; }
+    .enrol-success {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; padding: 1.5rem 0.5rem; gap: 0.75rem;
+    }
+    .enrol-success-ico {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(0,88,67,0.1); border: 2px solid rgba(0,88,67,0.22);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .enrol-success h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); line-height: 1.25; }
+    .enrol-success p { font-size: 0.83rem; color: #666; line-height: 1.65; max-width: 300px; }
+    .btn-enrol-again {
+      margin-top: 0.35rem; background: none; border: 1.5px solid var(--brand);
+      color: var(--brand); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      padding: 0.5rem 1.25rem; border-radius: 5px; cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .btn-enrol-again:hover { background: var(--brand); color: #fff; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .courses-grid { grid-template-columns: repeat(2,1fr); }
@@ -791,6 +880,7 @@
       .lp-in     { grid-template-columns: 1fr; }
       .gplan-in  { grid-template-columns: 1fr; gap: 2.5rem; }
       .discover-in { grid-template-columns: 1fr; gap: 2.5rem; }
+      .enrol-in  { grid-template-columns: 1fr; gap: 2.5rem; }
       .reg-in    { grid-template-columns: 1fr; gap: 2rem; }
       .foot-top  { grid-template-columns: 1fr 1fr; }
       .subj-grid { grid-template-columns: repeat(2,1fr); }
@@ -802,6 +892,8 @@
       .subj-grid    { grid-template-columns: 1fr 1fr; }
       .stats-grid   { grid-template-columns: 1fr 1fr; }
       .gplan-feats  { grid-template-columns: 1fr; }
+      .ef-row-2     { grid-template-columns: 1fr; }
+      .enrol-card   { padding: 1.5rem 1.25rem; }
       .foot-top     { grid-template-columns: 1fr; }
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
@@ -838,7 +930,7 @@
 
     <div class="nav-auth">
       <a href="#" class="btn-si">Sign In</a>
-      <a href="#register" class="btn-reg">Enrol Now</a>
+      <a href="#enrol" class="btn-reg">Enrol Now</a>
     </div>
 
     <button class="hamburger" id="ham-btn" aria-label="Menu">
@@ -867,7 +959,7 @@
   </ul>
   <div class="mob-auth">
     <a href="#" class="btn-si">Sign In</a>
-    <a href="#register" class="btn-reg">Enrol in the 2026 Cohort</a>
+    <a href="#enrol" class="btn-reg">Enrol in the 2026 Cohort</a>
   </div>
 </div>
 
@@ -1066,7 +1158,7 @@
     <div class="stats-copy r">
       <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN Academy</h2>
       <p>We've trained thousands of technicians across Ghana who now run successful repair businesses, work in top electronics shops, and service corporate clients — all with the skills and certification they earned at TRUSCREN.</p>
-      <a href="#register" class="btn-white">Enrol for 2026 →</a>
+      <a href="#enrol" class="btn-white">Enrol for 2026 →</a>
     </div>
     <div class="stats-grid">
       <div class="stat-box r"><span class="stat-n">3,500+</span><span class="stat-l">Certified technicians trained across our campuses</span></div>
@@ -1121,7 +1213,7 @@
         <li>Small cohort sizes ensure you get hands-on time, not just observation</li>
         <li>Career placement support and repair business start-up guidance for all graduates</li>
       </ul>
-      <a href="#register" class="btn-dark">Enrol Today →</a>
+      <a href="#enrol" class="btn-dark">Enrol Today →</a>
     </div>
   </div>
 </section>
@@ -1200,23 +1292,82 @@
 </section>
 
 
-<!-- ══════════ REGISTER CTA ══════════ -->
-<section class="reg-cta" id="register">
-  <div class="reg-in">
-    <div class="reg-copy r">
-      <h2>Enrol in TRUSCREN<br>Academy — 2026 Cohort</h2>
-      <p>Secure your place in Ghana's most respected device repair training programme. Cohort sizes are strictly limited to ensure every student gets maximum hands-on lab time with their instructor.</p>
+<!-- ══════════ ENROL ══════════ -->
+<section id="enrol" class="enrol-section">
+  <div class="enrol-in">
+
+    <div class="enrol-copy r">
+      <div class="sec-label">Enrol Now</div>
+      <h2>Start Your Repair Career<br><em style="color:var(--brand);font-style:normal;">at TRUSCREN Academy</em></h2>
+      <p>Secure your place in Ghana's most respected device repair training programme. Cohort sizes are strictly limited — every student gets maximum hands-on lab time with their instructor.</p>
+      <ul class="enrol-perks">
+        <li>Fully equipped repair labs — real devices, real tools</li>
+        <li>Small cohort sizes for maximum hands-on time</li>
+        <li>TRUSCREN-certified instructors who repair for a living</li>
+        <li>Career placement support for every graduate</li>
+        <li>Campuses in Accra, Kumasi &amp; Takoradi — or online theory</li>
+      </ul>
     </div>
-    <div class="reg-form r d1">
-      <input class="reg-input" type="text" placeholder="Full name">
-      <input class="reg-input" type="email" placeholder="Email address">
-      <input class="reg-input" type="tel" placeholder="Phone number">
-      <button class="btn-reg-cta">Reserve My Spot in the 2026 Cohort →</button>
-      <div class="reg-terms">
-        By submitting you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. &nbsp;
-        Already enrolled? <a href="#">Sign in</a>
+
+    <div class="enrol-card r d1">
+      <div class="enrol-card-title">Reserve Your Spot — 2026 Cohort</div>
+      <div class="enrol-card-sub">Fill in your details and our team will contact you within 24 hours.</div>
+
+      <!-- Success state -->
+      <div class="enrol-success" id="enrol-success">
+        <div class="enrol-success-ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Application Received!</h3>
+        <p>Thank you for enrolling! The TRUSCREN team will contact you soon.</p>
+        <button class="btn-enrol-again" id="enrol-again-btn">Submit Another Application</button>
       </div>
+
+      <!-- Enrol form -->
+      <form id="enrol-form" novalidate>
+        <div class="ef-row-2">
+          <div class="ef-field">
+            <label class="ef-label" for="ef-name">Full Name <span>*</span></label>
+            <input class="ef-input" type="text" id="ef-name" placeholder="e.g. Kwame Asante" autocomplete="name">
+            <span class="ef-err" id="ef-name-err">Full name is required.</span>
+          </div>
+          <div class="ef-field">
+            <label class="ef-label" for="ef-phone">Phone Number <span>*</span></label>
+            <input class="ef-input" type="text" id="ef-phone" placeholder="e.g. 0244 000 000" autocomplete="tel">
+            <span class="ef-err" id="ef-phone-err">Phone number is required.</span>
+          </div>
+        </div>
+
+        <div class="ef-field">
+          <label class="ef-label" for="ef-email">Email Address <span>*</span></label>
+          <input class="ef-input" type="email" id="ef-email" placeholder="you@example.com" autocomplete="email">
+          <span class="ef-err" id="ef-email-err">Please enter a valid email address.</span>
+        </div>
+
+        <div class="ef-field">
+          <label class="ef-label" for="ef-course">Course <span>*</span></label>
+          <select class="ef-select" id="ef-course">
+            <option value="">Select a course...</option>
+            <option value="Phone Screen Repair">Phone Screen Repair</option>
+            <option value="Laptop Repair">Laptop Repair</option>
+            <option value="Circuit Board Soldering">Circuit Board Soldering</option>
+            <option value="EV Battery Diagnostics">EV Battery Diagnostics</option>
+          </select>
+          <span class="ef-err" id="ef-course-err">Please select a course.</span>
+        </div>
+
+        <div class="ef-field" style="margin-bottom:1.1rem;">
+          <label class="ef-label" for="ef-message">Message <span style="color:#aaa;font-weight:400;">(optional)</span></label>
+          <textarea class="ef-textarea" id="ef-message" placeholder="Any questions or special requirements? Tell us about your experience level..." rows="3"></textarea>
+        </div>
+
+        <div class="ef-net-err" id="ef-net-err">Something went wrong. Please check your connection and try again.</div>
+
+        <button type="submit" class="btn-enrol-submit" id="enrol-submit-btn">Reserve My Spot in the 2026 Cohort →</button>
+        <div class="enrol-terms">By submitting you agree to our <a href="#" style="color:var(--brand);">Terms</a> &amp; <a href="#" style="color:var(--brand);">Privacy Policy</a></div>
+      </form>
     </div>
+
   </div>
 </section>
 
@@ -1375,7 +1526,7 @@
             <div class="si-footer">
               <a href="#" id="si-forgot">Forgot your password?</a>
               &nbsp;·&nbsp;
-              No account? <a href="#register" id="si-enrol">Enrol Now</a>
+              No account? <a href="#enrol" id="si-enrol">Enrol Now</a>
             </div>
           </div></div></div>
 
@@ -1505,7 +1656,7 @@
       e.preventDefault();
       closeModal();
       setTimeout(() => {
-        const reg = document.getElementById('register');
+        const reg = document.getElementById('enrol');
         if (reg) reg.scrollIntoView({ behavior: 'smooth' });
       }, 300);
     });
@@ -1520,6 +1671,66 @@
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); mobMenu.classList.remove('open'); }
     });
   });
+
+  // ── ENROL FORM ──
+  (function () {
+    const form      = document.getElementById('enrol-form');
+    const successEl = document.getElementById('enrol-success');
+    const submitBtn = document.getElementById('enrol-submit-btn');
+    const netErr    = document.getElementById('ef-net-err');
+    const ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzytxulYjZkIn6R_zK_PACPZ-rWGpGxOqmmuJngT-Fd1WVjlu_oCDSVp8bAR4GHZzipFA/exec';
+
+    function setErr(id, show) {
+      document.getElementById(id).classList.toggle('show', show);
+    }
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      netErr.classList.remove('show');
+
+      const name    = document.getElementById('ef-name').value.trim();
+      const phone   = document.getElementById('ef-phone').value.trim();
+      const email   = document.getElementById('ef-email').value.trim();
+      const course  = document.getElementById('ef-course').value;
+      const message = document.getElementById('ef-message').value.trim();
+
+      let ok = true;
+      setErr('ef-name-err',   !name);               if (!name)              ok = false;
+      setErr('ef-phone-err',  !phone);              if (!phone)             ok = false;
+      setErr('ef-email-err',  !validEmail(email));  if (!validEmail(email)) ok = false;
+      setErr('ef-course-err', !course);             if (!course)            ok = false;
+
+      if (!ok) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ name, phone, email, course, message }).toString()
+        });
+        form.style.display = 'none';
+        successEl.style.display = 'flex';
+      } catch (err) {
+        netErr.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Reserve My Spot in the 2026 Cohort →';
+      }
+    });
+
+    document.getElementById('enrol-again-btn').addEventListener('click', function () {
+      form.reset();
+      form.style.display = '';
+      successEl.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Reserve My Spot in the 2026 Cohort →';
+      netErr.classList.remove('show');
+    });
+  })();
 </script>
 </body>
 </html>
