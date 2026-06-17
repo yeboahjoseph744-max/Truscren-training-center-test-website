@@ -603,6 +603,20 @@
     .foot-btm a { color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.16s; }
     .foot-btm a:hover { color: rgba(255,255,255,0.7); }
 
+    /* ── SEARCH ── */
+    .srch-msg {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 1001;
+      background: #fff; border-radius: 5px; padding: 0.5rem 0.75rem;
+      font-size: 0.75rem; color: #555; line-height: 1.45;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18); display: none;
+    }
+    .srch-msg.show { display: block; }
+    .c-card.search-hit {
+      border-color: var(--brand) !important;
+      box-shadow: 0 0 0 3px rgba(255,105,0,0.2), 0 18px 48px rgba(0,0,0,0.42) !important;
+      transform: translateY(-6px) !important;
+    }
+
     /* ── REVEAL ── */
     .r { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .r.on { opacity: 1; transform: translateY(0); }
@@ -1121,7 +1135,7 @@
   <div class="nav-in">
     <a href="#" class="logo">
       <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="logo-badge">
-      <span class="logo-wordmark">TRUSCREN</span>
+      <span class="logo-wordmark">TRUS<span style="color:#005843;">CREN</span></span>
     </a>
 
     <div class="nav-srch">
@@ -1129,15 +1143,16 @@
         <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
         <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
-      <input type="text" placeholder="Search courses, skills, repairs...">
+      <input type="text" id="nav-srch-input" placeholder="Search courses, skills, repairs...">
+      <div class="srch-msg" id="srch-msg"></div>
     </div>
 
     <ul class="nav-links">
-      <li><a href="#">Courses</a></li>
+      <li><a href="#courses">Courses</a></li>
       <li><a href="#">Certifications</a></li>
       <li><a href="#requirements">Requirements</a></li>
       <li><a href="#">Locations</a></li>
-      <li><a href="#">Corporate</a></li>
+      <li><a href="#corporate">Corporate</a></li>
       <li><a href="#">About</a></li>
     </ul>
 
@@ -1161,21 +1176,22 @@
 
 <!-- Mobile menu -->
 <div id="mob-menu">
-  <div class="mob-srch">
-    <input type="text" placeholder="Search courses, skills, repairs...">
-    <button>
+  <div class="mob-srch" style="flex-wrap:wrap;">
+    <input type="text" id="mob-srch-input" placeholder="Search courses, skills, repairs...">
+    <button id="mob-srch-btn">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
         <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
         <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
     </button>
+    <div class="srch-msg mob-srch-msg" id="mob-srch-msg" style="position:static;margin-top:0.4rem;border-radius:4px;"></div>
   </div>
   <ul class="mob-links">
-    <li><a href="#">Courses</a></li>
+    <li><a href="#courses">Courses</a></li>
     <li><a href="#">Certifications</a></li>
     <li><a href="#requirements">Requirements</a></li>
     <li><a href="#">Locations</a></li>
-    <li><a href="#">Corporate Training</a></li>
+    <li><a href="#corporate">Corporate Training</a></li>
     <li><a href="#">About TRUSCREN</a></li>
   </ul>
   <div class="mob-auth" id="mob-auth-out">
@@ -1239,7 +1255,7 @@
 
 
 <!-- ══════════ FEATURED COURSES ══════════ -->
-<section class="courses-strip">
+<section id="courses" class="courses-strip">
   <div class="strip-hd r">
     <div>
       <div class="strip-hd-title">Our Repair Training Programmes</div>
@@ -1399,7 +1415,7 @@
 
 
 <!-- ══════════ GROUP PLAN ══════════ -->
-<section class="gplan-section">
+<section id="corporate" class="gplan-section">
   <div class="gplan-in">
     <div class="gplan-copy r">
       <h2>Upskill your entire<br>repair team with<br>TRUSCREN Corporate</h2>
@@ -2330,6 +2346,53 @@
       submitBtn.textContent = 'Reserve My Spot in the 2026 Cohort →';
       netErr.classList.remove('show');
     });
+  })();
+
+  // ── COURSE SEARCH ──
+  (function () {
+    const COURSES = [
+      { name: 'Phone Screen Repair',      keywords: ['screen','phone','display','iphone','samsung','lcd','oled','glass','digitiser','mobile'], index: 0 },
+      { name: 'Laptop Repair',            keywords: ['laptop','computer','pc','notebook','mac','macbook','servicing','keyboard'],               index: 1 },
+      { name: 'Circuit Board Soldering',  keywords: ['circuit','board','solder','soldering','micro','bga','chip','ic','component','pcb'],      index: 2 },
+      { name: 'EV Battery Diagnostics',   keywords: ['ev','battery','electric','vehicle','diagnostic','bms','cell','tesla','car'],              index: 3 },
+    ];
+    const coursesSection = document.getElementById('courses');
+    const cards    = document.querySelectorAll('.c-card');
+    const navInput = document.getElementById('nav-srch-input');
+    const navMsg   = document.getElementById('srch-msg');
+    const mobInput = document.getElementById('mob-srch-input');
+    const mobBtn   = document.getElementById('mob-srch-btn');
+    const mobMsg   = document.getElementById('mob-srch-msg');
+
+    function showMsg(el, text) {
+      el.textContent = text;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 3500);
+    }
+    function doSearch(query, msgEl) {
+      const q = query.trim().toLowerCase();
+      if (!q) return;
+      const match = COURSES.find(c => c.keywords.some(k => q.includes(k) || k.includes(q)));
+      if (coursesSection) coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (match && cards[match.index]) {
+        setTimeout(() => {
+          cards[match.index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          cards[match.index].classList.add('search-hit');
+          setTimeout(() => cards[match.index].classList.remove('search-hit'), 2200);
+        }, 400);
+      } else {
+        showMsg(msgEl, "No course found — try 'screen', 'laptop', 'soldering', or 'EV'.");
+      }
+    }
+    if (navInput) {
+      navInput.addEventListener('keydown', e => { if (e.key === 'Enter') { doSearch(navInput.value, navMsg); navInput.blur(); } });
+      navInput.addEventListener('input',   () => navMsg.classList.remove('show'));
+    }
+    if (mobBtn)   mobBtn.addEventListener('click',   () => doSearch(mobInput.value, mobMsg));
+    if (mobInput) {
+      mobInput.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(mobInput.value, mobMsg); });
+      mobInput.addEventListener('input',   () => mobMsg.classList.remove('show'));
+    }
   })();
 </script>
 </body>
