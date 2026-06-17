@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRUSCREN Academy | Professional Device Repair Training</title>
+  <title>TRUSCREN TECH HUB | Professional Device Repair Training</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1088,6 +1088,147 @@
     .btn-wa svg { flex-shrink: 0; }
     .enrol-wa-sub { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.55rem; }
 
+    /* ── COURSE DETAIL MODAL ── */
+    #course-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2050;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+      overflow-y: auto;
+    }
+    #course-overlay.open { display: flex; }
+    #course-modal {
+      width: 100%; max-width: 520px; margin: auto;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    .cdm-thumb-bar { height: 5px; }
+    .cdm-header { padding: 1.75rem 2rem 1.25rem; position: relative; }
+    .cdm-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.45rem; display: block;
+    }
+    .cdm-title {
+      font-size: 1.15rem; font-weight: 800; color: var(--dark);
+      letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 0.55rem;
+    }
+    .cdm-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .cdm-meta span {
+      font-size: 0.72rem; font-weight: 500; color: #666;
+      background: var(--light-bg); padding: 0.2rem 0.55rem; border-radius: 3px;
+    }
+    .cdm-divider { height: 1px; background: var(--border); margin: 0 2rem; }
+    .cdm-body { padding: 1.375rem 2rem 1.875rem; }
+    .cdm-body h4 {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #bbb; margin-bottom: 0.875rem;
+    }
+    .cdm-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.375rem; }
+    .cdm-list li {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.865rem; color: var(--dark); line-height: 1.5;
+    }
+    .cdm-list li::before {
+      content: ''; flex-shrink: 0; margin-top: 0.48em;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--brand);
+    }
+    .btn-cdm-enrol {
+      display: block; width: 100%; padding: 0.85rem;
+      background: var(--brand); color: #fff; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; text-align: center; text-decoration: none;
+      transition: background 0.18s;
+    }
+    .btn-cdm-enrol:hover { background: var(--brand-h); }
+    .cdm-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .cdm-close:hover { color: #333; background: #f2f2f2; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-section { padding: 5rem 1.5rem; background: var(--light-bg); }
+    .cert-lead { font-size: 0.9rem; color: var(--mid); margin-top: 0.6rem; line-height: 1.7; }
+    .cert-cards {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.375rem;
+    }
+    .cert-card {
+      background: #fff; border-radius: 8px; padding: 1.875rem 1.5rem;
+      border: 1.5px solid var(--border);
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+    }
+    .cert-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--brand); }
+    .cert-card-ico {
+      width: 48px; height: 48px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    }
+    .ci1 { background: rgba(255,105,0,0.1); }
+    .ci2 { background: rgba(0,88,67,0.1); }
+    .ci3 { background: rgba(38,46,61,0.08); }
+    .cert-card h3 { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; line-height: 1.25; }
+    .cert-card p  { font-size: 0.8rem; color: #666; line-height: 1.6; }
+
+    /* ── LOCATIONS ── */
+    .loc-section { padding: 5rem 1.5rem; background: #fff; }
+    .loc-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem; align-items: start;
+    }
+    .loc-card {
+      background: var(--light-bg); border-radius: 8px; padding: 1.75rem;
+      border: 1.5px solid var(--border);
+    }
+    .loc-name {
+      font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 1.25rem;
+      letter-spacing: -0.015em; line-height: 1.3;
+    }
+    .loc-detail {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      font-size: 0.83rem; color: var(--mid); margin-bottom: 0.875rem; line-height: 1.5;
+    }
+    .loc-detail svg { flex-shrink: 0; margin-top: 0.1em; }
+    .loc-detail a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+    .loc-detail a:hover { text-decoration: underline; }
+    .loc-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: #25D366; color: #fff; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; padding: 0.6rem 1rem;
+      border-radius: 6px; margin-top: 0.5rem;
+      transition: background 0.18s, transform 0.18s;
+      box-shadow: 0 3px 12px rgba(37,211,102,0.22);
+    }
+    .loc-btn:hover { background: #1ebe5d; transform: translateY(-1px); }
+    .loc-map { border-radius: 8px; overflow: hidden; height: 380px; border: 1.5px solid var(--border); }
+    .loc-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+    /* ── ABOUT ── */
+    .about-section { padding: 5rem 1.5rem; background: var(--primary); }
+    .about-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .about-copy .sec-label { color: rgba(255,105,0,0.85); }
+    .about-copy h2 { color: #fff; margin-bottom: 0.875rem; }
+    .about-copy p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.72; margin-bottom: 0.875rem; }
+    .about-tagline {
+      font-size: 1rem; font-weight: 700; color: var(--brand);
+      letter-spacing: 0.015em; margin-top: 0.25rem; margin-bottom: 1rem;
+    }
+    .about-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+    .about-stat {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 1.25rem 1rem; text-align: center;
+    }
+    .about-stat-n {
+      display: block; font-size: 1.9rem; font-weight: 800;
+      color: var(--brand); letter-spacing: -0.04em; margin-bottom: 0.3rem; line-height: 1;
+    }
+    .about-stat-l { font-size: 0.7rem; color: rgba(255,255,255,0.52); line-height: 1.4; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .courses-grid { grid-template-columns: repeat(2,1fr); }
@@ -1095,6 +1236,7 @@
       .subj-grid    { grid-template-columns: repeat(3,1fr); }
       .stats-in     { grid-template-columns: 1fr; gap: 2.5rem; }
       .stats-grid   { grid-template-columns: repeat(3,1fr); }
+      .cert-cards   { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links, .nav-srch { display: none; }
@@ -1113,6 +1255,9 @@
       .foot-top  { grid-template-columns: 1fr 1fr; }
       .subj-grid { grid-template-columns: repeat(2,1fr); }
       .strip-hd  { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .loc-grid  { grid-template-columns: 1fr; }
+      .loc-map   { height: 280px; }
+      .about-in  { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 540px) {
       .courses-grid { grid-template-columns: 1fr; }
@@ -1149,11 +1294,11 @@
 
     <ul class="nav-links">
       <li><a href="#courses">Courses</a></li>
-      <li><a href="#">Certifications</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#requirements">Requirements</a></li>
-      <li><a href="#">Locations</a></li>
+      <li><a href="#locations">Locations</a></li>
       <li><a href="#corporate">Corporate</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
 
     <div class="nav-gap"></div>
@@ -1188,11 +1333,11 @@
   </div>
   <ul class="mob-links">
     <li><a href="#courses">Courses</a></li>
-    <li><a href="#">Certifications</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#requirements">Requirements</a></li>
-    <li><a href="#">Locations</a></li>
+    <li><a href="#locations">Locations</a></li>
     <li><a href="#corporate">Corporate Training</a></li>
-    <li><a href="#">About TRUSCREN</a></li>
+    <li><a href="#about">About TRUSCREN</a></li>
   </ul>
   <div class="mob-auth" id="mob-auth-out">
     <a href="#" class="btn-si">Sign In</a>
@@ -1214,7 +1359,7 @@
     <div class="hero-copy">
       <div class="hero-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Now Enrolling — 2026 Cohorts Open</div>
       <h1 class="r">Let Repair Be Easier.<br><em>We Train You.</em></h1>
-      <p class="hero-sub r d1">TRUSCREN Academy is Africa's leading hands-on training school for phone screen replacement, battery repair, circuit board micro-soldering, and device diagnostics. Get certified. Get hired. Start your repair business.</p>
+      <p class="hero-sub r d1">TRUSCREN TECH HUB is Africa's leading hands-on training school for phone screen replacement, battery repair, circuit board micro-soldering, and device diagnostics. Get certified. Get hired. Start your repair business.</p>
 
       <div class="hero-form r d2">
         <input type="text" placeholder="Choose your track (e.g. Screen Repair, Soldering, EV Battery)">
@@ -1243,7 +1388,7 @@
       <div class="hero-logo-scene">
         <img
           src="Brand_assets/extracted/truscren_badge.png"
-          alt="TRUSCREN Academy"
+          alt="TRUSCREN TECH HUB"
           class="hero-logo-img"
         >
         <div class="hero-logo-shadow"></div>
@@ -1267,48 +1412,48 @@
   <div class="courses-grid">
     <div class="c-card r">
       <div class="c-thumb c-thumb-1">
-        <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+        <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
       <div class="c-body">
         <span class="c-badge">Bestseller · Certificate</span>
         <div class="c-name">Phone Screen &amp; Display Repair — Complete Course</div>
-        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Hands-on</span><span>·</span><span>4 weeks</span><span>·</span><span>★ 4.9</span></div>
       </div>
     </div>
 
     <div class="c-card r d1">
       <div class="c-thumb c-thumb-2">
-        <div><div class="c-thumb-name">Laptop Repair &amp; Servicing</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+        <div><div class="c-thumb-name">Laptop Repair &amp; Servicing</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
       <div class="c-body">
         <span class="c-badge">Most Popular</span>
         <div class="c-name">Laptop Repair &amp; Servicing — Beginner to Advanced</div>
-        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Classroom</span><span>·</span><span>6 weeks</span><span>·</span><span>★ 4.8</span></div>
       </div>
     </div>
 
     <div class="c-card r d2">
       <div class="c-thumb c-thumb-3">
-        <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+        <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
       <div class="c-body">
         <span class="c-badge">Advanced · Certificate</span>
         <div class="c-name">Circuit Board Soldering &amp; Board-Level Repair</div>
-        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Lab-based</span><span>·</span><span>8 weeks</span><span>·</span><span>★ 4.9</span></div>
       </div>
     </div>
 
     <div class="c-card r d3">
       <div class="c-thumb c-thumb-4">
-        <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN Academy</div></div>
+        <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
       <div class="c-body">
         <span class="c-badge">New · Specialist</span>
         <div class="c-name">EV Battery Diagnostics &amp; Repair Technology</div>
-        <div class="c-partner">TRUSCREN Academy</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Workshop</span><span>·</span><span>5 weeks</span><span>·</span><span>★ 4.8</span></div>
       </div>
     </div>
@@ -1329,13 +1474,13 @@
       <div class="lp-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/workbench-tools.jpg" alt="Repair workbench" style="width:100%;height:190px;object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;">
-          <div><div class="lp-thumb-title">Complete Device Repair<br>Technician Path</div><div class="lp-thumb-sub">TRUSCREN Academy · 4 courses · ~5 months</div></div>
+          <div><div class="lp-thumb-title">Complete Device Repair<br>Technician Path</div><div class="lp-thumb-sub">TRUSCREN TECH HUB · 4 courses · ~5 months</div></div>
         </div>
       </div>
       <div class="lp-body">
         <span class="lp-badge">Learning Path</span>
         <div class="lp-name">Become a Certified Device Repair Technician</div>
-        <div class="lp-partner">TRUSCREN Academy — Professional Certification</div>
+        <div class="lp-partner">TRUSCREN TECH HUB — Professional Certification</div>
       </div>
     </div>
   </div>
@@ -1398,7 +1543,7 @@
 <section class="stats-section">
   <div class="stats-in">
     <div class="stats-copy r">
-      <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN Academy</h2>
+      <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN TECH HUB</h2>
       <p>We've trained thousands of technicians across Ghana who now run successful repair businesses, work in top electronics shops, and service corporate clients — all with the skills and certification they earned at TRUSCREN.</p>
       <a href="#enrol" class="btn-white">Enrol for 2026 →</a>
     </div>
@@ -1419,13 +1564,13 @@
   <div class="gplan-in">
     <div class="gplan-copy r">
       <h2>Upskill your entire<br>repair team with<br>TRUSCREN Corporate</h2>
-      <p>Whether you run a phone shop, electronics retail chain, or corporate IT department — TRUSCREN Academy delivers customised, on-site repair training that turns your staff into certified professionals. Group enrolment discounts available.</p>
+      <p>Whether you run a phone shop, electronics retail chain, or corporate IT department — TRUSCREN TECH HUB delivers customised, on-site repair training that turns your staff into certified professionals. Group enrolment discounts available.</p>
       <a href="#" class="btn-outline-w">Explore Corporate Training →</a>
     </div>
     <div class="gplan-feats">
       <div class="gfeat r"><div class="gfeat-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div><h4>Track Competency</h4><p>Monitor your team's skill progression and certification status from a dedicated employer dashboard.</p></div>
       <div class="gfeat r d1"><div class="gfeat-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Custom Curriculum</h4><p>We tailor the training content to the specific devices and repair types your business handles daily.</p></div>
-      <div class="gfeat r d2"><div class="gfeat-ico"><img src="Brand_assets/icon_training_cert.png" alt="Verified Certificates"></div><h4>Verified Certificates</h4><p>Every graduate receives a TRUSCREN Academy certificate recognised by leading electronics employers.</p></div>
+      <div class="gfeat r d2"><div class="gfeat-ico"><img src="Brand_assets/icon_training_cert.png" alt="Verified Certificates"></div><h4>Verified Certificates</h4><p>Every graduate receives a TRUSCREN TECH HUB certificate recognised by leading electronics employers.</p></div>
       <div class="gfeat r d3"><div class="gfeat-ico"><img src="Brand_assets/icon_technicians.png" alt="Dedicated Trainer"></div><h4>Dedicated Trainer</h4><p>A dedicated TRUSCREN instructor runs on-site at your location for the full duration of the programme.</p></div>
     </div>
   </div>
@@ -1436,7 +1581,7 @@
 <section class="discover-section">
   <div class="discover-in">
     <div class="disc-visual r" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.18);position:relative;min-height:400px;">
-      <img src="Brand_assets/training-lab.jpg" alt="TRUSCREN Academy training lab — instructor teaching student" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
+      <img src="Brand_assets/training-lab.jpg" alt="TRUSCREN TECH HUB training lab — instructor teaching student" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08) 35%,rgba(0,0,0,0.78));"></div>
       <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
         <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:6px;padding:0.75rem;border:1px solid rgba(255,255,255,0.15);"><div class="dt-n">3,500+</div><div class="dt-l">Technicians Certified</div></div>
@@ -1446,9 +1591,9 @@
       </div>
     </div>
     <div class="disc-copy r d1">
-      <div class="sec-label">Why TRUSCREN Academy?</div>
+      <div class="sec-label">Why TRUSCREN TECH HUB?</div>
       <h2 class="sec-h2">More than a course — a career-changing repair education</h2>
-      <p style="margin-top:0.875rem;">TRUSCREN Academy exists because Africa's device repair industry needs properly trained, certified professionals. We deliver that — with real tools, real devices, and instructors who repair for a living.</p>
+      <p style="margin-top:0.875rem;">TRUSCREN TECH HUB exists because Africa's device repair industry needs properly trained, certified professionals. We deliver that — with real tools, real devices, and instructors who repair for a living.</p>
       <ul class="disc-list" style="margin-top:1rem;">
         <li>Industry-standard tools and equipment provided in every lab session</li>
         <li>Learn from active repair professionals, not just classroom instructors</li>
@@ -1615,7 +1760,7 @@
 
     <div class="enrol-copy r">
       <div class="sec-label">Enrol Now</div>
-      <h2>Start Your Repair Career<br><em style="color:var(--brand);font-style:normal;">at TRUSCREN Academy</em></h2>
+      <h2>Start Your Repair Career<br><em style="color:var(--brand);font-style:normal;">at TRUSCREN TECH HUB</em></h2>
       <p>Secure your place in Ghana's most respected device repair training programme. Cohort sizes are strictly limited — every student gets maximum hands-on lab time with their instructor.</p>
       <ul class="enrol-perks">
         <li>Fully equipped repair labs — real devices, real tools</li>
@@ -1709,6 +1854,109 @@
 </section>
 
 
+<!-- ══════════ CERTIFICATIONS ══════════ -->
+<section id="certifications" class="cert-section">
+  <div class="wrap">
+    <div class="r" style="text-align:center;max-width:700px;margin:0 auto 2.5rem;">
+      <div class="sec-label">Certification</div>
+      <h2 class="sec-h2">Get Certified</h2>
+      <p class="cert-lead">Students who complete their course receive an official <strong>TRUSCREN TECH HUB Certificate</strong> — recognising their hands-on skills and helping them start a career or business in device repair.</p>
+    </div>
+    <div class="cert-cards">
+      <div class="cert-card r">
+        <div class="cert-card-ico ci1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3>Official TRUSCREN TECH HUB Certificate</h3>
+        <p>Every graduate earns a signed, printed certificate from TRUSCREN TECH HUB — proof of your hands-on training and practical competency, issued directly by the school on successful completion.</p>
+      </div>
+      <div class="cert-card r d1">
+        <div class="cert-card-ico ci2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Recognised by Industry Employers</h3>
+        <p>TRUSCREN TECH HUB is part of the trusted TRUSCREN brand — serving 38 countries with a defect rate under 0.5%. Our certificate carries real weight with electronics shops, repair businesses, and corporate IT departments across Africa.</p>
+      </div>
+      <div class="cert-card r d2">
+        <div class="cert-card-ico ci3">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Launch Your Career or Business</h3>
+        <p>With your certificate in hand, you're ready to apply for jobs at top repair shops, start your own repair business, or upskill into advanced disciplines. 92% of our graduates are working or running a business within 3 months.</p>
+      </div>
+    </div>
+    <div class="r" style="text-align:center;margin-top:2.5rem;">
+      <a href="#enrol" class="btn-teal">Enrol and Start Earning Your Certificate →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ LOCATIONS ══════════ -->
+<section id="locations" class="loc-section">
+  <div class="wrap">
+    <div class="r" style="margin-bottom:2rem;">
+      <div class="sec-label">Campus</div>
+      <h2 class="sec-h2">Visit Us</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card r">
+        <div class="loc-name">TRUSCREN TECH HUB — Accra Campus</div>
+        <div class="loc-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Spintex, Shell Signboard, Accra, Ghana</span>
+        </div>
+        <div class="loc-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+233541224699">0541 224 699</a>
+        </div>
+        <div class="loc-detail">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+          <a href="https://wa.me/233541224699" target="_blank" rel="noopener noreferrer">WhatsApp: 0541 224 699</a>
+        </div>
+        <div class="loc-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Mon–Fri, 9:00 AM – 5:00 PM</span>
+        </div>
+        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20TECH%20HUB%2C%20I%27d%20like%20to%20visit%20the%20campus." target="_blank" rel="noopener noreferrer" class="loc-btn">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+          Get Directions on WhatsApp
+        </a>
+      </div>
+      <div class="loc-map r d1">
+        <iframe
+          title="TRUSCREN TECH HUB Accra Campus — Shell Signboard Spintex"
+          src="https://maps.google.com/maps?q=Shell+Signboard,+Spintex,+Accra,+Ghana&output=embed&z=15"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="about-section">
+  <div class="about-in">
+    <div class="about-copy r">
+      <div class="sec-label">About Us</div>
+      <h2 class="sec-h2">About TRUSCREN TECH HUB</h2>
+      <p>TRUSCREN TECH HUB is a professional device repair training school in Accra, Ghana, and part of the trusted TRUSCREN brand — a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
+      <p>We teach practical, job-ready skills in phone screen repair, laptop repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
+      <p class="about-tagline">True Colors. True TRUSCREN.</p>
+      <a href="#enrol" class="btn-teal">Join the 2026 Cohort →</a>
+    </div>
+    <div class="about-stat-grid r d1">
+      <div class="about-stat"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
+      <div class="about-stat"><span class="about-stat-n">&lt;0.5%</span><span class="about-stat-l">Defect rate — world-class quality standard</span></div>
+      <div class="about-stat"><span class="about-stat-n">3,500+</span><span class="about-stat-l">Technicians trained across Ghana</span></div>
+      <div class="about-stat"><span class="about-stat-n">92%</span><span class="about-stat-l">Graduates working or in business within 3 months</span></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="foot-in">
@@ -1718,7 +1966,7 @@
           <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="foot-logo-badge">
           <span class="foot-logo-name">TRUSCREN</span>
         </div>
-        <p>TRUSCREN Academy — Ghana's leading professional device repair training school. Campuses in Accra, Kumasi, and Takoradi.</p>
+        <p>TRUSCREN TECH HUB — Ghana's leading professional device repair training school. Campuses in Accra, Kumasi, and Takoradi.</p>
         <div class="foot-social">
           <a href="#" class="soc">f</a>
           <a href="#" class="soc">𝕏</a>
@@ -1771,7 +2019,7 @@
       </div>
     </div>
     <div class="foot-btm">
-      <span>© 2026 TRUSCREN Academy. All rights reserved.</span>
+      <span>© 2026 TRUSCREN TECH HUB. All rights reserved.</span>
       <div class="foot-btm-links">
         <a href="#">Terms of Service</a>
         <a href="#">Privacy Policy</a>
@@ -1783,8 +2031,32 @@
 </footer>
 
 
+<!-- ══════════ COURSE DETAIL MODAL ══════════ -->
+<div id="course-overlay" role="dialog" aria-modal="true" aria-label="Course Details">
+  <div id="course-modal">
+    <div class="cdm-thumb-bar" id="cdm-thumb-bar"></div>
+    <div class="cdm-header">
+      <button class="cdm-close" id="cdm-close-btn" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <span class="cdm-badge" id="cdm-badge"></span>
+      <div class="cdm-title" id="cdm-title"></div>
+      <div class="cdm-meta" id="cdm-meta"></div>
+    </div>
+    <div class="cdm-divider"></div>
+    <div class="cdm-body">
+      <h4>What You'll Learn</h4>
+      <ul class="cdm-list" id="cdm-list"></ul>
+      <a href="#enrol" class="btn-cdm-enrol" id="cdm-enrol-btn">Enrol Now →</a>
+    </div>
+  </div>
+</div>
+
+
 <!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
-<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN Academy Account">
+<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN TECH HUB Account">
   <div id="signin-modal">
 
     <!-- Left: brand panel -->
@@ -1829,7 +2101,7 @@
       <!-- ── SIGN IN PANEL ── -->
       <div class="si-panel active" id="panel-signin">
         <h2 class="si-h2">Welcome back.</h2>
-        <p class="si-sub" style="margin-bottom:1.125rem;">Sign in to your TRUSCREN Academy account</p>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Sign in to your TRUSCREN TECH HUB account</p>
         <div class="si-auth-err" id="si-login-err"></div>
         <form id="si-form" novalidate>
           <div class="si-field">
@@ -1861,7 +2133,7 @@
       <!-- ── SIGN UP PANEL ── -->
       <div class="si-panel" id="panel-signup">
         <h2 class="si-h2">Create account.</h2>
-        <p class="si-sub" style="margin-bottom:1.125rem;">Join TRUSCREN Academy — free to sign up</p>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Join TRUSCREN TECH HUB — free to sign up</p>
         <!-- Success state -->
         <div class="si-signup-success" id="si-signup-ok">
           <div class="si-signup-success-ico">
@@ -2345,6 +2617,107 @@
       submitBtn.disabled = false;
       submitBtn.textContent = 'Reserve My Spot in the 2026 Cohort →';
       netErr.classList.remove('show');
+    });
+  })();
+
+  // ── COURSE DETAIL MODAL ──
+  (function () {
+    const COURSES = [
+      {
+        badge: 'Bestseller · Certificate',
+        title: 'Phone Screen & Display Repair — Complete Course',
+        meta: ['4 weeks', 'Hands-on', 'Beginner to Advanced'],
+        color: 'linear-gradient(90deg,#005843,#008560)',
+        lessons: [
+          'How phone screens and displays work (LCD, OLED, touch layers)',
+          'Safely opening different phone models',
+          'Removing and replacing broken screens',
+          'Fixing touch and display faults',
+          'Testing and quality-checking your repair',
+          'Customer service and pricing your work',
+        ],
+      },
+      {
+        badge: 'Most Popular',
+        title: 'Laptop Repair & Servicing — Beginner to Advanced',
+        meta: ['6 weeks', 'Classroom + practical'],
+        color: 'linear-gradient(90deg,#3D2000,#A05000)',
+        lessons: [
+          'Laptop parts and how they work together',
+          'Diagnosing common faults (won\'t power on, screen, keyboard, battery)',
+          'Replacing screens, keyboards, batteries, and storage',
+          'Cleaning, servicing, and software basics',
+          'Safe handling and tools',
+          'Running it as a business',
+        ],
+      },
+      {
+        badge: 'Advanced · Certificate',
+        title: 'Circuit Board Micro-Soldering — Board-Level Repair',
+        meta: ['8 weeks', 'Lab-based', 'Advanced'],
+        color: 'linear-gradient(90deg,#1A2050,#2E45A0)',
+        lessons: [
+          'Reading circuit boards and schematics',
+          'Safe soldering and micro-soldering techniques',
+          'Using tools (microscope, hot air, soldering station)',
+          'Finding and fixing faults on the board',
+          'Replacing tiny components',
+          'Advanced fault-finding',
+        ],
+      },
+      {
+        badge: 'New · Specialist',
+        title: 'EV Battery Diagnostics & Repair Technology',
+        meta: ['5 weeks', 'Workshop', 'Specialist'],
+        color: 'linear-gradient(90deg,#1E2738,#3A4A6A)',
+        lessons: [
+          'How EV batteries work and staying safe around them',
+          'Battery health checks and diagnostics',
+          'Finding faulty cells and modules',
+          'Battery management systems (BMS) basics',
+          'Safe handling, testing, and maintenance',
+          'The growing EV repair industry in Africa',
+        ],
+      },
+    ];
+
+    const overlay  = document.getElementById('course-overlay');
+    const closeBtn = document.getElementById('cdm-close-btn');
+    const badgeEl  = document.getElementById('cdm-badge');
+    const titleEl  = document.getElementById('cdm-title');
+    const metaEl   = document.getElementById('cdm-meta');
+    const listEl   = document.getElementById('cdm-list');
+    const thumbBar = document.getElementById('cdm-thumb-bar');
+    const enrolBtn = document.getElementById('cdm-enrol-btn');
+
+    function openCourse(idx) {
+      const d = COURSES[idx];
+      thumbBar.style.background = d.color;
+      badgeEl.textContent = d.badge;
+      titleEl.textContent = d.title;
+      metaEl.innerHTML = d.meta.map(m => `<span>${m}</span>`).join('');
+      listEl.innerHTML = d.lessons.map(l => `<li>${l}</li>`).join('');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCourse() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.c-card').forEach((card, i) => {
+      card.addEventListener('click', () => openCourse(i));
+    });
+    closeBtn.addEventListener('click', closeCourse);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeCourse(); });
+    enrolBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      closeCourse();
+      const t = document.getElementById('enrol');
+      if (t) setTimeout(() => t.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeCourse();
     });
   })();
 
