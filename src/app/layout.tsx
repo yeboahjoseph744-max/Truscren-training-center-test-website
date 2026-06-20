@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/lib/app-context";
+// Render dynamically at request time rather than statically prerendering at
+// build. The page relies on client-side auth/session, so static export isn't
+// needed and dynamic rendering avoids build-time prerender errors.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "TRUSCREN TECH HUB | Professional Device Repair Training",
