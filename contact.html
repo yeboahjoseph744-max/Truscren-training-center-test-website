@@ -2407,8 +2407,8 @@
   (function(){
     if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
     document.documentElement.classList.add("reveal-ready");
-    var targets=document.querySelectorAll("section, .c-card, .prod-stat, footer, .ph-banner, .techhub-divider, .pbc, .cert-card, .fmt-card, .stat-box, .req-card, .gfeat, .subj-card, .loc-card, .loc-map, .about-stat, .partner-form-card");
-    targets.forEach(function(el){el.classList.add("reveal");});
+    var targets=document.querySelectorAll(".pbc, .pss-item, .loc-card, .loc-map, .about-stat, .partner-form-card, .ph-banner .ph-copy, .ph-banner .ph-img");
+    targets.forEach(function(el){if(!el.classList.contains("r"))el.classList.add("reveal");});
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){e.target.classList.add("is-visible");obs.unobserve(e.target);}
