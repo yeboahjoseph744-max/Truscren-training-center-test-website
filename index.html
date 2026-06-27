@@ -161,11 +161,22 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--primary) url('Brand_assets/repair-stall.jpg') center/cover no-repeat;
+      background: var(--primary);
       padding: 6.5rem 1.5rem 4rem;
       margin-top: 92px;
       position: relative; overflow: hidden;
     }
+    .hero-shapes{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+    .hsh{position:absolute;border-radius:999px;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 8px 32px rgba(255,255,255,0.05);}
+    .hsh::after{content:"";position:absolute;inset:0;border-radius:999px;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.14),transparent 70%);}
+    .hsh1{width:520px;height:120px;left:-6%;top:16%;background:linear-gradient(90deg,rgba(255,105,0,0.16),transparent);animation:hsh-drift 15s ease-in-out infinite;--r:12deg;}
+    .hsh2{width:430px;height:100px;right:-4%;top:64%;background:linear-gradient(90deg,rgba(0,122,94,0.18),transparent);animation:hsh-drift 18s ease-in-out infinite;--r:-15deg;}
+    .hsh3{width:260px;height:70px;left:8%;bottom:8%;background:linear-gradient(90deg,rgba(255,105,0,0.13),transparent);animation:hsh-drift 13s ease-in-out infinite;--r:-8deg;}
+    .hsh4{width:190px;height:54px;right:16%;top:10%;background:linear-gradient(90deg,rgba(0,122,94,0.16),transparent);animation:hsh-drift 16s ease-in-out infinite;--r:20deg;}
+    .hsh5{width:130px;height:40px;left:22%;top:6%;background:linear-gradient(90deg,rgba(255,255,255,0.10),transparent);animation:hsh-drift 12s ease-in-out infinite;--r:-25deg;}
+    .hsh1,.hsh2,.hsh3,.hsh4,.hsh5{transform:rotate(var(--r));}
+    @keyframes hsh-drift{0%,100%{transform:translateY(0) rotate(var(--r));}50%{transform:translateY(16px) rotate(var(--r));}}
+    @media (prefers-reduced-motion: reduce){.hsh{animation:none!important;}}
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background:
@@ -1523,6 +1534,13 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
+  <div class="hero-shapes" aria-hidden="true">
+    <span class="hsh hsh1"></span>
+    <span class="hsh hsh2"></span>
+    <span class="hsh hsh3"></span>
+    <span class="hsh hsh4"></span>
+    <span class="hsh hsh5"></span>
+  </div>
   <div class="hero-in">
 
     <!-- Left: copy -->
