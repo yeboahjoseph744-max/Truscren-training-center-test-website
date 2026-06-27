@@ -38,13 +38,15 @@
 
     /* ── NAVBAR ── */
     #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 14px; left: 16px; right: 16px; z-index: 1000;
       background: var(--primary);
-      height: 66px;
+      height: 64px;
+      border-radius: 16px;
       display: flex; align-items: center;
-      transition: box-shadow 0.3s;
+      box-shadow: 0 8px 28px rgba(38,46,61,0.30);
+      transition: box-shadow 0.3s, top 0.3s;
     }
-    #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.45); }
+    #navbar.scrolled { box-shadow: 0 12px 34px rgba(38,46,61,0.42); }
     .nav-in {
       width: 100%; max-width: 1280px;
       margin: 0 auto; padding: 0 1.5rem;
@@ -115,7 +117,7 @@
     /* Mobile overlay */
     #mob-menu {
       display: none; position: fixed;
-      top: 66px; left: 0; right: 0; bottom: 0;
+      top: 92px; left: 0; right: 0; bottom: 0;
       background: var(--primary); z-index: 998;
       padding: 1.25rem 1.5rem; overflow-y: auto;
     }
@@ -148,7 +150,7 @@
     .hero {
       background: var(--primary) url('Brand_assets/repair-stall.jpg') center/cover no-repeat;
       padding: 6.5rem 1.5rem 4rem;
-      margin-top: 66px;
+      margin-top: 92px;
       position: relative; overflow: hidden;
     }
     .hero::before {
@@ -1410,7 +1412,10 @@
     .qa-label{white-space:nowrap;font-weight:700;font-size:0.92rem;opacity:0;padding-left:54px;padding-right:22px;transition:opacity .3s .12s;}
     .qa-pill:hover{width:172px;box-shadow:0 10px 26px rgba(38,46,61,0.4);}
     .qa-pill:hover .qa-label{opacity:1;}
-    @media (max-width:640px){.qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}}
+    @media (max-width:640px){
+      #navbar{top:10px;left:10px;right:10px;height:58px;border-radius:13px;}
+      .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
+    }
   </style>
 </head>
 <body>
