@@ -167,11 +167,11 @@
       position: relative; overflow: hidden;
     }
     .hero::before {
-      content: ''; position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0; z-index: 0;
       background:
         radial-gradient(ellipse 55% 65% at 85% 50%, rgba(255,105,0,0.12) 0%, transparent 70%),
         radial-gradient(ellipse 40% 45% at 15% 30%, rgba(0,88,67,0.18) 0%, transparent 60%),
-        linear-gradient(rgba(38,46,61,0.88), rgba(38,46,61,0.88));
+        linear-gradient(rgba(38,46,61,0.35), rgba(38,46,61,0.35));
       pointer-events: none;
     }
     .hero-in {
