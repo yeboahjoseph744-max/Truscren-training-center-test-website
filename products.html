@@ -1429,6 +1429,42 @@
       #navbar{top:10px;left:10px;right:10px;height:58px;border-radius:13px;}
       .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
     }
+
+    /* ── PRODUCTS HERO ── */
+    .ph-banner{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      padding:5.5rem 1.5rem 4rem;margin-top:92px;position:relative;overflow:hidden;
+    }
+    .ph-banner::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(ellipse 55% 65% at 85% 50%,rgba(255,105,0,0.1) 0%,transparent 70%),
+        radial-gradient(ellipse 40% 45% at 15% 30%,rgba(0,88,67,0.12) 0%,transparent 60%);
+    }
+    .ph-in{
+      max-width:1280px;margin:0 auto;position:relative;z-index:1;
+      display:grid;grid-template-columns:0.45fr 0.55fr;gap:3.5rem;align-items:center;
+      min-height:280px;
+    }
+    .ph-img{
+      width:100%;max-height:360px;object-fit:cover;border-radius:10px;display:block;
+      box-shadow:0 16px 48px rgba(0,0,0,0.35);
+    }
+    .ph-placeholder{
+      width:100%;height:280px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+      border:1.5px dashed rgba(255,255,255,0.18);color:rgba(255,255,255,0.35);
+      font-size:0.9rem;font-weight:600;
+    }
+    .ph-copy h1{
+      font-size:clamp(2rem,4.5vw,3rem);font-weight:800;color:#fff;
+      letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.65rem;
+    }
+    .ph-copy p{font-size:1rem;color:rgba(255,255,255,0.62);line-height:1.65;max-width:480px;}
+    @media(max-width:768px){
+      .ph-in{grid-template-columns:1fr;gap:2rem;text-align:center;}
+      .ph-copy p{margin:0 auto;}
+      .ph-img,.ph-placeholder{max-height:240px;height:240px;}
+    }
   </style>
 </head>
 <body>
@@ -1511,6 +1547,26 @@
 
 
 <!-- ══════════ PRODUCTS / SCREENS ══════════ -->
+<!-- ══════════ PRODUCTS HERO BANNER ══════════ -->
+<section class="ph-banner">
+  <div class="ph-in">
+    <div>
+      <img
+        src="images/product-hero-screens.jpg"
+        alt="TRUSCREN phone screen LCDs in stock"
+        class="ph-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="ph-placeholder" style="display:none;">Product photo</div>
+    </div>
+    <div class="ph-copy">
+      <h1>Our Products</h1>
+      <p>Premium phone screen LCDs &amp; OLEDs — Apple, Samsung, Infinix and more.</p>
+    </div>
+  </div>
+</section>
+
+
 <section id="products" class="products-section">
   <div class="products-in">
     <div class="products-copy r">
