@@ -1396,9 +1396,19 @@
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
     }
+    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
+    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0.85;margin:0;font-family:'Inter',sans-serif;}
+    #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
+    body.tc-loading{overflow:hidden;}
   </style>
 </head>
 <body>
+
+<div id="tc-preloader">
+  <svg id="tc-curve" preserveAspectRatio="none"><path id="tc-curve-path" fill="#262E3D"></path></svg>
+  <p id="tc-word"><span class="tc-dot"></span><span id="tc-word-text">Hello</span></p>
+</div>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <nav id="navbar">
@@ -3005,6 +3015,46 @@
       mobInput.addEventListener('input',   () => mobMsg.classList.remove('show'));
     }
   })();
+</script>
+<script>
+(function(){
+  var words=["Hello","Akwaaba","你好","Bonjour","Hola","やあ","नमस्ते","Welcome"];
+  var pre=document.getElementById('tc-preloader');
+  var wordText=document.getElementById('tc-word-text');
+  var path=document.getElementById('tc-curve-path');
+  var svg=document.getElementById('tc-curve');
+  if(!pre){return;}
+  document.body.classList.add('tc-loading');
+  function setPath(curved){
+    var w=window.innerWidth,h=window.innerHeight,dip=curved?300:0;
+    path.setAttribute('d','M0 0 L'+w+' 0 L'+w+' '+h+' Q'+(w/2)+' '+(h+dip)+' 0 '+h+' L0 0');
+  }
+  function finish(){
+    if(!pre)return;
+    document.body.classList.remove('tc-loading');
+    pre.parentNode&&pre.parentNode.removeChild(pre);
+    pre=null;
+  }
+  var safety=setTimeout(finish,3500);
+  function exit(){
+    path.style.transition='d 0.7s cubic-bezier(0.76,0,0.24,1)';
+    setPath(false);
+    setTimeout(function(){
+      pre.style.transition='transform 0.8s cubic-bezier(0.76,0,0.24,1)';
+      pre.style.transform='translateY(-130%)';
+      setTimeout(function(){clearTimeout(safety);finish();},850);
+    },300);
+  }
+  setPath(true);
+  var i=0;
+  wordText.textContent=words[0];
+  function tick(){
+    i++;
+    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,i===1?700:170);}
+    else{setTimeout(exit,600);}
+  }
+  setTimeout(tick,700);
+})();
 </script>
 </body>
 </html>
