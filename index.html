@@ -2490,7 +2490,7 @@
     var svg=document.getElementById('tp-bg');
     if(!svg)return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var W=800,H=480,OR='rgba(255,105,0,',TL='rgba(30,158,106,';
+    var W=800,H=480;
     function ns(t,a){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);return e;}
     function clear(){while(svg.firstChild)svg.removeChild(svg.firstChild);}
 
@@ -2504,63 +2504,40 @@
           var d=Math.hypot(a.x-b.x,a.y-b.y);
           if(d<220){
             var o=(1-d/220)*0.7;
-            var c=j%2===0?OR:TL;
-            var ln=ns('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:c+o+')',
-              'stroke-width':'1'});
-            ln.style.opacity='0';
-            svg.appendChild(ln);
-            ln.animate([{opacity:0},{opacity:1}],{duration:800,delay:i*30,fill:'forwards'});
+            var col=j%2===0?'rgba(255,105,0,'+o+')':'rgba(30,158,106,'+o+')';
+            svg.appendChild(ns('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:col,'stroke-width':'1.2'}));
           }
         });
       });
       pts.forEach(function(p,i){
-        var r=2+Math.random()*3;
-        var c=i%2===0?OR+'0.9)':TL+'0.9)';
-        var dot=ns('circle',{cx:p.x,cy:p.y,r:r,fill:c});
-        dot.style.opacity='0';
-        svg.appendChild(dot);
-        dot.animate([{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1)'}],
-          {duration:600,delay:i*40,fill:'forwards'});
-        dot.animate([{cy:p.y+'px'},{cy:(p.y+8)+'px'},{cy:p.y+'px'}],
-          {duration:3000+Math.random()*2000,iterations:Infinity,easing:'ease-in-out'});
+        var r=2.5+Math.random()*3;
+        var col=i%2===0?'rgba(255,105,0,0.85)':'rgba(30,158,106,0.85)';
+        svg.appendChild(ns('circle',{cx:p.x,cy:p.y,r:r,fill:col}));
       });
     }
 
     function grid(){
       clear();
       var sp=60,cols=Math.ceil(W/sp)+1,rows=Math.ceil(H/sp)+1;
-      for(var r=0;r<rows;r++){
-        var ln=ns('line',{x1:0,y1:r*sp,x2:W,y2:r*sp,stroke:TL+'0.35)','stroke-width':'0.8'});
-        ln.style.opacity='0';svg.appendChild(ln);
-        ln.animate([{opacity:0},{opacity:1}],{duration:600,delay:r*50,fill:'forwards'});
-      }
-      for(var c=0;c<cols;c++){
-        var ln2=ns('line',{x1:c*sp,y1:0,x2:c*sp,y2:H,stroke:OR+'0.3)','stroke-width':'0.8'});
-        ln2.style.opacity='0';svg.appendChild(ln2);
-        ln2.animate([{opacity:0},{opacity:1}],{duration:600,delay:c*50,fill:'forwards'});
-      }
-      for(var gy=0;gy<rows;gy++){
+      for(var r=0;r<rows;r++)
+        svg.appendChild(ns('line',{x1:0,y1:r*sp,x2:W,y2:r*sp,stroke:'rgba(30,158,106,0.3)','stroke-width':'0.8'}));
+      for(var c=0;c<cols;c++)
+        svg.appendChild(ns('line',{x1:c*sp,y1:0,x2:c*sp,y2:H,stroke:'rgba(255,105,0,0.25)','stroke-width':'0.8'}));
+      for(var gy=0;gy<rows;gy++)
         for(var gx=0;gx<cols;gx++){
           if(Math.random()>0.35)continue;
-          var cx=gx*sp,cy=gy*sp;
-          var cc=Math.random()>0.5?OR+'0.7)':TL+'0.7)';
-          var dt=ns('circle',{cx:cx,cy:cy,r:1.5,fill:cc});
-          dt.style.opacity='0';svg.appendChild(dt);
-          dt.animate([{opacity:0},{opacity:1}],{duration:500,delay:(gy+gx)*30,fill:'forwards'});
-          dt.animate([{r:'1.5'},{r:'3'},{r:'1.5'}],
-            {duration:2500+Math.random()*1500,iterations:Infinity,easing:'ease-in-out'});
+          var col=Math.random()>0.5?'rgba(255,105,0,0.7)':'rgba(30,158,106,0.7)';
+          svg.appendChild(ns('circle',{cx:gx*sp,cy:gy*sp,r:'2.5',fill:col}));
         }
-      }
     }
 
     var which=0;
     function show(){if(which%2===0)neural();else grid();which++;}
     show();
     setInterval(function(){
-      svg.animate([{opacity:1},{opacity:0}],{duration:700,fill:'forwards'}).onfinish=function(){
-        show();
-        svg.animate([{opacity:0},{opacity:1}],{duration:700,fill:'forwards'});
-      };
+      svg.style.transition='opacity 0.7s';
+      svg.style.opacity='0';
+      setTimeout(function(){show();svg.style.opacity='1';},750);
     },8000);
   })();
 
