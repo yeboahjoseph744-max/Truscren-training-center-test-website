@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('tc-pre-active');</script>
   <title>TRUSCREN Ghana | Premium Phone Screens &amp; TECH HUB Repair Training</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,6 +11,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
+    html.tc-pre-active body > *:not(#tc-preloader){visibility:hidden;}
+    html.tc-pre-active{overflow:hidden;}
     :root {
       --primary:       #262E3D;
       --primary-light: #1E2738;
@@ -3030,12 +3033,13 @@
     path.setAttribute('d','M0 0 L'+w+' 0 L'+w+' '+h+' Q'+(w/2)+' '+(h+dip)+' 0 '+h+' L0 0');
   }
   function finish(){
+    document.documentElement.classList.remove('tc-pre-active');
     if(!pre)return;
     document.body.classList.remove('tc-loading');
     pre.parentNode&&pre.parentNode.removeChild(pre);
     pre=null;
   }
-  var safety=setTimeout(finish,3500);
+  var safety=setTimeout(finish,6000);
   function exit(){
     path.style.transition='d 0.7s cubic-bezier(0.76,0,0.24,1)';
     setPath(false);
@@ -3050,10 +3054,10 @@
   wordText.textContent=words[0];
   function tick(){
     i++;
-    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,i===1?700:170);}
+    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,i===1?650:420);}
     else{setTimeout(exit,600);}
   }
-  setTimeout(tick,700);
+  setTimeout(tick,650);
 })();
 </script>
 </body>
