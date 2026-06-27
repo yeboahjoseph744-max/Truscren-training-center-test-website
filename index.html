@@ -38,15 +38,15 @@
 
     /* ── NAVBAR ── */
     #navbar {
-      position: fixed; top: 14px; left: 16px; right: 16px; z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
       background: var(--primary);
       height: 64px;
-      border-radius: 16px;
+      border-radius: 0;
       display: flex; align-items: center;
-      box-shadow: 0 8px 28px rgba(38,46,61,0.30);
-      transition: box-shadow 0.3s, top 0.3s;
+      box-shadow: 0 2px 16px rgba(38,46,61,0.28);
+      transition: box-shadow 0.3s;
     }
-    #navbar.scrolled { box-shadow: 0 12px 34px rgba(38,46,61,0.42); }
+    #navbar.scrolled { box-shadow: 0 4px 22px rgba(38,46,61,0.4); }
     .nav-in {
       width: 100%; max-width: 1280px;
       margin: 0 auto; padding: 0 1.5rem;
@@ -130,7 +130,7 @@
     /* Mobile overlay */
     #mob-menu {
       display: none; position: fixed;
-      top: 92px; left: 0; right: 0; bottom: 0;
+      top: 72px; left: 0; right: 0; bottom: 0;
       background: var(--primary); z-index: 998;
       padding: 1.25rem 1.5rem; overflow-y: auto;
     }
@@ -163,7 +163,7 @@
     .hero {
       background: var(--primary);
       padding: 6.5rem 1.5rem 4rem;
-      margin-top: 92px;
+      margin-top: 72px;
       position: relative; overflow: hidden;
     }
     .hero-shapes{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
@@ -1442,7 +1442,7 @@
     .qa-pill:hover{width:172px;box-shadow:0 10px 26px rgba(38,46,61,0.4);}
     .qa-pill:hover .qa-label{opacity:1;}
     @media (max-width:640px){
-      #navbar{top:10px;left:10px;right:10px;height:58px;border-radius:13px;}
+      #navbar{top:0;left:0;right:0;height:58px;border-radius:0;}
       .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
     }
   </style>
