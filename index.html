@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRUSCREN TECH HUB | Professional Device Repair Training</title>
+  <title>TRUSCREN Ghana | Premium Phone Screens &amp; TECH HUB Repair Training</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1088,6 +1088,111 @@
     .btn-wa svg { flex-shrink: 0; }
     .enrol-wa-sub { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.55rem; }
 
+    /* ── PRODUCTS SECTION ── */
+    .products-section { padding: 5rem 1.5rem; background: #fff; }
+    .products-in {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .products-copy h2 { color: var(--dark); margin-bottom: 0.75rem; }
+    .products-copy > p { font-size: 0.875rem; color: var(--mid); line-height: 1.72; margin-bottom: 1.5rem; }
+    .prod-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
+    .prod-features li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.84rem; color: #444; line-height: 1.55;
+    }
+    .prod-features li::before { content: ''; flex-shrink: 0; margin-top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
+    .prod-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .prod-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem;
+    }
+    .prod-stat {
+      background: var(--light-bg); border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 1.375rem 1.125rem; text-align: center;
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+    }
+    .prod-stat:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); border-color: var(--brand); }
+    .prod-stat-n {
+      display: block; font-size: 1.8rem; font-weight: 800;
+      color: var(--brand); letter-spacing: -0.04em; margin-bottom: 0.3rem; line-height: 1;
+    }
+    .prod-stat-l { font-size: 0.7rem; color: var(--mid); line-height: 1.4; }
+
+    /* ── PARTNER SECTION ── */
+    .partner-section { padding: 5rem 1.5rem; background: var(--secondary); position: relative; overflow: hidden; }
+    .partner-section::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 60% at 90% 40%, rgba(255,105,0,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 70%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    }
+    .partner-in {
+      max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1.15fr; gap: 4rem; align-items: center;
+    }
+    .partner-copy h2 { font-size: clamp(1.5rem, 2.5vw, 1.85rem); font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: 1.18; margin-bottom: 0.875rem; }
+    .partner-copy > p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.72; margin-bottom: 1.5rem; }
+    .partner-points { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.75rem; }
+    .partner-points li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.84rem; color: rgba(255,255,255,0.75); line-height: 1.5;
+    }
+    .partner-points li::before { content: ''; flex-shrink: 0; margin-top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
+    .partner-form-card {
+      background: #fff; border-radius: 10px; padding: 2rem 1.75rem;
+      box-shadow: 0 28px 72px rgba(0,0,0,0.35);
+    }
+    .partner-form-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 0.2rem; letter-spacing: -0.015em; }
+    .partner-form-card .pf-sub { font-size: 0.78rem; color: #888; margin-bottom: 1.25rem; }
+    .pf-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.8rem; }
+    .pf-label { font-size: 0.73rem; font-weight: 600; color: var(--dark); }
+    .pf-label span { color: #e53e3e; }
+    .pf-input, .pf-textarea {
+      width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px;
+      border: 1.5px solid #e2e2e2; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.84rem; color: var(--dark);
+      background: #fafafa; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+    .pf-input:focus, .pf-textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,105,0,0.13); background: #fff; }
+    .pf-textarea { resize: vertical; min-height: 72px; }
+    .pf-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .btn-pf-submit {
+      width: 100%; padding: 0.82rem;
+      background: var(--brand); color: #fff; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; transition: background 0.18s; margin-top: 0.25rem;
+    }
+    .btn-pf-submit:hover:not(:disabled) { background: var(--brand-h); }
+    .btn-pf-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .pf-net-err {
+      font-size: 0.78rem; color: #c0392b; background: #fdf0ee;
+      border: 1px solid #f5c6c2; border-radius: 5px;
+      padding: 0.6rem 0.8rem; display: none; margin-bottom: 0.7rem;
+    }
+    .pf-net-err.show { display: block; }
+    .pf-success {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; padding: 1.25rem 0.5rem; gap: 0.65rem;
+    }
+    .pf-success.show { display: flex; }
+    .pf-success-ico {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(0,88,67,0.1); border: 2px solid rgba(0,88,67,0.22);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pf-success h3 { font-size: 1rem; font-weight: 800; color: var(--dark); }
+    .pf-success p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; max-width: 280px; }
+
+    /* ── TECH HUB DIVIDER ── */
+    .techhub-divider {
+      background: var(--primary); padding: 3rem 1.5rem; text-align: center;
+    }
+    .techhub-divider h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem); font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; margin-bottom: 0.4rem;
+    }
+    .techhub-divider p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
     /* ── COURSE DETAIL MODAL ── */
     #course-overlay {
       display: none; position: fixed; inset: 0; z-index: 2050;
@@ -1255,6 +1360,8 @@
       .foot-top  { grid-template-columns: 1fr 1fr; }
       .subj-grid { grid-template-columns: repeat(2,1fr); }
       .strip-hd  { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .products-in { grid-template-columns: 1fr; gap: 2.5rem; }
+      .partner-in  { grid-template-columns: 1fr; gap: 2.5rem; }
       .loc-grid  { grid-template-columns: 1fr; }
       .loc-map   { height: 280px; }
       .about-in  { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1266,6 +1373,7 @@
       .stats-grid   { grid-template-columns: 1fr 1fr; }
       .gplan-feats  { grid-template-columns: 1fr; }
       .ef-row-2     { grid-template-columns: 1fr; }
+      .pf-row-2     { grid-template-columns: 1fr; }
       .enrol-card   { padding: 1.5rem 1.25rem; }
       .foot-top     { grid-template-columns: 1fr; }
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -1293,12 +1401,12 @@
     </div>
 
     <ul class="nav-links">
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#requirements">Requirements</a></li>
-      <li><a href="#locations">Locations</a></li>
-      <li><a href="#corporate">Corporate</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#courses">TECH HUB</a></li>
+      <li><a href="#partner">Become an Agent</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#locations">Contact</a></li>
     </ul>
 
     <div class="nav-gap"></div>
@@ -1332,12 +1440,12 @@
     <div class="srch-msg mob-srch-msg" id="mob-srch-msg" style="position:static;margin-top:0.4rem;border-radius:4px;"></div>
   </div>
   <ul class="mob-links">
-    <li><a href="#courses">Courses</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#requirements">Requirements</a></li>
-    <li><a href="#locations">Locations</a></li>
-    <li><a href="#corporate">Corporate Training</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#courses">TECH HUB (Courses)</a></li>
+    <li><a href="#partner">Become an Agent</a></li>
     <li><a href="#about">About TRUSCREN</a></li>
+    <li><a href="#locations">Contact</a></li>
   </ul>
   <div class="mob-auth" id="mob-auth-out">
     <a href="#" class="btn-si">Sign In</a>
@@ -1357,29 +1465,21 @@
 
     <!-- Left: copy -->
     <div class="hero-copy">
-      <div class="hero-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Now Enrolling — 2026 Cohorts Open</div>
-      <h1 class="r">Let Repair Be Easier.<br><em>We Train You.</em></h1>
-      <p class="hero-sub r d1">TRUSCREN TECH HUB is Africa's leading hands-on training school for phone screen replacement, battery repair, circuit board micro-soldering, and device diagnostics. Get certified. Get hired. Start your repair business.</p>
+      <div class="hero-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg> Official TRUSCREN Distributor — Ghana</div>
+      <h1 class="r">Premium Phone Screens<br>&amp; <em>Repair Training</em> in Ghana</h1>
+      <p class="hero-sub r d1">TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens — and home of the TRUSCREN TECH HUB repair training school. Let Repair Be Easier.</p>
 
-      <div class="hero-form r d2">
-        <input type="text" placeholder="Choose your track (e.g. Screen Repair, Soldering, EV Battery)">
-        <button>
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-            <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
-            <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Find Course
-        </button>
+      <div class="hero-btns r d2" style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.25rem;">
+        <a href="#products" class="btn-teal" style="padding:0.85rem 1.5rem;font-size:0.9rem;">Shop Screens / Request Pricing</a>
+        <a href="#courses" class="btn-outline-w" style="padding:0.85rem 1.5rem;font-size:0.9rem;">Join the TECH HUB →</a>
       </div>
 
       <div class="partner-row r d3">
-        <span class="partner-lbl">Campuses in:</span>
-        <span class="partner-chip">Accra</span>
-        <span class="partner-chip">Kumasi</span>
-        <span class="partner-chip">Takoradi</span>
-        <span class="partner-chip">Weekend Classes</span>
-        <span class="partner-chip">Evening Classes</span>
-        <span class="partner-chip">Online Theory</span>
+        <span class="partner-lbl">Trust:</span>
+        <span class="partner-chip">10+ Years</span>
+        <span class="partner-chip">38 Countries</span>
+        <span class="partner-chip">300,000+ Screens/Month</span>
+        <span class="partner-chip">&lt;0.5% Defect Rate</span>
       </div>
     </div>
 
@@ -1388,7 +1488,7 @@
       <div class="hero-logo-scene">
         <img
           src="Brand_assets/extracted/truscren_badge.png"
-          alt="TRUSCREN TECH HUB"
+          alt="TRUSCREN Ghana"
           class="hero-logo-img"
         >
         <div class="hero-logo-shadow"></div>
@@ -1397,6 +1497,45 @@
 
   </div>
 </section>
+
+
+<!-- ══════════ PRODUCTS / SCREENS ══════════ -->
+<section id="products" class="products-section">
+  <div class="products-in">
+    <div class="products-copy r">
+      <div class="sec-label">Products</div>
+      <h2 class="sec-h2">Premium TRUSCREN Screens</h2>
+      <p>We supply genuine TRUSCREN mobile phone LCD and display screens, built for technicians who care about quality and customers who deserve the best.</p>
+      <ul class="prod-features">
+        <li>High colour gamut, Full HD clarity, and high brightness</li>
+        <li>Original-configuration displays — true colours, true performance</li>
+        <li>Reliable local stock so your shop never runs dry</li>
+        <li>Trade pricing for wholesalers and repair businesses</li>
+        <li>12-month quality guarantee and dependable after-sales support</li>
+      </ul>
+      <div class="prod-btns">
+        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-teal">Request Pricing</a>
+        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.82rem;padding:0.65rem 1.1rem;">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+    <div class="prod-visual r d1">
+      <div class="prod-stat"><span class="prod-stat-n">10+</span><span class="prod-stat-l">Years in the screen industry</span></div>
+      <div class="prod-stat"><span class="prod-stat-n">38</span><span class="prod-stat-l">Countries served worldwide</span></div>
+      <div class="prod-stat"><span class="prod-stat-n">300K+</span><span class="prod-stat-l">Screens shipped monthly</span></div>
+      <div class="prod-stat"><span class="prod-stat-n">&lt;0.5%</span><span class="prod-stat-l">Industry-leading defect rate</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ TECH HUB DIVIDER ══════════ -->
+<div class="techhub-divider r">
+  <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:0.3rem;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> TRUSCREN TECH HUB — Repair Training School</h2>
+  <p>Hands-on courses, certified instructors, and real repair skills for the next generation of technicians</p>
+</div>
 
 
 <!-- ══════════ FEATURED COURSES ══════════ -->
@@ -1925,17 +2064,82 @@
   <div class="about-in">
     <div class="about-copy r">
       <div class="sec-label">About Us</div>
-      <h2 class="sec-h2">About TRUSCREN TECH HUB</h2>
-      <p>TRUSCREN TECH HUB is a professional device repair training school in Accra, Ghana, and part of the trusted TRUSCREN brand — a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
-      <p>We teach practical, job-ready skills in phone screen repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
+      <h2 class="sec-h2">About TRUSCREN Ghana</h2>
+      <p>TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens in Ghana — and home of the TRUSCREN TECH HUB, a professional device repair training school in Accra. We're part of the trusted TRUSCREN brand, a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
+      <p>We supply genuine, high-quality screens to technicians, repair shops, and wholesalers across Ghana. Through the TECH HUB, we teach practical, job-ready skills in phone screen repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
       <p class="about-tagline">True Colors. True TRUSCREN.</p>
-      <a href="#enrol" class="btn-teal">Join the 2026 Cohort →</a>
+      <a href="#products" class="btn-teal">Explore Our Products →</a>
     </div>
     <div class="about-stat-grid r d1">
       <div class="about-stat"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
       <div class="about-stat"><span class="about-stat-n">&lt;0.5%</span><span class="about-stat-l">Defect rate — world-class quality standard</span></div>
       <div class="about-stat"><span class="about-stat-n">3,500+</span><span class="about-stat-l">Technicians trained across Ghana</span></div>
       <div class="about-stat"><span class="about-stat-n">92%</span><span class="about-stat-l">Graduates working or in business within 3 months</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ BECOME AN AGENT / PARTNER ══════════ -->
+<section id="partner" class="partner-section">
+  <div class="partner-in">
+    <div class="partner-copy r">
+      <div class="sec-label" style="color:rgba(255,105,0,0.85);">Partnership</div>
+      <h2>Partner With<br>TRUSCREN Ghana</h2>
+      <p>Want to grow your business with a trusted screen brand? We're looking for agents, distributors, and partners across Ghana who share our commitment to quality and service.</p>
+      <ul class="partner-points">
+        <li>Sell premium, genuine TRUSCREN screens customers trust</li>
+        <li>Competitive trade pricing and reliable supply</li>
+        <li>Marketing and brand support</li>
+        <li>Be part of a fast-growing repair ecosystem in Ghana</li>
+      </ul>
+      <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27m%20interested%20in%20becoming%20a%20partner%20or%20agent." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.84rem;padding:0.72rem 1.25rem;">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+        Chat With Us on WhatsApp
+      </a>
+    </div>
+
+    <div class="partner-form-card r d1">
+      <h3>Partner Enquiry</h3>
+      <div class="pf-sub">Fill in your details and we'll be in touch within 24 hours.</div>
+
+      <div class="pf-success" id="pf-success">
+        <div class="pf-success-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Enquiry Received!</h3>
+        <p>Thank you for your interest. Our team will contact you soon.</p>
+        <button class="btn-enrol-again" id="pf-again-btn">Submit Another Enquiry</button>
+      </div>
+
+      <form id="partner-form" novalidate>
+        <div class="pf-row-2">
+          <div class="pf-field">
+            <label class="pf-label" for="pf-name">Your Name <span>*</span></label>
+            <input class="pf-input" type="text" id="pf-name" placeholder="e.g. Kwame Asante" autocomplete="name">
+          </div>
+          <div class="pf-field">
+            <label class="pf-label" for="pf-business">Business Name <span>*</span></label>
+            <input class="pf-input" type="text" id="pf-business" placeholder="e.g. Asante Repairs">
+          </div>
+        </div>
+        <div class="pf-row-2">
+          <div class="pf-field">
+            <label class="pf-label" for="pf-location">Location <span>*</span></label>
+            <input class="pf-input" type="text" id="pf-location" placeholder="e.g. Accra, Kumasi">
+          </div>
+          <div class="pf-field">
+            <label class="pf-label" for="pf-phone">Phone <span>*</span></label>
+            <input class="pf-input" type="text" id="pf-phone" placeholder="e.g. 0244 000 000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="pf-field">
+          <label class="pf-label" for="pf-message">Message <span style="color:#aaa;font-weight:400;">(optional)</span></label>
+          <textarea class="pf-textarea" id="pf-message" placeholder="Tell us about your business and what you're interested in..." rows="3"></textarea>
+        </div>
+        <div class="pf-net-err" id="pf-net-err">Something went wrong. Please check your connection and try again.</div>
+        <button type="submit" class="btn-pf-submit" id="pf-submit-btn">Send Enquiry →</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1950,7 +2154,7 @@
           <img src="Brand_assets/extracted/truscren_badge.png" alt="TRUSCREN" class="foot-logo-badge">
           <span class="foot-logo-name">TRUSCREN</span>
         </div>
-        <p>TRUSCREN TECH HUB — Ghana's leading professional device repair training school. Campuses in Accra, Kumasi, and Takoradi.</p>
+        <p>TRUSCREN Ghana — official distributor of premium TRUSCREN phone screens and home of the TRUSCREN TECH HUB repair training school.</p>
         <div class="foot-social">
           <a href="#" class="soc">f</a>
           <a href="#" class="soc">𝕏</a>
@@ -1980,29 +2184,27 @@
         </ul>
       </div>
       <div class="foot-col">
-        <h5>TRUSCREN For</h5>
+        <h5>Products</h5>
         <ul>
-          <li><a href="#">Individual Technicians</a></li>
-          <li><a href="#">Repair Shop Owners</a></li>
-          <li><a href="#">Electronics Retailers</a></li>
-          <li><a href="#">Corporate IT Teams</a></li>
-          <li><a href="#">Schools &amp; Colleges</a></li>
+          <li><a href="#products">Phone Screens</a></li>
+          <li><a href="#products">LCD Displays</a></li>
+          <li><a href="#products">OLED Screens</a></li>
+          <li><a href="#products">Trade Pricing</a></li>
+          <li><a href="#partner">Become an Agent</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Company</h5>
         <ul>
-          <li><a href="#">About TRUSCREN</a></li>
-          <li><a href="#">Our Story</a></li>
-          <li><a href="#">Graduate Stories</a></li>
-          <li><a href="#">Locations</a></li>
-          <li><a href="#">Become an Instructor</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="#about">About TRUSCREN Ghana</a></li>
+          <li><a href="#partner">Partner With Us</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="https://wa.me/233541224699" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-btm">
-      <span>© 2026 TRUSCREN TECH HUB. All rights reserved.</span>
+      <span>© 2026 TRUSCREN Ghana. All rights reserved.</span>
       <div class="foot-btm-links">
         <a href="#">Terms of Service</a>
         <a href="#">Privacy Policy</a>
@@ -2595,6 +2797,56 @@
       successEl.style.display = 'none';
       submitBtn.disabled = false;
       submitBtn.textContent = 'Reserve My Spot in the 2026 Cohort →';
+      netErr.classList.remove('show');
+    });
+  })();
+
+  // ── PARTNER FORM ──
+  (function () {
+    const form      = document.getElementById('partner-form');
+    const successEl = document.getElementById('pf-success');
+    const submitBtn = document.getElementById('pf-submit-btn');
+    const netErr    = document.getElementById('pf-net-err');
+    const ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzytxulYjZkIn6R_zK_PACPZ-rWGpGxOqmmuJngT-Fd1WVjlu_oCDSVp8bAR4GHZzipFA/exec';
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      netErr.classList.remove('show');
+      const name     = document.getElementById('pf-name').value.trim();
+      const business = document.getElementById('pf-business').value.trim();
+      const location = document.getElementById('pf-location').value.trim();
+      const phone    = document.getElementById('pf-phone').value.trim();
+      const message  = document.getElementById('pf-message').value.trim();
+      if (!name || !business || !location || !phone) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      const body = new FormData();
+      body.append('name', name);
+      body.append('phone', phone);
+      body.append('email', '');
+      body.append('course', 'Partner Enquiry');
+      body.append('message', 'Business: ' + business + ' | Location: ' + location + (message ? ' | ' + message : ''));
+      body.append('type', 'partner');
+      try {
+        await fetch(ENDPOINT, { method: 'POST', body: body, mode: 'no-cors' });
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      } catch (err) {
+        netErr.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Enquiry →';
+      }
+    });
+
+    document.getElementById('pf-again-btn').addEventListener('click', function () {
+      form.reset();
+      form.style.display = '';
+      successEl.classList.remove('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Enquiry →';
       netErr.classList.remove('show');
     });
   })();
