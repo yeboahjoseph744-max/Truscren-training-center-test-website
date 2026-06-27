@@ -2609,6 +2609,42 @@
   }
   setTimeout(tick,650);
 })();
+
+  // ── COUNT-UP STATS ──
+  (function(){
+    var nums=document.querySelectorAll('.pss-n');
+    if(!nums.length)return;
+    function parse(txt){
+      var m=txt.match(/([^0-9.]*)([0-9]*\.?[0-9]+)(.*)/);
+      if(!m)return null;
+      return {prefix:m[1]||'',value:parseFloat(m[2]),suffix:m[3]||'',decimals:(m[2].split('.')[1]||'').length};
+    }
+    var data=[];
+    nums.forEach(function(el){
+      var p=parse(el.textContent.trim());
+      if(p){data.push({el:el,info:p});el.textContent=p.prefix+'0'+p.suffix;}
+    });
+    function run(){
+      var dur=1600,start=null;
+      function step(ts){
+        if(!start)start=ts;
+        var prog=Math.min((ts-start)/dur,1);
+        var eased=1-Math.pow(1-prog,3);
+        data.forEach(function(d){
+          var cur=d.info.value*eased;
+          d.el.textContent=d.info.prefix+cur.toFixed(d.info.decimals)+d.info.suffix;
+        });
+        if(prog<1)requestAnimationFrame(step);
+        else data.forEach(function(d){d.el.textContent=d.info.prefix+d.info.value.toFixed(d.info.decimals)+d.info.suffix;});
+      }
+      requestAnimationFrame(step);
+    }
+    var strip=document.querySelector('.prod-stats-strip')||nums[0].parentElement;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){run();obs.disconnect();}});
+    },{threshold:0.4});
+    obs.observe(strip);
+  })();
 </script>
 
 <div class="qa-cluster">
