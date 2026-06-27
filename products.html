@@ -1465,6 +1465,63 @@
       .ph-copy p{margin:0 auto;}
       .ph-img,.ph-placeholder{max-height:240px;height:240px;}
     }
+
+    /* ── SLIM STATS STRIP ── */
+    .prod-stats-strip{
+      max-width:1280px;margin:0 auto;padding:1.5rem 0;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    }
+    .pss-item{text-align:center;padding:0.75rem 0.5rem;}
+    .pss-item+.pss-item{border-left:1px solid var(--border);}
+    .pss-n{font-size:1.35rem;font-weight:800;color:var(--brand);letter-spacing:-0.03em;line-height:1;}
+    .pss-l{font-size:0.68rem;color:var(--mid);margin-top:0.2rem;line-height:1.35;}
+    @media(max-width:640px){
+      .prod-stats-strip{grid-template-columns:1fr 1fr;}
+      .pss-item:nth-child(3){border-left:none;}
+      .pss-item:nth-child(n+3){border-top:1px solid var(--border);}
+    }
+
+    /* ── PRODUCT BRAND CARDS ── */
+    .pbc-section{padding:4rem 1.5rem;background:var(--light-bg);}
+    .pbc-hd{max-width:1280px;margin:0 auto 2rem;}
+    .pbc-grid{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:1.375rem;
+    }
+    .pbc{
+      background:#fff;border-radius:10px;overflow:hidden;
+      border:1.5px solid var(--border);display:flex;flex-direction:column;
+      box-shadow:0 4px 18px rgba(0,0,0,0.06);
+      transition:transform 0.24s,box-shadow 0.24s,border-color 0.24s;
+    }
+    .pbc:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(0,0,0,0.12);border-color:var(--brand);}
+    .pbc-img-wrap{
+      height:240px;display:flex;align-items:center;justify-content:center;
+      padding:1.25rem;position:relative;
+    }
+    .pbc-img-wrap img{max-height:100%;max-width:100%;object-fit:contain;display:block;}
+    .pbc-img-fallback{
+      position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+      color:rgba(255,255,255,0.6);font-size:0.82rem;font-weight:600;border-radius:8px 8px 0 0;
+    }
+    .pbc-body{padding:1.25rem 1.375rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+    .pbc-badges{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+    .pbc-badge{
+      font-size:0.6rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+      padding:0.18rem 0.5rem;border-radius:3px;
+    }
+    .pbc-title{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:0.4rem;}
+    .pbc-desc{font-size:0.82rem;color:#666;line-height:1.6;margin-bottom:1.25rem;flex:1;}
+    .pbc-wa{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:#25D366;color:#fff;text-decoration:none;
+      font-size:0.82rem;font-weight:600;padding:0.65rem 1.1rem;
+      border-radius:6px;transition:background 0.18s,transform 0.18s;
+      box-shadow:0 3px 12px rgba(37,211,102,0.22);align-self:flex-start;
+    }
+    .pbc-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
+    @media(max-width:768px){.pbc-grid{grid-template-columns:1fr;max-width:440px;}}
   </style>
 </head>
 <body>
@@ -1568,32 +1625,104 @@
 
 
 <section id="products" class="products-section">
-  <div class="products-in">
-    <div class="products-copy r">
+  <div class="wrap">
+    <div class="r" style="max-width:720px;margin-bottom:1.75rem;">
       <div class="sec-label">Products</div>
       <h2 class="sec-h2">Premium TRUSCREN Screens</h2>
-      <p>We supply genuine TRUSCREN mobile phone LCD and display screens, built for technicians who care about quality and customers who deserve the best.</p>
-      <ul class="prod-features">
-        <li>High colour gamut, Full HD clarity, and high brightness</li>
-        <li>Original-configuration displays — true colours, true performance</li>
-        <li>Reliable local stock so your shop never runs dry</li>
-        <li>Trade pricing for wholesalers and repair businesses</li>
-        <li>12-month quality guarantee and dependable after-sales support</li>
-      </ul>
-      <div class="prod-btns">
-        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-teal">Request Pricing</a>
-        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.82rem;padding:0.65rem 1.1rem;">
+      <p style="font-size:0.875rem;color:var(--mid);line-height:1.72;margin-top:0.5rem;">We supply genuine TRUSCREN mobile phone LCD and display screens, built for technicians who care about quality and customers who deserve the best.</p>
+    </div>
+    <ul class="prod-features r" style="max-width:720px;margin-bottom:1.75rem;">
+      <li>High colour gamut, Full HD clarity, and high brightness</li>
+      <li>Original-configuration displays — true colours, true performance</li>
+      <li>Reliable local stock so your shop never runs dry</li>
+      <li>Trade pricing for wholesalers and repair businesses</li>
+      <li>12-month quality guarantee and dependable after-sales support</li>
+    </ul>
+    <div class="prod-btns r" style="margin-bottom:2.5rem;">
+      <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-teal">Request Pricing</a>
+      <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20pricing%20for%20screens." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.82rem;padding:0.65rem 1.1rem;">
+        <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+    <div class="prod-stats-strip r">
+      <div class="pss-item"><div class="pss-n">10+</div><div class="pss-l">Years in screens</div></div>
+      <div class="pss-item"><div class="pss-n">38</div><div class="pss-l">Countries served</div></div>
+      <div class="pss-item"><div class="pss-n">300K+</div><div class="pss-l">Screens / month</div></div>
+      <div class="pss-item"><div class="pss-n">&lt;0.5%</div><div class="pss-l">Defect rate</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ PRODUCT BRAND CARDS ══════════ -->
+<section class="pbc-section">
+  <div class="pbc-hd r">
+    <div class="sec-label">// Our Range</div>
+    <h2 class="sec-h2">Screens We Stock</h2>
+  </div>
+  <div class="pbc-grid">
+
+    <!-- iPhone -->
+    <div class="pbc r">
+      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#FF6900,#E05500);">
+        <img src="Brand_assets/product-iphone.jpg" alt="TRUSCREN iPhone LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#FF6900,#E05500);">Photo coming soon</div>
+      </div>
+      <div class="pbc-body">
+        <div class="pbc-badges">
+          <span class="pbc-badge" style="background:rgba(255,105,0,0.1);color:#FF6900;">Quality Guarantee</span>
+          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
+        </div>
+        <div class="pbc-title">iPhone LCD</div>
+        <div class="pbc-desc">A wide assortment of iPhone screens, including premium LCDs and OLEDs, covering sought-after models such as the iPhone X and newer.</div>
+        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20iPhone%20screens." target="_blank" rel="noopener noreferrer">
           <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
-          WhatsApp Us
+          Get a Quote
         </a>
       </div>
     </div>
-    <div class="prod-visual r d1">
-      <div class="prod-stat"><span class="prod-stat-n">10+</span><span class="prod-stat-l">Years in the screen industry</span></div>
-      <div class="prod-stat"><span class="prod-stat-n">38</span><span class="prod-stat-l">Countries served worldwide</span></div>
-      <div class="prod-stat"><span class="prod-stat-n">300K+</span><span class="prod-stat-l">Screens shipped monthly</span></div>
-      <div class="prod-stat"><span class="prod-stat-n">&lt;0.5%</span><span class="prod-stat-l">Industry-leading defect rate</span></div>
+
+    <!-- Infinix -->
+    <div class="pbc r d1">
+      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#007A5E,#005843);">
+        <img src="Brand_assets/product-infinix.jpg" alt="TRUSCREN Infinix LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#007A5E,#005843);">Photo coming soon</div>
+      </div>
+      <div class="pbc-body">
+        <div class="pbc-badges">
+          <span class="pbc-badge" style="background:rgba(0,88,67,0.1);color:#007A5E;">Quality Guarantee</span>
+          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
+        </div>
+        <div class="pbc-title">Infinix LCD</div>
+        <div class="pbc-desc">A comprehensive selection of Infinix LCDs and OLEDs, plus Tecno and Itel models, assuring exceptional quality and choice.</div>
+        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Infinix%20screens." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+          Get a Quote
+        </a>
+      </div>
     </div>
+
+    <!-- Samsung -->
+    <div class="pbc r d2">
+      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#262E3D,#3A4A6A);">
+        <img src="Brand_assets/product-samsung.jpg" alt="TRUSCREN Samsung LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#262E3D,#3A4A6A);">Photo coming soon</div>
+      </div>
+      <div class="pbc-body">
+        <div class="pbc-badges">
+          <span class="pbc-badge" style="background:rgba(38,46,61,0.08);color:#262E3D;">Quality Guarantee</span>
+          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
+        </div>
+        <div class="pbc-title">Samsung LCD</div>
+        <div class="pbc-desc">An extensive range of Samsung LCDs and OLEDs, covering popular A, J and S series, ensuring quality and diversity.</div>
+        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Samsung%20screens." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+          Get a Quote
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 <!-- ══════════ FOOTER ══════════ -->
@@ -1607,20 +1736,20 @@
         </div>
         <p>TRUSCREN Ghana — official distributor of premium TRUSCREN phone screens and home of the TRUSCREN TECH HUB repair training school.</p>
         <div class="foot-social">
-          <a href="#" class="soc">f</a>
-          <a href="#" class="soc">𝕏</a>
-          <a href="#" class="soc">in</a>
-          <a href="#" class="soc">▶</a>
+          <a href="#" class="soc" aria-label="Facebook" rel="noopener">f</a>
+          <a href="#" class="soc" aria-label="X / Twitter" rel="noopener">𝕏</a>
+          <a href="#" class="soc" aria-label="LinkedIn" rel="noopener">in</a>
+          <a href="#" class="soc" aria-label="YouTube" rel="noopener">▶</a>
         </div>
       </div>
       <div class="foot-col">
         <h5>Training</h5>
         <ul>
-          <li><a href="#">Screen Repair</a></li>
-          <li><a href="#">Micro-Soldering</a></li>
-          <li><a href="#">EV Battery Tech</a></li>
-          <li><a href="#">Data Recovery</a></li>
-          <li><a href="#">Software &amp; Flashing</a></li>
+          <li><a href="tech-hub.html">Screen Repair</a></li>
+          <li><a href="tech-hub.html">Micro-Soldering</a></li>
+          <li><a href="tech-hub.html">EV Battery Tech</a></li>
+          <li><a href="tech-hub.html">Data Recovery</a></li>
+          <li><a href="tech-hub.html">Software &amp; Flashing</a></li>
         </ul>
       </div>
       <div class="foot-col">
