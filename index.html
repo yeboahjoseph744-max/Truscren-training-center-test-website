@@ -1523,7 +1523,7 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
-  <svg id="tp-bg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;"></svg>
+  <svg id="tp-bg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;visibility:visible;"></svg>
   <div class="hero-in">
 
     <!-- Left: copy -->
@@ -2240,6 +2240,7 @@
   // ── ENROL FORM ──
   (function () {
     const form      = document.getElementById('enrol-form');
+    if (!form) return;
     const successEl = document.getElementById('enrol-success');
     const submitBtn = document.getElementById('enrol-submit-btn');
     const netErr    = document.getElementById('ef-net-err');
@@ -2300,6 +2301,7 @@
   // ── PARTNER FORM ──
   (function () {
     const form      = document.getElementById('partner-form');
+    if (!form) return;
     const successEl = document.getElementById('pf-success');
     const submitBtn = document.getElementById('pf-submit-btn');
     const netErr    = document.getElementById('pf-net-err');

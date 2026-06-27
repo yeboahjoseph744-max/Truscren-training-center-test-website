@@ -2592,6 +2592,7 @@
   // ── ENROL FORM ──
   (function () {
     const form      = document.getElementById('enrol-form');
+    if (!form) return;
     const successEl = document.getElementById('enrol-success');
     const submitBtn = document.getElementById('enrol-submit-btn');
     const netErr    = document.getElementById('ef-net-err');
@@ -2652,6 +2653,7 @@
   // ── PARTNER FORM ──
   (function () {
     const form      = document.getElementById('partner-form');
+    if (!form) return;
     const successEl = document.getElementById('pf-success');
     const submitBtn = document.getElementById('pf-submit-btn');
     const netErr    = document.getElementById('pf-net-err');
