@@ -166,17 +166,6 @@
       margin-top: 72px;
       position: relative; overflow: hidden;
     }
-    .hero-shapes{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
-    .hsh{position:absolute;border-radius:999px;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 8px 32px rgba(255,255,255,0.05);}
-    .hsh::after{content:"";position:absolute;inset:0;border-radius:999px;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.14),transparent 70%);}
-    .hsh1{width:520px;height:120px;left:-6%;top:16%;background:linear-gradient(90deg,rgba(255,105,0,0.16),transparent);animation:hsh-drift 15s ease-in-out infinite;--r:12deg;}
-    .hsh2{width:430px;height:100px;right:-4%;top:64%;background:linear-gradient(90deg,rgba(0,122,94,0.18),transparent);animation:hsh-drift 18s ease-in-out infinite;--r:-15deg;}
-    .hsh3{width:260px;height:70px;left:8%;bottom:8%;background:linear-gradient(90deg,rgba(255,105,0,0.13),transparent);animation:hsh-drift 13s ease-in-out infinite;--r:-8deg;}
-    .hsh4{width:190px;height:54px;right:16%;top:10%;background:linear-gradient(90deg,rgba(0,122,94,0.16),transparent);animation:hsh-drift 16s ease-in-out infinite;--r:20deg;}
-    .hsh5{width:130px;height:40px;left:22%;top:6%;background:linear-gradient(90deg,rgba(255,255,255,0.10),transparent);animation:hsh-drift 12s ease-in-out infinite;--r:-25deg;}
-    .hsh1,.hsh2,.hsh3,.hsh4,.hsh5{transform:rotate(var(--r));}
-    @keyframes hsh-drift{0%,100%{transform:translateY(0) rotate(var(--r));}50%{transform:translateY(16px) rotate(var(--r));}}
-    @media (prefers-reduced-motion: reduce){.hsh{animation:none!important;}}
     .hero::before {
       content: ''; position: absolute; inset: 0;
       background:
@@ -1534,13 +1523,7 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
-  <div class="hero-shapes" aria-hidden="true">
-    <span class="hsh hsh1"></span>
-    <span class="hsh hsh2"></span>
-    <span class="hsh hsh3"></span>
-    <span class="hsh hsh4"></span>
-    <span class="hsh hsh5"></span>
-  </div>
+  <svg id="tp-bg" viewBox="0 0 800 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0.6;"></svg>
   <div class="hero-in">
 
     <!-- Left: copy -->
@@ -2500,6 +2483,85 @@
       mobInput.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(mobInput.value, mobMsg); });
       mobInput.addEventListener('input',   () => mobMsg.classList.remove('show'));
     }
+  })();
+
+  // ── TECH-PATTERN HERO BG ──
+  (function(){
+    var svg=document.getElementById('tp-bg');
+    if(!svg)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var W=800,H=480,OR='rgba(255,105,0,',TL='rgba(30,158,106,';
+    function ns(t,a){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+    function clear(){while(svg.firstChild)svg.removeChild(svg.firstChild);}
+
+    function neural(){
+      clear();
+      var pts=[];
+      for(var i=0;i<28;i++)pts.push({x:Math.random()*W,y:Math.random()*H});
+      pts.forEach(function(a,i){
+        pts.forEach(function(b,j){
+          if(j<=i)return;
+          var d=Math.hypot(a.x-b.x,a.y-b.y);
+          if(d<220){
+            var o=(1-d/220)*0.25;
+            var c=j%2===0?OR:TL;
+            var ln=ns('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:c+o+')',
+              'stroke-width':'1'});
+            ln.style.opacity='0';
+            svg.appendChild(ln);
+            ln.animate([{opacity:0},{opacity:1}],{duration:800,delay:i*30,fill:'forwards'});
+          }
+        });
+      });
+      pts.forEach(function(p,i){
+        var r=2+Math.random()*3;
+        var c=i%2===0?OR+'0.6)':TL+'0.6)';
+        var dot=ns('circle',{cx:p.x,cy:p.y,r:r,fill:c});
+        dot.style.opacity='0';
+        svg.appendChild(dot);
+        dot.animate([{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1)'}],
+          {duration:600,delay:i*40,fill:'forwards'});
+        dot.animate([{cy:p.y+'px'},{cy:(p.y+8)+'px'},{cy:p.y+'px'}],
+          {duration:3000+Math.random()*2000,iterations:Infinity,easing:'ease-in-out'});
+      });
+    }
+
+    function grid(){
+      clear();
+      var sp=60,cols=Math.ceil(W/sp)+1,rows=Math.ceil(H/sp)+1;
+      for(var r=0;r<rows;r++){
+        var ln=ns('line',{x1:0,y1:r*sp,x2:W,y2:r*sp,stroke:TL+'0.12)','stroke-width':'0.5'});
+        ln.style.opacity='0';svg.appendChild(ln);
+        ln.animate([{opacity:0},{opacity:1}],{duration:600,delay:r*50,fill:'forwards'});
+      }
+      for(var c=0;c<cols;c++){
+        var ln2=ns('line',{x1:c*sp,y1:0,x2:c*sp,y2:H,stroke:OR+'0.1)','stroke-width':'0.5'});
+        ln2.style.opacity='0';svg.appendChild(ln2);
+        ln2.animate([{opacity:0},{opacity:1}],{duration:600,delay:c*50,fill:'forwards'});
+      }
+      for(var gy=0;gy<rows;gy++){
+        for(var gx=0;gx<cols;gx++){
+          if(Math.random()>0.35)continue;
+          var cx=gx*sp,cy=gy*sp;
+          var cc=Math.random()>0.5?OR+'0.4)':TL+'0.4)';
+          var dt=ns('circle',{cx:cx,cy:cy,r:1.5,fill:cc});
+          dt.style.opacity='0';svg.appendChild(dt);
+          dt.animate([{opacity:0},{opacity:1}],{duration:500,delay:(gy+gx)*30,fill:'forwards'});
+          dt.animate([{r:'1.5'},{r:'3'},{r:'1.5'}],
+            {duration:2500+Math.random()*1500,iterations:Infinity,easing:'ease-in-out'});
+        }
+      }
+    }
+
+    var which=0;
+    function show(){if(which%2===0)neural();else grid();which++;}
+    show();
+    setInterval(function(){
+      svg.animate([{opacity:0.6},{opacity:0}],{duration:700,fill:'forwards'}).onfinish=function(){
+        show();
+        svg.animate([{opacity:0},{opacity:0.6}],{duration:700,fill:'forwards'});
+      };
+    },8000);
   })();
 
   // ── SCROLL REVEAL ──
