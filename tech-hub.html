@@ -1435,10 +1435,38 @@
       #navbar{top:0;left:0;right:0;height:58px;border-radius:0;}
       .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
     }
+
+    /* ── TECH HUB ANIMATED DOTS BG ── */
+    .th-dots-bg{
+      position:fixed;inset:0;z-index:-2;background-color:#15191F;
+      background-image:
+        radial-gradient(circle at 50% 50%,transparent 1.5px,#15191F 0 8px,transparent 8px),
+        radial-gradient(circle at 50% 50%,transparent 1.5px,#15191F 0 8px,transparent 8px),
+        radial-gradient(circle at 50% 50%,#FF6900,transparent 60%),
+        radial-gradient(circle at 50% 50%,#007A5E,transparent 60%),
+        radial-gradient(circle at 50% 50%,#FF6900,transparent 60%),
+        radial-gradient(ellipse at 50% 50%,#005843,transparent 60%);
+      background-size:10px 17.32px,10px 17.32px,200% 200%,200% 200%,200% 200%,200% 17.32px;
+      filter:saturate(0.7) brightness(0.65);
+      animation:th-dotmove 45s linear infinite;
+    }
+    .th-dots-bg::after{
+      content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:
+        radial-gradient(circle at 25% 25%,rgba(255,105,0,0.14),transparent 55%),
+        radial-gradient(circle at 78% 72%,rgba(0,122,94,0.18),transparent 55%),
+        linear-gradient(rgba(21,25,31,0.62),rgba(21,25,31,0.62));
+    }
+    @keyframes th-dotmove{
+      from{background-position:0 0,5px 8.66px,0% 0%,0% 0%,0% 0%,0% 0%;}
+      to{background-position:0 0,5px 8.66px,800% 400%,1000% -400%,-1200% -600%,400% 17.32px;}
+    }
+    @media(prefers-reduced-motion:reduce){.th-dots-bg{animation:none;}}
   </style>
 </head>
-<body>
+<body style="background-color:#15191F;">
 
+<div class="th-dots-bg" aria-hidden="true"></div>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <nav id="navbar">
