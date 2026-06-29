@@ -131,7 +131,7 @@
     #mob-menu {
       display: none; position: fixed;
       top: 72px; left: 0; right: 0; bottom: 0;
-      background: var(--primary); z-index: 998;
+      background: var(--primary); z-index: 1050;
       padding: 1.25rem 1.5rem; overflow-y: auto;
     }
     #mob-menu.open { display: block; }
@@ -1378,9 +1378,10 @@
       .stats-grid   { grid-template-columns: repeat(3,1fr); }
       .cert-cards   { grid-template-columns: 1fr; }
     }
-    @media (max-width: 768px) {
-      .nav-links, .nav-srch { display: none; }
-      .hamburger { display: flex; }
+    @media (max-width: 860px) {
+      .nav-links, .nav-srch { display: none !important; }
+      .nav-auth { display: none !important; }
+      .hamburger { display: flex !important; margin-left: auto; z-index: 1001; position: relative; }
       .hero-in   { grid-template-columns: 1fr; }
       .hero-logo-col { margin-top: 2rem; }
       .hero-logo-scene { width: 220px; height: 220px; }
@@ -2040,6 +2041,7 @@
   const hamBtn = document.getElementById('ham-btn');
   const mobMenu = document.getElementById('mob-menu');
   hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
 
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
