@@ -1459,6 +1459,73 @@
       to{background-position:32px 32px,48px 48px;}
     }
     @media(prefers-reduced-motion:reduce){.th-dots-bg{animation:none;}}
+
+    /* ── CURRICULUM SECTION ── */
+    .curr-section{padding:5rem 1.5rem;background:#f8f9fa;}
+    .curr-hd{max-width:1280px;margin:0 auto 2.5rem;}
+    .curr-intro{font-size:0.9rem;color:#5a6275;line-height:1.7;max-width:740px;margin-top:0.5rem;}
+    .curr-facts{
+      max-width:1280px;margin:0 auto 3rem;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      background:#fff;border-radius:10px;border:1px solid #e8e8e8;
+      box-shadow:0 2px 12px rgba(38,46,61,0.05);overflow:hidden;
+    }
+    .curr-fact{text-align:center;padding:1.25rem 1rem;position:relative;}
+    .curr-fact+.curr-fact{border-left:1px solid #e8e8e8;}
+    .curr-fact-n{font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;line-height:1;display:block;margin-bottom:0.25rem;}
+    .curr-fact-n.orange{color:#FF6900;}
+    .curr-fact-n.teal{color:#007A5E;}
+    .curr-fact-l{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#888;}
+    .curr-tracks{
+      max-width:1280px;margin:0 auto 2rem;
+      display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+    }
+    .curr-card{
+      background:#fff;border-radius:12px;overflow:hidden;
+      border:1px solid #e8e8e8;box-shadow:0 4px 18px rgba(38,46,61,0.07);
+    }
+    .curr-card-hd{padding:1.5rem 1.75rem 1.25rem;}
+    .curr-card-accent{height:4px;}
+    .curr-card-title{font-size:1.05rem;font-weight:800;color:#262E3D;margin-bottom:0.2rem;}
+    .curr-card-sub{font-size:0.78rem;font-weight:600;color:#888;margin-bottom:0;letter-spacing:0.01em;}
+    .curr-card-body{padding:0 1.75rem 1.75rem;}
+    .curr-module{margin-bottom:1.125rem;}
+    .curr-module:last-child{margin-bottom:0;}
+    .curr-module-name{
+      font-size:0.78rem;font-weight:700;color:#262E3D;
+      display:flex;align-items:center;gap:0.5rem;margin-bottom:0.2rem;
+    }
+    .curr-module-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+    .curr-module-desc{font-size:0.78rem;color:#666;line-height:1.6;padding-left:1.1rem;}
+    .curr-note{
+      max-width:1280px;margin:0 auto 2.5rem;
+      font-size:0.78rem;color:#888;line-height:1.65;
+      background:#fff;border-radius:8px;padding:1rem 1.25rem;
+      border:1px solid #e8e8e8;border-left:3px solid #FF6900;
+    }
+    .curr-cta{max-width:1280px;margin:0 auto;display:flex;gap:0.875rem;flex-wrap:wrap;}
+    .btn-curr-wa{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:#25D366;color:#fff;text-decoration:none;
+      font-size:0.875rem;font-weight:700;padding:0.78rem 1.4rem;
+      border-radius:7px;transition:background 0.18s,transform 0.18s;
+      box-shadow:0 4px 14px rgba(37,211,102,0.25);
+    }
+    .btn-curr-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
+    .btn-curr-enrol{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      background:#FF6900;color:#fff;text-decoration:none;
+      font-size:0.875rem;font-weight:700;padding:0.78rem 1.4rem;
+      border-radius:7px;transition:background 0.18s,transform 0.18s;
+    }
+    .btn-curr-enrol:hover{background:#E05500;transform:translateY(-1px);}
+    @media(max-width:860px){
+      .curr-tracks{grid-template-columns:1fr;}
+      .curr-facts{grid-template-columns:1fr 1fr;}
+      .curr-fact:nth-child(3){border-left:none;}
+      .curr-fact:nth-child(n+3){border-top:1px solid #e8e8e8;}
+    }
+    @media(max-width:540px){.curr-cta{flex-direction:column;}}
     #navbar,.qa-cluster{z-index:1000!important;}
     .th-page-content{position:relative;z-index:1;}
   </style>
@@ -1811,6 +1878,110 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══════════ CURRICULUM ══════════ -->
+<section id="curriculum" class="curr-section">
+  <div class="curr-hd r">
+    <div class="sec-label">// Professional Training Programme</div>
+    <h2 class="sec-h2" style="color:#262E3D;">TECH HUB Repair Curriculum</h2>
+    <p class="curr-intro">A two-track, hands-on programme covering micro-soldering, motherboard fault diagnosis, and screen &amp; internal-part repair for iPhone and Android devices — from first principles to live repair practice.</p>
+  </div>
+
+  <!-- Quick facts -->
+  <div class="curr-facts r">
+    <div class="curr-fact">
+      <span class="curr-fact-n orange">~3 Months</span>
+      <span class="curr-fact-l">Total Duration</span>
+    </div>
+    <div class="curr-fact">
+      <span class="curr-fact-n teal">2–3 hrs/day</span>
+      <span class="curr-fact-l">Class Time</span>
+    </div>
+    <div class="curr-fact">
+      <span class="curr-fact-n orange">2 Tracks</span>
+      <span class="curr-fact-l">Motherboard + Screen</span>
+    </div>
+    <div class="curr-fact">
+      <span class="curr-fact-n teal">60+ Skills</span>
+      <span class="curr-fact-l">Hands-on Techniques</span>
+    </div>
+  </div>
+
+  <!-- Track cards -->
+  <div class="curr-tracks">
+
+    <!-- Track A — Motherboard -->
+    <div class="curr-card r">
+      <div class="curr-card-accent" style="background:#FF6900;"></div>
+      <div class="curr-card-hd">
+        <div class="curr-card-title">Track A — Motherboard Repair</div>
+        <div class="curr-card-sub">≈ 30 instruction days</div>
+      </div>
+      <div class="curr-card-body">
+        <div class="curr-module">
+          <div class="curr-module-name">
+            <span class="curr-module-dot" style="background:#FF6900;"></span>
+            Fundamentals
+          </div>
+          <div class="curr-module-desc">iPhone internal structure, correct tool use, reading repair schematics and boardviews, basic power/ground/signal circuits, locating short-to-ground leakage.</div>
+        </div>
+        <div class="curr-module">
+          <div class="curr-module-name">
+            <span class="curr-module-dot" style="background:#FF6900;"></span>
+            Theory &amp; Repair Methodology
+          </div>
+          <div class="curr-module-desc">Components (capacitors, resistors, MOSFETs), power topologies (SW/BUCK/LDO/BOOST), no-boot current analysis, LED/OLED display &amp; backlight circuits, touch &amp; fingerprint, charging &amp; fast-charge paths, camera &amp; audio circuits, WiFi/Bluetooth/GPS, baseband &amp; RF, SIM circuits, iPhone NAND upgrade, board transplant &amp; CPU fault analysis.</div>
+        </div>
+        <div class="curr-module">
+          <div class="curr-module-name">
+            <span class="curr-module-dot" style="background:#FF6900;"></span>
+            Micro-Soldering &amp; Hands-On Skills
+          </div>
+          <div class="curr-module-desc">Component &amp; IC removal and reballing, Android CPU &amp; eMMC work, PoP-layer separation, iPhone PMIC and CPU removal, CPU pad/bonding-point repair, and multi-layer jumper wiring.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Track B — Screen & Internal Parts -->
+    <div class="curr-card r d1">
+      <div class="curr-card-accent" style="background:#007A5E;"></div>
+      <div class="curr-card-hd">
+        <div class="curr-card-title">Track B — Screen &amp; Internal-Part Repair</div>
+        <div class="curr-card-sub">≈ 14 instruction days</div>
+      </div>
+      <div class="curr-card-body">
+        <div class="curr-module">
+          <div class="curr-module-name">
+            <span class="curr-module-dot" style="background:#007A5E;"></span>
+            Screen Refurbishment
+          </div>
+          <div class="curr-module-desc">Outer-glass replacement on flat LED, flat rigid OLED, flat flexible OLED, and curved flexible OLED screens.</div>
+        </div>
+        <div class="curr-module">
+          <div class="curr-module-name">
+            <span class="curr-module-dot" style="background:#007A5E;"></span>
+            Internal Components
+          </div>
+          <div class="curr-module-desc">iPhone battery-cell transfer, charging-port (dock) replacement, loudspeaker &amp; earpiece repair, camera cleaning, FPC flex-cable extension, backlight diagnosis, battery and button repair, conductive silver-paste trace work.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Format note -->
+  <p class="curr-note r">Programme runs approximately 3 months, 2–3 teaching hours per day, with the remaining time for supervised practice and one-on-one tutoring. Motherboard track ≈ 30 days; screen &amp; internal-part track ≈ 14 days. Closed Sundays and public holidays.</p>
+
+  <!-- CTA -->
+  <div class="curr-cta r">
+    <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20TECH%20HUB%2C%20please%20send%20me%20the%20full%20repair%20training%20curriculum." target="_blank" rel="noopener noreferrer" class="btn-curr-wa">
+      <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+      Request the Full Curriculum
+    </a>
+    <a href="#enrol" class="btn-curr-enrol">Enrol Now →</a>
   </div>
 </section>
 
