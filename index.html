@@ -1423,7 +1423,7 @@
     #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0.85;margin:0;font-family:'Inter',sans-serif;}
     #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
     body.tc-loading{overflow:hidden;}
-    html.reveal-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out;}
+    html.reveal-ready .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
     html.reveal-ready .reveal.is-visible{opacity:1;transform:none;}
     @media (prefers-reduced-motion: reduce){
       html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
@@ -2585,7 +2585,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     pre.parentNode&&pre.parentNode.removeChild(pre);
     pre=null;
   }
-  var safety=setTimeout(finish,6000);
+  var safety=setTimeout(finish,7000);
   function exit(){
     path.style.transition='d 0.7s cubic-bezier(0.76,0,0.24,1)';
     setPath(false);
@@ -2600,10 +2600,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   wordText.textContent=words[0];
   function tick(){
     i++;
-    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,i===1?650:420);}
+    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,550);}
     else{setTimeout(exit,600);}
   }
-  setTimeout(tick,650);
+  setTimeout(tick,700);
 })();
 
   // ── COUNT-UP STATS ──
