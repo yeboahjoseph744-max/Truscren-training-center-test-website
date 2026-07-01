@@ -1425,8 +1425,14 @@
     body.tc-loading{overflow:hidden;}
     html.reveal-ready .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
     html.reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+    html.reveal-ready .r{opacity:0;transform:translateY(22px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
+    html.reveal-ready .r.on{opacity:1;transform:none;}
+    html.reveal-ready .r.is-visible{opacity:1;transform:none;}
+    html.reveal-ready .r.d1{transition-delay:0.12s;}
+    html.reveal-ready .r.d2{transition-delay:0.24s;}
     @media (prefers-reduced-motion: reduce){
       html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+      html.reveal-ready .r{opacity:1!important;transform:none!important;transition:none!important;}
     }
     .qa-cluster{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:9000;}
     .qa-pill{position:relative;height:54px;width:54px;border-radius:27px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(45deg,var(--from),var(--to));box-shadow:0 6px 18px rgba(38,46,61,0.28);transition:width .42s cubic-bezier(0.4,0,0.2,1),box-shadow .3s;}
@@ -1962,6 +1968,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
   }, { threshold: 0.07 });
   document.querySelectorAll('.r').forEach(el => io.observe(el));
+  setTimeout(function(){document.querySelectorAll('.r:not(.on)').forEach(function(el){el.classList.add('on');});},4000);
 
   // Subject pills
   document.querySelectorAll('.pill').forEach(p => {
@@ -2560,7 +2567,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       });
     },{threshold:0.15});
     document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
-    setTimeout(function(){document.querySelectorAll(".reveal:not(.is-visible)").forEach(function(el){el.classList.add("is-visible");});},4000);
+    document.querySelectorAll(".r").forEach(function(el){obs.observe(el);});
+    setTimeout(function(){document.querySelectorAll(".reveal:not(.is-visible), .r:not(.is-visible)").forEach(function(el){el.classList.add("is-visible");});},4000);
   })();
 </script>
 <script>
