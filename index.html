@@ -246,6 +246,23 @@
       0%, 100% { opacity: 0.7; width: 160px; }
       50%       { opacity: 0.35; width: 120px; }
     }
+    .orbit-ring{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);}
+    .or1{width:110%;height:110%;border:1px solid rgba(255,105,0,0.15);}
+    .or2{width:88%;height:88%;border:1px solid rgba(0,196,140,0.15);}
+    .orbit-dot{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none;transform-origin:center center;}
+    .orbit-dot span{position:absolute;top:0;left:50%;margin-left:-6px;border-radius:50%;display:block;}
+    .od1{width:110%;height:110%;margin:-55% 0 0 -55%;animation:orbitspin 15s linear infinite reverse;}
+    .od1 span{width:12px;height:12px;background:#FF6900;box-shadow:0 0 12px 3px rgba(255,105,0,0.75);}
+    .od2{width:110%;height:110%;margin:-55% 0 0 -55%;animation:orbitspin 15s linear infinite reverse;animation-delay:-7.5s;}
+    .od2 span{width:9px;height:9px;background:#FF6900;box-shadow:0 0 10px 2px rgba(255,105,0,0.65);}
+    .od3{width:88%;height:88%;margin:-44% 0 0 -44%;animation:orbitspin 11s linear infinite;}
+    .od3 span{width:12px;height:12px;background:#00C48C;box-shadow:0 0 12px 3px rgba(0,196,140,0.75);}
+    .od4{width:88%;height:88%;margin:-44% 0 0 -44%;animation:orbitspin 11s linear infinite;animation-delay:-5.5s;}
+    .od4 span{width:8px;height:8px;background:#00C48C;box-shadow:0 0 10px 2px rgba(0,196,140,0.65);}
+    .od5{width:66%;height:66%;margin:-33% 0 0 -33%;animation:orbitspin 18s linear infinite reverse;}
+    .od5 span{width:7px;height:7px;background:#ffffff;box-shadow:0 0 10px 2px rgba(255,255,255,0.6);}
+    @keyframes orbitspin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+    @media (prefers-reduced-motion: reduce){.orbit-dot{animation:none !important;}}
 
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.45rem;
@@ -1566,6 +1583,13 @@
           class="hero-logo-img"
         >
         <div class="hero-logo-shadow"></div>
+        <div class="orbit-ring or1"></div>
+        <div class="orbit-ring or2"></div>
+        <div class="orbit-dot od1"><span></span></div>
+        <div class="orbit-dot od2"><span></span></div>
+        <div class="orbit-dot od3"><span></span></div>
+        <div class="orbit-dot od4"><span></span></div>
+        <div class="orbit-dot od5"><span></span></div>
       </div>
     </div>
 
