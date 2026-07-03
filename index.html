@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.className += ' tc-pre-active';</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>if(!sessionStorage.getItem('tc_seen'))document.documentElement.classList.add('tc-pre-active');</script>
@@ -52,10 +53,10 @@
       --border:        #e2e2e2;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: #262E3D; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff;
+      background: #262E3D;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -2697,6 +2698,6 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     <span class="qa-label">Enrol now</span>
   </a>
 </div>
-
+<script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},7000);</script>
 </body>
 </html>
