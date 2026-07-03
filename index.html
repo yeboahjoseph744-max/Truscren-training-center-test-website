@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.className += ' tc-pre-active';</script>
+<script>if(!sessionStorage.getItem('tc_seen')){document.documentElement.className+=' tc-pre-active';}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>if(!sessionStorage.getItem('tc_seen'))document.documentElement.classList.add('tc-pre-active');</script>
   <title>TRUSCREN Africa | Premium Phone Screens &amp; Repair Training in Ghana</title>
   <meta name="description" content="TRUSCREN Africa is the official African distributor of TRUSCREN premium phone screens (LCD &amp; OLED) for iPhone, Samsung, Infinix &amp; more. Home of the TRUSCREN TECH HUB phone-repair training school in Accra, Ghana. Wholesale screens &amp; professional repair courses.">
   <meta name="google-site-verification" content="PGkRMPjD599uOzFd1oo_ljj5S3ZMkBgy5vBOdu_tM2c" />
@@ -37,7 +36,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    html.tc-pre-active body > *:not(#tc-preloader){visibility:hidden;}
+    html.tc-pre-active body{visibility:hidden;}
+    html.tc-pre-active #tc-preloader{visibility:visible;}
     html.tc-pre-active{overflow:hidden;}
     :root {
       --primary:       #262E3D;
