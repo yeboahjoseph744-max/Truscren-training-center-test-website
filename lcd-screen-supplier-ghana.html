@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LCD Screen Supplier in Ghana | Wholesale Phone Displays | TRUSCREN Africa</title>
+  <meta name="description" content="Wholesale LCD and OLED phone screen supplier in Ghana. TRUSCREN Africa supplies original displays for iPhone, Samsung, Infinix, Tecno and Itel to shops and distributors across Ghana and West Africa.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    html.tc-pre-active body > *:not(#tc-preloader){visibility:hidden;}
+    html.tc-pre-active{overflow:hidden;}
+    :root {
+      --primary:       #262E3D;
+      --primary-light: #1E2738;
+      --secondary:     #005843;
+      --brand:         #FF6900;
+      --brand-h:       #E05500;
+      --teal:          #007A5E;
+      --teal-d:        #005843;
+      --dark:          #1a1a1a;
+      --mid:           #555;
+      --light-bg:      #f6f6f6;
+      --border:        #e2e2e2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
+      background: var(--primary);
+      height: 64px;
+      border-radius: 0;
+      display: flex; align-items: center;
+      box-shadow: 0 2px 16px rgba(38,46,61,0.28);
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 22px rgba(38,46,61,0.4); }
+    .nav-in {
+      width: 100%; max-width: 1280px;
+      margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .logo { text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 0.55rem; }
+    .logo-badge { height: 42px; width: auto; }
+    .logo-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .nav-srch {
+      flex: 1; max-width: 360px; position: relative;
+    }
+    .nav-srch input {
+      width: 100%;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.17);
+      border-radius: 3px;
+      padding: 0.45rem 0.875rem 0.45rem 2.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; color: #fff; outline: none;
+      transition: background 0.2s;
+    }
+    .nav-srch input::placeholder { color: rgba(255,255,255,0.42); }
+    .nav-srch input:focus { background: rgba(255,255,255,0.17); }
+    .srch-ico {
+      position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,0.45); pointer-events: none;
+    }
+    .nav-links{display:flex;gap:1.6rem;list-style:none;padding:0;margin:0;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;letter-spacing:0.01em;transition:color 0.2s;white-space:nowrap;}
+    .nav-links a:hover{color:#FF6900;}
+    .nav-links a.active{color:#FF6900;}
+    .nav-gap { flex: 1; }
+    .nav-auth { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .btn-si {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.42rem 0.875rem; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.32);
+      outline: none; box-shadow: none;
+      display: inline-flex; align-items: center;
+      background: transparent;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .btn-si:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    .btn-reg {
+      background: var(--brand); color: #fff; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.42rem 0.875rem; border-radius: 3px;
+      transition: background 0.18s;
+    }
+    .btn-reg:hover { background: var(--brand-h); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px; margin-left: auto;
+    }
+    .hamburger span {
+      display: block; width: 21px; height: 2px;
+      background: #fff; border-radius: 2px;
+    }
+
+    /* Mobile overlay */
+    #mob-menu {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: var(--primary); z-index: 1050;
+      padding: 1.25rem 1.5rem; overflow-y: auto;
+    }
+    #mob-menu.open { display: block; }
+    .mob-srch {
+      display: flex; border-radius: 3px; overflow: hidden; margin-bottom: 1.25rem;
+    }
+    .mob-srch input {
+      flex: 1; padding: 0.7rem 0.875rem; border: none; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem;
+    }
+    .mob-srch button {
+      background: var(--brand); border: none; padding: 0 0.875rem; cursor: pointer; color: #fff;
+    }
+    .mob-links { list-style: none; margin-bottom: 1.25rem; }
+    .mob-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mob-links a {
+      display: block; padding: 0.825rem 0;
+      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+    }
+    .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
+    .mob-auth a {
+      text-align: center; padding: 0.7rem; border-radius: 3px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    }
+    .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    .mob-auth .btn-reg { background: var(--brand); color: #fff; }
+
+    /* ── SECTION UTIL ── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .sec-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
+    }
+    .sec-h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2;
+    }
+
+    /* ── REVEAL ── */
+    .r { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .r.on { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── FOOTER ── */
+    footer { background: #111; padding: 3.5rem 1.5rem 2rem; }
+    .foot-in { max-width: 1280px; margin: 0 auto; }
+    .foot-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+      gap: 2.5rem; padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 1.75rem;
+    }
+    .foot-brand .foot-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .foot-logo-badge { height: 38px; width: auto; }
+    .foot-logo-name {
+      font-size: 1.2rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .foot-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.65; max-width: 200px; margin-bottom: 1rem; }
+    .foot-social { display: flex; gap: 0.45rem; }
+    .soc {
+      width: 30px; height: 30px; background: rgba(255,255,255,0.08); border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: background 0.16s, color 0.16s;
+    }
+    .soc:hover { background: var(--brand); color: #fff; }
+    .foot-col h5 {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #fff; margin-bottom: 0.825rem;
+    }
+    .foot-col ul { list-style: none; }
+    .foot-col li { margin-bottom: 0.45rem; }
+    .foot-col a {
+      color: rgba(255,255,255,0.42); text-decoration: none;
+      font-size: 0.78rem; transition: color 0.16s;
+    }
+    .foot-col a:hover { color: var(--brand); }
+    .foot-btm {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+    }
+    .foot-btm-links { display: flex; gap: 1.375rem; }
+    .foot-btm a { color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.16s; }
+    .foot-btm a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── SEARCH ── */
+    .srch-msg {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 1001;
+      background: #fff; border-radius: 5px; padding: 0.5rem 0.75rem;
+      font-size: 0.75rem; color: #555; line-height: 1.45;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18); display: none;
+    }
+    .srch-msg.show { display: block; }
+
+    /* ── SIGNIN MODAL ── */
+    #signin-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #signin-overlay.open { display: flex; }
+    #signin-modal {
+      width: 100%; max-width: 880px; height: 560px;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @keyframes si-modal-in {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .si-left {
+      background: var(--primary); position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; padding: 2rem;
+    }
+    .si-left::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 25% 75%, rgba(255,105,0,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 75% 25%, rgba(0,88,67,0.18) 0%, transparent 60%);
+    }
+    .si-ripples { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .si-ripples span {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: si-ripple 3.5s ease-in-out infinite;
+    }
+    @keyframes si-ripple {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.35; }
+      50%       { transform: translate(-50%, -50%) scale(0.92); opacity: 0.18; }
+    }
+    .si-float {
+      position: absolute; width: 28px; height: 28px;
+      animation: si-float 4s ease-in-out infinite;
+      opacity: 0.4; z-index: 1;
+    }
+    .si-float:nth-child(1) { top: 14%; left: 10%; animation-delay: 0s; }
+    .si-float:nth-child(2) { top: 16%; right: 10%; animation-delay: 0.9s; }
+    .si-float:nth-child(3) { bottom: 18%; left: 9%; animation-delay: 1.7s; }
+    .si-float:nth-child(4) { bottom: 14%; right: 12%; animation-delay: 2.4s; }
+    @keyframes si-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-9px); }
+    }
+    .si-left-cnt {
+      position: relative; z-index: 2; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    }
+    .si-badge-img { height: 68px; width: auto; }
+    .si-brand-name {
+      font-size: 1.4rem; font-weight: 800; letter-spacing: 0.06em;
+      color: #fff; text-transform: uppercase;
+    }
+    .si-brand-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 190px; }
+    .si-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.25rem; }
+    .si-stat {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 3px;
+      background: rgba(255,105,0,0.14); border: 1px solid rgba(255,105,0,0.28);
+      color: var(--brand);
+    }
+    .si-right {
+      background: #fff; display: flex; flex-direction: column;
+      justify-content: center; padding: 2.25rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .si-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .si-close:hover { color: #333; background: #f2f2f2; }
+    .si-tabs {
+      display: flex; border-bottom: 2px solid #f0f0f0; margin-bottom: 1.25rem; gap: 1.25rem;
+    }
+    .si-tab {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700;
+      color: #aaa; padding: 0 0 0.625rem; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; transition: color 0.18s, border-color 0.18s;
+    }
+    .si-tab.active { color: var(--dark); border-bottom-color: var(--brand); }
+    .si-panel { display: none; }
+    .si-panel.active { display: block; }
+    .si-right-scroll { overflow-y: auto; max-height: 460px; }
+    .si-h2 { font-size: 1.6rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; }
+    .si-sub { font-size: 0.8rem; color: var(--mid); }
+    .si-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.7rem; }
+    .si-label { font-size: 0.75rem; font-weight: 600; color: var(--dark); }
+    .si-label span { color: #e53e3e; }
+    .si-input-wrap { border-radius: 8px; padding: 2px; transition: background 0.25s; }
+    .si-input {
+      width: 100%; background: #f7f7f7; border: none; outline: none;
+      border-radius: 6px; padding: 0.6rem 2.4rem 0.6rem 0.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--dark);
+      box-shadow: 0 0 0 1px rgba(25,28,33,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .si-input.si-input-select { padding-right: 0.8rem; }
+    .si-input::placeholder { color: #bbb; }
+    .si-input:focus { box-shadow: 0 0 0 2px var(--brand); }
+    .si-eye {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #bbb; padding: 0.15rem;
+      transition: color 0.18s; line-height: 1;
+    }
+    .si-eye:hover { color: var(--dark); }
+    .si-err { font-size: 0.68rem; color: #e53e3e; display: none; margin-top: 0.1rem; }
+    .si-err.show { display: block; }
+    .si-auth-err {
+      font-size: 0.75rem; color: #e53e3e; background: #fff5f5;
+      border: 1px solid #fed7d7; border-radius: 6px;
+      padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; display: none;
+    }
+    .si-auth-err.show { display: block; }
+    .si-submit {
+      width: 100%; padding: 0.68rem;
+      background: var(--brand); color: #fff; border: none;
+      border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.84rem; font-weight: 700; cursor: pointer;
+      transition: background 0.18s;
+      margin-top: 0.1rem;
+    }
+    .si-submit:hover { background: var(--brand-h); }
+    .si-footer { font-size: 0.75rem; color: #999; text-align: center; }
+    .si-footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
+    .si-signup-success { display: none; text-align: center; padding: 1.5rem 0; }
+    .si-signup-success.show { display: block; }
+    .si-signup-success-ico {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(0,88,67,0.1); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .si-signup-success h3 { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; }
+    .si-signup-success p { font-size: 0.8rem; color: #666; line-height: 1.55; }
+
+    /* ── DASHBOARD MODAL ── */
+    #dash-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2100;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #dash-overlay.open { display: flex; }
+    #dash-modal {
+      width: 100%; max-width: 440px;
+      background: #fff; border-radius: 14px; overflow: hidden;
+      padding: 2rem; position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+      animation: si-modal-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .dash-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .dash-close:hover { color: #333; background: #f2f2f2; }
+    .dash-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.375rem; }
+    .dash-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 800; flex-shrink: 0;
+    }
+    .dash-header-info h2 { font-size: 1rem; font-weight: 700; color: var(--dark); }
+    .dash-header-info p  { font-size: 0.78rem; color: #888; }
+    .dash-sec-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #aaa; margin-bottom: 0.5rem; margin-top: 1rem;
+    }
+    .dash-course-card {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #f7f7f7; border-radius: 8px; padding: 0.75rem 0.875rem;
+    }
+    .dash-course-name { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+    .dash-level-pill {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.18rem 0.5rem; border-radius: 3px;
+      background: rgba(255,105,0,0.1); color: var(--brand);
+    }
+    .dash-progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.75rem; color: #666; margin-bottom: 0.4rem;
+    }
+    .dash-progress-track {
+      height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden;
+    }
+    .dash-progress-fill {
+      height: 100%; background: var(--brand); border-radius: 3px;
+      transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .dash-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .dash-info-item label { display: block; font-size: 0.68rem; color: #aaa; margin-bottom: 0.15rem; }
+    .dash-info-item span  { font-size: 0.82rem; font-weight: 600; color: var(--dark); }
+    .btn-dash-logout {
+      width: 100%; margin-top: 1.375rem;
+      padding: 0.6rem; border-radius: 6px; border: 1.5px solid #e2e2e2;
+      background: none; font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 600; color: #666; cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+    .btn-dash-logout:hover { border-color: #e53e3e; color: #e53e3e; }
+
+    /* Nav auth states */
+    .nav-student-name { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; }
+    .btn-dashboard {
+      background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25);
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
+      padding: 0.42rem 0.875rem; border-radius: 3px; cursor: pointer;
+      transition: background 0.18s;
+    }
+    .btn-dashboard:hover { background: rgba(255,255,255,0.18); }
+    .btn-logout-nav {
+      background: none; color: rgba(255,255,255,0.6); border: none;
+      font-family: 'Inter', sans-serif; font-size: 0.78rem; cursor: pointer;
+      padding: 0.42rem 0.5rem; transition: color 0.18s;
+    }
+    .btn-logout-nav:hover { color: #fff; }
+
+    /* ── PRELOADER ── */
+    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
+    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0.85;margin:0;font-family:'Inter',sans-serif;}
+    #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
+    body.tc-loading{overflow:hidden;}
+    html.reveal-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out;}
+    html.reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+    @media (prefers-reduced-motion: reduce){
+      html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+    }
+
+    /* ── QA CLUSTER ── */
+    .qa-cluster{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:9000;}
+    .qa-pill{position:relative;height:54px;width:54px;border-radius:27px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(45deg,var(--from),var(--to));box-shadow:0 6px 18px rgba(38,46,61,0.28);transition:width .42s cubic-bezier(0.4,0,0.2,1),box-shadow .3s;}
+    .qa-ico{position:absolute;left:0;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .qa-label{white-space:nowrap;font-weight:700;font-size:0.92rem;opacity:0;padding-left:54px;padding-right:22px;transition:opacity .3s .12s;}
+    .qa-pill:hover{width:172px;box-shadow:0 10px 26px rgba(38,46,61,0.4);}
+    .qa-pill:hover .qa-label{opacity:1;}
+
+    /* ── PAGE HERO BANNER ── */
+    .ph-banner{
+      background:linear-gradient(135deg,#ffffff 0%,#f6f9f8 55%,#fff4ec 100%);
+      padding:5.5rem 1.5rem 4rem;margin-top:72px;position:relative;overflow:hidden;
+    }
+    .ph-banner::before{
+      content:'';position:absolute;top:-20%;right:-10%;width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,105,0,0.15),transparent 70%);
+      filter:blur(50px);pointer-events:none;z-index:0;
+    }
+    .ph-banner::after{
+      content:'';position:absolute;bottom:-15%;left:-8%;width:380px;height:380px;border-radius:50%;
+      background:radial-gradient(circle,rgba(0,122,94,0.13),transparent 70%);
+      filter:blur(50px);pointer-events:none;z-index:0;
+    }
+    .ph-in{
+      max-width:1280px;margin:0 auto;position:relative;z-index:1;
+      display:flex;align-items:center;gap:1.25rem;flex-direction:column;text-align:center;
+    }
+    .ph-copy h1{
+      font-size:clamp(2rem,4.5vw,3rem);font-weight:800;color:#262E3D;
+      letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.65rem;
+    }
+    .ph-copy p{font-size:1rem;color:#5a6275;line-height:1.65;max-width:620px;margin:0 auto;}
+    .ph-tag{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      background:rgba(255,105,0,0.08);border:1px solid rgba(255,105,0,0.25);
+      border-radius:3px;padding:0.26rem 0.75rem;margin-bottom:1.125rem;
+      font-size:0.7rem;font-weight:700;color:var(--brand);
+      letter-spacing:0.08em;text-transform:uppercase;
+    }
+
+    /* ── SLIM STATS STRIP ── */
+    .prod-stats-strip{
+      max-width:1280px;margin:2rem auto 0;padding:1.75rem 0;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      background:#f6f9f8;border-radius:8px;
+      border:1px solid #eaeeed;
+    }
+    .pss-item{text-align:center;padding:0.85rem 0.5rem;}
+    .pss-item+.pss-item{border-left:1px solid #eaeeed;}
+    .pss-n{font-size:1.35rem;font-weight:800;letter-spacing:-0.03em;line-height:1;}
+    .pss-item:nth-child(odd) .pss-n{color:#FF6900;}
+    .pss-item:nth-child(even) .pss-n{color:#007A5E;}
+    .pss-l{font-size:0.68rem;color:#5a6275;margin-top:0.25rem;line-height:1.35;}
+
+    /* ── SERVICE CONTENT ── */
+    .svc-section{padding:4.5rem 1.5rem;background:#fff;}
+    .svc-section.alt{background:#f6f9f8;}
+    .svc-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+    .svc-col h3{font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:1.125rem;letter-spacing:-0.02em;line-height:1.2;}
+    .svc-list{list-style:none;}
+    .svc-list li{
+      display:flex;gap:0.65rem;font-size:0.9rem;color:#3a3a3a;
+      margin-bottom:0.875rem;line-height:1.62;align-items:flex-start;
+    }
+    .svc-list li::before{
+      content:'✓';color:var(--brand);font-weight:800;flex-shrink:0;
+      font-size:0.95rem;margin-top:0.08rem;
+    }
+
+    /* Why grid (4 columns) */
+    .svc-why-section{padding:4.5rem 1.5rem;background:var(--primary);}
+    .svc-why-in{max-width:1280px;margin:0 auto;}
+    .svc-why-in .sec-label{color:rgba(255,105,0,0.85);}
+    .svc-why-in h2{font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#fff;letter-spacing:-0.025em;line-height:1.2;margin-bottom:2rem;}
+    .svc-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.125rem;}
+    .svc-why-card{
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
+      border-radius:8px;padding:1.375rem;
+    }
+    .svc-why-num{
+      font-size:1.5rem;font-weight:800;color:var(--brand);
+      letter-spacing:-0.04em;line-height:1;margin-bottom:0.5rem;
+    }
+    .svc-why-card h4{font-size:0.875rem;font-weight:700;color:#fff;margin-bottom:0.3rem;}
+    .svc-why-card p{font-size:0.78rem;color:rgba(255,255,255,0.52);line-height:1.55;}
+
+    /* CTA */
+    .svc-cta{background:var(--secondary);padding:4.5rem 1.5rem;}
+    .svc-cta-in{max-width:800px;margin:0 auto;text-align:center;}
+    .svc-cta .sec-label{color:rgba(255,105,0,0.85);}
+    .svc-cta h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:0.75rem;line-height:1.12;}
+    .svc-cta p{font-size:0.9rem;color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:2rem;max-width:520px;margin-left:auto;margin-right:auto;}
+    .svc-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    .btn-wa-lg{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      background:#25D366;color:#fff;text-decoration:none;
+      font-size:0.9rem;font-weight:700;padding:0.875rem 1.625rem;
+      border-radius:6px;transition:background 0.18s,transform 0.18s;
+      box-shadow:0 4px 18px rgba(37,211,102,0.28);
+    }
+    .btn-wa-lg:hover{background:#1ebe5d;transform:translateY(-2px);}
+    .btn-call-lg{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      background:transparent;color:#fff;text-decoration:none;
+      font-size:0.9rem;font-weight:600;padding:0.875rem 1.625rem;
+      border-radius:6px;border:1.5px solid rgba(255,255,255,0.38);
+      transition:background 0.18s,border-color 0.18s;
+    }
+    .btn-call-lg:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.7);}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .svc-why-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .svc-in{grid-template-columns:1fr;gap:2.5rem;}
+      .foot-top{grid-template-columns:1fr 1fr;gap:1.5rem;}
+      .foot-top > .foot-brand{grid-column:1/-1;}
+      .prod-stats-strip{grid-template-columns:1fr 1fr;}
+      .pss-item:nth-child(3){border-left:none;}
+      .pss-item:nth-child(n+3){border-top:1px solid #eaeeed;}
+    }
+    @media(max-width:640px){
+      #navbar{height:58px;}
+      .nav-srch,.nav-links{display:none;}
+      .hamburger{display:flex;}
+      .foot-top{grid-template-columns:1fr;}
+      .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
+      .foot-btm-links{justify-content:center;flex-wrap:wrap;gap:0.875rem;}
+      .svc-why-grid{grid-template-columns:1fr;}
+      .qa-cluster{right:14px;bottom:14px;gap:10px;}
+      .qa-pill{height:50px;width:50px;}
+      .qa-ico{width:50px;height:50px;}
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="index.html" class="logo">
+      <img src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="logo-badge">
+      <span class="logo-wordmark">TRUS<span style="color:#005843;">CREN</span></span>
+    </a>
+
+    <div class="nav-srch">
+      <svg class="srch-ico" width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="nav-srch-input" placeholder="Search courses, skills, repairs...">
+      <div class="srch-msg" id="srch-msg"></div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="tech-hub.html">TECH HUB</a></li>
+      <li><a href="agent.html">Become an Agent</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-gap"></div>
+
+    <div class="nav-auth" id="nav-auth-out">
+      <a href="#" class="btn-si">Sign In</a>
+      <a href="tech-hub.html#enrol" class="btn-reg">Enrol Now</a>
+    </div>
+    <div class="nav-auth" id="nav-auth-in" style="display:none;">
+      <span class="nav-student-name" id="nav-student-name"></span>
+      <button class="btn-dashboard" id="btn-open-dash">Dashboard</button>
+      <button class="btn-logout-nav" id="btn-logout-nav">Log Out</button>
+    </div>
+
+    <button class="hamburger" id="ham-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mob-menu">
+  <div class="mob-srch" style="flex-wrap:wrap;">
+    <input type="text" id="mob-srch-input" placeholder="Search courses, skills, repairs...">
+    <button id="mob-srch-btn">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="srch-msg mob-srch-msg" id="mob-srch-msg" style="position:static;margin-top:0.4rem;border-radius:4px;"></div>
+  </div>
+  <ul class="mob-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="tech-hub.html">TECH HUB</a></li>
+    <li><a href="agent.html">Become an Agent</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mob-auth" id="mob-auth-out">
+    <a href="#" class="btn-si">Sign In</a>
+    <a href="tech-hub.html#enrol" class="btn-reg">Enrol in the 2026 Cohort</a>
+  </div>
+  <div class="mob-auth" id="mob-auth-in" style="display:none;">
+    <p id="mob-student-name" style="color:rgba(255,255,255,0.55);font-size:0.8rem;padding:0.2rem 0;font-weight:500;"></p>
+    <button id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;">My Dashboard</button>
+    <button id="mob-logout" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:none;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.25);width:100%;">Log Out</button>
+  </div>
+</div>
+
+
+<!-- ══════════ HERO BANNER ══════════ -->
+<section class="ph-banner">
+  <div class="ph-in">
+    <div class="ph-copy r">
+      <div class="ph-tag">LCD Screen Supplier · Ghana</div>
+      <h1>LCD Screen Supplier in Ghana</h1>
+      <p>TRUSCREN Africa is Ghana's trusted wholesale supplier of genuine LCD and OLED phone screens. We supply repair shops, resellers and distributors across Ghana and West Africa with premium displays at competitive trade prices.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ STATS STRIP ══════════ -->
+<div class="wrap">
+  <div class="prod-stats-strip r">
+    <div class="pss-item"><div class="pss-n">10+</div><div class="pss-l">Years in screens</div></div>
+    <div class="pss-item"><div class="pss-n">38</div><div class="pss-l">Countries served</div></div>
+    <div class="pss-item"><div class="pss-n">300K+</div><div class="pss-l">Screens / month</div></div>
+    <div class="pss-item"><div class="pss-n">&lt;0.5%</div><div class="pss-l">Defect rate</div></div>
+  </div>
+</div>
+
+
+<!-- ══════════ WHAT WE SUPPLY + WHO WE SERVE ══════════ -->
+<section class="svc-section">
+  <div class="svc-in">
+
+    <div class="r">
+      <div class="sec-label">// What We Supply</div>
+      <h3>Genuine LCD and OLED Phone Screens</h3>
+      <ul class="svc-list">
+        <li>iPhone LCD and OLED screens — all popular models</li>
+        <li>Samsung LCD and OLED displays — A, J and S series</li>
+        <li>Infinix, Tecno and Itel LCD screens</li>
+        <li>High colour gamut, Full HD clarity, high-brightness displays</li>
+        <li>Over 300,000 screens shipped monthly across 38 countries</li>
+      </ul>
+    </div>
+
+    <div class="r d1">
+      <div class="sec-label">// Who We Serve</div>
+      <h3>Wholesale Buyers Across Ghana</h3>
+      <ul class="svc-list">
+        <li>Phone repair shops and certified technicians</li>
+        <li>Wholesale screen resellers and distributors</li>
+        <li>Mobile phone shops and spare parts dealers</li>
+        <li>Corporate repair and maintenance teams</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════ WHY SOURCE FROM TRUSCREN ══════════ -->
+<section class="svc-why-section">
+  <div class="svc-why-in r">
+    <div class="sec-label">// Why Source From TRUSCREN</div>
+    <h2>Ghana's Official TRUSCREN Distributor</h2>
+    <div class="svc-why-grid">
+      <div class="svc-why-card r">
+        <div class="svc-why-num">01</div>
+        <h4>Direct Factory Supply</h4>
+        <p>Official TRUSCREN distributor with direct factory supply — no middlemen, no grey-market copies.</p>
+      </div>
+      <div class="svc-why-card r d1">
+        <div class="svc-why-num">02</div>
+        <h4>Industry-Low Defect Rate</h4>
+        <p>Less than 0.5% defect rate with a 12-month quality guarantee on every screen we supply.</p>
+      </div>
+      <div class="svc-why-card r d2">
+        <div class="svc-why-num">03</div>
+        <h4>Reliable Local Stock</h4>
+        <p>Stock held locally in Ghana so your business never waits for imports or runs dry during peak periods.</p>
+      </div>
+      <div class="svc-why-card r d3">
+        <div class="svc-why-num">04</div>
+        <h4>Fast WhatsApp Ordering</h4>
+        <p>Order and get pricing instantly on WhatsApp. Same-day dispatch available for in-stock items in Accra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ CTA ══════════ -->
+<section class="svc-cta">
+  <div class="svc-cta-in r">
+    <div class="sec-label">// Get Wholesale Pricing</div>
+    <h2>Ready to Source LCD Screens in Ghana?</h2>
+    <p>Contact TRUSCREN Africa today for wholesale pricing, trade accounts, and bulk screen supply across Ghana and West Africa.</p>
+    <div class="svc-cta-btns">
+      <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%20want%20wholesale%20screen%20pricing" target="_blank" rel="noopener noreferrer" class="btn-wa-lg">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+        Get Wholesale Pricing
+      </a>
+      <a href="tel:+233541224699" class="btn-call-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Us
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">
+          <img src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="foot-logo-badge">
+          <span class="foot-logo-name">TRUSCREN</span>
+        </div>
+        <p>TRUSCREN Ghana — official distributor of premium TRUSCREN phone screens and home of the TRUSCREN TECH HUB repair training school.</p>
+        <div class="foot-social">
+          <a href="#" class="soc" aria-label="Facebook" rel="noopener">f</a>
+          <a href="#" class="soc" aria-label="X / Twitter" rel="noopener">𝕏</a>
+          <a href="#" class="soc" aria-label="LinkedIn" rel="noopener">in</a>
+          <a href="#" class="soc" aria-label="YouTube" rel="noopener">▶</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Training</h5>
+        <ul>
+          <li><a href="tech-hub.html">Screen Repair</a></li>
+          <li><a href="tech-hub.html">Micro-Soldering</a></li>
+          <li><a href="tech-hub.html">EV Battery Tech</a></li>
+          <li><a href="tech-hub.html">Data Recovery</a></li>
+          <li><a href="tech-hub.html">Software &amp; Flashing</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="#">Starter Certificate</a></li>
+          <li><a href="#">Advanced Diploma</a></li>
+          <li><a href="#">Full-Time Cohort</a></li>
+          <li><a href="#">Weekend Intensive</a></li>
+          <li><a href="#">Evening Classes</a></li>
+          <li><a href="#">Corporate Training</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="products.html">Phone Screens</a></li>
+          <li><a href="products.html">LCD Displays</a></li>
+          <li><a href="products.html">OLED Screens</a></li>
+          <li><a href="products.html">Trade Pricing</a></li>
+          <li><a href="agent.html">Become an Agent</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About TRUSCREN Ghana</a></li>
+          <li><a href="agent.html">Partner With Us</a></li>
+          <li><a href="contact.html">Locations</a></li>
+          <li><a href="https://wa.me/233541224699" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-btm">
+      <span>© 2026 TRUSCREN Ghana. All rights reserved.</span>
+      <div class="foot-btm-links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Settings</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
+<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN TECH HUB Account">
+  <div id="signin-modal">
+    <div class="si-left">
+      <div class="si-ripples">
+        <span style="width:70px;height:70px;animation-delay:0s"></span>
+        <span style="width:150px;height:150px;animation-delay:0.2s"></span>
+        <span style="width:230px;height:230px;animation-delay:0.4s"></span>
+        <span style="width:310px;height:310px;animation-delay:0.6s"></span>
+        <span style="width:390px;height:390px;animation-delay:0.8s;border-style:dashed"></span>
+      </div>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/><line x1="5" y1="12" x2="9" y2="12" stroke="#FF6900" stroke-width="2.5"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+      <div class="si-left-cnt">
+        <img src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="si-badge-img">
+        <div class="si-brand-name">TRUSCREN</div>
+        <div class="si-brand-tagline">Professional Device Repair Training — Accra · Kumasi · Takoradi</div>
+        <div class="si-stats">
+          <span class="si-stat">&lt;0.5% Defect Rate</span>
+          <span class="si-stat">3,500+ Graduates</span>
+        </div>
+      </div>
+    </div>
+    <div class="si-right">
+      <button class="si-close" id="si-close-btn" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="si-right-scroll">
+        <div class="si-tabs">
+          <button class="si-tab active" data-panel="panel-signin">Sign In</button>
+          <button class="si-tab" data-panel="panel-signup">Sign Up</button>
+        </div>
+        <div class="si-panel active" id="panel-signin">
+          <h2 class="si-h2">Welcome back.</h2>
+          <p class="si-sub" style="margin-bottom:1.125rem;">Sign in to your TRUSCREN TECH HUB account</p>
+          <div class="si-auth-err" id="si-login-err"></div>
+          <form id="si-form" novalidate>
+            <div class="si-field">
+              <label class="si-label" for="si-email">Email Address <span>*</span></label>
+              <div class="si-input-wrap" style="position:relative;">
+                <input class="si-input" type="email" id="si-email" placeholder="Enter your email address" autocomplete="email">
+              </div>
+              <span class="si-err" id="si-email-err">Please enter a valid email address.</span>
+            </div>
+            <div class="si-field" style="margin-bottom:1rem;">
+              <label class="si-label" for="si-pw">Password <span>*</span></label>
+              <div class="si-input-wrap" id="si-pw-wrap" style="position:relative;">
+                <input class="si-input" type="password" id="si-pw" placeholder="Enter your password" autocomplete="current-password">
+                <button type="button" class="si-eye" id="si-eye-btn" aria-label="Toggle password visibility">
+                  <svg id="si-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="si-err" id="si-pw-err">Password must be at least 6 characters.</span>
+            </div>
+            <button type="submit" class="si-submit" id="si-login-btn">Sign In →</button>
+            <div class="si-footer" style="margin-top:0.875rem;">
+              No account? <a href="#" id="si-switch-signup">Create one free →</a>
+            </div>
+          </form>
+        </div>
+        <div class="si-panel" id="panel-signup">
+          <h2 class="si-h2">Create account.</h2>
+          <p class="si-sub" style="margin-bottom:1.125rem;">Join TRUSCREN TECH HUB — free to sign up</p>
+          <div class="si-signup-success" id="si-signup-ok">
+            <div class="si-signup-success-ico">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Check your email!</h3>
+            <p>We've sent a confirmation link. Click it to activate your account, then sign in.</p>
+            <div class="si-footer" style="margin-top:0.5rem;"><a href="#" id="si-goto-login">Go to Sign In →</a></div>
+          </div>
+          <div class="si-auth-err" id="si-signup-err"></div>
+          <form id="su-form" novalidate>
+            <div class="si-field">
+              <label class="si-label" for="su-name">Full Name <span>*</span></label>
+              <div class="si-input-wrap">
+                <input class="si-input" type="text" id="su-name" placeholder="e.g. Kwame Asante" autocomplete="name">
+              </div>
+              <span class="si-err" id="su-name-err">Full name is required.</span>
+            </div>
+            <div class="si-field">
+              <label class="si-label" for="su-phone">Phone Number <span>*</span></label>
+              <div class="si-input-wrap">
+                <input class="si-input" type="text" id="su-phone" placeholder="e.g. 0244 000 000" autocomplete="tel">
+              </div>
+              <span class="si-err" id="su-phone-err">Phone number is required.</span>
+            </div>
+            <div class="si-field">
+              <label class="si-label" for="su-email">Email Address <span>*</span></label>
+              <div class="si-input-wrap">
+                <input class="si-input" type="email" id="su-email" placeholder="you@example.com" autocomplete="email">
+              </div>
+              <span class="si-err" id="su-email-err">Please enter a valid email.</span>
+            </div>
+            <div class="si-field">
+              <label class="si-label" for="su-pw">Password <span>*</span></label>
+              <div class="si-input-wrap" style="position:relative;">
+                <input class="si-input" type="password" id="su-pw" placeholder="At least 6 characters" autocomplete="new-password">
+                <button type="button" class="si-eye" id="su-eye-btn" aria-label="Toggle password visibility">
+                  <svg id="su-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="si-err" id="su-pw-err">Password must be at least 6 characters.</span>
+            </div>
+            <div class="si-field" style="margin-bottom:1rem;">
+              <label class="si-label" for="su-course">Course <span>*</span></label>
+              <div class="si-input-wrap">
+                <select class="si-input si-input-select" id="su-course">
+                  <option value="">Select a course...</option>
+                  <optgroup label="Phone Screen Repair">
+                    <option value="Phone Screen Repair|Beginner">Phone Screen Repair — Beginner</option>
+                    <option value="Phone Screen Repair|Advanced">Phone Screen Repair — Advanced</option>
+                  </optgroup>
+                  <optgroup label="Circuit Board Soldering">
+                    <option value="Circuit Board Soldering|Beginner">Circuit Board Soldering — Beginner</option>
+                    <option value="Circuit Board Soldering|Advanced">Circuit Board Soldering — Advanced</option>
+                  </optgroup>
+                  <optgroup label="EV Battery Diagnostics">
+                    <option value="EV Battery Diagnostics|Beginner">EV Battery Diagnostics — Beginner</option>
+                    <option value="EV Battery Diagnostics|Advanced">EV Battery Diagnostics — Advanced</option>
+                  </optgroup>
+                </select>
+              </div>
+              <span class="si-err" id="su-course-err">Please select a course.</span>
+            </div>
+            <button type="submit" class="si-submit" id="su-submit-btn">Create Account →</button>
+            <div class="si-footer" style="margin-top:0.875rem;">
+              Already have an account? <a href="#" id="si-switch-login">Sign in →</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ DASHBOARD MODAL ══════════ -->
+<div id="dash-overlay" role="dialog" aria-modal="true" aria-label="Student Dashboard">
+  <div id="dash-modal">
+    <button class="dash-close" id="dash-close-btn" aria-label="Close dashboard">
+      <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="dash-header">
+      <div class="dash-avatar" id="dash-avatar">S</div>
+      <div class="dash-header-info">
+        <h2 id="dash-name">—</h2>
+        <p id="dash-email">—</p>
+      </div>
+    </div>
+    <div class="dash-sec-label">Enrolled Course</div>
+    <div class="dash-course-card">
+      <div class="dash-course-name" id="dash-course">—</div>
+      <div class="dash-level-pill" id="dash-level">—</div>
+    </div>
+    <div class="dash-sec-label">Progress</div>
+    <div class="dash-progress-meta">
+      <span>Course completion</span>
+      <span id="dash-pct">0%</span>
+    </div>
+    <div class="dash-progress-track">
+      <div class="dash-progress-fill" id="dash-progress-fill" style="width:0%"></div>
+    </div>
+    <div class="dash-sec-label">Contact Info</div>
+    <div class="dash-info-grid">
+      <div class="dash-info-item">
+        <label>Phone</label>
+        <span id="dash-phone">—</span>
+      </div>
+      <div class="dash-info-item">
+        <label>Enrolled</label>
+        <span id="dash-since">—</span>
+      </div>
+    </div>
+    <button class="btn-dash-logout" id="dash-logout-btn">Log Out</button>
+  </div>
+</div>
+
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+  const hamBtn = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+  document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+  setTimeout(() => document.querySelectorAll('.r:not(.on)').forEach(el => el.classList.add('on')), 800);
+
+  // ── SUPABASE AUTH + DASHBOARD ──
+  (function () {
+    const SUPA_URL = 'https://dudbrvrbzpgzjqngvjim.supabase.co';
+    const SUPA_KEY = 'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19';
+    const { createClient } = supabase;
+    const sb = createClient(SUPA_URL, SUPA_KEY);
+
+    const overlay      = document.getElementById('signin-overlay');
+    const closeBtn     = document.getElementById('si-close-btn');
+    const loginForm    = document.getElementById('si-form');
+    const signupForm   = document.getElementById('su-form');
+    const loginErrEl   = document.getElementById('si-login-err');
+    const signupErrEl  = document.getElementById('si-signup-err');
+    const signupOkEl   = document.getElementById('si-signup-ok');
+    const loginBtn     = document.getElementById('si-login-btn');
+    const suBtn        = document.getElementById('su-submit-btn');
+    const eyeBtn       = document.getElementById('si-eye-btn');
+    const eyeSvg       = document.getElementById('si-eye-svg');
+    const pwInput      = document.getElementById('si-pw');
+    const suEyeBtn     = document.getElementById('su-eye-btn');
+    const suEyeSvg     = document.getElementById('su-eye-svg');
+    const suPwInput    = document.getElementById('su-pw');
+    const navAuthOut   = document.getElementById('nav-auth-out');
+    const navAuthIn    = document.getElementById('nav-auth-in');
+    const navName      = document.getElementById('nav-student-name');
+    const mobAuthOut   = document.getElementById('mob-auth-out');
+    const mobAuthIn    = document.getElementById('mob-auth-in');
+    const mobName      = document.getElementById('mob-student-name');
+    const dashOverlay  = document.getElementById('dash-overlay');
+    const dashCloseBtn = document.getElementById('dash-close-btn');
+    const dashLogout   = document.getElementById('dash-logout-btn');
+    const btnOpenDash  = document.getElementById('btn-open-dash');
+    const mobOpenDash  = document.getElementById('mob-open-dash');
+    const btnLogoutNav = document.getElementById('btn-logout-nav');
+    const mobLogoutBtn = document.getElementById('mob-logout');
+
+    const EYE_OPEN   = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    const EYE_CLOSED = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+
+    let currentProfile = null;
+    let currentUser    = null;
+
+    function openModal(tab) {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      switchTab(tab || 'signin');
+      setTimeout(() => {
+        const f = tab === 'signup' ? document.getElementById('su-name') : document.getElementById('si-email');
+        if (f) f.focus();
+      }, 150);
+    }
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.btn-si').forEach(btn => {
+      if (btn.id === 'btn-logout-nav') return;
+      btn.addEventListener('click', e => { e.preventDefault(); openModal('signin'); });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (overlay.classList.contains('open'))    closeModal();
+        if (dashOverlay.classList.contains('open')) closeDash();
+      }
+    });
+
+    function switchTab(name) {
+      document.querySelectorAll('.si-tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.panel === 'panel-' + name));
+      document.querySelectorAll('.si-panel').forEach(p =>
+        p.classList.toggle('active', p.id === 'panel-' + name));
+      loginErrEl.classList.remove('show');
+      signupErrEl.classList.remove('show');
+    }
+    document.querySelectorAll('.si-tab').forEach(tab =>
+      tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('panel-', ''))));
+    document.getElementById('si-switch-signup').addEventListener('click', e => { e.preventDefault(); switchTab('signup'); });
+    document.getElementById('si-switch-login').addEventListener('click',  e => { e.preventDefault(); switchTab('signin'); });
+    document.getElementById('si-goto-login').addEventListener('click',    e => { e.preventDefault(); switchTab('signin'); });
+
+    eyeBtn.addEventListener('click', () => {
+      const show = pwInput.type === 'password';
+      pwInput.type = show ? 'text' : 'password';
+      eyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
+    suEyeBtn.addEventListener('click', () => {
+      const show = suPwInput.type === 'password';
+      suPwInput.type = show ? 'text' : 'password';
+      suEyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
+
+    document.querySelectorAll('.si-input-wrap').forEach(wrap => {
+      wrap.addEventListener('mousemove', ev => {
+        const r = wrap.getBoundingClientRect();
+        wrap.style.background = `radial-gradient(90px circle at ${ev.clientX - r.left}px ${ev.clientY - r.top}px, rgba(255,105,0,0.18), transparent 80%)`;
+      });
+      wrap.addEventListener('mouseleave', () => { wrap.style.background = 'transparent'; });
+    });
+
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function setErr(id, msg) { const el = document.getElementById(id); el.textContent = msg || el.textContent; el.classList.add('show'); }
+    function clrErr(id) { document.getElementById(id).classList.remove('show'); }
+    function friendlyErr(msg) {
+      if (!msg) return 'Something went wrong. Please try again.';
+      const m = msg.toLowerCase();
+      if (m.includes('invalid login') || m.includes('invalid credentials') || m.includes('email not confirmed'))
+        return 'Incorrect email or password, or your email is not yet confirmed.';
+      if (m.includes('already registered') || m.includes('user already exists'))
+        return 'This email is already registered. Try signing in instead.';
+      if (m.includes('rate limit') || m.includes('email rate'))
+        return 'Too many attempts. Please wait a moment and try again.';
+      return msg;
+    }
+
+    loginForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      loginErrEl.classList.remove('show');
+      const email = document.getElementById('si-email').value.trim();
+      const pw    = document.getElementById('si-pw').value;
+      let ok = true;
+      if (!validEmail(email)) { setErr('si-email-err', 'Please enter a valid email address.'); ok = false; } else clrErr('si-email-err');
+      if (pw.length < 6)      { setErr('si-pw-err', 'Password must be at least 6 characters.'); ok = false; } else clrErr('si-pw-err');
+      if (!ok) return;
+      loginBtn.disabled = true; loginBtn.textContent = 'Signing in...';
+      const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+      loginBtn.disabled = false; loginBtn.textContent = 'Sign In →';
+      if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
+      else closeModal();
+    });
+
+    signupForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      signupErrEl.classList.remove('show');
+      const name      = document.getElementById('su-name').value.trim();
+      const phone     = document.getElementById('su-phone').value.trim();
+      const email     = document.getElementById('su-email').value.trim();
+      const pw        = document.getElementById('su-pw').value;
+      const courseRaw = document.getElementById('su-course').value;
+      let ok = true;
+      if (!name)           { setErr('su-name-err',   'Full name is required.');              ok = false; } else clrErr('su-name-err');
+      if (!phone)          { setErr('su-phone-err',  'Phone number is required.');           ok = false; } else clrErr('su-phone-err');
+      if (!validEmail(email)) { setErr('su-email-err', 'Please enter a valid email.');       ok = false; } else clrErr('su-email-err');
+      if (pw.length < 6)   { setErr('su-pw-err',    'Password must be at least 6 characters.'); ok = false; } else clrErr('su-pw-err');
+      if (!courseRaw)      { setErr('su-course-err', 'Please select a course.');             ok = false; } else clrErr('su-course-err');
+      if (!ok) return;
+      const [course, level] = courseRaw.split('|');
+      suBtn.disabled = true; suBtn.textContent = 'Creating account...';
+      const { data, error } = await sb.auth.signUp({ email, password: pw });
+      if (error) {
+        signupErrEl.textContent = friendlyErr(error.message);
+        signupErrEl.classList.add('show');
+        suBtn.disabled = false; suBtn.textContent = 'Create Account →';
+        return;
+      }
+      if (data.user) {
+        await sb.from('profiles').insert({ id: data.user.id, full_name: name, phone, course, level, progress: 0 });
+      }
+      suBtn.disabled = false; suBtn.textContent = 'Create Account →';
+      signupForm.style.display = 'none';
+      signupOkEl.classList.add('show');
+    });
+
+    function updateNav(user, profile) {
+      currentUser    = user;
+      currentProfile = profile;
+      const loggedIn = !!(user && profile);
+      navAuthOut.style.display = loggedIn ? 'none' : 'flex';
+      navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+      mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
+      mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+      if (loggedIn) {
+        const first = profile.full_name.split(' ')[0];
+        navName.textContent = first;
+        mobName.textContent = 'Signed in as ' + profile.full_name;
+      }
+    }
+
+    async function loadProfile(user) {
+      const { data } = await sb.from('profiles').select('*').eq('id', user.id).single();
+      return data;
+    }
+
+    sb.auth.onAuthStateChange(async (_event, session) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      } else {
+        updateNav(null, null);
+      }
+    });
+
+    sb.auth.getSession().then(async ({ data: { session } }) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      }
+    });
+
+    async function signOut() {
+      await sb.auth.signOut();
+      closeDash();
+    }
+    btnLogoutNav.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    mobLogoutBtn.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    dashLogout.addEventListener('click',   signOut);
+
+    function openDash() {
+      if (!currentProfile || !currentUser) return;
+      const p = currentProfile;
+      document.getElementById('dash-avatar').textContent = (p.full_name || 'S')[0].toUpperCase();
+      document.getElementById('dash-name').textContent   = p.full_name || '—';
+      document.getElementById('dash-email').textContent  = currentUser.email || '—';
+      document.getElementById('dash-course').textContent = p.course || '—';
+      document.getElementById('dash-level').textContent  = p.level  || '—';
+      const pct = Math.min(100, Math.max(0, p.progress || 0));
+      document.getElementById('dash-pct').textContent    = pct + '%';
+      setTimeout(() => { document.getElementById('dash-progress-fill').style.width = pct + '%'; }, 80);
+      document.getElementById('dash-phone').textContent  = p.phone || '—';
+      const since = p.created_at
+        ? new Date(p.created_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
+        : '—';
+      document.getElementById('dash-since').textContent = since;
+      dashOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDash() {
+      dashOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    btnOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); });
+    mobOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); mobMenu.classList.remove('open'); });
+    dashCloseBtn.addEventListener('click', closeDash);
+    dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
+  })();
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); mobMenu.classList.remove('open'); }
+    });
+  });
+
+  (function(){
+    if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    document.documentElement.classList.add("reveal-ready");
+    var targets=document.querySelectorAll(".ph-copy");
+    targets.forEach(function(el){if(!el.classList.contains("r"))el.classList.add("reveal");});
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add("is-visible");obs.unobserve(e.target);}
+      });
+    },{threshold:0.15});
+    document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+    setTimeout(function(){document.querySelectorAll(".reveal:not(.is-visible)").forEach(function(el){el.classList.add("is-visible");});},4000);
+  })();
+</script>
+
+<div class="qa-cluster">
+  <a class="qa-pill" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%20want%20wholesale%20screen%20pricing" target="_blank" rel="noopener noreferrer" style="--from:#25D366;--to:#128C7E;" aria-label="Chat on WhatsApp">
+    <span class="qa-ico"><svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg></span>
+    <span class="qa-label">WhatsApp</span>
+  </a>
+  <a class="qa-pill" href="tel:+233541224699" style="--from:#007A5E;--to:#005843;" aria-label="Call us">
+    <span class="qa-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+    <span class="qa-label">Call us</span>
+  </a>
+  <a class="qa-pill" href="tech-hub.html#enrol" style="--from:#FF6900;--to:#E05500;" aria-label="Enrol now">
+    <span class="qa-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+    <span class="qa-label">Enrol now</span>
+  </a>
+</div>
+
+</body>
+</html>
