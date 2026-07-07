@@ -1441,16 +1441,17 @@
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
     }
-    #intro-splash{position:fixed;inset:0;z-index:999999;background:#262E3D;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease}
+    #intro-splash{position:fixed;inset:0;z-index:999999;background:#262E3D;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease}
     #intro-splash.hide{opacity:0;pointer-events:none}
-    .intro-row{display:flex;align-items:center;gap:14px;opacity:0;transform:scale(.7);animation:introPop .7s .15s forwards cubic-bezier(.34,1.56,.64,1)}
-    .intro-logo{width:74px;height:74px;border-radius:50%}
-    .intro-word{font-family:Inter,sans-serif;font-weight:700;font-size:34px;letter-spacing:1px;color:#fff}
-    @keyframes introPop{to{opacity:1;transform:scale(1)}}
+    .intro-row{display:flex;align-items:center;gap:14px}
+    .intro-logo{width:74px;height:74px;border-radius:50%;opacity:0;transform:scale(.7);animation:logoIn .8s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes logoIn{to{opacity:1;transform:scale(1)}}
+    .intro-word{display:block;white-space:nowrap;font-family:Inter,sans-serif;font-weight:700;font-size:34px;letter-spacing:1px;color:#fff;clip-path:inset(0 100% 0 0);transform:translateX(-12px);animation:wordReveal 1.2s .7s cubic-bezier(.22,1,.36,1) forwards}
+    @keyframes wordReveal{to{clip-path:inset(0 0% 0 0);transform:translateX(0)}}
     @media(max-width:600px){.intro-logo{width:56px;height:56px}.intro-word{font-size:26px}}
     #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;}
     #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
-    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0.85;margin:0;font-family:'Inter',sans-serif;}
+    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;transition:opacity .5s ease,transform .5s ease;}
     #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
     body.tc-loading{overflow:hidden;}
     html.reveal-ready .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
@@ -2619,6 +2620,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   var words=["Hello","Akwaaba","你好","Bonjour","Hola","やあ","नमस्ते","Welcome"];
   var pre=document.getElementById('tc-preloader');
   var wordText=document.getElementById('tc-word-text');
+  var wordEl=document.getElementById('tc-word');
   var path=document.getElementById('tc-curve-path');
   var svg=document.getElementById('tc-curve');
   if(!pre){return;}
@@ -2636,7 +2638,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     pre.parentNode&&pre.parentNode.removeChild(pre);
     pre=null;
   }
-  var safety=setTimeout(finish,7000);
+  var safety=setTimeout(finish,28000);
   function exit(){
     path.style.transition='d 0.7s cubic-bezier(0.76,0,0.24,1)';
     setPath(false);
@@ -2648,14 +2650,37 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   }
   setPath(true);
   var i=0;
-  wordText.textContent=words[0];
+  function showWord(){wordEl.style.opacity='0.85';wordEl.style.transform='translateY(0)';}
+  function hideWord(cb){wordEl.style.opacity='0';wordEl.style.transform='translateY(-8px)';setTimeout(cb,500);}
   function tick(){
     i++;
-    if(i<words.length){wordText.textContent=words[i];setTimeout(tick,550);}
-    else{setTimeout(exit,600);}
+    if(i<words.length){
+      var isLast=(i===words.length-1);
+      hideWord(function(){
+        wordText.textContent=words[i];
+        wordEl.style.transition='none';
+        wordEl.style.transform='translateY(8px)';
+        void wordEl.offsetHeight;
+        wordEl.style.transition='';
+        showWord();
+        setTimeout(tick,isLast?2400:1900);
+      });
+    }else{
+      hideWord(function(){setTimeout(exit,100);});
+    }
   }
-  var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);_splashPoll=null;setTimeout(tick,700);}},50);
-  setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);_splashPoll=null;setTimeout(tick,700);}},6000);
+  function startGreeting(){
+    wordText.textContent=words[0];
+    wordEl.style.transition='none';
+    wordEl.style.opacity='0';
+    wordEl.style.transform='translateY(8px)';
+    void wordEl.offsetHeight;
+    wordEl.style.transition='';
+    showWord();
+    setTimeout(tick,1900);
+  }
+  var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);_splashPoll=null;startGreeting();}},50);
+  setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);_splashPoll=null;startGreeting();}},10000);
 })();
 
   // ── COUNT-UP STATS ──
@@ -2715,12 +2740,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     <span class="qa-label">Enrol now</span>
   </a>
 </div>
-<script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},7000);</script>
+<script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},30000);</script>
 <script>
 window.addEventListener('load',function(){
   var s=document.getElementById('intro-splash');
-  setTimeout(function(){s.classList.add('hide');},2400);
-  setTimeout(function(){s.style.display='none';window.__splashDone=true;},3200);
+  setTimeout(function(){s.classList.add('hide');},3400);
+  setTimeout(function(){s.style.display='none';window.__splashDone=true;},4200);
 });
 </script>
 </body>
