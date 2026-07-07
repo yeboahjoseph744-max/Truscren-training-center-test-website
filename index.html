@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>if(!sessionStorage.getItem('tc_seen')){document.documentElement.className+=' tc-pre-active';}</script>
-<style>html.tc-pre-active body{visibility:hidden;}html.tc-pre-active #tc-preloader{visibility:visible;}html.tc-pre-active{overflow:hidden;}html,body{background:#262E3D;}</style>
+<style>html.tc-pre-active body{visibility:hidden;}html.tc-pre-active #tc-preloader{visibility:visible;}html.tc-pre-active #intro-splash{visibility:visible;}html.tc-pre-active{overflow:hidden;}html,body{background:#262E3D;}</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Screen Replacement &amp; LCD/OLED Supplier in Ghana | TRUSCREN Africa</title>
@@ -1441,6 +1441,13 @@
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
     }
+    #intro-splash{position:fixed;inset:0;z-index:999999;background:#262E3D;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease}
+    #intro-splash.hide{opacity:0;pointer-events:none}
+    .intro-row{display:flex;align-items:center;gap:14px;opacity:0;transform:scale(.7);animation:introPop .7s .15s forwards cubic-bezier(.34,1.56,.64,1)}
+    .intro-logo{width:74px;height:74px;border-radius:50%}
+    .intro-word{font-family:Inter,sans-serif;font-weight:700;font-size:34px;letter-spacing:1px;color:#fff}
+    @keyframes introPop{to{opacity:1;transform:scale(1)}}
+    @media(max-width:600px){.intro-logo{width:56px;height:56px}.intro-word{font-size:26px}}
     #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;}
     #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
     #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0.85;margin:0;font-family:'Inter',sans-serif;}
@@ -1469,6 +1476,13 @@
   </style>
 </head>
 <body>
+
+<div id="intro-splash">
+  <div class="intro-row">
+    <img src="/Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="intro-logo">
+    <span class="intro-word">TRUSCREN</span>
+  </div>
+</div>
 
 <div id="tc-preloader">
   <svg id="tc-curve" preserveAspectRatio="none"><path id="tc-curve-path" fill="#262E3D"></path></svg>
@@ -2701,5 +2715,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   </a>
 </div>
 <script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},7000);</script>
+<script>
+window.addEventListener('load',function(){
+  var s=document.getElementById('intro-splash');
+  setTimeout(function(){s.classList.add('hide');},2400);
+  setTimeout(function(){s.style.display='none';},3200);
+});
+</script>
 </body>
 </html>
