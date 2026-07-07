@@ -2654,7 +2654,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     if(i<words.length){wordText.textContent=words[i];setTimeout(tick,550);}
     else{setTimeout(exit,600);}
   }
-  setTimeout(tick,700);
+  var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);setTimeout(tick,700);}},50);
+  setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);setTimeout(tick,700);}},6000);
 })();
 
   // ── COUNT-UP STATS ──
@@ -2719,7 +2720,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 window.addEventListener('load',function(){
   var s=document.getElementById('intro-splash');
   setTimeout(function(){s.classList.add('hide');},2400);
-  setTimeout(function(){s.style.display='none';},3200);
+  setTimeout(function(){s.style.display='none';window.__splashDone=true;},3200);
 });
 </script>
 </body>
