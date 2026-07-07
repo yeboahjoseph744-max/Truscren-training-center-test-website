@@ -1455,7 +1455,7 @@
     @media(max-width:600px){.intro-logo{width:56px;height:56px}.intro-word{font-size:26px}}
     #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;}
     #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
-    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;transition:opacity .5s ease,transform .5s ease;}
+    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;transition:opacity .4s ease,transform .4s ease;}
     #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
     body.tc-loading{overflow:hidden;}
     html.reveal-ready .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
@@ -2655,7 +2655,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   setPath(true);
   var i=0;
   function showWord(){wordEl.style.opacity='0.85';wordEl.style.transform='translateY(0)';}
-  function hideWord(cb){wordEl.style.opacity='0';wordEl.style.transform='translateY(-8px)';setTimeout(cb,500);}
+  function hideWord(cb){wordEl.style.opacity='0';wordEl.style.transform='translateY(-8px)';setTimeout(cb,400);}
   function tick(){
     i++;
     if(i<words.length){
@@ -2667,7 +2667,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         void wordEl.offsetHeight;
         wordEl.style.transition='';
         showWord();
-        setTimeout(tick,isLast?2400:1900);
+        setTimeout(tick,isLast?1900:1300);
       });
     }else{
       hideWord(function(){setTimeout(exit,100);});
@@ -2681,7 +2681,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     void wordEl.offsetHeight;
     wordEl.style.transition='';
     showWord();
-    setTimeout(tick,1900);
+    setTimeout(tick,1300);
   }
   var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);_splashPoll=null;startGreeting();}},50);
   setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);_splashPoll=null;startGreeting();}},10000);
