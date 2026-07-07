@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(!sessionStorage.getItem('tc_seen')){document.documentElement.className+=' tc-pre-active';}</script>
-<style>html.tc-pre-active body{visibility:hidden;}html.tc-pre-active #tc-preloader{visibility:visible;}html.tc-pre-active #intro-splash{visibility:visible;}html.tc-pre-active{overflow:hidden;}html,body{background:#262E3D;}</style>
+<script>if(!sessionStorage.getItem('tc_seen')){document.documentElement.className+=' tc-pre-active';}else{document.documentElement.className+=' tc-seen';}</script>
+<style>html.tc-pre-active body{visibility:hidden;}html.tc-pre-active #tc-preloader{visibility:visible;}html.tc-pre-active #intro-splash{visibility:visible;}html.tc-pre-active{overflow:hidden;}html.tc-seen #intro-splash{display:none!important;}html,body{background:#262E3D;}</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Screen Replacement &amp; LCD/OLED Supplier in Ghana | TRUSCREN Africa</title>
@@ -1444,10 +1444,14 @@
     #intro-splash{position:fixed;inset:0;z-index:999999;background:#262E3D;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease}
     #intro-splash.hide{opacity:0;pointer-events:none}
     .intro-row{display:flex;align-items:center;gap:14px}
-    .intro-logo{width:74px;height:74px;border-radius:50%;opacity:0;transform:scale(.7);animation:logoIn .8s cubic-bezier(.34,1.56,.64,1) forwards}
+    .intro-logo{width:74px;height:74px;border-radius:50%;opacity:0;transform:scale(.85);animation:logoIn .8s cubic-bezier(.34,1.56,.64,1) forwards}
     @keyframes logoIn{to{opacity:1;transform:scale(1)}}
-    .intro-word{display:block;white-space:nowrap;font-family:Inter,sans-serif;font-weight:700;font-size:34px;letter-spacing:1px;color:#fff;clip-path:inset(0 100% 0 0);transform:translateX(-12px);animation:wordReveal 1.2s .7s cubic-bezier(.22,1,.36,1) forwards}
-    @keyframes wordReveal{to{clip-path:inset(0 0% 0 0);transform:translateX(0)}}
+    .intro-word-wrap{overflow:hidden;max-width:0;animation:wrapReveal 1.2s .8s cubic-bezier(.22,1,.36,1) forwards}
+    @keyframes wrapReveal{to{max-width:220px}}
+    .intro-word{display:block;white-space:nowrap;font-family:Inter,sans-serif;font-weight:700;font-size:34px;letter-spacing:1px;transform:translateX(-8px);animation:wordSlide 1.2s .8s cubic-bezier(.22,1,.36,1) forwards}
+    @keyframes wordSlide{to{transform:translateX(0)}}
+    .t-white{color:#fff}
+    .t-green{color:#007A5E}
     @media(max-width:600px){.intro-logo{width:56px;height:56px}.intro-word{font-size:26px}}
     #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;}
     #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
@@ -1481,7 +1485,7 @@
 <div id="intro-splash">
   <div class="intro-row">
     <img src="/Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="intro-logo">
-    <span class="intro-word">TRUSCREN</span>
+    <div class="intro-word-wrap"><span class="intro-word"><span class="t-white">TRUS</span><span class="t-green">CREN</span></span></div>
   </div>
 </div>
 
@@ -2743,9 +2747,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 <script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},30000);</script>
 <script>
 window.addEventListener('load',function(){
+  if(sessionStorage.getItem('tc_seen')){return;}
   var s=document.getElementById('intro-splash');
-  setTimeout(function(){s.classList.add('hide');},3400);
-  setTimeout(function(){s.style.display='none';window.__splashDone=true;},4200);
+  setTimeout(function(){s.classList.add('hide');},3500);
+  setTimeout(function(){s.style.display='none';window.__splashDone=true;},4300);
 });
 </script>
 </body>
