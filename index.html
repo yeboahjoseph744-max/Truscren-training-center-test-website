@@ -2654,8 +2654,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     if(i<words.length){wordText.textContent=words[i];setTimeout(tick,550);}
     else{setTimeout(exit,600);}
   }
-  var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);setTimeout(tick,700);}},50);
-  setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);setTimeout(tick,700);}},6000);
+  var _splashPoll=setInterval(function(){if(window.__splashDone){clearInterval(_splashPoll);_splashPoll=null;setTimeout(tick,700);}},50);
+  setTimeout(function(){if(_splashPoll){clearInterval(_splashPoll);_splashPoll=null;setTimeout(tick,700);}},6000);
 })();
 
   // ── COUNT-UP STATS ──
