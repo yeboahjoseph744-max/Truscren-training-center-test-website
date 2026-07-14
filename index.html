@@ -2673,7 +2673,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         setTimeout(tick,isLast?600:400);
       });
     }else{
-      hideWord(function(){setTimeout(exit,0);});
+      wordEl.style.transition='opacity .55s ease,transform .55s ease';
+      wordEl.style.opacity='0';
+      wordEl.style.transform='translateY(-8px)';
+      setTimeout(function(){setTimeout(exit,0);},550);
     }
   }
   function startGreeting(){
