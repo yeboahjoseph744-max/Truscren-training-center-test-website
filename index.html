@@ -1442,10 +1442,17 @@
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
     }
-    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;}
-    #tc-curve{position:absolute;top:0;left:0;width:100%;height:calc(100% + 300px);}
-    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;transition:opacity .18s ease,transform .18s ease;}
+    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;will-change:opacity,transform;}
+    #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;}
     #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
+    #tc-brand{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.6vw,22px);opacity:0;transform:scale(0.7);pointer-events:none;will-change:opacity,transform;}
+    #tc-brand-logo{width:clamp(60px,11vw,92px);height:clamp(60px,11vw,92px);border-radius:50%;box-shadow:0 18px 50px rgba(0,0,0,0.4);display:block;}
+    #tc-brand-word{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:0.05em;font-size:clamp(1.6rem,5.2vw,2.75rem);text-transform:uppercase;white-space:nowrap;}
+    #tc-brand-word .tc-trus,#tc-brand-word .tc-cren{background-repeat:no-repeat;background-size:220% 100%;background-position:150% 0;-webkit-background-clip:text;background-clip:text;}
+    #tc-brand-word .tc-trus{color:#fff;background-image:linear-gradient(90deg,#fff 42%,rgba(255,255,255,0.35) 50%,#fff 58%);}
+    #tc-brand-word .tc-cren{color:#005843;background-image:linear-gradient(90deg,#005843 42%,rgba(0,196,140,0.85) 50%,#005843 58%);}
+    #tc-brand.sweep .tc-trus,#tc-brand.sweep .tc-cren{transition:background-position 0.8s cubic-bezier(0.22,1,0.36,1);background-position:-50% 0;}
+    @media (prefers-reduced-motion: reduce){#tc-preloader{display:none!important;}}
     body.tc-loading{overflow:hidden;}
     html.reveal-ready .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1),transform 0.6s cubic-bezier(0.22,1,0.36,1);}
     html.reveal-ready .reveal.is-visible{opacity:1;transform:none;}
@@ -1472,8 +1479,11 @@
 <body>
 
 <div id="tc-preloader">
-  <svg id="tc-curve" preserveAspectRatio="none"><path id="tc-curve-path" fill="#262E3D"></path></svg>
   <p id="tc-word"><span class="tc-dot"></span><span id="tc-word-text">Hello</span></p>
+  <div id="tc-brand">
+    <img id="tc-brand-logo" src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" width="92" height="92">
+    <div id="tc-brand-word"><span class="tc-trus">TRUS</span><span class="tc-cren">CREN</span></div>
+  </div>
 </div>
 
 <!-- ══════════ NAVBAR ══════════ -->
@@ -2607,15 +2617,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   var pre=document.getElementById('tc-preloader');
   var wordText=document.getElementById('tc-word-text');
   var wordEl=document.getElementById('tc-word');
-  var path=document.getElementById('tc-curve-path');
-  var svg=document.getElementById('tc-curve');
+  var brand=document.getElementById('tc-brand');
+  var brandWord=document.getElementById('tc-brand-word');
   if(!pre){return;}
   if(sessionStorage.getItem('tc_seen')){document.documentElement.classList.remove('tc-pre-active');pre.parentNode&&pre.parentNode.removeChild(pre);return;}
-  document.body.classList.add('tc-loading');
-  function setPath(curved){
-    var w=window.innerWidth,h=window.innerHeight,dip=curved?300:0;
-    path.setAttribute('d','M0 0 L'+w+' 0 L'+w+' '+h+' Q'+(w/2)+' '+(h+dip)+' 0 '+h+' L0 0');
-  }
+
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function finish(){
     document.documentElement.classList.remove('tc-pre-active');
     if(!pre)return;
@@ -2624,23 +2631,55 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     pre.parentNode&&pre.parentNode.removeChild(pre);
     pre=null;
   }
-  var safety=setTimeout(finish,10000);
-  function exit(){
+  if(reduced){finish();return;}
+
+  document.body.classList.add('tc-loading');
+  var timers=[];
+  function schedule(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
+  function clearAllTimers(){timers.forEach(clearTimeout);timers=[];}
+  var safety=schedule(finish,10000);
+  function skip(){
     if(!pre)return;
-    path.style.transition='d 0.3s cubic-bezier(0.76,0,0.24,1)';
-    setPath(false);
-    setTimeout(function(){
-      if(!pre)return;
-      pre.style.transition='transform 0.5s cubic-bezier(0.76,0,0.24,1)';
-      pre.style.transform='translateY(-130%)';
-      setTimeout(function(){clearTimeout(safety);finish();},530);
-    },150);
+    clearTimeout(safety);
+    clearAllTimers();
+    finish();
   }
-  setPath(true);
-  pre.addEventListener('click',function(){clearTimeout(safety);finish();},{once:true});
+  pre.addEventListener('click',skip,{once:true});
+  pre.addEventListener('touchstart',skip,{once:true,passive:true});
+  window.addEventListener('keydown',skip,{once:true});
+
+  // ---- Phase 2: TRUSCREN cinematic splash ----
+  function exitBrand(){
+    document.documentElement.classList.remove('tc-pre-active');
+    if(!pre)return;
+    pre.style.transition='opacity 0.5s cubic-bezier(0.4,0,0.2,1),transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+    pre.style.opacity='0';
+    pre.style.transform='scale(1.05)';
+    schedule(function(){clearTimeout(safety);finish();},520);
+  }
+  function runBrand(){
+    if(!pre)return;
+    wordEl.style.display='none';
+    brand.style.transition='opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)';
+    brand.style.opacity='1';
+    brand.style.transform='scale(1)';
+    schedule(function(){brandWord.classList.add('sweep');},900);
+    schedule(exitBrand,900+600);
+  }
+
+  // ---- Phase 1: Hello / Welcome greeting ----
   var i=0;
-  function showWord(){wordEl.style.opacity='0.85';wordEl.style.transform='translateY(0)';}
-  function hideWord(cb,dur){wordEl.style.opacity='0';wordEl.style.transform='translateY(-8px)';setTimeout(cb,dur||180);}
+  function showWord(){
+    wordEl.style.transition='opacity 0.18s ease,transform 0.18s ease';
+    wordEl.style.opacity='0.85';
+    wordEl.style.transform='translateY(0)';
+  }
+  function hideWord(cb){
+    wordEl.style.transition='opacity 0.25s ease,transform 0.25s ease';
+    wordEl.style.opacity='0';
+    wordEl.style.transform='translateY(-8px)';
+    schedule(cb,250);
+  }
   function tick(){
     i++;
     if(i<words.length){
@@ -2649,15 +2688,11 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         wordEl.style.transition='none';
         wordEl.style.transform='translateY(8px)';
         void wordEl.offsetHeight;
-        wordEl.style.transition='';
         showWord();
-        setTimeout(tick,1100);
-      },250);
+        schedule(tick,1100);
+      });
     }else{
-      wordEl.style.transition='opacity .25s ease,transform .25s ease';
-      wordEl.style.opacity='0';
-      wordEl.style.transform='translateY(-8px)';
-      setTimeout(exit,250);
+      hideWord(runBrand);
     }
   }
   function startGreeting(){
@@ -2666,9 +2701,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     wordEl.style.opacity='0';
     wordEl.style.transform='translateY(8px)';
     void wordEl.offsetHeight;
-    wordEl.style.transition='';
     showWord();
-    setTimeout(tick,900);
+    schedule(tick,900);
   }
   startGreeting();
 })();
