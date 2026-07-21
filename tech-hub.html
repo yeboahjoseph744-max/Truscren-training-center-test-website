@@ -399,8 +399,7 @@
     /* ── STATS ── */
     .stats-section { background: var(--secondary); padding: 4rem 1.5rem; }
     .stats-in {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center;
+      max-width: 760px; margin: 0 auto; text-align: center;
     }
     .stats-copy h2 { font-size: 1.55rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: 1.2; }
     .stats-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
@@ -411,14 +410,6 @@
       border-radius: 3px; transition: background 0.18s;
     }
     .btn-white:hover { background: var(--brand-h); }
-    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
-    .stat-box {
-      text-align: center; padding: 1.375rem 1rem;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
-    }
-    .stat-n { font-size: 2.1rem; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; display: block; margin-bottom: 0.3rem; line-height: 1; }
-    .stat-l { font-size: 0.75rem; color: rgba(255,255,255,0.58); line-height: 1.35; }
 
     /* ── DISCOVER ── */
     .discover-section { padding: 4rem 1.5rem; background: #fff; }
@@ -435,8 +426,6 @@
     .dt2 { background: linear-gradient(135deg, #3D2000, #A05000); }
     .dt3 { background: linear-gradient(135deg, #005843, #008560); }
     .dt4 { background: linear-gradient(135deg, #1E2738, #3A4A6A); grid-column: span 2; min-height: 72px; }
-    .dt-n { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.2rem; }
-    .dt-l { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.68); text-transform: uppercase; letter-spacing: 0.05em; }
     .disc-copy h2 { font-size: 1.65rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.875rem; }
     .disc-copy p  { font-size: 0.875rem; color: var(--mid); line-height: 1.72; margin-bottom: 1rem; }
     .disc-list { list-style: none; margin-bottom: 1.5rem; }
@@ -1234,8 +1223,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .courses-grid { grid-template-columns: repeat(2,1fr); }
-      .stats-in     { grid-template-columns: 1fr; gap: 2.5rem; }
-      .stats-grid   { grid-template-columns: repeat(3,1fr); }
     }
     @media (max-width: 860px) {
       .nav-links, .nav-srch { display: none !important; }
@@ -1261,7 +1248,6 @@
     }
     @media (max-width: 540px) {
       .courses-grid { grid-template-columns: 1fr; }
-      .stats-grid   { grid-template-columns: 1fr 1fr; }
       .ef-row-2     { grid-template-columns: 1fr; }
       .pf-row-2     { grid-template-columns: 1fr; }
       .enrol-card   { padding: 1.5rem 1.25rem; }
@@ -1485,16 +1471,8 @@
   <div class="stats-in">
     <div class="stats-copy r">
       <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN TECH HUB</h2>
-      <p>We've trained thousands of technicians across Ghana who now run successful repair businesses, work in top electronics shops, and service corporate clients — all with the skills and certification they earned at TRUSCREN.</p>
+      <p>TRUSCREN TECH HUB delivers hands-on, practical training on real devices — not theory alone. Learn screen repair, micro-soldering, and board-level diagnostics from instructors who repair for a living, and graduate with an official TRUSCREN certification.</p>
       <a href="#enrol" class="btn-white">Enrol for 2026 →</a>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-box r"><span class="stat-n">3,500+</span><span class="stat-l">Certified technicians trained across our campuses</span></div>
-      <div class="stat-box r d1"><span class="stat-n">&lt;0.5%</span><span class="stat-l">Defect rate on repairs performed by our graduates</span></div>
-      <div class="stat-box r d2"><span class="stat-n">12-Mo</span><span class="stat-l">Quality guarantee on all training programme outcomes</span></div>
-      <div class="stat-box r"><span class="stat-n">3</span><span class="stat-l">Training campuses — Accra, Kumasi &amp; Takoradi</span></div>
-      <div class="stat-box r d1"><span class="stat-n">92%</span><span class="stat-l">Graduate employment or business launch rate within 3 months</span></div>
-      <div class="stat-box r d2"><span class="stat-n">100%</span><span class="stat-l">Hands-on practical training — real devices, real repairs</span></div>
     </div>
   </div>
 </section>
@@ -1504,12 +1482,6 @@
     <div class="disc-visual r" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.18);position:relative;min-height:400px;">
       <img src="Brand_assets/training-lab.jpg" alt="TRUSCREN TECH HUB training lab — instructor teaching student" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08) 35%,rgba(0,0,0,0.78));"></div>
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-        <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:6px;padding:0.75rem;border:1px solid rgba(255,255,255,0.15);"><div class="dt-n">3,500+</div><div class="dt-l">Technicians Certified</div></div>
-        <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:6px;padding:0.75rem;border:1px solid rgba(255,255,255,0.15);"><div class="dt-n">&lt;0.5%</div><div class="dt-l">Defect Rate</div></div>
-        <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:6px;padding:0.75rem;border:1px solid rgba(255,255,255,0.15);"><div class="dt-n">3</div><div class="dt-l">Training Campuses</div></div>
-        <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:6px;padding:0.75rem;border:1px solid rgba(255,255,255,0.15);"><div class="dt-n">12-Month</div><div class="dt-l">Quality Guarantee</div></div>
-      </div>
     </div>
     <div class="disc-copy r d1">
       <div class="sec-label">Why TRUSCREN TECH HUB?</div>
@@ -1615,7 +1587,7 @@
         <li>Small cohort sizes for maximum hands-on time</li>
         <li>TRUSCREN-certified instructors who repair for a living</li>
         <li>Career placement support for every graduate</li>
-        <li>Campuses in Accra, Kumasi &amp; Takoradi — or online theory</li>
+        <li>Campus in Accra — or online theory</li>
       </ul>
     </div>
 
