@@ -876,6 +876,12 @@
       padding: 0.6rem 0.8rem; margin-bottom: 0.875rem; display: none;
     }
     .si-auth-err.show { display: block; }
+    .si-context-msg {
+      font-size: 0.78rem; font-weight: 600; color: var(--dark); background: rgba(255,105,0,0.08);
+      border: 1px solid rgba(255,105,0,0.25); border-radius: 6px;
+      padding: 0.65rem 0.8rem; margin-bottom: 0.875rem; display: none;
+    }
+    .si-context-msg.show { display: block; }
     .si-input-select {
       width: 100%; background: #f7f7f7; border: none; outline: none;
       border-radius: 6px; padding: 0.6rem 2rem 0.6rem 0.8rem;
@@ -1324,6 +1330,184 @@
     }
     .cdm-close:hover { color: #333; background: #f2f2f2; }
 
+    /* ── MICRO-SOLDERING INTRO MODAL ── */
+    #ms-intro-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2060;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+      overflow-y: auto;
+    }
+    #ms-intro-overlay.open { display: flex; }
+    #ms-intro-modal {
+      width: 100%; max-width: 620px; margin: auto;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    .msi-thumb-bar { height: 5px; background: linear-gradient(90deg,#1A2050,#2E45A0); }
+    .msi-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1; z-index: 2;
+      transition: color 0.18s, background 0.18s;
+    }
+    .msi-close:hover { color: #333; background: #f2f2f2; }
+    .msi-body { padding: 1.875rem 2rem 2rem; max-height: 85dvh; overflow-y: auto; }
+    .msi-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.55rem; display: block;
+    }
+    .msi-title {
+      font-size: 1.35rem; font-weight: 800; color: var(--dark);
+      letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem;
+    }
+    .msi-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.125rem; }
+    .msi-chips span {
+      font-size: 0.72rem; font-weight: 600; color: var(--teal);
+      background: rgba(0,122,94,0.09); border: 1px solid rgba(0,122,94,0.2);
+      padding: 0.25rem 0.65rem; border-radius: 20px;
+    }
+    .msi-intro { font-size: 0.875rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.5rem; }
+    .msi-section { margin-bottom: 1.375rem; }
+    .msi-section h4 {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.75rem;
+    }
+    .msi-section.alt h4 { color: var(--teal); }
+    .msi-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .msi-list li {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      font-size: 0.85rem; color: var(--dark); line-height: 1.5;
+    }
+    .msi-list li::before {
+      content: ''; flex-shrink: 0; margin-top: 0.5em;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--brand);
+    }
+    .msi-section.alt .msi-list li::before { background: var(--teal); }
+    .msi-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.625rem; }
+    .btn-msi-primary {
+      flex: 1; min-width: 190px; text-align: center; padding: 0.85rem 1.25rem;
+      background: var(--brand); color: #fff; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.18s;
+    }
+    .btn-msi-primary:hover { background: var(--brand-h); }
+    .btn-msi-outline {
+      flex: 1; min-width: 190px; text-align: center; padding: 0.85rem 1.25rem;
+      background: none; color: var(--dark); border: 1.5px solid var(--border); border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .btn-msi-outline:hover { background: var(--light-bg); border-color: #ccc; }
+    @media (max-width: 540px) {
+      .msi-btns { flex-direction: column; }
+      .btn-msi-primary, .btn-msi-outline { min-width: 0; }
+    }
+
+    /* ── LESSON VIEW MODAL ── */
+    #lesson-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2065;
+      background: rgba(0,0,0,0.75); padding: 1rem;
+      align-items: center; justify-content: center;
+    }
+    #lesson-overlay.open { display: flex; }
+    #lesson-modal {
+      width: 100%; max-width: 1140px; height: 92dvh; max-height: 860px;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      animation: si-modal-in 0.32s cubic-bezier(0.22,1,0.36,1);
+      display: flex; flex-direction: column;
+    }
+    .lv-header {
+      padding: 1rem 1.375rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem; flex-shrink: 0;
+    }
+    .lv-header-info { flex: 1; min-width: 0; }
+    .lv-header-title {
+      font-size: 0.95rem; font-weight: 800; color: var(--dark);
+      letter-spacing: -0.01em; margin-bottom: 0.45rem;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .lv-progress-row { display: flex; align-items: center; gap: 0.7rem; }
+    .lv-progress-track {
+      flex: 1; height: 7px; background: #f0f0f0; border-radius: 100px; overflow: hidden;
+    }
+    .lv-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--teal), var(--brand));
+      border-radius: 100px; transition: width 0.6s cubic-bezier(0.22,1,0.36,1); width: 0%;
+    }
+    .lv-progress-pct { font-size: 0.72rem; font-weight: 700; color: var(--mid); white-space: nowrap; }
+    .lv-close {
+      background: none; border: none; cursor: pointer; padding: 0.4rem;
+      color: #999; border-radius: 4px; line-height: 1; flex-shrink: 0;
+      transition: color 0.18s, background 0.18s;
+    }
+    .lv-close:hover { color: #333; background: #f2f2f2; }
+    .lv-body { flex: 1; min-height: 0; display: flex; overflow: hidden; }
+    .lv-player-col {
+      flex: 1 1 62%; min-width: 0; background: #0c0c0f;
+      display: flex; flex-direction: column; overflow-y: auto;
+    }
+    .lv-player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; flex-shrink: 0; }
+    .lv-player-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .lv-player-meta { padding: 1.125rem 1.375rem; }
+    .lv-player-lesson-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+    .lv-player-lesson-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+    .lv-sidebar {
+      flex: 1 1 38%; max-width: 400px; min-width: 260px;
+      border-left: 1px solid var(--border); overflow-y: auto; background: #fbfbfb;
+    }
+    .lv-sec { border-bottom: 1px solid var(--border); }
+    .lv-sec-hd {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+      padding: 0.875rem 1.125rem; cursor: pointer; user-select: none; background: #f3f3f3;
+    }
+    .lv-sec-hd-title { font-size: 0.82rem; font-weight: 700; color: var(--dark); }
+    .lv-sec-hd-meta { font-size: 0.68rem; color: #888; margin-top: 0.15rem; white-space: nowrap; }
+    .lv-sec-chev { color: #aaa; transition: transform 0.2s; flex-shrink: 0; }
+    .lv-sec-hd.open .lv-sec-chev { transform: rotate(180deg); }
+    .lv-lessons { display: none; }
+    .lv-lessons.open { display: block; }
+    .lv-lesson {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.7rem 1.125rem; cursor: pointer; border-top: 1px solid #f0f0f0;
+      transition: background 0.15s;
+    }
+    .lv-lesson:hover { background: rgba(255,105,0,0.05); }
+    .lv-lesson.active { background: rgba(255,105,0,0.09); }
+    .lv-lesson-check {
+      width: 17px; height: 17px; border-radius: 4px; flex-shrink: 0; cursor: pointer;
+      accent-color: var(--brand);
+    }
+    .lv-lesson-title {
+      flex: 1; min-width: 0; font-size: 0.8rem; color: var(--dark); line-height: 1.35;
+      overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    }
+    .lv-lesson.active .lv-lesson-title { color: var(--brand); font-weight: 600; }
+    .lv-lesson.done .lv-lesson-title { color: #999; }
+    .lv-lesson-dur { font-size: 0.68rem; color: #999; flex-shrink: 0; }
+    .lv-enrol-cta { padding: 1rem 1.125rem; border-top: 1px solid var(--border); }
+    .btn-lv-enrol {
+      display: block; width: 100%; text-align: center; padding: 0.75rem;
+      background: var(--primary); color: #fff; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; transition: background 0.18s;
+    }
+    .btn-lv-enrol:hover { background: var(--secondary); }
+    .lv-loading, .lv-error {
+      padding: 2.5rem 1.5rem; text-align: center; font-size: 0.85rem; color: #888;
+    }
+    @media (max-width: 860px) {
+      #lesson-modal { height: 94dvh; max-height: none; border-radius: 10px 10px 0 0; }
+      .lv-body { flex-direction: column; overflow-y: auto; }
+      .lv-player-col { flex: none; }
+      .lv-player-wrap { aspect-ratio: 16/9; }
+      .lv-sidebar { max-width: none; border-left: none; border-top: 1px solid var(--border); overflow-y: visible; }
+    }
+
     /* ── CERTIFICATIONS ── */
     .cert-section { padding: 5rem 1.5rem; background: var(--light-bg); }
     .cert-lead { font-size: 0.9rem; color: var(--mid); margin-top: 0.6rem; line-height: 1.7; }
@@ -1645,6 +1829,56 @@
 </section>
 
 
+<!-- ══════════ COURSES STRIP ══════════ -->
+<section id="courses" class="courses-strip">
+  <div class="strip-hd r">
+    <div>
+      <div class="strip-hd-title">Our Repair Training Programmes</div>
+      <div class="strip-hd-sub">Hands-on, industry-standard courses that get you job-ready</div>
+    </div>
+    <a href="tech-hub.html" class="strip-more">View all programmes →</a>
+  </div>
+
+  <div class="courses-grid">
+    <div class="c-card r">
+      <div class="c-thumb c-thumb-1">
+        <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">Bestseller · Certificate</span>
+        <div class="c-name">Phone Screen &amp; Display Repair — Complete Course</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
+        <div class="c-meta"><span>Hands-on</span><span>·</span><span>4 weeks</span><span>·</span><span>★ 4.9</span></div>
+      </div>
+    </div>
+
+    <div class="c-card r d1">
+      <div class="c-thumb c-thumb-3">
+        <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">Free Online · Certificate In Person</span>
+        <div class="c-name">Circuit Board Micro-Soldering</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
+        <div class="c-meta"><span>Self-paced</span><span>·</span><span>Free</span><span>·</span><span>★ 4.9</span></div>
+      </div>
+    </div>
+
+    <div class="c-card r d2">
+      <div class="c-thumb c-thumb-4">
+        <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
+      </div>
+      <div class="c-body">
+        <span class="c-badge">New · Specialist</span>
+        <div class="c-name">EV Battery Diagnostics &amp; Repair Technology</div>
+        <div class="c-partner">TRUSCREN TECH HUB</div>
+        <div class="c-meta"><span>Workshop</span><span>·</span><span>5 weeks</span><span>·</span><span>★ 4.8</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ══════════ STATS ══════════ -->
 <section class="stats-section">
   <div class="stats-in">
@@ -1794,6 +2028,87 @@
 </div>
 
 
+<!-- ══════════ MICRO-SOLDERING FREE-LESSONS INTRO MODAL ══════════ -->
+<div id="ms-intro-overlay" role="dialog" aria-modal="true" aria-label="Circuit Board Micro-Soldering">
+  <div id="ms-intro-modal">
+    <div class="msi-thumb-bar"></div>
+    <button class="msi-close" id="ms-intro-close-btn" aria-label="Close">
+      <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="msi-body">
+      <span class="msi-badge">Free Online · Certificate In Person</span>
+      <div class="msi-title">Circuit Board Micro-Soldering</div>
+      <div class="msi-chips">
+        <span>Free theory online</span>
+        <span>Hands-on in Accra</span>
+        <span>TRUSCREN certificate</span>
+      </div>
+      <p class="msi-intro">Start learning today, free. Complete the theory online at your own pace, track your progress, then join us in Accra for hands-on lab training and graduate with your TRUSCREN certificate.</p>
+
+      <div class="msi-section">
+        <h4>What You'll Learn Online — Free</h4>
+        <ul class="msi-list">
+          <li>How circuit boards work, and how to read them</li>
+          <li>The tools of micro-soldering and what each one does</li>
+          <li>Common board-level faults and how they show up</li>
+          <li>The theory behind safe soldering technique</li>
+          <li>Fault-finding logic before you touch a board</li>
+        </ul>
+      </div>
+
+      <div class="msi-section alt">
+        <h4>Complete In Person — Accra</h4>
+        <ul class="msi-list">
+          <li>Hands-on practice with microscope, hot air, and soldering station</li>
+          <li>Real boards, real faults, supervised by working technicians</li>
+          <li>Assessment and official TRUSCREN certification</li>
+        </ul>
+      </div>
+
+      <div class="msi-btns">
+        <button type="button" class="btn-msi-primary" id="ms-start-btn">Start Learning Free →</button>
+        <a href="tech-hub.html#enrol" class="btn-msi-outline">Enrol for Lab Training</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ LESSON VIEW MODAL ══════════ -->
+<div id="lesson-overlay" role="dialog" aria-modal="true" aria-label="Course Lessons">
+  <div id="lesson-modal">
+    <div class="lv-header">
+      <div class="lv-header-info">
+        <div class="lv-header-title" id="lv-course-title">Circuit Board Micro-Soldering</div>
+        <div class="lv-progress-row">
+          <div class="lv-progress-track"><div class="lv-progress-fill" id="lv-progress-fill"></div></div>
+          <span class="lv-progress-pct" id="lv-progress-pct">0% complete</span>
+        </div>
+      </div>
+      <button class="lv-close" id="lv-close-btn" aria-label="Close">
+        <svg width="19" height="19" viewBox="0 0 16 16" fill="none">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="lv-body">
+      <div class="lv-player-col">
+        <div class="lv-player-wrap" id="lv-player-wrap"></div>
+        <div class="lv-player-meta">
+          <div class="lv-player-lesson-title" id="lv-active-title">Loading…</div>
+          <div class="lv-player-lesson-sub" id="lv-active-sub"></div>
+        </div>
+      </div>
+      <div class="lv-sidebar" id="lv-sidebar">
+        <div class="lv-loading" id="lv-loading">Loading course…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
 <div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN TECH HUB Account">
   <div id="signin-modal">
@@ -1882,6 +2197,7 @@
           <p>We've sent a confirmation link. Click it to activate your account, then sign in.</p>
           <div class="si-footer" style="margin-top:0.5rem;"><a href="#" id="si-goto-login">Go to Sign In →</a></div>
         </div>
+        <div class="si-context-msg" id="su-context-msg"></div>
         <div class="si-auth-err" id="si-signup-err"></div>
         <form id="su-form" novalidate>
           <div class="si-field">
@@ -2080,12 +2396,21 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 
     let currentProfile = null;
     let currentUser    = null;
+    let pendingLessonRedirect = false;
+
+    function setSignupContextMsg(msg) {
+      const el = document.getElementById('su-context-msg');
+      if (!el) return;
+      if (msg) { el.textContent = msg; el.classList.add('show'); }
+      else { el.textContent = ''; el.classList.remove('show'); }
+    }
 
     // ── MODAL OPEN / CLOSE ──
-    function openModal(tab) {
+    function openModal(tab, contextMsg) {
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       switchTab(tab || 'signin');
+      if (tab === 'signup' && contextMsg) setSignupContextMsg(contextMsg);
       setTimeout(() => {
         const f = tab === 'signup' ? document.getElementById('su-name') : document.getElementById('si-email');
         if (f) f.focus();
@@ -2094,6 +2419,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     function closeModal() {
       overlay.classList.remove('open');
       document.body.style.overflow = '';
+      pendingLessonRedirect = false;
     }
 
     document.querySelectorAll('.btn-si').forEach(btn => {
@@ -2117,6 +2443,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         p.classList.toggle('active', p.id === 'panel-' + name));
       loginErrEl.classList.remove('show');
       signupErrEl.classList.remove('show');
+      setSignupContextMsg(null);
     }
     document.querySelectorAll('.si-tab').forEach(tab =>
       tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('panel-', ''))));
@@ -2174,8 +2501,14 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       loginBtn.disabled = true; loginBtn.textContent = 'Signing in...';
       const { error } = await sb.auth.signInWithPassword({ email, password: pw });
       loginBtn.disabled = false; loginBtn.textContent = 'Sign In →';
-      if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
-      else closeModal();
+      if (error) {
+        loginErrEl.textContent = error.message || 'Something went wrong. Please try again.';
+        loginErrEl.classList.add('show');
+      } else {
+        const shouldRedirect = pendingLessonRedirect;
+        closeModal();
+        if (shouldRedirect && window.__msOpenLessonView) window.__msOpenLessonView();
+      }
     });
 
     // ── SIGN UP ──
@@ -2199,6 +2532,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       const { data, error } = await sb.auth.signUp({ email, password: pw });
       if (error) {
         signupErrEl.textContent = friendlyErr(error.message);
+        signupErrEl.classList.add('show');
+        suBtn.disabled = false; suBtn.textContent = 'Create Account →';
+        return;
+      }
+      if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+        signupErrEl.textContent = 'This email is already registered — please sign in instead.';
         signupErrEl.classList.add('show');
         suBtn.disabled = false; suBtn.textContent = 'Create Account →';
         return;
@@ -2285,6 +2624,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     mobOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); mobMenu.classList.remove('open'); });
     dashCloseBtn.addEventListener('click', closeDash);
     dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
+
+    // ── EXPORTS FOR OTHER MODULES (e.g. free-lessons flow) ──
+    window.__truscrenSb = sb;
+    window.__openAuthModal = function (tab, contextMsg) { openModal(tab, contextMsg); };
+    window.__requestLessonRedirect = function () { pendingLessonRedirect = true; };
+    window.__truscrenGetSession = function () { return sb.auth.getSession(); };
   })();
 
   // Smooth scroll
@@ -2481,7 +2826,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     }
 
     document.querySelectorAll('.c-card').forEach((card, i) => {
-      card.addEventListener('click', () => openCourse(i));
+      card.addEventListener('click', () => {
+        if (i === 1 && window.__openMicroSoldering) window.__openMicroSoldering();
+        else openCourse(i);
+      });
       card.addEventListener('pointermove', e => {
         const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -2498,6 +2846,288 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeCourse();
+    });
+  })();
+
+  // ── MICRO-SOLDERING FREE LESSONS ──
+  (function () {
+    const introOverlay  = document.getElementById('ms-intro-overlay');
+    const introCloseBtn = document.getElementById('ms-intro-close-btn');
+    const startBtn      = document.getElementById('ms-start-btn');
+
+    const lvOverlay      = document.getElementById('lesson-overlay');
+    const lvCloseBtn     = document.getElementById('lv-close-btn');
+    const lvSidebar      = document.getElementById('lv-sidebar');
+    const lvPlayerWrap   = document.getElementById('lv-player-wrap');
+    const lvActiveTitle  = document.getElementById('lv-active-title');
+    const lvActiveSub    = document.getElementById('lv-active-sub');
+    const lvProgressFill = document.getElementById('lv-progress-fill');
+    const lvProgressPct  = document.getElementById('lv-progress-pct');
+    const lvCourseTitle  = document.getElementById('lv-course-title');
+
+    function openIntro() {
+      introOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeIntro() {
+      introOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    introCloseBtn.addEventListener('click', closeIntro);
+    introOverlay.addEventListener('click', e => { if (e.target === introOverlay) closeIntro(); });
+    window.__openMicroSoldering = openIntro;
+
+    // ── DATA STATE ──
+    let course = null;
+    let sections = [];
+    let progressByLessonId = {};
+    let dataLoaded = false;
+
+    function escapeHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s || '';
+      return d.innerHTML;
+    }
+    function formatDuration(totalSeconds) {
+      const s = Math.max(0, Math.round(totalSeconds || 0));
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return m + ':' + String(r).padStart(2, '0');
+    }
+    function allLessonsFlat() {
+      const out = [];
+      sections.forEach(sec => sec.lessons.forEach(l => out.push(l)));
+      return out;
+    }
+    function totalDurationForSection(sec) {
+      return sec.lessons.reduce((sum, l) => sum + (l.duration_seconds || 0), 0);
+    }
+    function completedCountForSection(sec) {
+      return sec.lessons.filter(l => progressByLessonId[l.id] && progressByLessonId[l.id].completed).length;
+    }
+
+    async function fetchCourseData() {
+      const sb = window.__truscrenSb;
+      const { data: courseRow, error: courseErr } = await sb
+        .from('courses').select('*').eq('slug', 'micro-soldering').eq('is_published', true).single();
+      if (courseErr || !courseRow) throw courseErr || new Error('Course not found');
+      course = courseRow;
+
+      const { data: sectionRows, error: secErr } = await sb
+        .from('sections').select('*').eq('course_id', course.id).order('position');
+      if (secErr) throw secErr;
+
+      const sectionIds = (sectionRows || []).map(s => s.id);
+      let lessonRows = [];
+      if (sectionIds.length) {
+        const { data, error: lesErr } = await sb
+          .from('lessons').select('*').in('section_id', sectionIds).order('position');
+        if (lesErr) throw lesErr;
+        lessonRows = data || [];
+      }
+
+      sections = (sectionRows || []).map(sec =>
+        Object.assign({}, sec, { lessons: lessonRows.filter(l => l.section_id === sec.id) }));
+
+      dataLoaded = true;
+    }
+
+    async function fetchProgress(userId) {
+      const sb = window.__truscrenSb;
+      const { data, error } = await sb
+        .from('lesson_progress').select('lesson_id, completed, completed_at').eq('user_id', userId);
+      progressByLessonId = {};
+      if (!error && data) data.forEach(row => { progressByLessonId[row.lesson_id] = row; });
+    }
+
+    function updateOverallProgress() {
+      const all = allLessonsFlat();
+      const total = all.length;
+      const done = all.filter(l => progressByLessonId[l.id] && progressByLessonId[l.id].completed).length;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      lvProgressFill.style.width = pct + '%';
+      lvProgressPct.textContent = pct + '% complete';
+    }
+
+    function renderSectionMeta() {
+      sections.forEach(sec => {
+        const hd = lvSidebar.querySelector('.lv-sec-hd[data-section-id="' + sec.id + '"]');
+        if (!hd) return;
+        const metaEl = hd.querySelector('.lv-sec-hd-meta');
+        const done = completedCountForSection(sec);
+        const mins = Math.round(totalDurationForSection(sec) / 60);
+        metaEl.textContent = done + '/' + sec.lessons.length + ' · ' + mins + ' min';
+      });
+    }
+
+    function playLesson(lesson) {
+      lvPlayerWrap.innerHTML =
+        '<iframe src="https://www.youtube.com/embed/' + encodeURIComponent(lesson.video_id) + '" ' +
+        'title="' + escapeHtml(lesson.title) + '" frameborder="0" ' +
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      lvActiveTitle.textContent = lesson.title;
+      const sec = sections.find(s => s.lessons.some(l => l.id === lesson.id));
+      lvActiveSub.textContent = (sec ? sec.title + ' · ' : '') + formatDuration(lesson.duration_seconds);
+      lvSidebar.querySelectorAll('.lv-lesson').forEach(row => {
+        row.classList.toggle('active', row.dataset.lessonId === String(lesson.id));
+      });
+    }
+
+    async function toggleLessonComplete(lesson, checked, checkboxEl) {
+      const sb = window.__truscrenSb;
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) { checkboxEl.checked = !checked; return; }
+      const nowIso = new Date().toISOString();
+      const row = checkboxEl.closest('.lv-lesson');
+
+      progressByLessonId[lesson.id] = { lesson_id: lesson.id, completed: checked, completed_at: checked ? nowIso : null };
+      if (row) row.classList.toggle('done', checked);
+      renderSectionMeta();
+      updateOverallProgress();
+
+      const { error } = await sb.from('lesson_progress').upsert({
+        user_id: session.user.id,
+        lesson_id: lesson.id,
+        completed: checked,
+        completed_at: checked ? nowIso : null,
+      }, { onConflict: 'user_id,lesson_id' });
+
+      if (error) {
+        checkboxEl.checked = !checked;
+        progressByLessonId[lesson.id] = { lesson_id: lesson.id, completed: !checked, completed_at: null };
+        if (row) row.classList.toggle('done', !checked);
+        renderSectionMeta();
+        updateOverallProgress();
+      }
+    }
+
+    function renderSidebar() {
+      lvSidebar.innerHTML = '';
+      sections.forEach((sec, secIdx) => {
+        const secEl = document.createElement('div');
+        secEl.className = 'lv-sec';
+
+        const hd = document.createElement('div');
+        hd.className = 'lv-sec-hd' + (secIdx === 0 ? ' open' : '');
+        hd.dataset.sectionId = sec.id;
+        const done = completedCountForSection(sec);
+        const mins = Math.round(totalDurationForSection(sec) / 60);
+        hd.innerHTML =
+          '<div><div class="lv-sec-hd-title">' + escapeHtml(sec.title) + '</div>' +
+          '<div class="lv-sec-hd-meta">' + done + '/' + sec.lessons.length + ' · ' + mins + ' min</div></div>' +
+          '<svg class="lv-sec-chev" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+        const lessonsWrap = document.createElement('div');
+        lessonsWrap.className = 'lv-lessons' + (secIdx === 0 ? ' open' : '');
+
+        sec.lessons.forEach(lesson => {
+          const isDone = !!(progressByLessonId[lesson.id] && progressByLessonId[lesson.id].completed);
+          const row = document.createElement('div');
+          row.className = 'lv-lesson' + (isDone ? ' done' : '');
+          row.dataset.lessonId = lesson.id;
+
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.className = 'lv-lesson-check';
+          cb.checked = isDone;
+          cb.addEventListener('click', e => e.stopPropagation());
+          cb.addEventListener('change', () => toggleLessonComplete(lesson, cb.checked, cb));
+
+          const titleEl = document.createElement('div');
+          titleEl.className = 'lv-lesson-title';
+          titleEl.textContent = lesson.title;
+
+          const durEl = document.createElement('div');
+          durEl.className = 'lv-lesson-dur';
+          durEl.textContent = formatDuration(lesson.duration_seconds);
+
+          row.appendChild(cb);
+          row.appendChild(titleEl);
+          row.appendChild(durEl);
+          row.addEventListener('click', () => playLesson(lesson));
+
+          lessonsWrap.appendChild(row);
+        });
+
+        hd.addEventListener('click', () => {
+          hd.classList.toggle('open');
+          lessonsWrap.classList.toggle('open');
+        });
+
+        secEl.appendChild(hd);
+        secEl.appendChild(lessonsWrap);
+        lvSidebar.appendChild(secEl);
+      });
+
+      const cta = document.createElement('div');
+      cta.className = 'lv-enrol-cta';
+      cta.innerHTML = '<a href="tech-hub.html#enrol" class="btn-lv-enrol">Book Lab Training →</a>';
+      lvSidebar.appendChild(cta);
+    }
+
+    function openLessonOverlay() {
+      lvOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLessonOverlay() {
+      lvOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    lvCloseBtn.addEventListener('click', closeLessonOverlay);
+    lvOverlay.addEventListener('click', e => { if (e.target === lvOverlay) closeLessonOverlay(); });
+
+    async function openLessonView() {
+      openLessonOverlay();
+      lvSidebar.innerHTML = '<div class="lv-loading">Loading course…</div>';
+      lvActiveTitle.textContent = 'Loading…';
+      lvActiveSub.textContent = '';
+      lvPlayerWrap.innerHTML = '';
+
+      try {
+        const sb = window.__truscrenSb;
+        const { data: { session } } = await sb.auth.getSession();
+        if (!session) {
+          lvSidebar.innerHTML = '<div class="lv-error">Please sign in to view this course.</div>';
+          lvActiveTitle.textContent = 'Sign in required';
+          return;
+        }
+        if (!dataLoaded) await fetchCourseData();
+        await fetchProgress(session.user.id);
+
+        lvCourseTitle.textContent = course.title;
+        renderSidebar();
+        updateOverallProgress();
+
+        const first = allLessonsFlat()[0];
+        if (first) playLesson(first);
+        else { lvActiveTitle.textContent = 'No lessons yet'; lvActiveSub.textContent = ''; }
+      } catch (err) {
+        lvSidebar.innerHTML = '<div class="lv-error">Couldn\'t load this course. Please try again shortly.</div>';
+        lvActiveTitle.textContent = 'Couldn\'t load course';
+      }
+    }
+    window.__msOpenLessonView = openLessonView;
+
+    async function handleStartLearningFree() {
+      const sb = window.__truscrenSb;
+      const { data: { session } } = await sb.auth.getSession();
+      closeIntro();
+      if (session) {
+        openLessonView();
+      } else {
+        window.__requestLessonRedirect && window.__requestLessonRedirect();
+        window.__openAuthModal && window.__openAuthModal('signup', 'Create a free account to start watching');
+      }
+    }
+    startBtn.addEventListener('click', function () {
+      startBtn.disabled = true;
+      handleStartLearningFree().finally(() => { startBtn.disabled = false; });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      if (lvOverlay.classList.contains('open')) closeLessonOverlay();
+      else if (introOverlay.classList.contains('open')) closeIntro();
     });
   })();
 
