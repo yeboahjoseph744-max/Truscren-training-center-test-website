@@ -36,10 +36,13 @@
       if (enrolParam) { revealPage(); return; }
 
       try {
-        var thGateSb = supabase.createClient(
+        // Shared with the main auth block further down the page, so we only ever
+        // create one Supabase client instance (avoids the "multiple GoTrueClient
+        // instances" warning from having two clients read/write the same session).
+        var thGateSb = window.__truscrenSb || (window.__truscrenSb = supabase.createClient(
           'https://dudbrvrbzpgzjqngvjim.supabase.co',
           'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19'
-        );
+        ));
         thGateSb.auth.getSession().then(function (res) {
           var session = res && res.data && res.data.session;
           if (session) window.location.replace('learn.html');
@@ -2169,7 +2172,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     const SUPA_URL = 'https://dudbrvrbzpgzjqngvjim.supabase.co';
     const SUPA_KEY = 'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19';
     const { createClient } = supabase;
-    const sb = createClient(SUPA_URL, SUPA_KEY);
+    // Reuse the client the pre-render auth-check script already created, if present.
+    const sb = window.__truscrenSb || createClient(SUPA_URL, SUPA_KEY);
 
     // ── DOM refs ──
     const overlay      = document.getElementById('signin-overlay');
