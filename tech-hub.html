@@ -715,6 +715,12 @@
       padding: 0.6rem 0.8rem; margin-bottom: 0.875rem; display: none;
     }
     .si-auth-err.show { display: block; }
+    .si-context-msg {
+      font-size: 0.78rem; font-weight: 600; color: var(--dark); background: rgba(255,105,0,0.08);
+      border: 1px solid rgba(255,105,0,0.25); border-radius: 6px;
+      padding: 0.65rem 0.8rem; margin-bottom: 0.875rem; display: none;
+    }
+    .si-context-msg.show { display: block; }
     .si-input-select {
       width: 100%; background: #f7f7f7; border: none; outline: none;
       border-radius: 6px; padding: 0.6rem 2rem 0.6rem 0.8rem;
@@ -1163,6 +1169,83 @@
     }
     .cdm-close:hover { color: #333; background: #f2f2f2; }
 
+    /* ── MICRO-SOLDERING INTRO MODAL ── */
+    #ms-intro-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2060;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+      overflow-y: auto;
+    }
+    #ms-intro-overlay.open { display: flex; }
+    #ms-intro-modal {
+      width: 100%; max-width: 620px; margin: auto;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    .msi-thumb-bar { height: 5px; background: linear-gradient(90deg,#1A2050,#2E45A0); }
+    .msi-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1; z-index: 2;
+      transition: color 0.18s, background 0.18s;
+    }
+    .msi-close:hover { color: #333; background: #f2f2f2; }
+    .msi-body { padding: 1.875rem 2rem 2rem; max-height: 85dvh; overflow-y: auto; }
+    .msi-badge {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.55rem; display: block;
+    }
+    .msi-title {
+      font-size: 1.35rem; font-weight: 800; color: var(--dark);
+      letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem;
+    }
+    .msi-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.125rem; }
+    .msi-chips span {
+      font-size: 0.72rem; font-weight: 600; color: var(--teal);
+      background: rgba(0,122,94,0.09); border: 1px solid rgba(0,122,94,0.2);
+      padding: 0.25rem 0.65rem; border-radius: 20px;
+    }
+    .msi-intro { font-size: 0.875rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.5rem; }
+    .msi-section { margin-bottom: 1.375rem; }
+    .msi-section h4 {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.75rem;
+    }
+    .msi-section.alt h4 { color: var(--teal); }
+    .msi-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .msi-list li {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      font-size: 0.85rem; color: var(--dark); line-height: 1.5;
+    }
+    .msi-list li::before {
+      content: ''; flex-shrink: 0; margin-top: 0.5em;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--brand);
+    }
+    .msi-section.alt .msi-list li::before { background: var(--teal); }
+    .msi-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.625rem; }
+    .btn-msi-primary {
+      flex: 1; min-width: 190px; text-align: center; padding: 0.85rem 1.25rem;
+      background: var(--brand); color: #fff; border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.18s;
+    }
+    .btn-msi-primary:hover { background: var(--brand-h); }
+    .btn-msi-outline {
+      flex: 1; min-width: 190px; text-align: center; padding: 0.85rem 1.25rem;
+      background: none; color: var(--dark); border: 1.5px solid var(--border); border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .btn-msi-outline:hover { background: var(--light-bg); border-color: #ccc; }
+    @media (max-width: 540px) {
+      .msi-btns { flex-direction: column; }
+      .btn-msi-primary, .btn-msi-outline { min-width: 0; }
+    }
+
     /* ── LOCATIONS ── */
     .loc-section { padding: 5rem 1.5rem; background: #fff; }
     .loc-grid {
@@ -1343,7 +1426,7 @@
     </div>
     <div class="nav-auth" id="nav-auth-in" style="display:none;">
       <span class="nav-student-name" id="nav-student-name"></span>
-      <button class="btn-dashboard" id="btn-open-dash">Dashboard</button>
+      <a href="learn.html" class="btn-dashboard" id="btn-open-dash" style="text-decoration:none;">My Learning</a>
       <button class="btn-logout-nav" id="btn-logout-nav">Log Out</button>
     </div>
 
@@ -1379,7 +1462,7 @@
   </div>
   <div class="mob-auth" id="mob-auth-in" style="display:none;">
     <p id="mob-student-name" style="color:rgba(255,255,255,0.55);font-size:0.8rem;padding:0.2rem 0;font-weight:500;"></p>
-    <button id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;">My Dashboard</button>
+    <a href="learn.html" id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;text-decoration:none;box-sizing:border-box;">My Learning</a>
     <button id="mob-logout" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:none;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.25);width:100%;">Log Out</button>
   </div>
 </div>
@@ -1418,10 +1501,10 @@
         <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
       <div class="c-body">
-        <span class="c-badge">Advanced · Certificate</span>
-        <div class="c-name">Circuit Board Soldering &amp; Board-Level Repair</div>
+        <span class="c-badge">Free Online · Certificate In Person</span>
+        <div class="c-name">Circuit Board Micro-Soldering</div>
         <div class="c-partner">TRUSCREN TECH HUB</div>
-        <div class="c-meta"><span>Lab-based</span><span>·</span><span>8 weeks</span><span>·</span><span>★ 4.9</span></div>
+        <div class="c-meta"><span>Self-paced</span><span>·</span><span>Free</span><span>·</span><span>★ 4.9</span></div>
       </div>
     </div>
 
@@ -1765,6 +1848,54 @@
 </div>
 
 
+<!-- ══════════ MICRO-SOLDERING FREE-LESSONS INTRO MODAL ══════════ -->
+<div id="ms-intro-overlay" role="dialog" aria-modal="true" aria-label="Circuit Board Micro-Soldering">
+  <div id="ms-intro-modal">
+    <div class="msi-thumb-bar"></div>
+    <button class="msi-close" id="ms-intro-close-btn" aria-label="Close">
+      <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="msi-body">
+      <span class="msi-badge">Free Online · Certificate In Person</span>
+      <div class="msi-title">Circuit Board Micro-Soldering</div>
+      <div class="msi-chips">
+        <span>Free theory online</span>
+        <span>Hands-on in Accra</span>
+        <span>TRUSCREN certificate</span>
+      </div>
+      <p class="msi-intro">Start learning today, free. Complete the theory online at your own pace, track your progress, then join us in Accra for hands-on lab training and graduate with your TRUSCREN certificate.</p>
+
+      <div class="msi-section">
+        <h4>What You'll Learn Online — Free</h4>
+        <ul class="msi-list">
+          <li>How circuit boards work, and how to read them</li>
+          <li>The tools of micro-soldering and what each one does</li>
+          <li>Common board-level faults and how they show up</li>
+          <li>The theory behind safe soldering technique</li>
+          <li>Fault-finding logic before you touch a board</li>
+        </ul>
+      </div>
+
+      <div class="msi-section alt">
+        <h4>Complete In Person — Accra</h4>
+        <ul class="msi-list">
+          <li>Hands-on practice with microscope, hot air, and soldering station</li>
+          <li>Real boards, real faults, supervised by working technicians</li>
+          <li>Assessment and official TRUSCREN certification</li>
+        </ul>
+      </div>
+
+      <div class="msi-btns">
+        <button type="button" class="btn-msi-primary" id="ms-start-btn">Start Learning Free →</button>
+        <a href="#enrol" class="btn-msi-outline">Enrol for Lab Training</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
 <div id="signin-overlay" role="dialog" aria-modal="true" aria-label="TRUSCREN TECH HUB Account">
   <div id="signin-modal">
@@ -1853,6 +1984,7 @@
           <p>We've sent a confirmation link. Click it to activate your account, then sign in.</p>
           <div class="si-footer" style="margin-top:0.5rem;"><a href="#" id="si-goto-login">Go to Sign In →</a></div>
         </div>
+        <div class="si-context-msg" id="su-context-msg"></div>
         <div class="si-auth-err" id="si-signup-err"></div>
         <form id="su-form" novalidate>
           <div class="si-field">
@@ -2034,11 +2166,23 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     let currentProfile = null;
     let currentUser    = null;
 
+    // ── POST-SIGN-IN REDIRECT TARGET ──
+    const urlParams    = new URLSearchParams(window.location.search);
+    const nextRedirect = urlParams.get('next') || 'learn.html';
+
+    function setSignupContextMsg(msg) {
+      const el = document.getElementById('su-context-msg');
+      if (!el) return;
+      if (msg) { el.textContent = msg; el.classList.add('show'); }
+      else { el.textContent = ''; el.classList.remove('show'); }
+    }
+
     // ── MODAL OPEN / CLOSE ──
-    function openModal(tab) {
+    function openModal(tab, contextMsg) {
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
       switchTab(tab || 'signin');
+      if (tab === 'signup' && contextMsg) setSignupContextMsg(contextMsg);
       setTimeout(() => {
         const f = tab === 'signup' ? document.getElementById('su-name') : document.getElementById('si-email');
         if (f) f.focus();
@@ -2062,6 +2206,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       }
     });
 
+    if (urlParams.get('auth') === '1') {
+      setTimeout(() => openModal('signin'), 250);
+    }
+
     // ── TABS ──
     function switchTab(name) {
       document.querySelectorAll('.si-tab').forEach(t =>
@@ -2070,6 +2218,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         p.classList.toggle('active', p.id === 'panel-' + name));
       loginErrEl.classList.remove('show');
       signupErrEl.classList.remove('show');
+      setSignupContextMsg(null);
     }
     document.querySelectorAll('.si-tab').forEach(tab =>
       tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('panel-', ''))));
@@ -2128,7 +2277,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       try {
         const { error } = await sb.auth.signInWithPassword({ email, password: pw });
         if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
-        else closeModal();
+        else { closeModal(); window.location.href = nextRedirect; }
       } catch (err) {
         console.error('Sign-in failed:', err);
         loginErrEl.textContent = friendlyErr(err && err.message);
@@ -2251,10 +2400,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       dashOverlay.classList.remove('open');
       document.body.style.overflow = '';
     }
-    btnOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); });
-    mobOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); mobMenu.classList.remove('open'); });
     dashCloseBtn.addEventListener('click', closeDash);
     dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
+
+    // ── EXPORTS FOR OTHER MODULES (e.g. free-lessons flow) ──
+    window.__truscrenSb = sb;
+    window.__openAuthModal = function (tab, contextMsg) { openModal(tab, contextMsg); };
   })();
 
   // Smooth scroll
@@ -2451,7 +2602,10 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     }
 
     document.querySelectorAll('.c-card').forEach((card, i) => {
-      card.addEventListener('click', () => openCourse(i));
+      card.addEventListener('click', () => {
+        if (i === 1 && window.__openMicroSoldering) window.__openMicroSoldering();
+        else openCourse(i);
+      });
       card.addEventListener('pointermove', e => {
         const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -2468,6 +2622,44 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeCourse();
+    });
+  })();
+
+  // ── MICRO-SOLDERING FREE LESSONS ──
+  (function () {
+    const introOverlay  = document.getElementById('ms-intro-overlay');
+    const introCloseBtn = document.getElementById('ms-intro-close-btn');
+    const startBtn      = document.getElementById('ms-start-btn');
+
+    function openIntro() {
+      introOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeIntro() {
+      introOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    introCloseBtn.addEventListener('click', closeIntro);
+    introOverlay.addEventListener('click', e => { if (e.target === introOverlay) closeIntro(); });
+    window.__openMicroSoldering = openIntro;
+
+    async function handleStartLearningFree() {
+      const sb = window.__truscrenSb;
+      const { data: { session } } = await sb.auth.getSession();
+      closeIntro();
+      if (session) {
+        window.location.href = 'learn.html?course=micro-soldering';
+      } else {
+        window.__openAuthModal && window.__openAuthModal('signup', 'Create a free account to start watching');
+      }
+    }
+    startBtn.addEventListener('click', function () {
+      startBtn.disabled = true;
+      handleStartLearningFree().finally(() => { startBtn.disabled = false; });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && introOverlay.classList.contains('open')) closeIntro();
     });
   })();
 

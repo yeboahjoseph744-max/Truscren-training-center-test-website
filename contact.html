@@ -1461,7 +1461,7 @@
     </div>
     <div class="nav-auth" id="nav-auth-in" style="display:none;">
       <span class="nav-student-name" id="nav-student-name"></span>
-      <button class="btn-dashboard" id="btn-open-dash">Dashboard</button>
+      <a href="learn.html" class="btn-dashboard" id="btn-open-dash" style="text-decoration:none;">My Learning</a>
       <button class="btn-logout-nav" id="btn-logout-nav">Log Out</button>
     </div>
 
@@ -1497,7 +1497,7 @@
   </div>
   <div class="mob-auth" id="mob-auth-in" style="display:none;">
     <p id="mob-student-name" style="color:rgba(255,255,255,0.55);font-size:0.8rem;padding:0.2rem 0;font-weight:500;"></p>
-    <button id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;">My Dashboard</button>
+    <a href="learn.html" id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;text-decoration:none;box-sizing:border-box;">My Learning</a>
     <button id="mob-logout" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:none;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.25);width:100%;">Log Out</button>
   </div>
 </div>
@@ -2022,7 +2022,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       try {
         const { error } = await sb.auth.signInWithPassword({ email, password: pw });
         if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
-        else closeModal();
+        else { closeModal(); window.location.href = 'learn.html'; }
       } catch (err) {
         console.error('Sign-in failed:', err);
         loginErrEl.textContent = friendlyErr(err && err.message);
@@ -2145,8 +2145,6 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       dashOverlay.classList.remove('open');
       document.body.style.overflow = '';
     }
-    btnOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); });
-    mobOpenDash.addEventListener('click',  e => { e.preventDefault(); openDash(); mobMenu.classList.remove('open'); });
     dashCloseBtn.addEventListener('click', closeDash);
     dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
   })();
