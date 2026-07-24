@@ -19,13 +19,19 @@
     // unless they deliberately asked for the enrolment page (?enrol=1). The page
     // stays hidden (see the adjacent <style>) until this resolves, so there is
     // no flash of the marketing page for authenticated students.
+    //
+    // ?enrol=1 only bypasses the redirect — it does not scroll. Scrolling to the
+    // enrolment section is a separate, explicit signal: the #enrol hash (e.g.
+    // tech-hub.html?enrol=1#enrol). This keeps "open Tech Hub" (nav link) and
+    // "take me to the enrolment form" (Book Lab Training) independent.
     document.documentElement.classList.add('th-auth-check');
     (function () {
       var enrolParam = new URLSearchParams(window.location.search).get('enrol') === '1';
+      var scrollRequested = window.location.hash === '#enrol';
 
       function revealPage() {
         document.documentElement.classList.remove('th-auth-check');
-        if (enrolParam) {
+        if (scrollRequested) {
           document.addEventListener('DOMContentLoaded', function () {
             var t = document.getElementById('enrol');
             if (t) setTimeout(function () { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
