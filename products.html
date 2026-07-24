@@ -2199,10 +2199,17 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
       if (pw.length < 6)      { setErr('si-pw-err', 'Password must be at least 6 characters.'); ok = false; } else clrErr('si-pw-err');
       if (!ok) return;
       loginBtn.disabled = true; loginBtn.textContent = 'Signing in...';
-      const { error } = await sb.auth.signInWithPassword({ email, password: pw });
-      loginBtn.disabled = false; loginBtn.textContent = 'Sign In →';
-      if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
-      else closeModal();
+      try {
+        const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+        if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
+        else closeModal();
+      } catch (err) {
+        console.error('Sign-in failed:', err);
+        loginErrEl.textContent = friendlyErr(err && err.message);
+        loginErrEl.classList.add('show');
+      } finally {
+        loginBtn.disabled = false; loginBtn.textContent = 'Sign In →';
+      }
     });
 
     // ── SIGN UP ──
@@ -2240,17 +2247,23 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 
     // ── AUTH STATE → NAV UPDATE ──
     function updateNav(user, profile) {
-      currentUser    = user;
-      currentProfile = profile;
-      const loggedIn = !!(user && profile);
-      navAuthOut.style.display = loggedIn ? 'none' : 'flex';
-      navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
-      mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
-      mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
-      if (loggedIn) {
-        const first = profile.full_name.split(' ')[0];
-        navName.textContent = first;
-        mobName.textContent = 'Signed in as ' + profile.full_name;
+      try {
+        currentUser    = user;
+        currentProfile = profile;
+        const loggedIn = !!(user && profile);
+        navAuthOut.style.display = loggedIn ? 'none' : 'flex';
+        navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
+        mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        if (loggedIn) {
+          const fallbackName = user.email ? user.email.split('@')[0] : 'Student';
+          const fullName = profile.full_name || fallbackName;
+          const first = fullName.split(' ')[0];
+          navName.textContent = first;
+          mobName.textContent = 'Signed in as ' + fullName;
+        }
+      } catch (err) {
+        console.error('updateNav failed:', err);
       }
     }
 
@@ -2287,22 +2300,26 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     // ── DASHBOARD ──
     function openDash() {
       if (!currentProfile || !currentUser) return;
-      const p = currentProfile;
-      document.getElementById('dash-avatar').textContent = (p.full_name || 'S')[0].toUpperCase();
-      document.getElementById('dash-name').textContent   = p.full_name || '—';
-      document.getElementById('dash-email').textContent  = currentUser.email || '—';
-      document.getElementById('dash-course').textContent = p.course || '—';
-      document.getElementById('dash-level').textContent  = p.level  || '—';
-      const pct = Math.min(100, Math.max(0, p.progress || 0));
-      document.getElementById('dash-pct').textContent    = pct + '%';
-      setTimeout(() => { document.getElementById('dash-progress-fill').style.width = pct + '%'; }, 80);
-      document.getElementById('dash-phone').textContent  = p.phone || '—';
-      const since = p.created_at
-        ? new Date(p.created_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
-        : '—';
-      document.getElementById('dash-since').textContent = since;
-      dashOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      try {
+        const p = currentProfile;
+        document.getElementById('dash-avatar').textContent = (p.full_name || 'S')[0].toUpperCase();
+        document.getElementById('dash-name').textContent   = p.full_name || '—';
+        document.getElementById('dash-email').textContent  = currentUser.email || '—';
+        document.getElementById('dash-course').textContent = p.course || '—';
+        document.getElementById('dash-level').textContent  = p.level  || '—';
+        const pct = Math.min(100, Math.max(0, p.progress || 0));
+        document.getElementById('dash-pct').textContent    = pct + '%';
+        setTimeout(() => { document.getElementById('dash-progress-fill').style.width = pct + '%'; }, 80);
+        document.getElementById('dash-phone').textContent  = p.phone || '—';
+        const since = p.created_at
+          ? new Date(p.created_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
+          : '—';
+        document.getElementById('dash-since').textContent = since;
+        dashOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } catch (err) {
+        console.error('openDash failed:', err);
+      }
     }
     function closeDash() {
       dashOverlay.classList.remove('open');
