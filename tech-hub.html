@@ -14,6 +14,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Pre-render auth gate: signed-in visitors are sent straight to learn.html
+    // unless they deliberately asked for the enrolment page (?enrol=1). The page
+    // stays hidden (see the adjacent <style>) until this resolves, so there is
+    // no flash of the marketing page for authenticated students.
+    document.documentElement.classList.add('th-auth-check');
+    (function () {
+      var enrolParam = new URLSearchParams(window.location.search).get('enrol') === '1';
+
+      function revealPage() {
+        document.documentElement.classList.remove('th-auth-check');
+        if (enrolParam) {
+          document.addEventListener('DOMContentLoaded', function () {
+            var t = document.getElementById('enrol');
+            if (t) setTimeout(function () { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+          });
+        }
+      }
+
+      if (enrolParam) { revealPage(); return; }
+
+      try {
+        var thGateSb = supabase.createClient(
+          'https://dudbrvrbzpgzjqngvjim.supabase.co',
+          'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19'
+        );
+        thGateSb.auth.getSession().then(function (res) {
+          var session = res && res.data && res.data.session;
+          if (session) window.location.replace('learn.html');
+          else revealPage();
+        }).catch(function (err) {
+          console.error('Tech Hub auth check failed:', err);
+          revealPage();
+        });
+      } catch (err) {
+        console.error('Tech Hub auth check failed:', err);
+        revealPage();
+      }
+    })();
+  </script>
+  <style>html.th-auth-check body{visibility:hidden;}html.th-auth-check{overflow:hidden;}</style>
   <style>
     html.tc-pre-active body > *:not(#tc-preloader){visibility:hidden;}
     html.tc-pre-active{overflow:hidden;}
@@ -2321,6 +2362,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     });
 
     // ── AUTH STATE → NAV UPDATE ──
+    function updateTechHubNavLink(loggedIn) {
+      document.querySelectorAll('a[href="tech-hub.html"], a[href="tech-hub.html?enrol=1"]').forEach(a => {
+        a.setAttribute('href', loggedIn ? 'tech-hub.html?enrol=1' : 'tech-hub.html');
+      });
+    }
+
     function updateNav(user, profile) {
       try {
         currentUser    = user;
@@ -2330,6 +2377,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
         navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
         mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
         mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        updateTechHubNavLink(loggedIn);
         if (loggedIn) {
           const fallbackName = user.email ? user.email.split('@')[0] : 'Student';
           const fullName = profile.full_name || fallbackName;

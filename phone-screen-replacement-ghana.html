@@ -1169,6 +1169,12 @@
       signupOkEl.classList.add('show');
     });
 
+    function updateTechHubNavLink(loggedIn) {
+      document.querySelectorAll('a[href="tech-hub.html"], a[href="tech-hub.html?enrol=1"]').forEach(a => {
+        a.setAttribute('href', loggedIn ? 'tech-hub.html?enrol=1' : 'tech-hub.html');
+      });
+    }
+
     function updateNav(user, profile) {
       try {
         currentUser    = user;
@@ -1178,6 +1184,7 @@
         navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
         mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
         mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        updateTechHubNavLink(loggedIn);
         if (loggedIn) {
           const fallbackName = user.email ? user.email.split('@')[0] : 'Student';
           const fullName = profile.full_name || fallbackName;
