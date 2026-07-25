@@ -129,7 +129,7 @@
     /* ── LAYOUT ── */
     .lp-layout { display: flex; align-items: stretch; height: calc(100vh - 64px); }
     .lp-main { flex: 1 1 68%; min-width: 0; overflow-y: auto; padding: 1.5rem 2rem 3rem; }
-    .lp-sidebar { flex: 1 1 32%; max-width: 420px; min-width: 300px; border-left: 1px solid var(--border); overflow-y: auto; background: #fbfbfb; display: flex; flex-direction: column; }
+    .lp-sidebar { flex: 1 1 32%; max-width: 420px; min-width: 300px; border-left: 1px solid var(--border); overflow-y: auto; background: #fff; display: flex; flex-direction: column; }
     @media (max-width: 860px) {
       .lp-layout { flex-direction: column; height: auto; }
       .lp-main { overflow-y: visible; padding: 1.25rem 1.25rem 0; }
@@ -184,39 +184,53 @@
     .lp-progress-pct { font-size: 0.78rem; font-weight: 700; color: var(--dark); white-space: nowrap; }
     .lp-progress-sub { font-size: 0.74rem; color: #888; }
 
-    .lp-sections { border-top: 1px solid var(--border); }
+    .lp-sections { }
     .lp-sec { border-bottom: 1px solid var(--border); }
+    .lp-sec:last-child { border-bottom: none; }
     .lp-sec-hd {
-      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
-      padding: 0.875rem 0.15rem; cursor: pointer; background: none; border: none; text-align: left;
+      width: calc(100% + 2.5rem); margin: 0 -1.25rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+      padding: 1.125rem 1.25rem; cursor: pointer; background: var(--light-bg); border: none; text-align: left;
     }
-    .lp-sec-hd-title { font-size: 0.85rem; font-weight: 700; color: var(--dark); }
-    .lp-sec-hd-meta { font-size: 0.7rem; color: #888; margin-top: 0.2rem; }
-    .lp-sec-chev { color: #aaa; transition: transform 0.2s; flex-shrink: 0; }
+    .lp-sec-hd-title { font-size: 1.0625rem; font-weight: 700; color: var(--dark); }
+    .lp-sec-hd-meta { font-size: 0.74rem; color: var(--mid); margin-top: 0.3rem; }
+    .lp-sec-chev { color: var(--mid); transition: transform 0.2s ease; flex-shrink: 0; }
     .lp-sec-hd[aria-expanded="true"] .lp-sec-chev { transform: rotate(180deg); }
-    .lp-sec-body { display: none; padding-bottom: 0.5rem; }
+    .lp-sec-body { display: none; padding: 0.25rem 0 0.375rem; }
     .lp-sec-body.open { display: block; }
-    .lp-lesson { display: flex; align-items: center; gap: 0.65rem; padding: 0.15rem; border-radius: 6px; }
+
+    .lp-lesson {
+      display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1.25rem;
+      border-left: 3px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .lp-lesson:hover { background: rgba(255,105,0,0.05); }
+    .lp-lesson.active { background: rgba(255,105,0,0.09); border-left-color: var(--brand); }
+
     .lp-lesson-circle {
-      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; background: none; cursor: pointer;
-      border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; padding: 0;
-      transition: background 0.15s, border-color 0.15s;
+      width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0; background: none; cursor: pointer;
+      border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; padding: 0;
+      transition: background 0.18s ease, border-color 0.18s ease;
     }
     .lp-lesson-circle:hover { border-color: var(--brand); }
-    .lp-lesson-circle svg { opacity: 0; transition: opacity 0.15s; }
+    .lp-lesson-circle svg { opacity: 0; transition: opacity 0.15s ease; }
     .lp-lesson.done .lp-lesson-circle { background: var(--brand); border-color: var(--brand); }
     .lp-lesson.done .lp-lesson-circle svg { opacity: 1; }
+
     .lp-lesson-info {
-      flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
-      background: none; border: none; cursor: pointer; text-align: left; padding: 0.5rem 0.4rem; border-radius: 6px;
-      transition: background 0.15s;
+      flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 0.55rem;
+      background: none; border: none; cursor: pointer; text-align: left; padding: 0.1rem 0;
     }
-    .lp-lesson-info:hover { background: rgba(255,105,0,0.06); }
-    .lp-lesson.active .lp-lesson-info { background: rgba(255,105,0,0.1); }
-    .lp-lesson-title { font-size: 0.8rem; color: var(--dark); line-height: 1.35; }
+    .lp-lesson-num {
+      flex-shrink: 0; min-width: 1.1rem; text-align: right; margin-top: 0.14rem;
+      font-size: 0.72rem; font-weight: 700; color: var(--mid);
+    }
+    .lp-lesson-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+    .lp-lesson-title { font-size: 0.82rem; color: var(--dark); line-height: 1.35; }
     .lp-lesson.active .lp-lesson-title { color: var(--brand); font-weight: 700; }
     .lp-lesson.done .lp-lesson-title { color: #999; }
-    .lp-lesson-dur { font-size: 0.68rem; color: #999; flex-shrink: 0; }
+    .lp-lesson-meta { display: flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: var(--mid); }
+    .lp-lesson-type-ico { flex-shrink: 0; color: var(--mid); }
 
     .lp-empty { font-size: 0.82rem; color: #888; text-align: center; padding: 1.75rem 1rem; line-height: 1.5; }
 
@@ -443,11 +457,12 @@
     d.textContent = s || '';
     return d.innerHTML;
   }
-  function formatDuration(totalSeconds) {
-    const s = Math.max(0, Math.round(totalSeconds || 0));
-    const m = Math.floor(s / 60);
-    const r = s % 60;
-    return m + ':' + String(r).padStart(2, '0');
+  function formatMinutesLabel(totalSeconds) {
+    const mins = Math.max(0, Math.round((totalSeconds || 0) / 60));
+    return mins + ' minute' + (mins === 1 ? '' : 's');
+  }
+  function isVideoLesson(lesson) {
+    return !!(lesson.video_provider || lesson.video_id);
   }
   function allLessons() {
     const out = [];
@@ -562,8 +577,8 @@
     if (!hd) return;
     const metaEl = hd.querySelector('.lp-sec-hd-meta');
     const done = sec.lessons.filter(l => isDone(l.id)).length;
-    const mins = Math.round(sec.lessons.reduce((sum, l) => sum + (l.duration_seconds || 0), 0) / 60);
-    metaEl.textContent = done + '/' + sec.lessons.length + ' · ' + mins + ' min';
+    const totalSeconds = sec.lessons.reduce((sum, l) => sum + (l.duration_seconds || 0), 0);
+    metaEl.textContent = done + ' / ' + sec.lessons.length + ' • ' + formatMinutesLabel(totalSeconds);
   }
 
   // ── RENDER: LESSON ROW UI (circle + classes) ──
@@ -720,12 +735,13 @@
     emptyLessonsEl.style.display = hasAnyLessons ? 'none' : '';
 
     sectionsEl.innerHTML = '';
+    let lessonNumber = 0;
     state.sections.forEach((sec, idx) => {
       const wrap = document.createElement('div');
       wrap.className = 'lp-sec';
 
       const done = sec.lessons.filter(l => isDone(l.id)).length;
-      const mins = Math.round(sec.lessons.reduce((sum, l) => sum + (l.duration_seconds || 0), 0) / 60);
+      const totalSeconds = sec.lessons.reduce((sum, l) => sum + (l.duration_seconds || 0), 0);
 
       const hd = document.createElement('button');
       hd.type = 'button';
@@ -736,7 +752,7 @@
       hd.id = 'lp-sec-hd-' + sec.id;
       hd.innerHTML =
         '<span><span class="lp-sec-hd-title">' + escapeHtml(sec.title) + '</span>' +
-        '<div class="lp-sec-hd-meta">' + done + '/' + sec.lessons.length + ' · ' + mins + ' min</div></span>' +
+        '<div class="lp-sec-hd-meta">' + done + ' / ' + sec.lessons.length + ' • ' + formatMinutesLabel(totalSeconds) + '</div></span>' +
         '<svg class="lp-sec-chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       hd.addEventListener('click', () => toggleSection(sec.id));
 
@@ -748,6 +764,7 @@
       body.setAttribute('aria-labelledby', 'lp-sec-hd-' + sec.id);
 
       sec.lessons.forEach(lesson => {
+        lessonNumber++;
         const row = document.createElement('div');
         row.className = 'lp-lesson' + (isDone(lesson.id) ? ' done' : '');
         row.dataset.lessonId = lesson.id;
@@ -760,13 +777,20 @@
         circle.innerHTML = '<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
         circle.addEventListener('click', () => toggleCircle(lesson));
 
+        const typeIcon = isVideoLesson(lesson)
+          ? '<svg class="lp-lesson-type-ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>'
+          : '<svg class="lp-lesson-type-ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+
         const info = document.createElement('button');
         info.type = 'button';
         info.className = 'lp-lesson-info';
         info.setAttribute('aria-current', lesson.id === state.activeLessonId ? 'true' : 'false');
         info.innerHTML =
-          '<span class="lp-lesson-title">' + escapeHtml(lesson.title) + '</span>' +
-          '<span class="lp-lesson-dur">' + formatDuration(lesson.duration_seconds) + '</span>';
+          '<span class="lp-lesson-num">' + lessonNumber + '</span>' +
+          '<span class="lp-lesson-body">' +
+            '<span class="lp-lesson-title">' + escapeHtml(lesson.title) + '</span>' +
+            '<span class="lp-lesson-meta">' + typeIcon + '<span>' + formatMinutesLabel(lesson.duration_seconds) + '</span></span>' +
+          '</span>';
         info.addEventListener('click', () => setActiveLesson(lesson));
 
         row.appendChild(circle);
