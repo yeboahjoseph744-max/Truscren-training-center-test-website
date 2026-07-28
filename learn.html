@@ -142,6 +142,8 @@
     .lp-lesson-heading { font-size: 1.35rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 1rem; }
     .lp-player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #0c0c0f; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
     .lp-player-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .lp-player-wrap.doc-mode { aspect-ratio: auto; height: 85vh; max-height: 1100px; }
+    .lp-player-wrap.doc-mode iframe { width: 100%; height: 100%; border: 0; }
     .lp-inline-error {
       margin-top: 0.875rem; padding: 0.875rem 1rem; background: #fdf0ee; border: 1px solid #f5c6c2;
       border-radius: 6px; font-size: 0.82rem; color: #c0392b; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
@@ -638,6 +640,7 @@
     hide(videoErrorEl);
     playerWrap.innerHTML = '';
     if (lesson.document_url) {
+      playerWrap.classList.add('doc-mode');
       const docFrame = document.createElement('iframe');
       docFrame.src = lesson.document_url;
       docFrame.title = lesson.title;
@@ -650,6 +653,7 @@
       completeBtn.textContent = 'Mark Complete & Continue →';
       return;
     }
+    playerWrap.classList.remove('doc-mode');
     if (!lesson.video_id) {
       show(videoErrorEl);
       return;
