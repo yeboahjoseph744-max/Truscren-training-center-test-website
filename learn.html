@@ -637,6 +637,19 @@
     lessonNameEl.textContent = lesson.title;
     hide(videoErrorEl);
     playerWrap.innerHTML = '';
+    if (lesson.document_url) {
+      const docFrame = document.createElement('iframe');
+      docFrame.src = lesson.document_url;
+      docFrame.title = lesson.title;
+      docFrame.setAttribute('loading', 'lazy');
+      docFrame.style.width = '100%';
+      docFrame.style.height = '100%';
+      docFrame.style.border = '0';
+      playerWrap.appendChild(docFrame);
+      completeBtn.disabled = false;
+      completeBtn.textContent = 'Mark Complete & Continue →';
+      return;
+    }
     if (!lesson.video_id) {
       show(videoErrorEl);
       return;
