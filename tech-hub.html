@@ -738,6 +738,10 @@
     .si-footer { font-size: 0.71rem; color: #999; text-align: center; margin-top: 0.75rem; }
     .si-footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
     .si-footer a:hover { text-decoration: underline; }
+    .si-forgot { text-align: right; }
+    .si-forgot a { font-size: 0.71rem; color: var(--brand); text-decoration: none; font-weight: 600; }
+    .si-forgot a:hover { text-decoration: underline; }
+    .si-forgot a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 2px; }
 
     /* ── AUTH MODAL OVERRIDES (tabs) ── */
     #signin-modal { height: min(90vh, 680px); min-height: 0; overflow: hidden; }
@@ -2013,6 +2017,7 @@
               </button>
             </div>
             <span class="si-err" id="si-pw-err">Password must be at least 6 characters.</span>
+            <div class="si-forgot"><a href="/forgot-password.html">Forgot password?</a></div>
           </div>
           <button type="submit" class="si-submit" id="si-login-btn">Sign In →</button>
           <div class="si-footer" style="margin-top:0.875rem;">
