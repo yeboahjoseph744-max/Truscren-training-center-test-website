@@ -480,8 +480,7 @@
     return null;
   }
   function isLessonLocked(globalNumber) {
-    // TEMP: testing threshold, set back to 20 once lessons 21+ exist
-    return globalNumber != null && globalNumber > 15 && !state.examPassed;
+    return globalNumber != null && globalNumber > 20 && !state.examPassed;
   }
   function allLessons() {
     const out = [];
@@ -779,7 +778,6 @@
 
   // ── RENDER: SIDEBAR SECTIONS ──
   function renderSidebar() {
-    console.log('[lock-debug] renderSidebar called, state.examPassed =', state.examPassed);
     sidebarCourseTitle.textContent = state.course.title;
 
     if (!state.sections.length) {
@@ -825,7 +823,6 @@
       sec.lessons.forEach(lesson => {
         lessonNumber++;
         const locked = isLessonLocked(lessonNumber);
-        console.log('[lock-debug]', { title: lesson.title, globalNumber: lessonNumber, examPassed: state.examPassed, locked: locked });
         const row = document.createElement('div');
         row.className = 'lp-lesson' + (isDone(lesson.id) ? ' done' : '') + (locked ? ' locked' : '');
         row.dataset.lessonId = lesson.id;
