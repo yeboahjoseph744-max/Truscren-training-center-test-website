@@ -218,6 +218,9 @@
     .lp-lesson-circle svg { opacity: 0; transition: opacity 0.15s ease; }
     .lp-lesson.done .lp-lesson-circle { background: var(--brand); border-color: var(--brand); }
     .lp-lesson.done .lp-lesson-circle svg { opacity: 1; }
+    .lp-lesson.locked { opacity: 0.55; }
+    .lp-lesson.locked .lp-lesson-info { cursor: pointer; }
+    .lp-lesson-lock { color: var(--mid); cursor: default; }
 
     .lp-lesson-info {
       flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 0.55rem;
@@ -451,7 +454,7 @@
   const emptyLessonsEl = el('lp-empty-lessons');
 
   // ── STATE ──
-  const state = { user: null, course: null, sections: [], progress: {}, activeLessonId: null };
+  const state = { user: null, course: null, sections: [], progress: {}, activeLessonId: null, examPassed: false };
 
   // ── HELPERS ──
   function escapeHtml(s) {
@@ -465,6 +468,19 @@
   }
   function isVideoLesson(lesson) {
     return !!(lesson.video_provider || lesson.video_id);
+  }
+  function getGlobalLessonNumber(lessonId) {
+    let n = 0;
+    for (const sec of state.sections) {
+      for (const l of sec.lessons) {
+        n++;
+        if (l.id === lessonId) return n;
+      }
+    }
+    return null;
+  }
+  function isLessonLocked(globalNumber) {
+    return globalNumber != null && globalNumber > 20 && !state.examPassed;
   }
   function allLessons() {
     const out = [];
@@ -512,6 +528,17 @@
     const map = {};
     (data || []).forEach(row => { map[row.lesson_id] = row; });
     return map;
+  }
+  async function fetchExamPassed() {
+    try {
+      const { data, error } = await sb.from('exam_results')
+        .select('passed').eq('course_slug', 'micro-soldering').maybeSingle();
+      if (error) throw error;
+      return !!(data && data.passed);
+    } catch (err) {
+      console.error('Exam status check failed:', err);
+      return false;
+    }
   }
   async function upsertLessonProgress(userId, lessonId, completed) {
     const nowIso = completed ? new Date().toISOString() : null;
@@ -630,6 +657,15 @@
     playerEmptyEl.textContent = message;
     show(playerEmptyEl);
   }
+  function renderLessonLocked() {
+    hide(playerSkeleton); hide(playerContent); hide(completionScreen);
+    playerEmptyEl.innerHTML =
+      '<div style="display:flex;flex-direction:column;align-items:center;gap:0.875rem;">' +
+        '<span>Pass the certification exam to unlock this lesson.</span>' +
+        '<a class="lp-complete-btn" href="/exam.html" style="text-decoration:none;">Go to Exam →</a>' +
+      '</div>';
+    show(playerEmptyEl);
+  }
   function renderPlayer(lesson) {
     hide(playerSkeleton); hide(playerEmptyEl); hide(completionScreen);
     show(playerContent);
@@ -681,6 +717,10 @@
     if (row && row.scrollIntoView) row.scrollIntoView({ block: 'nearest' });
   }
   function setActiveLesson(lesson) {
+    if (isLessonLocked(getGlobalLessonNumber(lesson.id))) {
+      renderLessonLocked();
+      return;
+    }
     state.activeLessonId = lesson.id;
     const sec = sectionOfLesson(lesson.id);
     if (sec) openSection(sec.id);
@@ -782,17 +822,24 @@
 
       sec.lessons.forEach(lesson => {
         lessonNumber++;
+        const locked = isLessonLocked(lessonNumber);
         const row = document.createElement('div');
-        row.className = 'lp-lesson' + (isDone(lesson.id) ? ' done' : '');
+        row.className = 'lp-lesson' + (isDone(lesson.id) ? ' done' : '') + (locked ? ' locked' : '');
         row.dataset.lessonId = lesson.id;
 
-        const circle = document.createElement('button');
-        circle.type = 'button';
-        circle.className = 'lp-lesson-circle';
-        circle.setAttribute('aria-pressed', isDone(lesson.id) ? 'true' : 'false');
-        circle.setAttribute('aria-label', 'Mark "' + lesson.title + '" as ' + (isDone(lesson.id) ? 'incomplete' : 'complete'));
-        circle.innerHTML = '<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-        circle.addEventListener('click', () => toggleCircle(lesson));
+        const circle = document.createElement(locked ? 'span' : 'button');
+        if (locked) {
+          circle.className = 'lp-lesson-circle lp-lesson-lock';
+          circle.setAttribute('aria-label', '"' + lesson.title + '" is locked');
+          circle.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+        } else {
+          circle.type = 'button';
+          circle.className = 'lp-lesson-circle';
+          circle.setAttribute('aria-pressed', isDone(lesson.id) ? 'true' : 'false');
+          circle.setAttribute('aria-label', 'Mark "' + lesson.title + '" as ' + (isDone(lesson.id) ? 'incomplete' : 'complete'));
+          circle.innerHTML = '<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          circle.addEventListener('click', () => toggleCircle(lesson));
+        }
 
         const typeIcon = isVideoLesson(lesson)
           ? '<svg class="lp-lesson-type-ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>'
@@ -808,7 +855,10 @@
             '<span class="lp-lesson-title">' + escapeHtml(lesson.title) + '</span>' +
             '<span class="lp-lesson-meta">' + typeIcon + '<span>' + formatMinutesLabel(lesson.duration_seconds) + '</span></span>' +
           '</span>';
-        info.addEventListener('click', () => setActiveLesson(lesson));
+        info.addEventListener('click', () => {
+          if (locked) { renderLessonLocked(); return; }
+          setActiveLesson(lesson);
+        });
 
         row.appendChild(circle);
         row.appendChild(info);
@@ -864,6 +914,7 @@
 
       state.sections = await fetchSectionsWithLessons(course.id);
       state.progress = await fetchProgress(state.user.id);
+      state.examPassed = await fetchExamPassed();
 
       hide(sidebarSkeleton); show(sidebarContent);
       renderSidebar();
