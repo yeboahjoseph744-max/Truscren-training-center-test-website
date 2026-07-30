@@ -364,6 +364,14 @@
           <div id="lp-cert-slot"></div>
           <a href="tech-hub.html?enrol=1#enrol" class="lp-btn-primary">Book Lab Training →</a>
         </div>
+
+        <!-- Exam prompt (shown after finishing lesson 20 if exam not yet passed) -->
+        <div id="lp-exam-prompt" class="lp-completion" style="display:none;">
+          <div class="lp-completion-emoji">🎓</div>
+          <h1>You've completed the free lessons!</h1>
+          <p>Pass the certification exam to unlock the rest of the course.</p>
+          <a href="/exam.html" class="lp-btn-primary">Take the Certification Exam →</a>
+        </div>
       </main>
 
       <aside class="lp-sidebar" id="lp-sidebar" aria-label="Course content">
@@ -433,6 +441,7 @@
   const playerContent = el('lp-player-content');
   const playerEmptyEl = el('lp-player-empty');
   const completionScreen = el('lp-completion-screen');
+  const examPromptEl = el('lp-exam-prompt');
   const courseNameEl = el('lp-course-name');
   const sectionNameEl = el('lp-section-name');
   const lessonNameEl = el('lp-lesson-name');
@@ -653,12 +662,12 @@
 
   // ── PLAYER ──
   function renderPlayerEmpty(message) {
-    hide(playerSkeleton); hide(playerContent); hide(completionScreen);
+    hide(playerSkeleton); hide(playerContent); hide(completionScreen); hide(examPromptEl);
     playerEmptyEl.textContent = message;
     show(playerEmptyEl);
   }
   function renderLessonLocked() {
-    hide(playerSkeleton); hide(playerContent); hide(completionScreen);
+    hide(playerSkeleton); hide(playerContent); hide(completionScreen); hide(examPromptEl);
     playerEmptyEl.innerHTML =
       '<div style="display:flex;flex-direction:column;align-items:center;gap:0.875rem;">' +
         '<span>Pass the certification exam to unlock this lesson.</span>' +
@@ -667,7 +676,7 @@
     show(playerEmptyEl);
   }
   function renderPlayer(lesson) {
-    hide(playerSkeleton); hide(playerEmptyEl); hide(completionScreen);
+    hide(playerSkeleton); hide(playerEmptyEl); hide(completionScreen); hide(examPromptEl);
     show(playerContent);
     const sec = sectionOfLesson(lesson.id);
     courseNameEl.textContent = state.course.title;
@@ -731,8 +740,14 @@
 
   // ── COMPLETION SCREEN ──
   function renderCompletionScreen() {
-    hide(playerSkeleton); hide(playerContent); hide(playerEmptyEl);
+    hide(playerSkeleton); hide(playerContent); hide(playerEmptyEl); hide(examPromptEl);
     show(completionScreen);
+  }
+
+  // ── EXAM PROMPT (after finishing the last free lesson) ──
+  function renderExamPrompt() {
+    hide(playerSkeleton); hide(playerContent); hide(playerEmptyEl); hide(completionScreen);
+    show(examPromptEl);
   }
 
   // ── MARK COMPLETE & CONTINUE ──
@@ -748,6 +763,10 @@
       const sec = sectionOfLesson(lesson.id);
       if (sec) renderSectionMeta(sec.id);
       renderProgressBar();
+      if (getGlobalLessonNumber(lesson.id) === 20 && !state.examPassed) {
+        renderExamPrompt();
+        return;
+      }
       const next = nextLessonAfter(lesson.id);
       if (next) setActiveLesson(next);
       else renderCompletionScreen();
@@ -904,7 +923,7 @@
 
     // 3. Fetch course + content
     showOnlyFullscreen('app');
-    show(playerSkeleton); hide(playerContent); hide(playerEmptyEl); hide(completionScreen);
+    show(playerSkeleton); hide(playerContent); hide(playerEmptyEl); hide(completionScreen); hide(examPromptEl);
     show(sidebarSkeleton); hide(sidebarContent);
 
     try {
