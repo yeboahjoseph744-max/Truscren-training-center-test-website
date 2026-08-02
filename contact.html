@@ -617,6 +617,7 @@
       font-size: 0.78rem; transition: color 0.16s;
     }
     .foot-col a:hover { color: var(--brand); }
+    .foot-trustpilot { max-width: 320px; margin: 20px auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.07); }
     .foot-btm {
       display: flex; justify-content: space-between; align-items: center;
       font-size: 0.72rem; color: rgba(255,255,255,0.3);
@@ -1609,6 +1610,11 @@
         </ul>
       </div>
     </div>
+    <div class="foot-trustpilot">
+      <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a6f7297701e0ea478abe851" data-style-height="52px" data-style-width="100%" data-token="a9ca9528-58b9-40fd-b70c-1c938f0892e5">
+        <a href="https://www.trustpilot.com/review/www.truscrenafrica.com" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
     <div class="foot-btm">
       <span>© 2026 TRUSCREN Ghana. All rights reserved.</span>
       <div class="foot-btm-links">
@@ -2493,5 +2499,6 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   </a>
 </div>
 
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 </body>
 </html>
