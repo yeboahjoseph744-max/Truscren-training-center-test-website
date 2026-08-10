@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -1529,6 +1529,34 @@
     }
     .pbc-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
     @media(max-width:768px){.pbc-grid{grid-template-columns:1fr;max-width:440px;}}
+
+    /* Screens We Stock — rotating carousel (scw) */
+    .scw{--scw-dur:640ms;--scw-ease:cubic-bezier(0.4,0,0.2,1);position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:0;border-radius:22px;overflow:hidden;min-height:520px;box-shadow:0 30px 70px -30px rgba(38,46,61,0.45);background:#262E3D;}
+    .scw-stage{position:relative;overflow:hidden;min-height:520px;background:linear-gradient(135deg,#FF6900,#E05500);transition:background var(--scw-dur) var(--scw-ease);}
+    .scw-grain{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:0.32;background-size:200px 200px;background-repeat:repeat;}
+    .scw-ghost{position:absolute;inset-inline:0;top:8%;display:flex;align-items:center;justify-content:center;pointer-events:none;user-select:none;z-index:1;}
+    .scw-ghost span{font-family:'Anton','Archivo Black',system-ui,sans-serif;font-weight:900;font-size:clamp(42px,9vw,130px);color:#fff;opacity:0.16;line-height:1;text-transform:uppercase;letter-spacing:-0.02em;white-space:nowrap;transition:opacity 320ms ease;}
+    .scw-track{position:absolute;inset:0;z-index:3;}
+    .scw-item{position:absolute;bottom:0;aspect-ratio:0.72/1;transition:transform var(--scw-dur) var(--scw-ease),filter var(--scw-dur) var(--scw-ease),opacity var(--scw-dur) var(--scw-ease),left var(--scw-dur) var(--scw-ease);will-change:transform,filter,opacity;}
+    .scw-item img{width:100%;height:100%;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 22px 34px rgba(0,0,0,0.30));}
+    .scw-fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;color:rgba(255,255,255,0.85);font-weight:600;font-size:0.9rem;text-align:center;}
+    .scw-item.is-center{left:50%;transform:translateX(-50%) scale(1.32);filter:none;opacity:1;z-index:20;height:90%;}
+    .scw-item.is-left{left:24%;transform:translateX(-50%) scale(1);filter:blur(2px);opacity:0.55;z-index:10;height:46%;}
+    .scw-item.is-right{left:76%;transform:translateX(-50%) scale(1);filter:blur(2px);opacity:0.55;z-index:10;height:46%;}
+    .scw-info{position:relative;z-index:4;background:#fff;padding:34px 32px;display:flex;flex-direction:column;justify-content:center;}
+    .scw-info .pbc-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+    .scw-title{transition:opacity 320ms ease;}
+    .scw-desc{transition:opacity 320ms ease;margin-bottom:20px;}
+    .scw-wa{align-self:flex-start;transition:opacity 320ms ease;}
+    .scw-nav{display:flex;align-items:center;gap:14px;margin-top:26px;}
+    .scw-btn{width:48px;height:48px;border-radius:9999px;background:transparent;border:2px solid var(--ink,#262E3D);color:var(--ink,#262E3D);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 150ms,background-color 150ms,color 150ms,border-color 150ms;}
+    .scw-btn svg{width:22px;height:22px;}
+    .scw-btn:hover{transform:scale(1.07);background:var(--ink,#262E3D);color:#fff;}
+    .scw-dots{display:flex;gap:8px;margin:0 4px;}
+    .scw-dot{width:9px;height:9px;border-radius:9999px;background:rgba(38,46,61,0.22);border:none;padding:0;cursor:pointer;transition:background 200ms,transform 200ms;}
+    .scw-dot.is-on{background:var(--ink,#262E3D);transform:scale(1.25);}
+    @media (max-width:820px){.scw{grid-template-columns:1fr;min-height:0;}.scw-stage{min-height:360px;}.scw-item.is-center{transform:translateX(-50%) scale(1.18);height:78%;}.scw-item.is-left{left:18%;height:40%;}.scw-item.is-right{left:82%;height:40%;}.scw-info{padding:26px 22px;}}
+    @media (prefers-reduced-motion:reduce){.scw-item,.scw-stage,.scw-ghost,.scw-title,.scw-desc,.scw-wa{transition:none !important;}}
   </style>
 </head>
 <body>
@@ -1662,74 +1690,52 @@
 </section>
 
 
-<!-- ══════════ PRODUCT BRAND CARDS ══════════ -->
-<section class="pbc-section">
+<!-- PRODUCT BRAND CARDS · ROTATING CAROUSEL -->
+<section class="pbc-section" id="screensCarousel">
   <div class="pbc-hd r">
     <div class="sec-label">// Our Range</div>
     <h2 class="sec-h2">Screens We Stock</h2>
   </div>
-  <div class="pbc-grid">
-
-    <!-- iPhone -->
-    <div class="pbc r">
-      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#FF6900,#E05500);">
-        <img src="Brand_assets/product-iphone.png" alt="TRUSCREN iPhone LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#FF6900,#E05500);">Photo coming soon</div>
-      </div>
-      <div class="pbc-body">
-        <div class="pbc-badges">
-          <span class="pbc-badge" style="background:rgba(255,105,0,0.1);color:#FF6900;">Quality Guarantee</span>
-          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
+  <div class="scw r" id="scwRoot">
+    <div class="scw-stage" id="scwStage">
+      <div class="scw-grain" id="scwGrain"></div>
+      <div class="scw-ghost"><span id="scwGhost">iPhone</span></div>
+      <div class="scw-track" id="scwTrack">
+        <div class="scw-item" data-i="0">
+          <img src="Brand_assets/product-iphone-cutout.png" alt="TRUSCREN iPhone LCD screens" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="scw-fallback">Photo coming soon</div>
         </div>
-        <div class="pbc-title">iPhone LCD</div>
-        <div class="pbc-desc">A wide assortment of iPhone screens, including premium LCDs and OLEDs, covering sought-after models such as the iPhone X and newer.</div>
-        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20iPhone%20screens." target="_blank" rel="noopener noreferrer">
-          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
-          Get a Quote
-        </a>
+        <div class="scw-item" data-i="1">
+          <img src="Brand_assets/product-infinix-cutout.png" alt="TRUSCREN Infinix LCD screens" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="scw-fallback">Photo coming soon</div>
+        </div>
+        <div class="scw-item" data-i="2">
+          <img src="Brand_assets/product-samsung-cutout.png" alt="TRUSCREN Samsung LCD screens" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="scw-fallback">Photo coming soon</div>
+        </div>
       </div>
     </div>
-
-    <!-- Infinix -->
-    <div class="pbc r d1">
-      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#007A5E,#005843);">
-        <img src="Brand_assets/product-infinix.png" alt="TRUSCREN Infinix LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#007A5E,#005843);">Photo coming soon</div>
+    <div class="scw-info">
+      <div class="pbc-badges">
+        <span class="pbc-badge scw-badge-a" id="scwBadge">Quality Guarantee</span>
+        <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
       </div>
-      <div class="pbc-body">
-        <div class="pbc-badges">
-          <span class="pbc-badge" style="background:rgba(0,88,67,0.1);color:#007A5E;">Quality Guarantee</span>
-          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
-        </div>
-        <div class="pbc-title">Infinix LCD</div>
-        <div class="pbc-desc">A comprehensive selection of Infinix LCDs and OLEDs, plus Tecno and Itel models, assuring exceptional quality and choice.</div>
-        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Infinix%20screens." target="_blank" rel="noopener noreferrer">
-          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
-          Get a Quote
-        </a>
-      </div>
-    </div>
-
-    <!-- Samsung -->
-    <div class="pbc r d2">
-      <div class="pbc-img-wrap" style="background:linear-gradient(135deg,#262E3D,#3A4A6A);">
-        <img src="Brand_assets/product-samsung.png" alt="TRUSCREN Samsung LCD screens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pbc-img-fallback" style="background:linear-gradient(135deg,#262E3D,#3A4A6A);">Photo coming soon</div>
-      </div>
-      <div class="pbc-body">
-        <div class="pbc-badges">
-          <span class="pbc-badge" style="background:rgba(38,46,61,0.08);color:#262E3D;">Quality Guarantee</span>
-          <span class="pbc-badge" style="background:rgba(38,46,61,0.06);color:var(--mid);">500+ delivered daily</span>
-        </div>
-        <div class="pbc-title">Samsung LCD</div>
-        <div class="pbc-desc">An extensive range of Samsung LCDs and OLEDs, covering popular A, J and S series, ensuring quality and diversity.</div>
-        <a class="pbc-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Samsung%20screens." target="_blank" rel="noopener noreferrer">
-          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
-          Get a Quote
-        </a>
+      <div class="pbc-title scw-title" id="scwTitle">iPhone LCD</div>
+      <div class="pbc-desc scw-desc" id="scwDesc">A wide assortment of iPhone screens, including premium LCDs and OLEDs, covering sought-after models such as the iPhone X and newer.</div>
+      <a class="pbc-wa scw-wa" id="scwWa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20iPhone%20screens." target="_blank" rel="noopener noreferrer">
+        <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+        <span id="scwWaLabel">Get a Quote</span>
+      </a>
+      <div class="scw-nav">
+        <button class="scw-btn" id="scwPrev" aria-label="Previous screen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="scw-dots" id="scwDots"></div>
+        <button class="scw-btn" id="scwNext" aria-label="Next screen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
       </div>
     </div>
-
   </div>
 </section>
 <!-- ══════════ FOOTER ══════════ -->
@@ -2716,5 +2722,37 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 </div>
 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+(function(){
+  var root=document.getElementById('scwRoot');if(!root)return;
+  var SCREENS=[
+    {ghost:'iPhone',name:'iPhone LCD',bg:'linear-gradient(135deg,#FF6900,#E05500)',ink:'#FF6900',badge:'background:rgba(255,105,0,0.1);color:#FF6900;',desc:'A wide assortment of iPhone screens, including premium LCDs and OLEDs, covering sought-after models such as the iPhone X and newer.',wa:'https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20iPhone%20screens.'},
+    {ghost:'Infinix',name:'Infinix LCD',bg:'linear-gradient(135deg,#007A5E,#005843)',ink:'#007A5E',badge:'background:rgba(0,88,67,0.1);color:#007A5E;',desc:'A comprehensive selection of Infinix LCDs and OLEDs, plus Tecno and Itel models, assuring exceptional quality and choice.',wa:'https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Infinix%20screens.'},
+    {ghost:'Samsung',name:'Samsung LCD',bg:'linear-gradient(135deg,#262E3D,#3A4A6A)',ink:'#262E3D',badge:'background:rgba(38,46,61,0.08);color:#262E3D;',desc:'An extensive range of Samsung LCDs and OLEDs, covering popular A, J and S series, ensuring quality and diversity.',wa:'https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20a%20quote%20for%20Samsung%20screens.'}
+  ];
+  var N=SCREENS.length,DURATION=640,active=0,animating=false,timer=null;
+  var stage=document.getElementById('scwStage'),track=document.getElementById('scwTrack');
+  var items=Array.prototype.slice.call(track.querySelectorAll('.scw-item'));
+  var ghost=document.getElementById('scwGhost'),title=document.getElementById('scwTitle'),desc=document.getElementById('scwDesc'),badge=document.getElementById('scwBadge'),wa=document.getElementById('scwWa'),dotsWrap=document.getElementById('scwDots');
+  var grain=document.getElementById('scwGrain');
+  var svg='<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(#n)" opacity="0.08"/></svg>';
+  grain.style.backgroundImage='url("data:image/svg+xml,'+encodeURIComponent(svg)+'")';
+  var dots=SCREENS.map(function(s,i){var b=document.createElement('button');b.className='scw-dot';b.setAttribute('aria-label','Show '+s.name);b.addEventListener('click',function(){goTo(i);});dotsWrap.appendChild(b);return b;});
+  function roleClass(i){if(i===active)return'scw-item is-center';if(i===(active+N-1)%N)return'scw-item is-left';if(i===(active+1)%N)return'scw-item is-right';return'scw-item';}
+  function render(){var s=SCREENS[active];stage.style.background=s.bg;root.style.setProperty('--ink',s.ink);items.forEach(function(el,i){el.className=roleClass(i);});dots.forEach(function(d,i){d.className='scw-dot'+(i===active?' is-on':'');});[ghost,title,desc,wa].forEach(function(el){el.style.opacity=0;});setTimeout(function(){ghost.textContent=s.ghost;title.textContent=s.name;desc.textContent=s.desc;badge.setAttribute('style',s.badge);wa.setAttribute('href',s.wa);ghost.style.opacity='';title.style.opacity='';desc.style.opacity='';wa.style.opacity='';},200);}
+  function goTo(i){if(animating||i===active)return;animating=true;active=((i%N)+N)%N;render();setTimeout(function(){animating=false;},DURATION);restart();}
+  function navigate(dir){goTo(dir==='next'?active+1:active-1);}
+  document.getElementById('scwNext').addEventListener('click',function(){navigate('next');});
+  document.getElementById('scwPrev').addEventListener('click',function(){navigate('prev');});
+  root.setAttribute('tabindex','0');
+  root.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){navigate('next');}if(e.key==='ArrowLeft'){navigate('prev');}});
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function restart(){if(reduce)return;clearInterval(timer);timer=setInterval(function(){navigate('next');},5000);}
+  root.addEventListener('mouseenter',function(){clearInterval(timer);});
+  root.addEventListener('mouseleave',restart);
+  document.addEventListener('visibilitychange',function(){if(document.hidden){clearInterval(timer);}else{restart();}});
+  render();restart();
+})();
+</script>
 </body>
 </html>
