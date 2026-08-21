@@ -209,19 +209,34 @@
   
     /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
     @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
-    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; }
     .tsc-glow::before {
       content: ""; position: absolute; z-index: 0; inset: -60%;
       background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
       animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
     }
     .tsc-glow::after {
-      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      content: ""; position: absolute; z-index: 0; inset: 2px; border-radius: inherit;
       background: #262E3D; pointer-events: none;
     }
-    .tsc-glow > * { position: relative; z-index: 2; }
     .tsc-glow-light::after { background: #ffffff; }
+    .tsc-glow > * { position: relative; z-index: 1; }
+    .tsc-glow { color: inherit; }
     @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
+    .model-chip.tsc-glow::before,
+    .model-chip.tsc-glow::after {
+      content: none !important;
+      display: none !important;
+    }
+    .model-chip.tsc-glow {
+      position: relative;
+      overflow: visible;
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+      border: 1.5px solid #FF6900 !important;
+      box-shadow: 0 0 8px rgba(255,105,0,0.45);
+      isolation: auto;
+    }
   </style>
 </head>
 <body>
