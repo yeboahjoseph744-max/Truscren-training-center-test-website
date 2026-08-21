@@ -268,12 +268,12 @@
     /* ── Section colour-blend overlays: soften hard edges between sections ── */
     .brand-section, footer { position: relative; }
     .brand-section::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 48px; pointer-events: none; z-index: 0;
-      background: linear-gradient(to bottom, #262E3D 0%, transparent 100%);
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 28px; pointer-events: none; z-index: 0;
+      background: linear-gradient(to bottom, rgba(38,46,61,0.4) 0%, transparent 100%);
     }
     footer::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 52px; pointer-events: none; z-index: 0;
-      background: linear-gradient(to bottom, #ffffff 0%, transparent 100%);
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 28px; pointer-events: none; z-index: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%);
     }
 
     /* ── Fade-and-slide-up on scroll ── */
