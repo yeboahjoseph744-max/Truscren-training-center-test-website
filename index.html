@@ -44,6 +44,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -62,11 +63,47 @@
       --mid:           #555;
       --light-bg:      #f6f6f6;
       --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; background: #262E3D; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       background: #262E3D;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -123,7 +160,7 @@
     .btn-si {
       color: rgba(255,255,255,0.85); text-decoration: none;
       font-size: 0.8rem; font-weight: 500;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       border: 1px solid rgba(255,255,255,0.32);
       outline: none; box-shadow: none;
       display: inline-flex; align-items: center;
@@ -134,7 +171,7 @@
     .btn-reg {
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.8rem; font-weight: 600;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       transition: background 0.18s;
     }
     .btn-reg:hover { background: var(--brand-h); }
@@ -173,7 +210,7 @@
     }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a {
-      text-align: center; padding: 0.7rem; border-radius: 3px;
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full);
       font-size: 0.875rem; font-weight: 600; text-decoration: none;
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
@@ -281,18 +318,18 @@
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.45rem;
       background: rgba(255,105,0,0.15); border: 1px solid rgba(255,105,0,0.35);
-      border-radius: 3px; padding: 0.28rem 0.75rem; margin-bottom: 1.375rem;
+      border-radius: var(--radius-full); padding: 0.28rem 0.75rem; margin-bottom: 1.375rem;
       font-size: 0.72rem; font-weight: 700; color: var(--brand);
       letter-spacing: 0.07em; text-transform: uppercase;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.75rem);
-      font-weight: 800; color: #fff; line-height: 1.08;
-      letter-spacing: -0.035em; margin-bottom: 1rem; max-width: 680px;
+      font-size: var(--text-heading-lg);
+      font-weight: 800; color: #fff; line-height: var(--leading-heading-lg);
+      letter-spacing: var(--tracking-heading-lg); margin-bottom: 1rem; max-width: 680px;
     }
     .hero h1 em { color: var(--brand); font-style: normal; }
     .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.72;
+      font-size: var(--text-body); color: rgba(255,255,255,0.65); line-height: var(--leading-body);
       max-width: 540px; margin-bottom: 2rem;
     }
     .hero-form {
@@ -326,7 +363,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       height: 26px; padding: 0 0.7rem;
       background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 2px; font-size: 0.68rem; font-weight: 700;
+      border-radius: var(--radius-full); font-size: 0.68rem; font-weight: 700;
       color: rgba(255,255,255,0.68); letter-spacing: 0.03em;
       cursor: pointer; transition: background 0.18s;
     }
@@ -339,8 +376,8 @@
       text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
     }
     .sec-h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 800;
-      letter-spacing: -0.025em; line-height: 1.2;
+      font-size: var(--text-subheading); font-weight: 800;
+      letter-spacing: -0.025em; line-height: var(--leading-subheading);
     }
 
     /* ── COURSE CARDS STRIP ── */
@@ -363,7 +400,7 @@
     }
     .c-card {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px; overflow: hidden; cursor: pointer;
+      border-radius: var(--radius-3xl); overflow: hidden; cursor: pointer;
       transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
       position: relative;
     }
@@ -422,7 +459,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-teal:hover { background: var(--brand-h); }
     .lp-card {
@@ -454,7 +491,7 @@
       display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
     }
     .fmt-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius-3xl);
       padding: 1.375rem; cursor: pointer;
       transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
     }
@@ -506,20 +543,20 @@
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center;
     }
-    .stats-copy h2 { font-size: 1.55rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: 1.2; }
-    .stats-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
+    .stats-copy h2 { font-size: var(--text-subheading); font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: var(--leading-subheading); }
+    .stats-copy p  { font-size: var(--text-body); color: rgba(255,255,255,0.62); line-height: var(--leading-body); margin-bottom: 1.375rem; }
     .btn-white {
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 700; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-white:hover { background: var(--brand-h); }
     .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
     .stat-box {
       text-align: center; padding: 1.375rem 1rem;
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
+      border-radius: var(--radius-3xl);
     }
     .stat-n { font-size: 2.1rem; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; display: block; margin-bottom: 0.3rem; line-height: 1; }
     .stat-l { font-size: 0.75rem; color: rgba(255,255,255,0.58); line-height: 1.35; }
@@ -536,7 +573,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       border: 1.5px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s, border-color 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s, border-color 0.18s;
     }
     .btn-outline-w:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.65); }
     .gplan-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
@@ -973,7 +1010,7 @@
       text-transform: uppercase; color: #bbb; margin: 1.125rem 0 0.45rem;
     }
     .dash-course-card {
-      background: var(--primary); border-radius: 8px; padding: 0.875rem 1rem;
+      background: var(--primary); border-radius: var(--radius-3xl); padding: 0.875rem 1rem;
       display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
     }
     .dash-course-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
@@ -1424,7 +1461,7 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.375rem;
     }
     .cert-card {
-      background: #fff; border-radius: 8px; padding: 1.875rem 1.5rem;
+      background: #fff; border-radius: var(--radius-3xl); padding: 1.875rem 1.5rem;
       border: 1.5px solid var(--border);
       transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
     }
@@ -1564,6 +1601,23 @@
       html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
       .r{opacity:1!important;transform:none!important;transition:none!important;}
     }
+
+    /* ── Section colour-blend overlays: soften hard edges between sections ── */
+    .teasers-section, .courses-strip, .stats-section, .cert-section, footer { position: relative; }
+    .teasers-section::before, .courses-strip::before, .stats-section::before, .cert-section::before, footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; pointer-events: none; z-index: 0;
+    }
+    .teasers-section::before { height: 60px; background: linear-gradient(to bottom, #262E3D 0%, transparent 100%); }
+    .courses-strip::before   { height: 44px; background: linear-gradient(to bottom, #f6f6f6 0%, transparent 100%); }
+    .stats-section::before   { height: 60px; background: linear-gradient(to bottom, #1E2738 0%, transparent 100%); }
+    .cert-section::before    { height: 76px; background: linear-gradient(to bottom, #005843 0%, transparent 100%); }
+    footer::before           { height: 52px; background: linear-gradient(to bottom, #f6f6f6 0%, transparent 100%); }
+
+    /* ── Fade-and-slide-up on scroll ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
     .qa-cluster{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:9000;}
     .qa-pill{position:relative;height:54px;width:54px;border-radius:27px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(45deg,var(--from),var(--to));box-shadow:0 6px 18px rgba(38,46,61,0.28);transition:width .42s cubic-bezier(0.4,0,0.2,1),box-shadow .3s;}
     .qa-ico{position:absolute;left:0;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1693,8 +1747,8 @@
     <!-- Left: copy -->
     <div class="hero-copy">
       <div class="hero-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg> Official TRUSCREN Distributor — Ghana</div>
-      <h1>Premium Phone Screens<br>&amp; <em>Repair Training</em> in Ghana</h1>
-      <p class="hero-sub">TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens — and home of the TRUSCREN TECH HUB repair training school. Let Repair Be Easier.</p>
+      <h1 class="reveal">Premium Phone Screens<br>&amp; <em>Repair Training</em> in Ghana</h1>
+      <p class="hero-sub reveal">TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens — and home of the TRUSCREN TECH HUB repair training school. Let Repair Be Easier.</p>
 
       <div class="hero-btns" style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.25rem;">
         <a href="products.html" class="btn-teal" style="padding:0.85rem 1.5rem;font-size:0.9rem;">Shop Screens / Request Pricing</a>
@@ -1734,22 +1788,22 @@
 
 
 <!-- ══════════ HOME TEASERS ══════════ -->
-<section style="padding:4rem 1.5rem;background:var(--light-bg);">
+<section class="teasers-section" style="padding:4rem 1.5rem;background:var(--light-bg);">
   <div style="max-width:1280px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:2.5rem;" class="r">
       <div class="sec-label">What We Do</div>
-      <h2 class="sec-h2">Screens. Training. Partnership.</h2>
+      <h2 class="sec-h2 reveal">Screens. Training. Partnership.</h2>
     </div>
     <div class="fmt-grid">
-      <a href="products.html" class="fmt-card r tsc-glow tsc-glow-light" style="text-decoration:none;">
+      <a href="products.html" class="fmt-card r reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
         <h3>Premium Screens</h3><p>Genuine TRUSCREN LCD &amp; OLED displays with trade pricing and a 12-month guarantee.</p>
       </a>
-      <a href="tech-hub.html" class="fmt-card r d1 tsc-glow tsc-glow-light" style="text-decoration:none;">
+      <a href="tech-hub.html" class="fmt-card r d1 reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>TECH HUB Training</h3><p>Hands-on courses in screen repair, micro-soldering, and EV battery diagnostics. Get certified.</p>
       </a>
-      <a href="agent.html" class="fmt-card r d2 tsc-glow tsc-glow-light" style="text-decoration:none;">
+      <a href="agent.html" class="fmt-card r d2 reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Become an Agent</h3><p>Partner with TRUSCREN Ghana — sell trusted screens with competitive trade pricing and brand support.</p>
       </a>
@@ -1762,14 +1816,14 @@
 <section id="courses" class="courses-strip">
   <div class="strip-hd r">
     <div>
-      <div class="strip-hd-title">Our Repair Training Programmes</div>
+      <div class="strip-hd-title reveal">Our Repair Training Programmes</div>
       <div class="strip-hd-sub">Hands-on, industry-standard courses that get you job-ready</div>
     </div>
     <a href="tech-hub.html" class="strip-more">View all programmes →</a>
   </div>
 
   <div class="courses-grid">
-    <div class="c-card r">
+    <div class="c-card r reveal">
       <div class="c-thumb c-thumb-1">
         <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1781,7 +1835,7 @@
       </div>
     </div>
 
-    <div class="c-card r d1">
+    <div class="c-card r d1 reveal">
       <div class="c-thumb c-thumb-3">
         <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1793,7 +1847,7 @@
       </div>
     </div>
 
-    <div class="c-card r d2">
+    <div class="c-card r d2 reveal">
       <div class="c-thumb c-thumb-4">
         <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1812,17 +1866,17 @@
 <section class="stats-section">
   <div class="stats-in">
     <div class="stats-copy r">
-      <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN TECH HUB</h2>
-      <p>TRUSCREN TECH HUB launches in 2026 — Ghana's dedicated phone repair training school. Be among the first to earn your certification, gain hands-on skills with real devices, and launch your tech career with TRUSCREN.</p>
+      <h2 class="sec-h2 reveal" style="color:#fff;">Train with TRUSCREN TECH HUB</h2>
+      <p class="reveal">TRUSCREN TECH HUB launches in 2026 — Ghana's dedicated phone repair training school. Be among the first to earn your certification, gain hands-on skills with real devices, and launch your tech career with TRUSCREN.</p>
       <a href="tech-hub.html#enrol" class="btn-white">Enrol for 2026 →</a>
     </div>
     <div class="stats-grid">
-      <div class="stat-box r"><span class="stat-n">2026</span><span class="stat-l">First cohort launching — enrol now to secure your place</span></div>
-      <div class="stat-box r d1"><span class="stat-n">&lt;0.5%</span><span class="stat-l">Screen defect rate across all genuine TRUSCREN displays we supply</span></div>
-      <div class="stat-box r d2"><span class="stat-n">12-Mo</span><span class="stat-l">Quality guarantee on every screen supplied through TRUSCREN</span></div>
-      <div class="stat-box r"><span class="stat-n">3</span><span class="stat-l">Course tracks — Screen Repair, Micro-Soldering &amp; EV Battery Tech</span></div>
-      <div class="stat-box r d1"><span class="stat-n">Hands-On</span><span class="stat-l">Practical training on real devices, real repairs</span></div>
-      <div class="stat-box r d2"><span class="stat-n">Accra</span><span class="stat-l">First campus location — Spintex, Accra (expanding nationwide)</span></div>
+      <div class="stat-box r reveal"><span class="stat-n">2026</span><span class="stat-l">First cohort launching — enrol now to secure your place</span></div>
+      <div class="stat-box r d1 reveal"><span class="stat-n">&lt;0.5%</span><span class="stat-l">Screen defect rate across all genuine TRUSCREN displays we supply</span></div>
+      <div class="stat-box r d2 reveal"><span class="stat-n">12-Mo</span><span class="stat-l">Quality guarantee on every screen supplied through TRUSCREN</span></div>
+      <div class="stat-box r reveal"><span class="stat-n">3</span><span class="stat-l">Course tracks — Screen Repair, Micro-Soldering &amp; EV Battery Tech</span></div>
+      <div class="stat-box r d1 reveal"><span class="stat-n">Hands-On</span><span class="stat-l">Practical training on real devices, real repairs</span></div>
+      <div class="stat-box r d2 reveal"><span class="stat-n">Accra</span><span class="stat-l">First campus location — Spintex, Accra (expanding nationwide)</span></div>
     </div>
   </div>
 </section>
@@ -1831,25 +1885,25 @@
   <div class="wrap">
     <div class="r" style="text-align:center;max-width:700px;margin:0 auto 2.5rem;">
       <div class="sec-label">Certification</div>
-      <h2 class="sec-h2">Get Certified</h2>
-      <p class="cert-lead">Students who complete their course receive an official <strong>TRUSCREN TECH HUB Certificate</strong> — recognising their hands-on skills and helping them start a career or business in device repair.</p>
+      <h2 class="sec-h2 reveal">Get Certified</h2>
+      <p class="cert-lead reveal">Students who complete their course receive an official <strong>TRUSCREN TECH HUB Certificate</strong> — recognising their hands-on skills and helping them start a career or business in device repair.</p>
     </div>
     <div class="cert-cards">
-      <div class="cert-card r tsc-glow tsc-glow-light">
+      <div class="cert-card r reveal tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci1">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
         </div>
         <h3>Official TRUSCREN TECH HUB Certificate</h3>
         <p>Every graduate will earn a signed, printed certificate from TRUSCREN TECH HUB — proof of hands-on training and practical competency, issued directly by the school on successful completion.</p>
       </div>
-      <div class="cert-card r d1 tsc-glow tsc-glow-light">
+      <div class="cert-card r d1 reveal tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci2">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3>Recognised by Industry Employers</h3>
         <p>TRUSCREN TECH HUB is backed by the trusted TRUSCREN brand — a screen supplier serving 38 countries with a defect rate under 0.5%. Your certificate will carry real weight with electronics shops, repair businesses, and corporate IT departments across Africa.</p>
       </div>
-      <div class="cert-card r d2 tsc-glow tsc-glow-light">
+      <div class="cert-card r d2 reveal tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci3">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
         </div>
@@ -3097,5 +3151,11 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 </div>
 <script>setTimeout(function(){document.documentElement.classList.remove('tc-pre-active');},30000);</script>
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
