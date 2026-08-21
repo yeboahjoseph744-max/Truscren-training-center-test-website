@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -27,11 +28,47 @@
       --mid:           #555;
       --light-bg:      #f6f6f6;
       --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       background: #fff;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -62,7 +99,7 @@
     .nav-auth { display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
     .btn-si {
       color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500;
-      padding: 0.42rem 0.875rem; border-radius: 3px; border: 1px solid rgba(255,255,255,0.32);
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.32);
       display: inline-flex; align-items: center; background: transparent;
       transition: background 0.18s, border-color 0.18s, color 0.18s;
     }
@@ -70,13 +107,13 @@
     .nav-student-name { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
     .btn-dashboard {
       background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25);
-      font-size: 0.8rem; font-weight: 600; padding: 0.42rem 0.875rem; border-radius: 3px;
+      font-size: 0.8rem; font-weight: 600; padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       cursor: pointer; white-space: nowrap; text-decoration: none; transition: background 0.18s;
     }
     .btn-dashboard:hover { background: rgba(255,255,255,0.18); }
     .btn-logout-nav {
       background: none; font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.65);
-      border: 1px solid rgba(255,255,255,0.2); padding: 0.42rem 0.875rem; border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.2); padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       cursor: pointer; transition: background 0.18s, color 0.18s;
     }
     .btn-logout-nav:hover { background: rgba(255,255,255,0.06); color: #fff; }
@@ -89,7 +126,7 @@
     .mob-links a { display: block; padding: 0.825rem 0; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a, .mob-auth button {
-      text-align: center; padding: 0.7rem; border-radius: 3px; font-size: 0.875rem; font-weight: 600;
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;
       text-decoration: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif;
     }
 
@@ -99,13 +136,13 @@
       min-height: calc(100vh - 64px); display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center; padding: 2rem 1.5rem;
     }
-    .lp-fullscreen-msg h1 { font-size: 1.5rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 0.625rem; }
-    .lp-fullscreen-msg p { font-size: 0.9rem; color: var(--mid); max-width: 420px; line-height: 1.6; margin-bottom: 1.5rem; }
+    .lp-fullscreen-msg h1 { font-size: var(--text-heading-2xs); font-weight: 800; color: var(--dark); line-height: var(--leading-heading-2xs); letter-spacing: var(--tracking-heading-2xs); margin-bottom: 0.625rem; }
+    .lp-fullscreen-msg p { font-size: var(--text-body); color: var(--mid); max-width: 420px; line-height: var(--leading-body); margin-bottom: 1.5rem; }
     .lp-fs-emoji { font-size: 2.75rem; margin-bottom: 1rem; }
     .lp-btn-primary {
       display: inline-flex; align-items: center; gap: 0.4rem; background: var(--brand); color: #fff;
       text-decoration: none; font-size: 0.85rem; font-weight: 700; padding: 0.75rem 1.5rem;
-      border-radius: 6px; border: none; cursor: pointer; transition: background 0.18s;
+      border-radius: var(--radius-full); border: none; cursor: pointer; transition: background 0.18s;
     }
     .lp-btn-primary:hover { background: var(--brand-h); }
     .lp-spinner {
@@ -139,8 +176,8 @@
     /* ── PLAYER ── */
     .lp-crumb { font-size: 0.78rem; color: #888; font-weight: 600; margin-bottom: 0.4rem; }
     .lp-crumb span:first-child { color: var(--brand); }
-    .lp-lesson-heading { font-size: 1.35rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 1rem; }
-    .lp-player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #0c0c0f; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+    .lp-lesson-heading { font-size: var(--text-heading-2xs); font-weight: 800; color: var(--dark); letter-spacing: var(--tracking-heading-2xs); line-height: var(--leading-heading-2xs); margin-bottom: 1rem; }
+    .lp-player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #0c0c0f; border-radius: var(--radius-3xl); overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
     .lp-player-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .lp-player-wrap.doc-mode { aspect-ratio: auto; height: 85vh; max-height: 1100px; }
     .lp-player-wrap.doc-mode iframe { width: 100%; height: 100%; border: 0; }
@@ -152,7 +189,7 @@
     .lp-complete-btn {
       display: inline-flex; align-items: center; gap: 0.45rem; background: var(--brand); color: #fff;
       border: none; font-size: 0.88rem; font-weight: 700; padding: 0.85rem 1.5rem;
-      border-radius: 6px; cursor: pointer; transition: background 0.18s, transform 0.18s;
+      border-radius: var(--radius-full); cursor: pointer; transition: background 0.18s, transform 0.18s;
     }
     .lp-complete-btn:hover:not(:disabled) { background: var(--brand-h); }
     .lp-complete-btn:disabled { opacity: 0.65; cursor: not-allowed; }
@@ -160,11 +197,11 @@
     .lp-save-err.show { display: block; }
     .lp-retry-btn {
       background: var(--brand); color: #fff; border: none; font-size: 0.78rem; font-weight: 700;
-      padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; white-space: nowrap; transition: background 0.18s;
+      padding: 0.5rem 1rem; border-radius: var(--radius-full); cursor: pointer; white-space: nowrap; transition: background 0.18s;
     }
     .lp-retry-btn:hover { background: var(--brand-h); }
     .lp-player-empty {
-      aspect-ratio: 16/9; border-radius: 10px; background: var(--light-bg); border: 1.5px dashed var(--border);
+      aspect-ratio: 16/9; border-radius: var(--radius-3xl); background: var(--light-bg); border: 1.5px dashed var(--border);
       display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;
       font-size: 0.88rem; color: #888; font-weight: 600;
     }
@@ -172,8 +209,8 @@
     /* ── COMPLETION SCREEN ── */
     .lp-completion { text-align: center; padding: 3rem 1.5rem; max-width: 460px; margin: 2rem auto 0; }
     .lp-completion-emoji { font-size: 3rem; margin-bottom: 1rem; }
-    .lp-completion h1 { font-size: 1.5rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 0.625rem; }
-    .lp-completion p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; margin-bottom: 1.75rem; }
+    .lp-completion h1 { font-size: var(--text-heading-2xs); font-weight: 800; color: var(--dark); line-height: var(--leading-heading-2xs); letter-spacing: var(--tracking-heading-2xs); margin-bottom: 0.625rem; }
+    .lp-completion p { font-size: var(--text-body); color: var(--mid); line-height: var(--leading-body); margin-bottom: 1.75rem; }
     #lp-cert-slot:empty { display: none; }
 
     /* ── SIDEBAR ── */
@@ -240,16 +277,21 @@
     .lp-empty { font-size: 0.82rem; color: #888; text-align: center; padding: 1.75rem 1rem; line-height: 1.5; }
 
     .lp-enrol-cta { margin-top: auto; padding: 1.25rem; border-top: 1px solid var(--border); background: #fff; }
-    .lp-enrol-cta p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; margin-bottom: 0.875rem; font-weight: 500; }
+    .lp-enrol-cta p:not(.lp-enrol-footnote) { font-size: var(--text-body); color: var(--mid); line-height: var(--leading-body); margin-bottom: 0.875rem; font-weight: 500; }
     .btn-lp-enrol {
       display: block; width: 100%; text-align: center; padding: 0.75rem;
-      background: var(--primary); color: #fff; border-radius: 6px; text-decoration: none;
+      background: var(--primary); color: #fff; border-radius: var(--radius-full); text-decoration: none;
       font-size: 0.82rem; font-weight: 700; transition: background 0.18s;
     }
     .btn-lp-enrol:hover { background: var(--secondary); }
     .lp-enrol-footnote { font-size: 0.72rem; color: #999; text-align: center; margin-top: 0.75rem; }
     .lp-enrol-footnote a { color: var(--brand); text-decoration: none; font-weight: 600; }
     .lp-enrol-footnote a:hover { text-decoration: underline; }
+
+    /* ── Fade-and-slide-up on scroll ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
   </style>
 </head>
 <body>
@@ -312,16 +354,16 @@
   <!-- COURSE NOT FOUND -->
   <div id="lp-not-found" class="lp-fullscreen-msg" style="display:none;" role="alert">
     <div class="lp-fs-emoji">📭</div>
-    <h1>Course Not Found</h1>
-    <p>This course is not available yet.</p>
+    <h1 class="reveal">Course Not Found</h1>
+    <p class="reveal">This course is not available yet.</p>
     <a href="index.html" class="lp-btn-primary">Back to Home</a>
   </div>
 
   <!-- LOAD ERROR -->
   <div id="lp-load-error" class="lp-fullscreen-msg" style="display:none;" role="alert">
     <div class="lp-fs-emoji">⚠️</div>
-    <h1>Something went wrong</h1>
-    <p id="lp-load-error-msg">We couldn't load this course. Please check your connection and try again.</p>
+    <h1 class="reveal">Something went wrong</h1>
+    <p class="reveal" id="lp-load-error-msg">We couldn't load this course. Please check your connection and try again.</p>
     <button class="lp-btn-primary" id="lp-load-retry-btn">Retry</button>
   </div>
 
@@ -341,7 +383,7 @@
         <!-- Player content -->
         <div id="lp-player-content" style="display:none;">
           <div class="lp-crumb"><span id="lp-course-name"></span> <span aria-hidden="true">/</span> <span id="lp-section-name"></span></div>
-          <h1 class="lp-lesson-heading" id="lp-lesson-name"></h1>
+          <h1 class="lp-lesson-heading reveal" id="lp-lesson-name"></h1>
           <div class="lp-player-wrap" id="lp-player-wrap"></div>
           <div class="lp-inline-error" id="lp-video-error" style="display:none;">
             <span>This video couldn't be loaded.</span>
@@ -359,8 +401,8 @@
         <!-- Completion screen -->
         <div id="lp-completion-screen" class="lp-completion" style="display:none;">
           <div class="lp-completion-emoji">🎉</div>
-          <h1>Course Complete</h1>
-          <p>Congratulations! You've completed this course.</p>
+          <h1 class="reveal">Course Complete</h1>
+          <p class="reveal">Congratulations! You've completed this course.</p>
           <div id="lp-cert-slot"></div>
           <a href="tech-hub.html?enrol=1#enrol" class="lp-btn-primary">Book Lab Training →</a>
         </div>
@@ -368,8 +410,8 @@
         <!-- Exam prompt (shown after finishing lesson 20 if exam not yet passed) -->
         <div id="lp-exam-prompt" class="lp-completion" style="display:none;">
           <div class="lp-completion-emoji">🎓</div>
-          <h1>You've completed the free lessons!</h1>
-          <p>Pass the certification exam to unlock the rest of the course.</p>
+          <h1 class="reveal">You've completed the free lessons!</h1>
+          <p class="reveal">Pass the certification exam to unlock the rest of the course.</p>
           <a href="/exam.html" class="lp-btn-primary">Take the Certification Exam →</a>
         </div>
       </main>
@@ -387,7 +429,7 @@
 
         <!-- Sidebar content -->
         <div id="lp-sidebar-content" class="lp-sidebar-in" style="display:none;">
-          <h2 class="lp-course-title" id="lp-sidebar-course-title"></h2>
+          <h2 class="lp-course-title reveal" id="lp-sidebar-course-title"></h2>
           <div class="lp-progress-block">
             <div class="lp-progress-row">
               <div class="lp-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Course progress" id="lp-progress-track">
@@ -402,7 +444,7 @@
           <div id="lp-empty-lessons" class="lp-empty" style="display:none;">Lessons will appear here shortly.</div>
         </div>
 
-        <div class="lp-enrol-cta">
+        <div class="lp-enrol-cta reveal">
           <p>Ready for hands-on?<br>Complete your certification in Accra.</p>
           <a href="tech-hub.html?enrol=1#enrol" class="btn-lp-enrol">Book Lab Training →</a>
           <p class="lp-enrol-footnote">Looking for enrolment or campus info? <a href="tech-hub.html?enrol=1">Visit TECH HUB →</a></p>
@@ -963,6 +1005,12 @@
 
   loadCourse();
 })();
+</script>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>

@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
@@ -79,11 +80,47 @@
       --mid:           #555;
       --light-bg:      #f6f6f6;
       --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       background: #fff;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -140,7 +177,7 @@
     .btn-si {
       color: rgba(255,255,255,0.85); text-decoration: none;
       font-size: 0.8rem; font-weight: 500;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       border: 1px solid rgba(255,255,255,0.32);
       outline: none; box-shadow: none;
       display: inline-flex; align-items: center;
@@ -151,7 +188,7 @@
     .btn-reg {
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.8rem; font-weight: 600;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       transition: background 0.18s;
     }
     .btn-reg:hover { background: var(--brand-h); }
@@ -190,7 +227,7 @@
     }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a {
-      text-align: center; padding: 0.7rem; border-radius: 3px;
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full);
       font-size: 0.875rem; font-weight: 600; text-decoration: none;
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
@@ -338,8 +375,8 @@
       text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
     }
     .sec-h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 800;
-      letter-spacing: -0.025em; line-height: 1.2;
+      font-size: var(--text-subheading); font-weight: 800;
+      letter-spacing: -0.025em; line-height: var(--leading-subheading);
     }
 
     /* ── COURSE CARDS STRIP ── */
@@ -362,7 +399,7 @@
     }
     .c-card {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px; overflow: hidden; cursor: pointer;
+      border-radius: var(--radius-3xl); overflow: hidden; cursor: pointer;
       transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
       position: relative;
     }
@@ -421,7 +458,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-teal:hover { background: var(--brand-h); }
     .lp-card {
@@ -451,13 +488,13 @@
     .stats-in {
       max-width: 760px; margin: 0 auto; text-align: center;
     }
-    .stats-copy h2 { font-size: 1.55rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: 1.2; }
-    .stats-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
+    .stats-copy h2 { font-size: var(--text-subheading); font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: var(--leading-subheading); }
+    .stats-copy p  { font-size: var(--text-body); color: rgba(255,255,255,0.62); line-height: var(--leading-body); margin-bottom: 1.375rem; }
     .btn-white {
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 700; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-white:hover { background: var(--brand-h); }
 
@@ -476,7 +513,7 @@
     .dt2 { background: linear-gradient(135deg, #3D2000, #A05000); }
     .dt3 { background: linear-gradient(135deg, #005843, #008560); }
     .dt4 { background: linear-gradient(135deg, #1E2738, #3A4A6A); grid-column: span 2; min-height: 72px; }
-    .disc-copy h2 { font-size: 1.65rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.875rem; }
+    .disc-copy h2 { font-size: var(--text-subheading); font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: var(--leading-subheading); margin-bottom: 0.875rem; }
     .disc-copy p  { font-size: 0.875rem; color: var(--mid); line-height: 1.72; margin-bottom: 1rem; }
     .disc-list { list-style: none; margin-bottom: 1.5rem; }
     .disc-list li {
@@ -858,7 +895,7 @@
       text-transform: uppercase; color: #bbb; margin: 1.125rem 0 0.45rem;
     }
     .dash-course-card {
-      background: var(--primary); border-radius: 8px; padding: 0.875rem 1rem;
+      background: var(--primary); border-radius: var(--radius-3xl); padding: 0.875rem 1rem;
       display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
     }
     .dash-course-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
@@ -907,8 +944,8 @@
     .req-section { padding: 4.5rem 1.5rem; background: #fff; }
     .req-hd { max-width: 1280px; margin: 0 auto 2.5rem; }
     .req-hd h2 {
-      font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 800;
-      color: var(--dark); letter-spacing: -0.025em; line-height: 1.18;
+      font-size: var(--text-subheading); font-weight: 800;
+      color: var(--dark); letter-spacing: -0.025em; line-height: var(--leading-subheading);
     }
     .req-hd p { font-size: 0.875rem; color: var(--mid); margin-top: 0.5rem; line-height: 1.65; max-width: 560px; }
     .req-grid {
@@ -972,8 +1009,8 @@
     }
     .enrol-copy .sec-label { color: rgba(255,105,0,0.85); }
     .enrol-copy h2 {
-      font-size: clamp(1.7rem, 3vw, 2.25rem); font-weight: 800;
-      color: #fff; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 0.875rem;
+      font-size: var(--text-subheading); font-weight: 800;
+      color: #fff; letter-spacing: -0.025em; line-height: var(--leading-subheading); margin-bottom: 0.875rem;
     }
     .enrol-copy p { font-size: 0.875rem; color: rgba(255,255,255,0.62); line-height: 1.72; margin-bottom: 1.25rem; }
     .enrol-perks { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
@@ -1158,10 +1195,10 @@
       background: var(--primary); padding: 3rem 1.5rem; text-align: center;
     }
     .techhub-divider h2 {
-      font-size: clamp(1.3rem, 2.5vw, 1.65rem); font-weight: 800; color: #fff;
-      letter-spacing: -0.02em; margin-bottom: 0.4rem;
+      font-size: var(--text-subheading); font-weight: 800; color: #fff;
+      letter-spacing: -0.025em; line-height: var(--leading-subheading); margin-bottom: 0.4rem;
     }
-    .techhub-divider p { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .techhub-divider p { font-size: var(--text-body); line-height: var(--leading-body); color: rgba(255,255,255,0.55); }
 
     /* ── COURSE DETAIL MODAL ── */
     #course-overlay {
@@ -1403,6 +1440,24 @@
     @media (prefers-reduced-motion: reduce){
       html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
     }
+
+    /* ── Section colour-blend overlays: soften hard edges between sections ── */
+    .courses-strip, .lp-section, .stats-section, .discover-section, footer { position: relative; }
+    .courses-strip::before, .lp-section::before, .stats-section::before, .discover-section::before, .enrol-section::after, footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; pointer-events: none; z-index: 0;
+    }
+    .courses-strip::before   { height: 44px; background: linear-gradient(to bottom, #262E3D 0%, transparent 100%); }
+    .lp-section::before      { height: 60px; background: linear-gradient(to bottom, #1E2738 0%, transparent 100%); }
+    .stats-section::before   { height: 60px; background: linear-gradient(to bottom, #ffffff 0%, transparent 100%); }
+    .discover-section::before{ height: 60px; background: linear-gradient(to bottom, #005843 0%, transparent 100%); }
+    .enrol-section::after    { height: 76px; background: linear-gradient(to bottom, #ffffff 0%, transparent 100%); }
+    footer::before           { height: 52px; background: linear-gradient(to bottom, #262E3D 0%, transparent 100%); }
+
+    /* ── Fade-and-slide-up on scroll ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
     .qa-cluster{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:9000;}
     .qa-pill{position:relative;height:54px;width:54px;border-radius:27px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(45deg,var(--from),var(--to));box-shadow:0 6px 18px rgba(38,46,61,0.28);transition:width .42s cubic-bezier(0.4,0,0.2,1),box-shadow .3s;}
     .qa-ico{position:absolute;left:0;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1545,13 +1600,13 @@
 
 
 <!-- ══════════ TECH HUB DIVIDER ══════════ -->
-<div class="techhub-divider r">
+<div class="techhub-divider r reveal">
   <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;margin-right:0.3rem;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> TRUSCREN TECH HUB — Repair Training School</h2>
   <p>Hands-on courses, certified instructors, and real repair skills for the next generation of technicians</p>
 </div>
 <!-- ══════════ FEATURED COURSES ══════════ -->
 <section id="courses" class="courses-strip">
-  <div class="strip-hd r">
+  <div class="strip-hd r reveal">
     <div>
       <div class="strip-hd-title">Our Repair Training Programmes</div>
       <div class="strip-hd-sub">Hands-on, industry-standard courses that get you job-ready</div>
@@ -1560,7 +1615,7 @@
   </div>
 
   <div class="courses-grid">
-    <div class="c-card r">
+    <div class="c-card r reveal">
       <div class="c-thumb c-thumb-1">
         <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1572,7 +1627,7 @@
       </div>
     </div>
 
-    <div class="c-card r d1">
+    <div class="c-card r d1 reveal">
       <div class="c-thumb c-thumb-3">
         <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1584,7 +1639,7 @@
       </div>
     </div>
 
-    <div class="c-card r d2">
+    <div class="c-card r d2 reveal">
       <div class="c-thumb c-thumb-4">
         <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1602,13 +1657,13 @@
 <!-- ══════════ LEARNING PATH ══════════ -->
 <section class="lp-section">
   <div class="lp-in">
-    <div class="lp-txt r">
+    <div class="lp-txt r reveal">
       <div class="sec-label">Featured Learning Path</div>
       <h2 class="sec-h2" style="color:var(--dark);margin-bottom:0.75rem;">From beginner to certified repair technician — step by step</h2>
       <p>Our structured learning paths bundle multiple courses, live lab sessions, and assessments into a clear, progressive curriculum — so you go from zero hands-on experience to a fully certified, job-ready technician in months, not years.</p>
       <a href="#" class="btn-teal">Explore All Learning Paths →</a>
     </div>
-    <div class="lp-card r d1 tsc-glow tsc-glow-light">
+    <div class="lp-card r d1 tsc-glow tsc-glow-light reveal">
       <div class="lp-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/workbench-tools.jpg" alt="Repair workbench" style="width:100%;height:190px;object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;">
@@ -1628,7 +1683,7 @@
 <!-- ══════════ STATS ══════════ -->
 <section class="stats-section">
   <div class="stats-in">
-    <div class="stats-copy r">
+    <div class="stats-copy r reveal">
       <h2 class="sec-h2" style="color:#fff;">Train with TRUSCREN TECH HUB</h2>
       <p>TRUSCREN TECH HUB delivers hands-on, practical training on real devices — not theory alone. Learn screen repair, micro-soldering, and board-level diagnostics from instructors who repair for a living, and graduate with an official TRUSCREN certification.</p>
       <a href="#enrol" class="btn-white">Enrol for 2026 →</a>
@@ -1638,11 +1693,11 @@
 <!-- ══════════ DISCOVER ══════════ -->
 <section class="discover-section">
   <div class="discover-in">
-    <div class="disc-visual r" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.18);position:relative;min-height:400px;">
+    <div class="disc-visual r reveal" style="display:block;border-radius:10px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,0.18);position:relative;min-height:400px;">
       <img src="Brand_assets/training-lab.jpg" alt="TRUSCREN TECH HUB training lab — instructor teaching student" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.08) 35%,rgba(0,0,0,0.78));"></div>
     </div>
-    <div class="disc-copy r d1">
+    <div class="disc-copy r d1 reveal">
       <div class="sec-label">Why TRUSCREN TECH HUB?</div>
       <h2 class="sec-h2">More than a course — a career-changing repair education</h2>
       <p style="margin-top:0.875rem;">TRUSCREN TECH HUB exists because Africa's device repair industry needs properly trained, certified professionals. We deliver that — with real tools, real devices, and instructors who repair for a living.</p>
@@ -1660,7 +1715,7 @@
 
 <!-- ══════════ REQUIREMENTS ══════════ -->
 <section id="requirements" class="req-section">
-  <div class="req-hd r">
+  <div class="req-hd r reveal">
     <div class="sec-label">Admissions</div>
     <h2>What You Need to Join the<br>TRUSCREN Repair School</h2>
     <p>Everything is straightforward — no formal qualifications required. Here's what to prepare before you enrol.</p>
@@ -1669,7 +1724,7 @@
   <div class="req-grid">
 
     <!-- Card 1 — To Enrol -->
-    <div class="req-card r tsc-glow tsc-glow-light">
+    <div class="req-card r tsc-glow tsc-glow-light reveal">
       <div class="req-card-ico req-ico-1">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M7 15h.01M11 15h2"/>
@@ -1685,7 +1740,7 @@
     </div>
 
     <!-- Card 2 — Who Can Join -->
-    <div class="req-card r d1 tsc-glow tsc-glow-light">
+    <div class="req-card r d1 tsc-glow tsc-glow-light reveal">
       <div class="req-card-ico req-ico-2">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -1700,7 +1755,7 @@
     </div>
 
     <!-- Card 3 — What to Bring to Class -->
-    <div class="req-card r d2 tsc-glow tsc-glow-light">
+    <div class="req-card r d2 tsc-glow tsc-glow-light reveal">
       <div class="req-card-ico req-ico-3">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
@@ -1715,7 +1770,7 @@
     </div>
 
     <!-- Card 4 — Good to Have -->
-    <div class="req-card r d3 tsc-glow tsc-glow-light">
+    <div class="req-card r d3 tsc-glow tsc-glow-light reveal">
       <div class="req-card-ico req-ico-4">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -1737,7 +1792,7 @@
 <section id="enrol" class="enrol-section">
   <div class="enrol-in">
 
-    <div class="enrol-copy r">
+    <div class="enrol-copy r reveal">
       <div class="sec-label">Enrol Now</div>
       <h2>Start Your Repair Career<br><em style="color:var(--brand);font-style:normal;">at TRUSCREN TECH HUB</em></h2>
       <p>Secure your place in Ghana's most respected device repair training programme. Cohort sizes are strictly limited — every student gets maximum hands-on lab time with their instructor.</p>
@@ -1750,7 +1805,7 @@
       </ul>
     </div>
 
-    <div class="enrol-card r d1 tsc-glow tsc-glow-light">
+    <div class="enrol-card r d1 tsc-glow tsc-glow-light reveal">
       <div class="enrol-card-title">Reserve Your Spot — 2026 Cohort</div>
       <div class="enrol-card-sub">Fill in your details and our team will contact you within 24 hours.</div>
 
@@ -1817,7 +1872,7 @@
       </form>
     </div>
 
-    <div class="enrol-wa-wrap r d2">
+    <div class="enrol-wa-wrap r d2 reveal">
       <a class="btn-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%2C%20I%27d%20like%20to%20enrol%20in%20the%20Repair%20School." target="_blank" rel="noopener noreferrer">
         <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
         Prefer to chat? Message us on WhatsApp
@@ -2879,5 +2934,11 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 </div><!-- end th-page-content -->
 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>

@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -29,11 +30,47 @@
       --mid:           #555;
       --light-bg:      #f6f6f6;
       --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       background: #fff;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -90,7 +127,7 @@
     .btn-si {
       color: rgba(255,255,255,0.85); text-decoration: none;
       font-size: 0.8rem; font-weight: 500;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       border: 1px solid rgba(255,255,255,0.32);
       outline: none; box-shadow: none;
       display: inline-flex; align-items: center;
@@ -101,7 +138,7 @@
     .btn-reg {
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.8rem; font-weight: 600;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       transition: background 0.18s;
     }
     .btn-reg:hover { background: var(--brand-h); }
@@ -140,7 +177,7 @@
     }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a {
-      text-align: center; padding: 0.7rem; border-radius: 3px;
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full);
       font-size: 0.875rem; font-weight: 600; text-decoration: none;
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
@@ -485,7 +522,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       border: 1.5px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s, border-color 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s, border-color 0.18s;
     }
     .btn-outline-w:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.65); }
     .gplan-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
@@ -646,6 +683,18 @@
     .d1 { transition-delay: 0.1s; }
     .d2 { transition-delay: 0.2s; }
     .d3 { transition-delay: 0.3s; }
+
+    /* ── Section colour-blend overlays: soften hard edges between sections ── */
+    footer { position: relative; }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 52px; pointer-events: none; z-index: 0;
+      background: linear-gradient(to bottom, #005843 0%, transparent 100%);
+    }
+
+    /* ── Fade-and-slide-up on scroll ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
     /* ── SIGNIN MODAL ── */
     #signin-overlay {
@@ -1157,8 +1206,8 @@
       max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
       display: grid; grid-template-columns: 1fr 1.15fr; gap: 4rem; align-items: center;
     }
-    .partner-copy h2 { font-size: clamp(1.5rem, 2.5vw, 1.85rem); font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: 1.18; margin-bottom: 0.875rem; }
-    .partner-copy > p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.72; margin-bottom: 1.5rem; }
+    .partner-copy h2 { font-size: var(--text-subheading); font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: var(--leading-subheading); margin-bottom: 0.875rem; }
+    .partner-copy > p { font-size: var(--text-body); color: rgba(255,255,255,0.65); line-height: var(--leading-body); margin-bottom: 1.5rem; }
     .partner-points { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.75rem; }
     .partner-points li {
       display: flex; align-items: flex-start; gap: 0.6rem;
@@ -1166,7 +1215,7 @@
     }
     .partner-points li::before { content: ''; flex-shrink: 0; margin-top: 0.42em; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
     .partner-form-card {
-      background: #fff; border-radius: 10px; padding: 2rem 1.75rem;
+      background: #fff; border-radius: var(--radius-3xl); padding: 2rem 1.75rem;
       box-shadow: 0 28px 72px rgba(0,0,0,0.35);
     }
     .partner-form-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 0.2rem; letter-spacing: -0.015em; }
@@ -1534,8 +1583,8 @@
   <div class="partner-in">
     <div class="partner-copy r">
       <div class="sec-label" style="color:rgba(255,105,0,0.85);">Partnership</div>
-      <h2>Partner With<br>TRUSCREN Ghana</h2>
-      <p>Want to grow your business with a trusted screen brand? We're looking for agents, distributors, and partners across Ghana who share our commitment to quality and service.</p>
+      <h2 class="reveal">Partner With<br>TRUSCREN Ghana</h2>
+      <p class="reveal">Want to grow your business with a trusted screen brand? We're looking for agents, distributors, and partners across Ghana who share our commitment to quality and service.</p>
       <ul class="partner-points">
         <li>Sell premium, genuine TRUSCREN screens customers trust</li>
         <li>Competitive trade pricing and reliable supply</li>
@@ -1553,7 +1602,7 @@
       </div>
     </div>
 
-    <div class="partner-form-card r d1 tsc-glow tsc-glow-light">
+    <div class="partner-form-card r d1 tsc-glow tsc-glow-light reveal">
       <h3>Partner Enquiry</h3>
       <div class="pf-sub">Fill in your details and we'll be in touch within 24 hours.</div>
 
@@ -2550,5 +2599,11 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 </div>
 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>

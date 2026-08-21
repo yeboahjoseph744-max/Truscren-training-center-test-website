@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -29,11 +30,47 @@
       --mid:           #555;
       --light-bg:      #f6f6f6;
       --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       background: #fff;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
@@ -90,7 +127,7 @@
     .btn-si {
       color: rgba(255,255,255,0.85); text-decoration: none;
       font-size: 0.8rem; font-weight: 500;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       border: 1px solid rgba(255,255,255,0.32);
       outline: none; box-shadow: none;
       display: inline-flex; align-items: center;
@@ -101,7 +138,7 @@
     .btn-reg {
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.8rem; font-weight: 600;
-      padding: 0.42rem 0.875rem; border-radius: 3px;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
       transition: background 0.18s;
     }
     .btn-reg:hover { background: var(--brand-h); }
@@ -140,7 +177,7 @@
     }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a {
-      text-align: center; padding: 0.7rem; border-radius: 3px;
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full);
       font-size: 0.875rem; font-weight: 600; text-decoration: none;
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
@@ -230,18 +267,18 @@
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.45rem;
       background: rgba(255,105,0,0.15); border: 1px solid rgba(255,105,0,0.35);
-      border-radius: 3px; padding: 0.28rem 0.75rem; margin-bottom: 1.375rem;
+      border-radius: var(--radius-full); padding: 0.28rem 0.75rem; margin-bottom: 1.375rem;
       font-size: 0.72rem; font-weight: 700; color: var(--brand);
       letter-spacing: 0.07em; text-transform: uppercase;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.75rem);
-      font-weight: 800; color: #fff; line-height: 1.08;
-      letter-spacing: -0.035em; margin-bottom: 1rem; max-width: 680px;
+      font-size: var(--text-heading-lg);
+      font-weight: 800; color: #fff; line-height: var(--leading-heading-lg);
+      letter-spacing: var(--tracking-heading-lg); margin-bottom: 1rem; max-width: 680px;
     }
     .hero h1 em { color: var(--brand); font-style: normal; }
     .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.72;
+      font-size: var(--text-body); color: rgba(255,255,255,0.65); line-height: var(--leading-body);
       max-width: 540px; margin-bottom: 2rem;
     }
     .hero-form {
@@ -275,7 +312,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       height: 26px; padding: 0 0.7rem;
       background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 2px; font-size: 0.68rem; font-weight: 700;
+      border-radius: var(--radius-full); font-size: 0.68rem; font-weight: 700;
       color: rgba(255,255,255,0.68); letter-spacing: 0.03em;
       cursor: pointer; transition: background 0.18s;
     }
@@ -288,8 +325,8 @@
       text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
     }
     .sec-h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 800;
-      letter-spacing: -0.025em; line-height: 1.2;
+      font-size: var(--text-subheading); font-weight: 800;
+      letter-spacing: -0.025em; line-height: var(--leading-subheading);
     }
 
     /* ── COURSE CARDS STRIP ── */
@@ -312,7 +349,7 @@
     }
     .c-card {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px; overflow: hidden; cursor: pointer;
+      border-radius: var(--radius-3xl); overflow: hidden; cursor: pointer;
       transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
       position: relative;
     }
@@ -371,7 +408,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-teal:hover { background: var(--brand-h); }
     .lp-card {
@@ -403,7 +440,7 @@
       display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
     }
     .fmt-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius-3xl);
       padding: 1.375rem; cursor: pointer;
       transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
     }
@@ -455,20 +492,20 @@
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center;
     }
-    .stats-copy h2 { font-size: 1.55rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: 1.2; }
-    .stats-copy p  { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.7; margin-bottom: 1.375rem; }
+    .stats-copy h2 { font-size: var(--text-subheading); font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.875rem; line-height: var(--leading-subheading); }
+    .stats-copy p  { font-size: var(--text-body); color: rgba(255,255,255,0.62); line-height: var(--leading-body); margin-bottom: 1.375rem; }
     .btn-white {
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: var(--brand); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 700; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-white:hover { background: var(--brand-h); }
     .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
     .stat-box {
       text-align: center; padding: 1.375rem 1rem;
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
+      border-radius: var(--radius-3xl);
     }
     .stat-n { font-size: 2.1rem; font-weight: 800; color: var(--brand); letter-spacing: -0.04em; display: block; margin-bottom: 0.3rem; line-height: 1; }
     .stat-l { font-size: 0.75rem; color: rgba(255,255,255,0.58); line-height: 1.35; }
@@ -485,7 +522,7 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
       border: 1.5px solid rgba(255,255,255,0.4); color: #fff; text-decoration: none;
       font-size: 0.82rem; font-weight: 600; padding: 0.65rem 1.25rem;
-      border-radius: 3px; transition: background 0.18s, border-color 0.18s;
+      border-radius: var(--radius-full); transition: background 0.18s, border-color 0.18s;
     }
     .btn-outline-w:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.65); }
     .gplan-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
@@ -584,7 +621,13 @@
     .reg-terms a { color: rgba(255,255,255,0.92); text-decoration: underline; }
 
     /* ── FOOTER ── */
-    footer { background: #111; padding: 3.5rem 1.5rem 2rem; }
+    footer { background: #111; padding: 3.5rem 1.5rem 2rem; position: relative; }
+
+    /* ── SECTION COLOUR BLEND OVERLAYS ── */
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 52px; pointer-events: none; z-index: 0;
+      background: linear-gradient(to bottom, #262E3D 0%, transparent 100%);
+    }
     .foot-in { max-width: 1280px; margin: 0 auto; }
     .foot-top {
       display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
@@ -646,6 +689,11 @@
     .d1 { transition-delay: 0.1s; }
     .d2 { transition-delay: 0.2s; }
     .d3 { transition-delay: 0.3s; }
+
+    /* ── Fade-and-slide-up on scroll ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
     /* ── SIGNIN MODAL ── */
     #signin-overlay {
@@ -915,7 +963,7 @@
       text-transform: uppercase; color: #bbb; margin: 1.125rem 0 0.45rem;
     }
     .dash-course-card {
-      background: var(--primary); border-radius: 8px; padding: 0.875rem 1rem;
+      background: var(--primary); border-radius: var(--radius-3xl); padding: 0.875rem 1rem;
       display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
     }
     .dash-course-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
@@ -1289,7 +1337,7 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.375rem;
     }
     .cert-card {
-      background: #fff; border-radius: 8px; padding: 1.875rem 1.5rem;
+      background: #fff; border-radius: var(--radius-3xl); padding: 1.875rem 1.5rem;
       border: 1.5px solid var(--border);
       transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
     }
@@ -1345,7 +1393,7 @@
     }
     .about-copy .sec-label { color: rgba(255,105,0,0.85); }
     .about-copy h2 { color: #fff; margin-bottom: 0.875rem; }
-    .about-copy p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.72; margin-bottom: 0.875rem; }
+    .about-copy p { font-size: var(--text-body); color: rgba(255,255,255,0.65); line-height: var(--leading-body); margin-bottom: 0.875rem; }
     .about-tagline {
       font-size: 1rem; font-weight: 700; color: var(--brand);
       letter-spacing: 0.015em; margin-top: 0.25rem; margin-bottom: 1rem;
@@ -1353,7 +1401,7 @@
     .about-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
     .about-stat {
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px; padding: 1.25rem 1rem; text-align: center;
+      border-radius: var(--radius-3xl); padding: 1.25rem 1rem; text-align: center;
     }
     .about-stat-n {
       display: block; font-size: 1.9rem; font-weight: 800;
@@ -1534,15 +1582,15 @@
   <div class="about-in">
     <div class="about-copy r">
       <div class="sec-label">About Us</div>
-      <h2 class="sec-h2">About TRUSCREN Ghana</h2>
-      <p>TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens in Ghana — and home of the TRUSCREN TECH HUB, a professional device repair training school in Accra. We're part of the trusted TRUSCREN brand, a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
-      <p>We supply genuine, high-quality screens to technicians, repair shops, and wholesalers across Ghana. Through the TECH HUB, we teach practical, job-ready skills in phone screen repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
-      <p class="about-tagline">True Colors. True TRUSCREN.</p>
+      <h2 class="sec-h2 reveal">About TRUSCREN Ghana</h2>
+      <p class="reveal">TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens in Ghana — and home of the TRUSCREN TECH HUB, a professional device repair training school in Accra. We're part of the trusted TRUSCREN brand, a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
+      <p class="reveal">We supply genuine, high-quality screens to technicians, repair shops, and wholesalers across Ghana. Through the TECH HUB, we teach practical, job-ready skills in phone screen repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
+      <p class="about-tagline reveal">True Colors. True TRUSCREN.</p>
       <a href="#products" class="btn-teal">Explore Our Products →</a>
     </div>
     <div class="about-stat-grid r d1">
-      <div class="about-stat"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
-      <div class="about-stat"><span class="about-stat-n">&lt;0.5%</span><span class="about-stat-l">Screen defect rate — world-class quality standard</span></div>
+      <div class="about-stat reveal"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
+      <div class="about-stat reveal"><span class="about-stat-n">&lt;0.5%</span><span class="about-stat-l">Screen defect rate — world-class quality standard</span></div>
     </div>
   </div>
 </section>
@@ -2501,5 +2549,11 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 </div>
 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
