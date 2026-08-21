@@ -243,6 +243,22 @@
     .qa-pill:hover{width:172px;box-shadow:0 10px 26px rgba(38,46,61,0.4);}
     .qa-pill:hover .qa-label{opacity:1;}
     @media (max-width:640px){#navbar{height:58px;}#mob-menu{top:58px;}.qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}}
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -306,70 +322,70 @@
 
     <div class="faq-list" id="faq-list">
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">What is the best LCD screen brand in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner"><strong>TRUSCREN</strong> is one of the leading phone LCD and OLED screen brands available in Ghana. TRUSCREN Africa is the official African distributor and supplies genuine replacement screens for iPhone, Samsung, Tecno, Infinix, Itel and Huawei, with a defect rate under 0.5% and a 12-month guarantee on every screen. Screens are stocked in Accra and supplied to repair shops and wholesalers across Ghana. When choosing a screen brand, look for consistent colour accuracy, high brightness, reliable touch response and a warranty — all of which TRUSCREN screens are tested for.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">Where can I buy original phone screens in Accra, Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">TRUSCREN Africa supplies original replacement phone screens in Accra from its base at <strong>Spintex, Shell Signboard</strong>. It stocks LCD and OLED screens for iPhone, Samsung, Tecno, Infinix, Itel and Huawei, and sells to individual customers, repair technicians and wholesalers. Request current pricing or reserve stock on WhatsApp at <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a>. Screens are also supplied to partner shops in Kumasi and Takoradi.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">Where can I repair a cracked phone screen in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">A cracked phone screen in Ghana can be repaired at any qualified repair shop, ideally one that uses genuine, warrantied screens. TRUSCREN Africa supplies original TRUSCREN screens to technicians across <strong>Accra, Kumasi and Takoradi</strong>, so repairs done with TRUSCREN parts carry a 12-month screen guarantee. Contact TRUSCREN on WhatsApp at <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a> to be directed to a nearby technician using genuine screens, or to buy the screen directly.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">Where can I learn phone repair in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">You can learn phone repair in Ghana at the <strong>TRUSCREN TECH HUB</strong>, a dedicated device-repair training school in Accra. It offers hands-on courses in phone screen and display repair, circuit-board micro-soldering, and EV battery diagnostics. Students train on real devices and receive an official TRUSCREN TECH HUB certificate on completion, which helps them get hired at repair shops or start their own business. Some theory is available free online, with practical training completed in person in Accra. <a href="tech-hub.html">See TECH HUB courses →</a></div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">What is the best Tecno LCD screen to buy in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">For Tecno phones in Ghana, a genuine <strong>TRUSCREN</strong> replacement LCD is a reliable choice. TRUSCREN stocks screens for popular Tecno models including the Spark, Camon and Pop series, tested for correct colour, brightness and touch response, and backed by a 12-month guarantee. Screens are supplied from Accra to repair shops nationwide. Contact <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a> for the current Tecno screen price and availability for your specific model.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">How much does a phone screen cost in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">Phone screen prices in Ghana vary by brand and model. As a general guide, replacement screens for popular Tecno, Infinix and Itel models typically range from around <strong>GHS 250 to GHS 600</strong>, Samsung screens from around GHS 350 upward depending on LCD vs AMOLED, and iPhone screens from around GHS 550 upward for higher models. TRUSCREN Africa provides trade pricing for repair shops and wholesalers. For an exact quote on your model, contact <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a>. <em>(Prices are indicative and change with the market.)</em></div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">Do TRUSCREN replacement screens come with a warranty?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">Yes. Every genuine TRUSCREN screen supplied by TRUSCREN Africa comes with a <strong>12-month guarantee</strong>. TRUSCREN screens have a defect rate under 0.5% and the brand supplies screens to 38 countries. Buying from an authorised source such as TRUSCREN Africa ensures the screen is genuine and the warranty is valid.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">What phone brands does TRUSCREN supply screens for?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">TRUSCREN Africa supplies replacement LCD and OLED screens for <strong>iPhone, Samsung, Tecno, Infinix, Itel and Huawei</strong>, covering a wide range of models across each brand. Both standard LCD and higher-grade OLED/AMOLED options are available for many models. Contact <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a> to confirm availability for a specific phone.</div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">How can I become a TRUSCREN screen distributor or agent in Ghana?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">TRUSCREN Africa works with agents and distributors across Ghana and West Africa. Partners get access to genuine screens at trade pricing, product training, marketing support and local market development. Repair shops, wholesalers and entrepreneurs can apply through the website or by contacting <a href="https://wa.me/233541224699">+233&nbsp;54&nbsp;122&nbsp;4699</a>. <a href="agent.html">Become an agent →</a></div></div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item tsc-glow tsc-glow-light">
         <button class="faq-q">Does TRUSCREN sell OLED and AMOLED screens, or only LCD?
           <svg class="faq-chev" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -379,7 +395,7 @@
     </div>
 
     <!-- CTA -->
-    <div class="faq-cta">
+    <div class="faq-cta tsc-glow">
       <div class="faq-cta-in">
         <h2>Still have a question?</h2>
         <p>Message us for a quote on your exact phone model, or to find a repair technician near you using genuine TRUSCREN screens.</p>

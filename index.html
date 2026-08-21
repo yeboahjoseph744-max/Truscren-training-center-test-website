@@ -1574,6 +1574,22 @@
       #navbar{top:0;left:0;right:0;height:58px;border-radius:0;}
       .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
     }
+
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -1724,15 +1740,15 @@
       <h2 class="sec-h2">Screens. Training. Partnership.</h2>
     </div>
     <div class="fmt-grid">
-      <a href="products.html" class="fmt-card r" style="text-decoration:none;">
+      <a href="products.html" class="fmt-card r tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
         <h3>Premium Screens</h3><p>Genuine TRUSCREN LCD &amp; OLED displays with trade pricing and a 12-month guarantee.</p>
       </a>
-      <a href="tech-hub.html" class="fmt-card r d1" style="text-decoration:none;">
+      <a href="tech-hub.html" class="fmt-card r d1 tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>TECH HUB Training</h3><p>Hands-on courses in screen repair, micro-soldering, and EV battery diagnostics. Get certified.</p>
       </a>
-      <a href="agent.html" class="fmt-card r d2" style="text-decoration:none;">
+      <a href="agent.html" class="fmt-card r d2 tsc-glow tsc-glow-light" style="text-decoration:none;">
         <div class="fmt-ico i3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Become an Agent</h3><p>Partner with TRUSCREN Ghana — sell trusted screens with competitive trade pricing and brand support.</p>
       </a>
@@ -1818,21 +1834,21 @@
       <p class="cert-lead">Students who complete their course receive an official <strong>TRUSCREN TECH HUB Certificate</strong> — recognising their hands-on skills and helping them start a career or business in device repair.</p>
     </div>
     <div class="cert-cards">
-      <div class="cert-card r">
+      <div class="cert-card r tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci1">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
         </div>
         <h3>Official TRUSCREN TECH HUB Certificate</h3>
         <p>Every graduate will earn a signed, printed certificate from TRUSCREN TECH HUB — proof of hands-on training and practical competency, issued directly by the school on successful completion.</p>
       </div>
-      <div class="cert-card r d1">
+      <div class="cert-card r d1 tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci2">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3>Recognised by Industry Employers</h3>
         <p>TRUSCREN TECH HUB is backed by the trusted TRUSCREN brand — a screen supplier serving 38 countries with a defect rate under 0.5%. Your certificate will carry real weight with electronics shops, repair businesses, and corporate IT departments across Africa.</p>
       </div>
-      <div class="cert-card r d2">
+      <div class="cert-card r d2 tsc-glow tsc-glow-light">
         <div class="cert-card-ico ci3">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
         </div>
@@ -2175,7 +2191,7 @@
     </div>
 
     <div class="dash-sec-label">Enrolled Course</div>
-    <div class="dash-course-card">
+    <div class="dash-course-card tsc-glow">
       <div class="dash-course-name" id="dash-course">—</div>
       <div class="dash-level-pill" id="dash-level">—</div>
     </div>

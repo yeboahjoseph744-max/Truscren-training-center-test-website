@@ -216,6 +216,22 @@
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
       .brand-cta-btns,.brand-hero-btns{flex-direction:column;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -282,49 +298,49 @@
     <p class="brand-intro">For iPhone in Ghana, TRUSCREN Africa supplies genuine <strong>TRUSCREN</strong> replacement screens covering the full range from iPhone 6 to iPhone 16 Pro Max. Screens are available in two grades — <strong>TRUSCREN FHD (hard-OLED)</strong> for a true-to-original display with high brightness (700+ nits), and <strong>TRUSCREN HD+</strong> as a strong-value option (500+ nits) — so there is a fit for every budget. Every screen is tested for colour, brightness and touch response and carries a 12-month guarantee. Stocked in Accra and supplied to repair shops across Ghana.</p>
 
     <div class="feature-row">
-      <div class="feature-box"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
-      <div class="feature-box"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
-      <div class="feature-box"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
-      <div class="feature-box"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
     </div>
 
     <h2 class="models-head">iPhone models we supply screens for</h2>
     <p class="models-sub">TRUSCREN Africa stocks genuine replacement screens for the following iPhone models. Don't see your model? It may still be in stock — <a href="https://wa.me/233541224699" style="color:var(--secondary);font-weight:600;text-decoration:none;">message us</a> to check.</p>
     <div class="model-chips">
-        <span class="model-chip">iPhone 6</span>
-        <span class="model-chip">iPhone 6 Plus</span>
-        <span class="model-chip">iPhone 6s</span>
-        <span class="model-chip">iPhone 6s Plus</span>
-        <span class="model-chip">iPhone 7</span>
-        <span class="model-chip">iPhone 7 Plus</span>
-        <span class="model-chip">iPhone 8</span>
-        <span class="model-chip">iPhone 8 Plus</span>
-        <span class="model-chip">iPhone X</span>
-        <span class="model-chip">iPhone XR</span>
-        <span class="model-chip">iPhone XS</span>
-        <span class="model-chip">iPhone XS Max</span>
-        <span class="model-chip">iPhone 11</span>
-        <span class="model-chip">iPhone 11 Pro</span>
-        <span class="model-chip">iPhone 11 Pro Max</span>
-        <span class="model-chip">iPhone 12</span>
-        <span class="model-chip">iPhone 12 Mini</span>
-        <span class="model-chip">iPhone 12 Pro</span>
-        <span class="model-chip">iPhone 12 Pro Max</span>
-        <span class="model-chip">iPhone 13</span>
-        <span class="model-chip">iPhone 13 Mini</span>
-        <span class="model-chip">iPhone 13 Pro</span>
-        <span class="model-chip">iPhone 13 Pro Max</span>
-        <span class="model-chip">iPhone 14</span>
-        <span class="model-chip">iPhone 14 Plus</span>
-        <span class="model-chip">iPhone 14 Pro</span>
-        <span class="model-chip">iPhone 14 Pro Max</span>
-        <span class="model-chip">iPhone 15</span>
-        <span class="model-chip">iPhone 15 Pro</span>
-        <span class="model-chip">iPhone 15 Pro Max</span>
-        <span class="model-chip">iPhone 16</span>
-        <span class="model-chip">iPhone 16 Plus</span>
-        <span class="model-chip">iPhone 16 Pro</span>
-        <span class="model-chip">iPhone 16 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 6</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 6 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 6s</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 6s Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 7</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 7 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 8</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 8 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone X</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone XR</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone XS</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone XS Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 11</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 11 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 11 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 12</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 12 Mini</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 12 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 12 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 13</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 13 Mini</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 13 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 13 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 14</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 14 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 14 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 14 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 15</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 15 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 15 Pro Max</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 16</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 16 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 16 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">iPhone 16 Pro Max</span>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem;">

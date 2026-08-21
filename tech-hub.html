@@ -1440,6 +1440,22 @@
 
     #navbar,.qa-cluster{z-index:1000!important;}
     .th-page-content{position:relative;z-index:1;}
+
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body style="background-color:#15191F;">
@@ -1591,7 +1607,7 @@
       <p>Our structured learning paths bundle multiple courses, live lab sessions, and assessments into a clear, progressive curriculum — so you go from zero hands-on experience to a fully certified, job-ready technician in months, not years.</p>
       <a href="#" class="btn-teal">Explore All Learning Paths →</a>
     </div>
-    <div class="lp-card r d1">
+    <div class="lp-card r d1 tsc-glow tsc-glow-light">
       <div class="lp-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/workbench-tools.jpg" alt="Repair workbench" style="width:100%;height:190px;object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;">
@@ -1652,7 +1668,7 @@
   <div class="req-grid">
 
     <!-- Card 1 — To Enrol -->
-    <div class="req-card r">
+    <div class="req-card r tsc-glow tsc-glow-light">
       <div class="req-card-ico req-ico-1">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M7 15h.01M11 15h2"/>
@@ -1668,7 +1684,7 @@
     </div>
 
     <!-- Card 2 — Who Can Join -->
-    <div class="req-card r d1">
+    <div class="req-card r d1 tsc-glow tsc-glow-light">
       <div class="req-card-ico req-ico-2">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -1683,7 +1699,7 @@
     </div>
 
     <!-- Card 3 — What to Bring to Class -->
-    <div class="req-card r d2">
+    <div class="req-card r d2 tsc-glow tsc-glow-light">
       <div class="req-card-ico req-ico-3">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#262E3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
@@ -1698,7 +1714,7 @@
     </div>
 
     <!-- Card 4 — Good to Have -->
-    <div class="req-card r d3">
+    <div class="req-card r d3 tsc-glow tsc-glow-light">
       <div class="req-card-ico req-ico-4">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -1733,7 +1749,7 @@
       </ul>
     </div>
 
-    <div class="enrol-card r d1">
+    <div class="enrol-card r d1 tsc-glow tsc-glow-light">
       <div class="enrol-card-title">Reserve Your Spot — 2026 Cohort</div>
       <div class="enrol-card-sub">Fill in your details and our team will contact you within 24 hours.</div>
 
@@ -2142,7 +2158,7 @@
     </div>
 
     <div class="dash-sec-label">Enrolled Course</div>
-    <div class="dash-course-card">
+    <div class="dash-course-card tsc-glow">
       <div class="dash-course-name" id="dash-course">—</div>
       <div class="dash-level-pill" id="dash-level">—</div>
     </div>

@@ -229,6 +229,22 @@
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
       .brand-cta-btns,.brand-hero-btns{flex-direction:column;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -295,62 +311,62 @@
     <p class="brand-intro">For Infinix phones in Ghana, TRUSCREN Africa supplies genuine <strong>TRUSCREN</strong> replacement screens across the full Infinix range — Hot, Note, Smart and Zero. Each display is tested for correct colour, brightness (400+ nits) and touch response, and carries a 12-month guarantee. Screens are stocked in Accra and supplied to repair shops nationwide.</p>
 
     <div class="feature-row">
-      <div class="feature-box"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
-      <div class="feature-box"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
-      <div class="feature-box"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
-      <div class="feature-box"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
     </div>
 
     <h2 class="models-head">Infinix models we supply screens for</h2>
     <p class="models-sub">TRUSCREN Africa stocks genuine replacement screens for the following Infinix models. Don't see your model? It may still be in stock — <a href="https://wa.me/233541224699" style="color:var(--secondary);font-weight:600;text-decoration:none;">message us</a> to check.</p>
     <div class="model-chips">
-        <span class="model-chip">Infinix Smart 4 Plus</span>
-        <span class="model-chip">Infinix Smart 5</span>
-        <span class="model-chip">Infinix Smart 5A</span>
-        <span class="model-chip">Infinix Smart 6 Plus</span>
-        <span class="model-chip">Infinix Smart 7</span>
-        <span class="model-chip">Infinix Smart 7 HD</span>
-        <span class="model-chip">Infinix Smart 7 Plus</span>
-        <span class="model-chip">Infinix Smart 8</span>
-        <span class="model-chip">Infinix Smart 8 HD</span>
-        <span class="model-chip">Infinix Smart 8 Plus</span>
-        <span class="model-chip">Infinix Smart 9</span>
-        <span class="model-chip">Infinix Smart 9 HD</span>
-        <span class="model-chip">Infinix Smart 10</span>
-        <span class="model-chip">Infinix Smart 10 Plus</span>
-        <span class="model-chip">Infinix Hot 8</span>
-        <span class="model-chip">Infinix Hot 8 Lite</span>
-        <span class="model-chip">Infinix Hot 9</span>
-        <span class="model-chip">Infinix Hot 9 Play</span>
-        <span class="model-chip">Infinix Hot 9 Pro</span>
-        <span class="model-chip">Infinix Hot 10</span>
-        <span class="model-chip">Infinix Hot 10 Lite</span>
-        <span class="model-chip">Infinix Hot 10 Play</span>
-        <span class="model-chip">Infinix Hot 10S</span>
-        <span class="model-chip">Infinix Hot 10T</span>
-        <span class="model-chip">Infinix Hot 11</span>
-        <span class="model-chip">Infinix Hot 11 Play</span>
-        <span class="model-chip">Infinix Hot 11S</span>
-        <span class="model-chip">Infinix Hot 12 Pro</span>
-        <span class="model-chip">Infinix Hot 20S</span>
-        <span class="model-chip">Infinix Hot 30</span>
-        <span class="model-chip">Infinix Hot 30 5G</span>
-        <span class="model-chip">Infinix Hot 30i</span>
-        <span class="model-chip">Infinix Hot 40</span>
-        <span class="model-chip">Infinix Hot 40i</span>
-        <span class="model-chip">Infinix Hot 50 5G</span>
-        <span class="model-chip">Infinix Hot 50i</span>
-        <span class="model-chip">Infinix Hot 60 5G</span>
-        <span class="model-chip">Infinix Hot 60i</span>
-        <span class="model-chip">Infinix Note 7 Lite</span>
-        <span class="model-chip">Infinix Note 8i</span>
-        <span class="model-chip">Infinix Note 10i</span>
-        <span class="model-chip">Infinix Note 10 Pro</span>
-        <span class="model-chip">Infinix Note 30</span>
-        <span class="model-chip">Infinix Note 30 5G</span>
-        <span class="model-chip">Infinix Note 50X 5G</span>
-        <span class="model-chip">Infinix Zero 5G</span>
-        <span class="model-chip">Infinix Zero 5G 2023</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 4 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 5</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 5A</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 6 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 7</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 7 HD</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 7 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 8</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 8 HD</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 8 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 9</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 9 HD</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 10</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Smart 10 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 8</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 8 Lite</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 9</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 9 Play</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 9 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 10</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 10 Lite</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 10 Play</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 10S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 10T</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 11</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 11 Play</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 11S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 12 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 20S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 30</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 30 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 30i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 40</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 40i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 50 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 50i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 60 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Hot 60i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 7 Lite</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 8i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 10i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 10 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 30</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 30 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Note 50X 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Zero 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Infinix Zero 5G 2023</span>
     </div>
 
     <div class="price-note">

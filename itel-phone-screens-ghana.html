@@ -228,6 +228,22 @@
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
       .brand-cta-btns,.brand-hero-btns{flex-direction:column;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -294,61 +310,61 @@
     <p class="brand-intro">For Itel phones in Ghana, TRUSCREN Africa supplies genuine <strong>TRUSCREN</strong> replacement screens across the full Itel range — the P-series, S-series, Vision and A-series. Each display is tested for correct colour, brightness and touch response, and carries a 12-month guarantee. Screens are stocked in Accra and supplied to repair shops nationwide.</p>
 
     <div class="feature-row">
-      <div class="feature-box"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
-      <div class="feature-box"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
-      <div class="feature-box"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
-      <div class="feature-box"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
     </div>
 
     <h2 class="models-head">Itel models we supply screens for</h2>
     <p class="models-sub">TRUSCREN Africa stocks genuine replacement screens for the following Itel models. Don't see your model? It may still be in stock — <a href="https://wa.me/233541224699" style="color:var(--secondary);font-weight:600;text-decoration:none;">message us</a> to check.</p>
     <div class="model-chips">
-        <span class="model-chip">Itel P36</span>
-        <span class="model-chip">Itel P36 Pro</span>
-        <span class="model-chip">Itel P37</span>
-        <span class="model-chip">Itel P37 Pro</span>
-        <span class="model-chip">Itel P38</span>
-        <span class="model-chip">Itel P38 Pro</span>
-        <span class="model-chip">Itel P40</span>
-        <span class="model-chip">Itel P55</span>
-        <span class="model-chip">Itel P55 5G</span>
-        <span class="model-chip">Itel P55+</span>
-        <span class="model-chip">Itel P55T</span>
-        <span class="model-chip">Itel P65</span>
-        <span class="model-chip">Itel P65+</span>
-        <span class="model-chip">Itel P65 5G</span>
-        <span class="model-chip">Itel S16</span>
-        <span class="model-chip">Itel S17</span>
-        <span class="model-chip">Itel S18</span>
-        <span class="model-chip">Itel S18 Pro</span>
-        <span class="model-chip">Itel S23</span>
-        <span class="model-chip">Itel S24</span>
-        <span class="model-chip">Itel Vision 1 Plus</span>
-        <span class="model-chip">Itel Vision 1 Pro</span>
-        <span class="model-chip">Itel Vision 2S</span>
-        <span class="model-chip">Itel Vision 2 Plus</span>
-        <span class="model-chip">Itel Vision 3</span>
-        <span class="model-chip">Itel Vision 3 Plus</span>
-        <span class="model-chip">Itel Vision 5</span>
-        <span class="model-chip">Itel Vision 5 Plus</span>
-        <span class="model-chip">Itel A49</span>
-        <span class="model-chip">Itel A50</span>
-        <span class="model-chip">Itel A50C</span>
-        <span class="model-chip">Itel A58</span>
-        <span class="model-chip">Itel A58 Pro</span>
-        <span class="model-chip">Itel A60</span>
-        <span class="model-chip">Itel A60S</span>
-        <span class="model-chip">Itel A70</span>
-        <span class="model-chip">Itel A70S</span>
-        <span class="model-chip">Itel A80</span>
-        <span class="model-chip">Itel A95 5G</span>
-        <span class="model-chip">Itel A05</span>
-        <span class="model-chip">Itel A05i</span>
-        <span class="model-chip">Itel A05S</span>
-        <span class="model-chip">Itel A06</span>
-        <span class="model-chip">Itel A100</span>
-        <span class="model-chip">Itel RS4</span>
-        <span class="model-chip">Itel Zeno 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P36</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P36 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P37</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P37 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P38</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P38 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P40</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P55</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P55 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P55+</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P55T</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P65</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P65+</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel P65 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S16</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S17</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S18</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S18 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S23</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel S24</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 1 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 1 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 2S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 2 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 3</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 3 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 5</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Vision 5 Plus</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A49</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A50</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A50C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A58</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A58 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A60</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A60S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A70</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A70S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A80</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A95 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A05</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A05i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A05S</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A06</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel A100</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel RS4</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Itel Zeno 5G</span>
     </div>
 
     <div class="price-note">

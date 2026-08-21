@@ -206,6 +206,22 @@
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
       .brand-cta-btns,.brand-hero-btns{flex-direction:column;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -272,39 +288,39 @@
     <p class="brand-intro">For Samsung Galaxy phones in Ghana, TRUSCREN Africa supplies genuine <strong>TRUSCREN</strong> replacement screens across the Galaxy A-series and M-series. Each display is tested for correct colour, brightness (400+ nits) and touch response, and carries a 12-month guarantee. Screens are stocked in Accra and supplied to repair shops across Ghana.</p>
 
     <div class="feature-row">
-      <div class="feature-box"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
-      <div class="feature-box"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
-      <div class="feature-box"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
-      <div class="feature-box"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
     </div>
 
     <h2 class="models-head">Samsung models we supply screens for</h2>
     <p class="models-sub">TRUSCREN Africa stocks genuine replacement screens for the following Samsung models. Don't see your model? It may still be in stock — <a href="https://wa.me/233541224699" style="color:var(--secondary);font-weight:600;text-decoration:none;">message us</a> to check.</p>
     <div class="model-chips">
-        <span class="model-chip">Samsung Galaxy A02</span>
-        <span class="model-chip">Samsung Galaxy A02s</span>
-        <span class="model-chip">Samsung Galaxy A03</span>
-        <span class="model-chip">Samsung Galaxy A03s</span>
-        <span class="model-chip">Samsung Galaxy A03 Core</span>
-        <span class="model-chip">Samsung Galaxy A04</span>
-        <span class="model-chip">Samsung Galaxy A04e</span>
-        <span class="model-chip">Samsung Galaxy A05</span>
-        <span class="model-chip">Samsung Galaxy A05s</span>
-        <span class="model-chip">Samsung Galaxy A06</span>
-        <span class="model-chip">Samsung Galaxy A10</span>
-        <span class="model-chip">Samsung Galaxy A10s</span>
-        <span class="model-chip">Samsung Galaxy A12</span>
-        <span class="model-chip">Samsung Galaxy A13 4G</span>
-        <span class="model-chip">Samsung Galaxy A14 4G</span>
-        <span class="model-chip">Samsung Galaxy A15 4G</span>
-        <span class="model-chip">Samsung Galaxy A15 5G</span>
-        <span class="model-chip">Samsung Galaxy A16 4G</span>
-        <span class="model-chip">Samsung Galaxy A16 5G</span>
-        <span class="model-chip">Samsung Galaxy A32 5G</span>
-        <span class="model-chip">Samsung Galaxy M10</span>
-        <span class="model-chip">Samsung Galaxy M12</span>
-        <span class="model-chip">Samsung Galaxy M13</span>
-        <span class="model-chip">Samsung Galaxy F13</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A02</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A02s</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A03</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A03s</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A03 Core</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A04</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A04e</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A05</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A05s</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A06</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A10</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A10s</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A12</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A13 4G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A14 4G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A15 4G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A15 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A16 4G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A16 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy A32 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy M10</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy M12</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy M13</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Samsung Galaxy F13</span>
     </div>
 
     <div class="price-note">

@@ -125,6 +125,22 @@
     @media (max-width:540px){
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -187,7 +203,7 @@
 
   <div class="ag-layout">
     <div class="ag-list" id="ag-list">
-      <div class="agent-item" data-id="0" data-search="truscren — circle mall wholesale shop 34, block a, circle mall, kwame nkrumah circle, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="0" data-search="truscren — circle mall wholesale shop 34, block a, circle mall, kwame nkrumah circle, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Circle Mall Wholesale</div>
         <div class="agent-addr">Shop 34, Block A, Circle Mall, Kwame Nkrumah Circle, Accra</div>
@@ -195,7 +211,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Circle+Mall%2C+Kwame+Nkrumah+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="1" data-search="truscren — navana plaza navana plaza, tiptoe lane, kwame nkrumah circle, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="1" data-search="truscren — navana plaza navana plaza, tiptoe lane, kwame nkrumah circle, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Navana Plaza</div>
         <div class="agent-addr">Navana Plaza, Tiptoe Lane, Kwame Nkrumah Circle, Accra</div>
@@ -203,7 +219,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Navana+Plaza%2C+Tiptoe+Lane%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="2" data-search="truscren — vvip adjacent royal vvip station, circle overhead, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="2" data-search="truscren — vvip adjacent royal vvip station, circle overhead, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — VVIP</div>
         <div class="agent-addr">Adjacent Royal VVIP Station, Circle Overhead, Accra</div>
@@ -211,7 +227,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Royal+VVIP+Station%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="3" data-search="truscren — kumasi wholesale kumasi">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="3" data-search="truscren — kumasi wholesale kumasi">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Kumasi Wholesale</div>
         <div class="agent-addr">Kumasi</div>
@@ -219,7 +235,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Kumasi+Central%2C+Kumasi" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="4" data-search="truscren — kasoa kasoa">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="4" data-search="truscren — kasoa kasoa">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Kasoa</div>
         <div class="agent-addr">Kasoa</div>
@@ -227,7 +243,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Kasoa%2C+Central+Region%2C+Ghana" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="5" data-search="truscren — shiphouse shiphouse, tiptoe lane, kwame nkrumah circle, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="5" data-search="truscren — shiphouse shiphouse, tiptoe lane, kwame nkrumah circle, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Shiphouse</div>
         <div class="agent-addr">Shiphouse, Tiptoe Lane, Kwame Nkrumah Circle, Accra</div>
@@ -235,7 +251,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Tiptoe+Lane%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="6" data-search="truscren — lapaz lapaz, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="6" data-search="truscren — lapaz lapaz, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Lapaz</div>
         <div class="agent-addr">Lapaz, Accra</div>
@@ -243,7 +259,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Lapaz%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="7" data-search="truscren — kaneshie kaneshie, accra">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="7" data-search="truscren — kaneshie kaneshie, accra">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Kaneshie</div>
         <div class="agent-addr">Kaneshie, Accra</div>
@@ -251,7 +267,7 @@
           <a href="https://www.google.com/maps/search/?api=1&query=Kaneshie+Market%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
         </div>
       </div>
-      <div class="agent-item" data-id="8" data-search="truscren — kasoa kasoa">
+      <div class="agent-item tsc-glow tsc-glow-light" data-id="8" data-search="truscren — kasoa kasoa">
         <div class="agent-co">TRUSCREN Agent</div>
         <div class="agent-name">TRUSCREN — Kasoa</div>
         <div class="agent-addr">Kasoa</div>

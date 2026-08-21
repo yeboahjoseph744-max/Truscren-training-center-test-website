@@ -1427,6 +1427,22 @@
       #navbar{top:0;left:0;right:0;height:58px;border-radius:0;}
       .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -1812,7 +1828,7 @@
     </div>
 
     <div class="dash-sec-label">Enrolled Course</div>
-    <div class="dash-course-card">
+    <div class="dash-course-card tsc-glow">
       <div class="dash-course-name" id="dash-course">—</div>
       <div class="dash-level-pill" id="dash-level">—</div>
     </div>

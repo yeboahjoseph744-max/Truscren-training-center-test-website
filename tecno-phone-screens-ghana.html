@@ -239,6 +239,22 @@
       .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
       .brand-cta-btns,.brand-hero-btns{flex-direction:column;}
     }
+  
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; border: none !important; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 1; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow > * { position: relative; z-index: 2; }
+    .tsc-glow-light::after { background: #ffffff; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
   </style>
 </head>
 <body>
@@ -305,72 +321,72 @@
     <p class="brand-intro">For Tecno phones in Ghana, a genuine <strong>TRUSCREN</strong> replacement screen is a reliable, widely-used choice. TRUSCREN Africa stocks TRUSCREN HD+ displays for the full Tecno range — Spark, Camon, Pop, Pova and Pouvoir — tested for correct colour, brightness (400+ nits) and touch response, and backed by a 12-month guarantee. Screens are supplied from Accra to repair shops and wholesalers across Ghana.</p>
 
     <div class="feature-row">
-      <div class="feature-box"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
-      <div class="feature-box"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
-      <div class="feature-box"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
-      <div class="feature-box"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">400+</div><div class="fl">Nits display brightness</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">&lt;0.5%</div><div class="fl">Defect rate</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">12-Mo</div><div class="fl">Guarantee on every screen</div></div>
+      <div class="feature-box tsc-glow tsc-glow-light"><div class="fn">3</div><div class="fl">Cities — Accra, Kumasi, Takoradi</div></div>
     </div>
 
     <h2 class="models-head">Tecno models we supply screens for</h2>
     <p class="models-sub">TRUSCREN Africa stocks genuine replacement screens for the following Tecno models. Don't see your model? It may still be in stock — <a href="https://wa.me/233541224699" style="color:var(--secondary);font-weight:600;text-decoration:none;">message us</a> to check.</p>
     <div class="model-chips">
-        <span class="model-chip">Tecno Spark 5</span>
-        <span class="model-chip">Tecno Spark 5 Pro</span>
-        <span class="model-chip">Tecno Spark 5 Air</span>
-        <span class="model-chip">Tecno Spark 6</span>
-        <span class="model-chip">Tecno Spark 6 Air</span>
-        <span class="model-chip">Tecno Spark 7</span>
-        <span class="model-chip">Tecno Spark 7 Pro</span>
-        <span class="model-chip">Tecno Spark 8</span>
-        <span class="model-chip">Tecno Spark 8C</span>
-        <span class="model-chip">Tecno Spark 8 Pro</span>
-        <span class="model-chip">Tecno Spark 9</span>
-        <span class="model-chip">Tecno Spark 9T</span>
-        <span class="model-chip">Tecno Spark 9 Pro</span>
-        <span class="model-chip">Tecno Spark 10</span>
-        <span class="model-chip">Tecno Spark 10C</span>
-        <span class="model-chip">Tecno Spark 10 Pro</span>
-        <span class="model-chip">Tecno Spark 20</span>
-        <span class="model-chip">Tecno Spark 20C</span>
-        <span class="model-chip">Tecno Spark 20 Pro</span>
-        <span class="model-chip">Tecno Spark 30</span>
-        <span class="model-chip">Tecno Spark 30C</span>
-        <span class="model-chip">Tecno Spark 30 5G</span>
-        <span class="model-chip">Tecno Spark 40</span>
-        <span class="model-chip">Tecno Spark 40C</span>
-        <span class="model-chip">Tecno Spark Go (2023/2024)</span>
-        <span class="model-chip">Tecno Camon 12</span>
-        <span class="model-chip">Tecno Camon 15 Air</span>
-        <span class="model-chip">Tecno Camon 16</span>
-        <span class="model-chip">Tecno Camon 16 SE</span>
-        <span class="model-chip">Tecno Camon 17</span>
-        <span class="model-chip">Tecno Camon 17P</span>
-        <span class="model-chip">Tecno Camon 18</span>
-        <span class="model-chip">Tecno Camon 18i</span>
-        <span class="model-chip">Tecno Camon 18P</span>
-        <span class="model-chip">Tecno Camon 18T</span>
-        <span class="model-chip">Tecno Camon 19</span>
-        <span class="model-chip">Tecno Camon 19 Pro</span>
-        <span class="model-chip">Tecno Camon 19 Pro 5G</span>
-        <span class="model-chip">Tecno Pop 6 Pro</span>
-        <span class="model-chip">Tecno Pop 7</span>
-        <span class="model-chip">Tecno Pop 7 Pro</span>
-        <span class="model-chip">Tecno Pop 8</span>
-        <span class="model-chip">Tecno Pop 9</span>
-        <span class="model-chip">Tecno Pop 9 5G</span>
-        <span class="model-chip">Tecno Pop 10 Pro</span>
-        <span class="model-chip">Tecno Pop 20</span>
-        <span class="model-chip">Tecno Pop X</span>
-        <span class="model-chip">Tecno Pova</span>
-        <span class="model-chip">Tecno Pova Neo</span>
-        <span class="model-chip">Tecno Pova Neo 5G</span>
-        <span class="model-chip">Tecno Pova 5</span>
-        <span class="model-chip">Tecno Pova 6 Neo 5G</span>
-        <span class="model-chip">Tecno Pouvoir 4</span>
-        <span class="model-chip">Tecno Pouvoir 4 Pro</span>
-        <span class="model-chip">Tecno City 100</span>
-        <span class="model-chip">Tecno Power 70</span>
-        <span class="model-chip">Tecno Spark 4</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 5</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 5 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 5 Air</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 6</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 6 Air</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 7</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 7 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 8</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 8C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 8 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 9</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 9T</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 9 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 10</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 10C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 10 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 20</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 20C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 20 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 30</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 30C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 30 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 40</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 40C</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark Go (2023/2024)</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 12</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 15 Air</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 16</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 16 SE</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 17</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 17P</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 18</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 18i</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 18P</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 18T</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 19</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 19 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Camon 19 Pro 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 6 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 7</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 7 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 8</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 9</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 9 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 10 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop 20</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pop X</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pova</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pova Neo</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pova Neo 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pova 5</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pova 6 Neo 5G</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pouvoir 4</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Pouvoir 4 Pro</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno City 100</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Power 70</span>
+        <span class="model-chip tsc-glow tsc-glow-light">Tecno Spark 4</span>
     </div>
 
     <div class="price-note">
