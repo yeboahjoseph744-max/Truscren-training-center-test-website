@@ -371,7 +371,7 @@
     /* ── SECTION UTIL ── */
     .wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
     .sec-label {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.28em;
       text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
     }
     .sec-h2 {
@@ -1327,12 +1327,13 @@
     .btn-msi-primary:hover { background: var(--brand-h); }
     .btn-msi-outline {
       flex: 1; min-width: 190px; text-align: center; padding: 0.85rem 1.25rem;
-      background: none; color: var(--dark); border: 1.5px solid var(--border); border-radius: 6px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+      background: none; color: var(--secondary); border: 1.5px solid var(--secondary); border-radius: var(--radius-full);
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
       cursor: pointer; text-decoration: none; display: inline-block;
       transition: background 0.18s, border-color 0.18s;
     }
-    .btn-msi-outline:hover { background: var(--light-bg); border-color: #ccc; }
+    .btn-msi-outline:hover { background: rgba(0,88,67,0.08); border-color: var(--secondary); }
     @media (max-width: 540px) {
       .msi-btns { flex-direction: column; }
       .btn-msi-primary, .btn-msi-outline { min-width: 0; }
