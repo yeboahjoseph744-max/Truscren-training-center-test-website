@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FB6RRLH74"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9FB6RRLH74', { 'send_page_view': true });
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a TRUSCREN Agent in Ghana — Authorised Screen Sellers &amp; Stockists | TRUSCREN Africa</title>
+  <meta name="description" content="Find your nearest TRUSCREN authorised agent in Ghana. Our partners stock genuine TRUSCREN phone screens for iPhone, Samsung, Tecno, Infinix and Itel in Accra (Circle, Kaneshie, Lapaz), Kasoa and Kumasi.">
+  <link rel="canonical" href="https://www.truscrenafrica.com/find-an-agent.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Leaflet (OpenStreetMap) - free, no API key -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:#262E3D; --secondary:#005843; --brand:#FF6900; --brand-h:#E05500;
+      --teal:#007A5E; --dark:#1a1a1a; --mid:#555; --light-bg:#f6f6f6; --border:#e2e2e2;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;background:#262E3D;}
+    body{font-family:'Inter',sans-serif;background:#fff;color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    #navbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:1000;background:var(--primary);height:64px;display:flex;align-items:center;box-shadow:0 2px 16px rgba(38,46,61,0.28);}
+    .nav-in{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;}
+    .logo{text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:0.55rem;}
+    .logo-badge{height:42px;width:auto;}
+    .logo-wordmark{font-size:1.3rem;font-weight:800;letter-spacing:0.04em;color:#fff;text-transform:uppercase;}
+    .nav-links{display:flex;gap:1.6rem;list-style:none;padding:0;margin:0;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;transition:color 0.2s;white-space:nowrap;}
+    .nav-links a:hover,.nav-links a.active{color:#FF6900;}
+    .nav-gap{flex:1;}
+    .nav-auth{display:flex;gap:0.5rem;flex-shrink:0;}
+    .btn-si{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;padding:0.42rem 0.875rem;border-radius:3px;border:1px solid rgba(255,255,255,0.32);display:inline-flex;align-items:center;transition:background 0.18s;}
+    .btn-si:hover{background:rgba(255,255,255,0.08);color:#fff;}
+    .btn-reg{background:var(--brand);color:#fff;text-decoration:none;font-size:0.8rem;font-weight:600;padding:0.42rem 0.875rem;border-radius:3px;transition:background 0.18s;}
+    .btn-reg:hover{background:var(--brand-h);}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;margin-left:auto;}
+    .hamburger span{display:block;width:21px;height:2px;background:#fff;border-radius:2px;}
+    #mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--primary);z-index:1050;padding:1.25rem 1.5rem;overflow-y:auto;}
+    #mob-menu.open{display:block;}
+    .mob-links{list-style:none;margin-bottom:1.25rem;}
+    .mob-links li{border-bottom:1px solid rgba(255,255,255,0.07);}
+    .mob-links a{display:block;padding:0.825rem 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;}
+    .mob-auth{display:flex;flex-direction:column;gap:0.625rem;}
+    .mob-auth a{text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;text-decoration:none;}
+    .mob-auth .btn-si{color:#fff;border:1.5px solid rgba(255,255,255,0.3);}
+    .mob-auth .btn-reg{background:var(--brand);color:#fff;}
+
+    .ag-hero{background:var(--primary);padding:6rem 1.5rem 2.5rem;margin-top:64px;position:relative;overflow:hidden;}
+    .ag-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 85% 40%,rgba(255,105,0,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 45% at 12% 70%,rgba(0,88,67,0.18) 0%,transparent 60%);}
+    .ag-hero-in{max-width:1280px;margin:0 auto;position:relative;z-index:2;}
+    .ag-tag{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(255,105,0,0.15);border:1px solid rgba(255,105,0,0.35);border-radius:3px;padding:0.28rem 0.75rem;margin-bottom:1rem;font-size:0.72rem;font-weight:700;color:var(--brand);letter-spacing:0.07em;text-transform:uppercase;}
+    .ag-hero h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-0.03em;margin-bottom:0.75rem;}
+    .ag-hero h1 em{color:var(--brand);font-style:normal;}
+    .ag-hero p{font-size:0.98rem;color:rgba(255,255,255,0.65);line-height:1.65;max-width:640px;}
+
+    .ag-main{max-width:1280px;margin:0 auto;padding:2rem 1.5rem 3rem;}
+    .ag-search-bar{position:relative;margin-bottom:1.5rem;}
+    .ag-search-bar input{width:100%;padding:0.9rem 1rem 0.9rem 2.75rem;font-family:'Inter',sans-serif;font-size:0.95rem;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:border-color 0.18s;}
+    .ag-search-bar input:focus{border-color:var(--brand);}
+    .ag-search-bar svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--mid);}
+
+    .ag-layout{display:grid;grid-template-columns:380px 1fr;gap:1.5rem;height:600px;}
+    .ag-list{overflow-y:auto;border:1.5px solid var(--border);border-radius:10px;padding:0.5rem;}
+    .agent-item{padding:1rem 1.1rem;border-radius:8px;cursor:pointer;border:1.5px solid transparent;transition:background 0.15s,border-color 0.15s;margin-bottom:0.25rem;}
+    .agent-item:hover{background:var(--light-bg);}
+    .agent-item.active{background:rgba(255,105,0,0.06);border-color:var(--brand);}
+    .agent-co{font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand);margin-bottom:0.2rem;}
+    .agent-name{font-size:0.98rem;font-weight:700;color:var(--dark);margin-bottom:0.2rem;}
+    .agent-addr{font-size:0.83rem;color:var(--mid);line-height:1.5;margin-bottom:0.6rem;}
+    .agent-actions{display:flex;gap:0.5rem;}
+    .agent-dir{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.78rem;font-weight:600;color:#fff;background:var(--secondary);padding:0.4rem 0.8rem;border-radius:5px;text-decoration:none;transition:background 0.15s;}
+    .agent-dir:hover{background:var(--teal);}
+    .ag-no-results{padding:2rem 1rem;text-align:center;color:var(--mid);font-size:0.9rem;display:none;}
+    #ag-map{border-radius:10px;border:1.5px solid var(--border);height:100%;z-index:1;}
+    .leaflet-popup-content{font-family:'Inter',sans-serif;}
+    .popup-co{font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--brand);letter-spacing:0.05em;}
+    .popup-name{font-size:0.95rem;font-weight:700;color:var(--dark);margin:0.1rem 0 0.3rem;}
+    .popup-addr{font-size:0.8rem;color:var(--mid);margin-bottom:0.5rem;}
+    .popup-dir{font-size:0.78rem;font-weight:600;color:var(--secondary);text-decoration:none;}
+
+    .phone-ref{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--light-bg);border-radius:10px;border:1.5px solid var(--border);}
+    .phone-ref h3{font-size:0.9rem;font-weight:800;color:var(--dark);margin-bottom:0.6rem;}
+    .phone-co{font-size:0.86rem;color:var(--mid);line-height:1.9;}
+    .phone-co a{color:var(--secondary);text-decoration:none;font-weight:600;}
+    .phone-co a:hover{text-decoration:underline;}
+
+    .ag-cta{max-width:1280px;margin:0 auto 3rem;padding:0 1.5rem;}
+    .ag-cta-box{background:var(--primary);border-radius:12px;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+    .ag-cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 85% 40%,rgba(255,105,0,0.14) 0%,transparent 65%);}
+    .ag-cta-in{position:relative;z-index:1;}
+    .ag-cta-in h2{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:0.5rem;}
+    .ag-cta-in p{font-size:0.9rem;color:rgba(255,255,255,0.62);margin-bottom:1.5rem;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6;}
+    .btn-wa{display:inline-flex;align-items:center;gap:0.55rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.88rem;font-weight:600;padding:0.8rem 1.5rem;border-radius:6px;transition:background 0.18s;}
+    .btn-wa:hover{background:#1ebe5d;}
+
+    footer{background:#111;padding:3rem 1.5rem 2rem;}
+    .foot-in{max-width:1280px;margin:0 auto;}
+    .foot-btm{display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:rgba(255,255,255,0.3);border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;}
+    .foot-btm-links{display:flex;gap:1.2rem;}
+    .foot-btm a{color:rgba(255,255,255,0.38);text-decoration:none;}
+    .foot-btm a:hover{color:rgba(255,255,255,0.7);}
+    .foot-note{text-align:center;color:rgba(255,255,255,0.35);font-size:0.78rem;margin-bottom:1.5rem;}
+
+    @media (max-width:860px){
+      .nav-links,.nav-auth{display:none !important;}
+      .hamburger{display:flex !important;}
+      .ag-layout{grid-template-columns:1fr;height:auto;}
+      .ag-list{height:340px;order:2;}
+      #ag-map{height:360px;order:1;}
+    }
+    @media (max-width:540px){
+      .foot-btm{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="index.html" class="logo">
+      <img src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="logo-badge">
+      <span class="logo-wordmark">TRUS<span style="color:#005843;">CREN</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="tech-hub.html">TECH HUB</a></li>
+      <li><a href="agent.html">Become an Agent</a></li>
+      <li><a href="find-an-agent.html" class="active">Find an Agent</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-gap"></div>
+    <div class="nav-auth">
+      <a href="index.html" class="btn-si">Sign In</a>
+      <a href="tech-hub.html#enrol" class="btn-reg">Enrol Now</a>
+    </div>
+    <button class="hamburger" id="ham-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div id="mob-menu">
+  <ul class="mob-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="tech-hub.html">TECH HUB</a></li>
+    <li><a href="agent.html">Become an Agent</a></li>
+    <li><a href="find-an-agent.html">Find an Agent</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mob-auth">
+    <a href="index.html" class="btn-si">Sign In</a>
+    <a href="tech-hub.html#enrol" class="btn-reg">Enrol Now</a>
+  </div>
+</div>
+
+<section class="ag-hero">
+  <div class="ag-hero-in">
+    <div class="ag-tag">Authorised TRUSCREN Agents</div>
+    <h1>Find a TRUSCREN <em>Agent</em> Near You</h1>
+    <p>Our authorised agents stock genuine TRUSCREN screens for iPhone, Samsung, Tecno, Infinix and Itel across Accra, Kasoa and Kumasi. Find your nearest branch on the map, or search below.</p>
+  </div>
+</section>
+
+<div class="ag-main">
+  <div class="ag-search-bar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="ag-search" placeholder="Search by area, company or branch (e.g. Circle, Kasoa, Kumasi)...">
+  </div>
+
+  <div class="ag-layout">
+    <div class="ag-list" id="ag-list">
+      <div class="agent-item" data-id="0" data-search="truscren — circle mall wholesale shop 34, block a, circle mall, kwame nkrumah circle, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Circle Mall Wholesale</div>
+        <div class="agent-addr">Shop 34, Block A, Circle Mall, Kwame Nkrumah Circle, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Circle+Mall%2C+Kwame+Nkrumah+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="1" data-search="truscren — navana plaza navana plaza, tiptoe lane, kwame nkrumah circle, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Navana Plaza</div>
+        <div class="agent-addr">Navana Plaza, Tiptoe Lane, Kwame Nkrumah Circle, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Navana+Plaza%2C+Tiptoe+Lane%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="2" data-search="truscren — vvip adjacent royal vvip station, circle overhead, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — VVIP</div>
+        <div class="agent-addr">Adjacent Royal VVIP Station, Circle Overhead, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Royal+VVIP+Station%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="3" data-search="truscren — kumasi wholesale kumasi">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Kumasi Wholesale</div>
+        <div class="agent-addr">Kumasi</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Kumasi+Central%2C+Kumasi" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="4" data-search="truscren — kasoa kasoa">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Kasoa</div>
+        <div class="agent-addr">Kasoa</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Kasoa%2C+Central+Region%2C+Ghana" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="5" data-search="truscren — shiphouse shiphouse, tiptoe lane, kwame nkrumah circle, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Shiphouse</div>
+        <div class="agent-addr">Shiphouse, Tiptoe Lane, Kwame Nkrumah Circle, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Tiptoe+Lane%2C+Circle%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="6" data-search="truscren — lapaz lapaz, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Lapaz</div>
+        <div class="agent-addr">Lapaz, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Lapaz%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="7" data-search="truscren — kaneshie kaneshie, accra">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Kaneshie</div>
+        <div class="agent-addr">Kaneshie, Accra</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Kaneshie+Market%2C+Accra" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="agent-item" data-id="8" data-search="truscren — kasoa kasoa">
+        <div class="agent-co">TRUSCREN Agent</div>
+        <div class="agent-name">TRUSCREN — Kasoa</div>
+        <div class="agent-addr">Kasoa</div>
+        <div class="agent-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Kasoa%2C+Central+Region%2C+Ghana" target="_blank" rel="noopener noreferrer" class="agent-dir">Directions</a>
+        </div>
+      </div>
+      <div class="ag-no-results" id="ag-no-results">No agents match your search. Try a different area.</div>
+    </div>
+    <div id="ag-map"></div>
+  </div>
+
+  <div class="phone-ref">
+    <h3>Agent phone lines</h3>
+    <div class="phone-co"><a href="tel:+233530518549">0530518549</a> · <a href="tel:+233245500726">0245500726</a> · <a href="tel:+233593801803">0593801803</a> · <a href="tel:+233547279341">0547279341</a> · <a href="tel:+233245731301">0245731301</a> · <a href="tel:+233545330044">0545330044</a> · <a href="tel:+233246359640">0246359640</a> · <a href="tel:+233272775188">0272775188</a> · <a href="tel:+233535188570">0535188570</a></div>
+  </div>
+</div>
+
+<div class="ag-cta">
+  <div class="ag-cta-box">
+    <div class="ag-cta-in">
+      <h2>Want to become a TRUSCREN agent?</h2>
+      <p>Join our growing network across Ghana and West Africa. Get genuine screens at trade pricing, product training and brand support.</p>
+      <a href="agent.html" class="btn-wa" style="background:var(--brand);">Become an Agent →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-note">TRUSCREN Africa — genuine phone screens &amp; repair training, Accra, Ghana. WhatsApp: <a href="https://wa.me/233541224699" style="color:rgba(255,255,255,0.5);">+233 54 122 4699</a></div>
+    <div class="foot-btm">
+      <span>© 2026 TRUSCREN Ghana. All rights reserved.</span>
+      <div class="foot-btm-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav
+  var hamBtn=document.getElementById('ham-btn'), mobMenu=document.getElementById('mob-menu');
+  hamBtn.addEventListener('click',function(){mobMenu.classList.toggle('open');});
+  document.querySelectorAll('#mob-menu a').forEach(function(a){a.addEventListener('click',function(){mobMenu.classList.remove('open');});});
+
+  var locations = [
+      {id:0,name:"TRUSCREN \u2014 Circle Mall Wholesale",addr:"Shop 34, Block A, Circle Mall, Kwame Nkrumah Circle, Accra",lat:5.5709,lng:-0.21,maps:"https://www.google.com/maps/search/?api=1&query=Circle+Mall%2C+Kwame+Nkrumah+Circle%2C+Accra"},
+      {id:1,name:"TRUSCREN \u2014 Navana Plaza",addr:"Navana Plaza, Tiptoe Lane, Kwame Nkrumah Circle, Accra",lat:5.5701,lng:-0.2118,maps:"https://www.google.com/maps/search/?api=1&query=Navana+Plaza%2C+Tiptoe+Lane%2C+Circle%2C+Accra"},
+      {id:2,name:"TRUSCREN \u2014 VVIP",addr:"Adjacent Royal VVIP Station, Circle Overhead, Accra",lat:5.5716,lng:-0.2074,maps:"https://www.google.com/maps/search/?api=1&query=Royal+VVIP+Station%2C+Circle%2C+Accra"},
+      {id:3,name:"TRUSCREN \u2014 Kumasi Wholesale",addr:"Kumasi",lat:6.6906,lng:-1.6169,maps:"https://www.google.com/maps/search/?api=1&query=Kumasi+Central%2C+Kumasi"},
+      {id:4,name:"TRUSCREN \u2014 Kasoa",addr:"Kasoa",lat:5.534,lng:-0.416,maps:"https://www.google.com/maps/search/?api=1&query=Kasoa%2C+Central+Region%2C+Ghana"},
+      {id:5,name:"TRUSCREN \u2014 Shiphouse",addr:"Shiphouse, Tiptoe Lane, Kwame Nkrumah Circle, Accra",lat:5.5741,lng:-0.20779999999999998,maps:"https://www.google.com/maps/search/?api=1&query=Tiptoe+Lane%2C+Circle%2C+Accra"},
+      {id:6,name:"TRUSCREN \u2014 Lapaz",addr:"Lapaz, Accra",lat:5.606,lng:-0.257,maps:"https://www.google.com/maps/search/?api=1&query=Lapaz%2C+Accra"},
+      {id:7,name:"TRUSCREN \u2014 Kaneshie",addr:"Kaneshie, Accra",lat:5.5606,lng:-0.235,maps:"https://www.google.com/maps/search/?api=1&query=Kaneshie+Market%2C+Accra"},
+      {id:8,name:"TRUSCREN \u2014 Kasoa",addr:"Kasoa",lat:5.537999999999999,lng:-0.412,maps:"https://www.google.com/maps/search/?api=1&query=Kasoa%2C+Central+Region%2C+Ghana"}
+  ];
+
+  var map = L.map('ag-map').setView([5.6037, -0.1870], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  var brandIcon = L.icon({
+    iconUrl: 'Brand_assets/truscren-mascot-pin.png',
+    iconSize: [46, 46],
+    iconAnchor: [23, 46],
+    popupAnchor: [0, -44]
+  });
+
+  var markers = {};
+  locations.forEach(function(loc){
+    var m = L.marker([loc.lat, loc.lng], {icon:brandIcon}).addTo(map);
+    m.bindPopup('<div class="popup-co">'+loc.company+'</div><div class="popup-name">'+loc.name+'</div><div class="popup-addr">'+loc.addr+'</div><a class="popup-dir" href="'+loc.maps+'" target="_blank" rel="noopener noreferrer">Get directions →</a>');
+    markers[loc.id] = m;
+  });
+
+  // list <-> map interaction
+  document.querySelectorAll('.agent-item').forEach(function(item){
+    item.addEventListener('click', function(e){
+      if(e.target.closest('.agent-dir')) return; // let directions link work
+      var id = +item.dataset.id;
+      document.querySelectorAll('.agent-item').forEach(function(i){i.classList.remove('active');});
+      item.classList.add('active');
+      var loc = locations.find(function(l){return l.id===id;});
+      map.setView([loc.lat, loc.lng], 15);
+      markers[id].openPopup();
+    });
+  });
+
+  // search filter
+  var searchInput = document.getElementById('ag-search');
+  var noResults = document.getElementById('ag-no-results');
+  searchInput.addEventListener('input', function(){
+    var q = this.value.toLowerCase().trim();
+    var shown = 0;
+    document.querySelectorAll('.agent-item').forEach(function(item){
+      var match = item.dataset.search.indexOf(q) !== -1;
+      item.style.display = match ? '' : 'none';
+      if(match) shown++;
+    });
+    noResults.style.display = shown===0 ? 'block' : 'none';
+  });
+</script>
+</body>
+</html>
