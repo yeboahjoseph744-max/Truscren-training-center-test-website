@@ -70,13 +70,13 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;background:#262E3D;}
     body{font-family:var(--font-display);background:#fff;color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-    #navbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:1000;background:var(--primary);height:64px;display:flex;align-items:center;box-shadow:0 2px 16px rgba(38,46,61,0.28);}
+    #navbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:1000;background:rgba(38,46,61,0.45);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.12);height:64px;display:flex;align-items:center;box-shadow:0 2px 16px rgba(38,46,61,0.28);}
     .nav-in{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;}
     .logo{text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:0.55rem;}
     .logo-badge{height:42px;width:auto;}
     .logo-wordmark{font-size:1.3rem;font-weight:800;letter-spacing:0.04em;color:#fff;text-transform:uppercase;}
     .nav-links{display:flex;gap:1.6rem;list-style:none;padding:0;margin:0;align-items:center;}
-    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;transition:color 0.2s;white-space:nowrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;transition:color 0.2s;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,0.3);}
     .nav-links a:hover,.nav-links a.active{color:#FF6900;}
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 0.3em; }
@@ -101,17 +101,17 @@
     .nav-dropdown-menu a:hover, .nav-dropdown-menu a:focus-visible { background: rgba(255,105,0,0.12); color: #FF6900; }
     .nav-gap{flex:1;}
     .nav-auth{display:flex;gap:0.5rem;flex-shrink:0;}
-    .btn-si{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;padding:0.42rem 0.875rem;border-radius:var(--radius-full);border:1px solid rgba(255,255,255,0.32);display:inline-flex;align-items:center;transition:background 0.18s;}
+    .btn-si{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;padding:0.42rem 0.875rem;border-radius:var(--radius-full);border:1px solid rgba(255,255,255,0.32);background:rgba(255,255,255,0.08);display:inline-flex;align-items:center;transition:background 0.18s;}
     .btn-si:hover{background:rgba(255,255,255,0.08);color:#fff;}
     .btn-reg{background:var(--brand);color:#fff;text-decoration:none;font-size:0.8rem;font-weight:600;padding:0.42rem 0.875rem;border-radius:var(--radius-full);transition:background 0.18s;}
     .btn-reg:hover{background:var(--brand-h);}
     .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;margin-left:auto;}
     .hamburger span{display:block;width:21px;height:2px;background:#fff;border-radius:2px;}
-    #mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--primary);z-index:1050;padding:1.25rem 1.5rem;overflow-y:auto;}
+    #mob-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(38,46,61,0.45);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);z-index:1050;padding:1.25rem 1.5rem;overflow-y:auto;}
     #mob-menu.open{display:block;}
     .mob-links{list-style:none;margin-bottom:1.25rem;}
     .mob-links li{border-bottom:1px solid rgba(255,255,255,0.07);}
-    .mob-links a{display:block;padding:0.825rem 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;}
+    .mob-links a{display:block;padding:0.825rem 0;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;text-shadow:0 1px 4px rgba(0,0,0,0.3);}
     .mob-auth{display:flex;flex-direction:column;gap:0.625rem;}
     .mob-auth a{text-align:center;padding:0.7rem;border-radius:var(--radius-full);font-size:0.875rem;font-weight:600;text-decoration:none;}
     .mob-auth .btn-si{color:#fff;border:1.5px solid rgba(255,255,255,0.3);}

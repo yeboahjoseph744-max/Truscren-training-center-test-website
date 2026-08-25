@@ -80,7 +80,10 @@
     /* ── NAVBAR ── */
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
-      background: var(--primary);
+      background: rgba(38, 46, 61, 0.45);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
       height: 64px;
       border-radius: 0;
       display: flex; align-items: center;
@@ -119,7 +122,7 @@
       color: rgba(255,255,255,0.45); pointer-events: none;
     }
     .nav-links{display:flex;gap:1.6rem;list-style:none;padding:0;margin:0;align-items:center;}
-    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;letter-spacing:0.01em;transition:color 0.2s;white-space:nowrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;letter-spacing:0.01em;transition:color 0.2s;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,0.3);}
     .nav-links a:hover{color:#FF6900;}
     .nav-links a.active{color:#FF6900;}
     .nav-dropdown { position: relative; }
@@ -152,7 +155,7 @@
       border: 1px solid rgba(255,255,255,0.32);
       outline: none; box-shadow: none;
       display: inline-flex; align-items: center;
-      background: transparent;
+      background: rgba(255,255,255,0.08);
       transition: background 0.18s, border-color 0.18s, color 0.18s;
     }
     .btn-si:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
@@ -176,7 +179,10 @@
     #mob-menu {
       display: none; position: fixed;
       top: 72px; left: 0; right: 0; bottom: 0;
-      background: var(--primary); z-index: 1050;
+      background: rgba(38, 46, 61, 0.45);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      z-index: 1050;
       padding: 1.25rem 1.5rem; overflow-y: auto;
     }
     #mob-menu.open { display: block; }
@@ -195,6 +201,7 @@
     .mob-links a {
       display: block; padding: 0.825rem 0;
       color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
     .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
     .mob-auth a {
