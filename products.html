@@ -467,33 +467,26 @@
       max-width: 800px; margin: 0 auto;
       display: grid; grid-template-columns: repeat(3,1fr); gap: 0.85rem;
     }
-    .fmt-card {
-      position: relative; display: block; overflow: hidden;
-      aspect-ratio: 1/1; border-radius: 16px; cursor: pointer;
+    .fmt-card { display: block; cursor: pointer; }
+    .fmt-photo-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 1/1; border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       transition: transform 0.28s ease, box-shadow 0.28s ease;
     }
-    .fmt-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(0,0,0,0.18); }
+    .fmt-card:hover .fmt-photo-wrap { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(0,0,0,0.18); }
     .fmt-photo {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center;
     }
-    .fmt-glass {
-      position: absolute; left: 0; right: 0; bottom: 0;
-      padding: 0.6rem 0.6rem 0.7rem; text-align: center;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,0.35);
-    }
+    .fmt-text { text-align: center; margin-top: 0.9rem; padding: 0.15rem 0.4rem; }
     .fmt-card h3 {
-      font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+      font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;
     }
     .fmt-card p {
-      font-size: 0.66rem; color: rgba(255,255,255,0.92); line-height: 1.35;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+      font-size: 0.72rem; color: var(--mid); line-height: 1.6;
     }
-    .fmt-accent { position: absolute; top: 0.6rem; left: 0.6rem; width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); }
+    .fmt-accent { position: absolute; top: 0.6rem; left: 0.6rem; width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); z-index: 1; }
 
     /* ── SUBJECTS ── */
     .subj-section { padding: 4rem 1.5rem; background: #fff; }
@@ -1780,38 +1773,53 @@
     </div>
     <div class="fmt-grid">
       <a href="iphone-screens-ghana.html" class="fmt-card r reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
-        <span class="fmt-accent" style="background:#262E3D;"></span>
-        <img class="fmt-photo" src="Brand_assets/brand-iphone.jpg" alt="TRUSCREN iPhone LCD screens" loading="lazy">
-        <div class="fmt-glass">
-          <h3>iPhone</h3><p>iPhone 6 to 16 Pro Max displays.</p>
+        <div class="fmt-photo-wrap">
+          <span class="fmt-accent" style="background:#262E3D;"></span>
+          <img class="fmt-photo" src="Brand_assets/brand-iphone.jpg" alt="TRUSCREN iPhone LCD screens" loading="lazy">
+        </div>
+        <div class="fmt-text">
+          <h3>Apple iPhone Screens</h3>
+          <p>Replacement screens for popular iPhone models, with selected LCD, Incell, hard OLED, soft OLED and original refurbished options.</p>
         </div>
       </a>
       <a href="tecno-phone-screens-ghana.html" class="fmt-card r d1 reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
-        <span class="fmt-accent" style="background:var(--brand);"></span>
-        <img class="fmt-photo" src="Brand_assets/brand-tecno.jpg" alt="TRUSCREN Tecno LCD screens" loading="lazy">
-        <div class="fmt-glass">
-          <h3>Tecno</h3><p>Spark, Camon, Pop &amp; Pova series.</p>
+        <div class="fmt-photo-wrap">
+          <span class="fmt-accent" style="background:var(--brand);"></span>
+          <img class="fmt-photo" src="Brand_assets/brand-tecno.jpg" alt="TRUSCREN Tecno LCD screens" loading="lazy">
+        </div>
+        <div class="fmt-text">
+          <h3>Tecno Screens</h3>
+          <p>Replacement screens for popular Tecno models widely used in African and emerging markets.</p>
         </div>
       </a>
       <a href="samsung-phone-screens-ghana.html" class="fmt-card r d2 reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
-        <span class="fmt-accent" style="background:var(--secondary);"></span>
-        <img class="fmt-photo" src="Brand_assets/brand-samsung.jpg" alt="TRUSCREN Samsung LCD screens" loading="lazy">
-        <div class="fmt-glass">
-          <h3>Samsung</h3><p>Galaxy A &amp; M series displays.</p>
+        <div class="fmt-photo-wrap">
+          <span class="fmt-accent" style="background:var(--secondary);"></span>
+          <img class="fmt-photo" src="Brand_assets/brand-samsung.jpg" alt="TRUSCREN Samsung LCD screens" loading="lazy">
+        </div>
+        <div class="fmt-text">
+          <h3>Samsung Galaxy Screens</h3>
+          <p>Replacement screens for selected Samsung Galaxy A, M, S and Note models. Product options may vary between LCD, OLED, service-pack or compatible replacement solutions.</p>
         </div>
       </a>
       <a href="infinix-phone-screens-ghana.html" class="fmt-card r d3 reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
-        <span class="fmt-accent" style="background:#262E3D;"></span>
-        <img class="fmt-photo" src="Brand_assets/brand-infinix.jpg" alt="TRUSCREN Infinix LCD screens" loading="lazy">
-        <div class="fmt-glass">
-          <h3>Infinix</h3><p>Hot, Note, Smart &amp; Zero series.</p>
+        <div class="fmt-photo-wrap">
+          <span class="fmt-accent" style="background:#262E3D;"></span>
+          <img class="fmt-photo" src="Brand_assets/brand-infinix.jpg" alt="TRUSCREN Infinix LCD screens" loading="lazy">
+        </div>
+        <div class="fmt-text">
+          <h3>Infinix Screens</h3>
+          <p>Replacement LCD and display assemblies for popular Infinix smartphone models.</p>
         </div>
       </a>
       <a href="itel-phone-screens-ghana.html" class="fmt-card r reveal tsc-glow tsc-glow-light" style="text-decoration:none;">
-        <span class="fmt-accent" style="background:var(--brand);"></span>
-        <img class="fmt-photo" src="Brand_assets/brand-itel.jpg" alt="TRUSCREN Itel LCD screens" loading="lazy">
-        <div class="fmt-glass">
-          <h3>Itel</h3><p>P-Series, S-Series, Vision &amp; A-Series.</p>
+        <div class="fmt-photo-wrap">
+          <span class="fmt-accent" style="background:var(--brand);"></span>
+          <img class="fmt-photo" src="Brand_assets/brand-itel.jpg" alt="TRUSCREN Itel LCD screens" loading="lazy">
+        </div>
+        <div class="fmt-text">
+          <h3>Itel Screens</h3>
+          <p>Replacement screens for popular itel smartphones and entry-level devices.</p>
         </div>
       </a>
     </div>
