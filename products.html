@@ -464,12 +464,12 @@
     /* ── FORMAT ── */
     .format-section { padding: 4rem 1.5rem; background: var(--light-bg); }
     .fmt-grid {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem;
+      max-width: 800px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0.85rem;
     }
     .fmt-card {
       position: relative; display: block; overflow: hidden;
-      aspect-ratio: 3/4; border-radius: 16px; cursor: pointer;
+      aspect-ratio: 1/1; border-radius: 16px; cursor: pointer;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       transition: transform 0.28s ease, box-shadow 0.28s ease;
     }
@@ -480,20 +480,20 @@
     }
     .fmt-glass {
       position: absolute; left: 0; right: 0; bottom: 0;
-      padding: 0.9rem 1rem 1rem;
+      padding: 0.6rem 0.6rem 0.7rem; text-align: center;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
       border-top: 1px solid rgba(255,255,255,0.35);
     }
     .fmt-card h3 {
-      font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;
+      font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 0.15rem;
       text-shadow: 0 1px 4px rgba(0,0,0,0.45);
     }
     .fmt-card p {
-      font-size: 0.76rem; color: rgba(255,255,255,0.92); line-height: 1.5;
+      font-size: 0.66rem; color: rgba(255,255,255,0.92); line-height: 1.35;
       text-shadow: 0 1px 3px rgba(0,0,0,0.45);
     }
-    .fmt-accent { position: absolute; top: 0.75rem; left: 0.75rem; width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); }
+    .fmt-accent { position: absolute; top: 0.6rem; left: 0.6rem; width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); }
 
     /* ── SUBJECTS ── */
     .subj-section { padding: 4rem 1.5rem; background: #fff; }
@@ -1446,9 +1446,6 @@
     .about-stat-l { font-size: 0.7rem; color: rgba(255,255,255,0.52); line-height: 1.4; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1200px) {
-      .fmt-grid     { grid-template-columns: repeat(3,1fr); }
-    }
     @media (max-width: 1024px) {
       .courses-grid { grid-template-columns: repeat(2,1fr); }
       .fmt-grid     { grid-template-columns: repeat(2,1fr); }
