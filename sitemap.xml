@@ -32,7 +32,12 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/itel-phone-screens-ghana.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/itel-phone-screens-ghana.html"/>
   </url>
-  <url><loc>https://www.truscrenafrica.com/samsung-phone-screens-ghana.html</loc></url>
+  <url>
+    <loc>https://www.truscrenafrica.com/samsung-phone-screens-ghana.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/samsung-phone-screens-ghana.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/samsung-phone-screens-ghana.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/samsung-phone-screens-ghana.html"/>
+  </url>
   <url>
     <loc>https://www.truscrenafrica.com/tecno-phone-screens-ghana.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/tecno-phone-screens-ghana.html"/>
@@ -69,5 +74,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/itel-phone-screens-ghana.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/itel-phone-screens-ghana.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/itel-phone-screens-ghana.html"/>
+  </url>
+  <url>
+    <loc>https://www.truscrenafrica.com/fr/samsung-phone-screens-ghana.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/samsung-phone-screens-ghana.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/samsung-phone-screens-ghana.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/samsung-phone-screens-ghana.html"/>
   </url>
 </urlset>
