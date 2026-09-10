@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://www.truscrenafrica.com/</loc></url>
-  <url><loc>https://www.truscrenafrica.com/products.html</loc></url>
+  <url>
+    <loc>https://www.truscrenafrica.com/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/products.html"/>
+  </url>
   <url><loc>https://www.truscrenafrica.com/tech-hub.html</loc></url>
   <url><loc>https://www.truscrenafrica.com/agent.html</loc></url>
   <url><loc>https://www.truscrenafrica.com/about.html</loc></url>
@@ -91,5 +96,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/iphone-screens-ghana.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/iphone-screens-ghana.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/iphone-screens-ghana.html"/>
+  </url>
+  <url>
+    <loc>https://www.truscrenafrica.com/fr/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/products.html"/>
   </url>
 </urlset>
