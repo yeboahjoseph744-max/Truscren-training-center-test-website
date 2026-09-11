@@ -7,6 +7,11 @@
   <title>Official TRUSCREN Distributor in Ghana | Phone Screens &amp; Repair Training | TRUSCREN Africa</title>
   <meta name="description" content="TRUSCREN Africa is the official African distributor of TRUSCREN premium phone screens and home of the TRUSCREN TECH HUB repair training school in Accra, Ghana.">
   <link rel="canonical" href="https://www.truscrenafrica.com/about.html">
+
+  <!-- ═══ hreflang: tells Google and AI assistants about both language versions ═══ -->
+  <link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/about.html">
+  <link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/about.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/about.html">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -211,6 +216,19 @@
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
     .mob-auth .btn-reg { background: var(--brand); color: #fff; }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switch{position:relative;list-style:none;}
+    .lang-nav{flex-shrink:0;}
+    .lang-toggle{display:inline-flex;align-items:center;gap:0.4em;cursor:pointer;color:rgba(255,255,255,0.85);font-weight:600;font-size:0.9rem;text-shadow:0 1px 4px rgba(0,0,0,0.3);transition:color 0.2s;user-select:none;}
+    .lang-toggle:hover,.lang-switch:focus-within .lang-toggle{color:#FF6900;}
+    .flag{border-radius:2px;flex-shrink:0;display:block;box-shadow:0 0 0 1px rgba(255,255,255,0.28);}
+    .lang-menu{min-width:130px;left:auto;right:0;}
+    .lang-menu a{display:flex;align-items:center;gap:0.55rem;}
+    .lang-menu a.current{color:#FF6900;}
+    .mob-lang{display:flex;gap:0.6rem;padding:0 0 1.1rem;}
+    .mob-lang a{display:inline-flex;align-items:center;gap:0.45rem;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:600;padding:0.4rem 0.85rem;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-full);}
+    .mob-lang a.current{border-color:#FF6900;color:#FF6900;}
 
     /* ── HERO ── */
     .hero {
@@ -1448,7 +1466,7 @@
       .cert-cards   { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
-      .nav-links, .nav-srch { display: none !important; }
+      .nav-links, .nav-srch, .lang-nav { display: none !important; }
       .nav-auth { display: none !important; }
       .hamburger { display: flex !important; margin-left: auto; z-index: 1001; position: relative; }
       .hero-in   { grid-template-columns: 1fr; }
@@ -1561,6 +1579,24 @@
 
     <div class="nav-gap"></div>
 
+    <!-- ── Language switcher ── -->
+    <ul class="nav-links lang-nav" style="gap:0;">
+      <li class="nav-dropdown lang-switch">
+        <span class="lang-toggle" tabindex="0" role="button" aria-haspopup="true" aria-label="Choose language">
+          <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+          EN <span class="nav-caret">▾</span>
+        </span>
+        <ul class="nav-dropdown-menu lang-menu">
+          <li><a href="/about.html" hreflang="en" lang="en" class="current">
+            <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+            EN</a></li>
+          <li><a href="/fr/about.html" hreflang="fr" lang="fr">
+            <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+            FR</a></li>
+        </ul>
+      </li>
+    </ul>
+
     <div class="nav-auth" id="nav-auth-out">
       <a href="#" class="btn-si">Sign In</a>
       <a href="tech-hub.html#enrol" class="btn-reg">Enrol Now</a>
@@ -1579,6 +1615,14 @@
 
 <!-- Mobile menu -->
 <div id="mob-menu">
+  <div class="mob-lang">
+    <a href="/about.html" hreflang="en" lang="en" class="current">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+      EN</a>
+    <a href="/fr/about.html" hreflang="fr" lang="fr">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+      FR</a>
+  </div>
   <div class="mob-srch" style="flex-wrap:wrap;">
     <input type="text" id="mob-srch-input" placeholder="Search courses, skills, repairs...">
     <button id="mob-srch-btn">
@@ -1616,11 +1660,11 @@
   <div class="about-in">
     <div class="about-copy r">
       <div class="sec-label">About Us</div>
-      <h2 class="sec-h2 reveal">About TRUSCREN Ghana</h2>
+      <h1 class="sec-h2 reveal">About TRUSCREN Ghana</h1>
       <p class="reveal">TRUSCREN Ghana is the official distributor of TRUSCREN premium phone screens in Ghana — and home of the TRUSCREN TECH HUB, a professional device repair training school in Accra. We're part of the trusted TRUSCREN brand, a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
       <p class="reveal">We supply genuine, high-quality screens to technicians, repair shops, and wholesalers across Ghana. Through the TECH HUB, we teach practical, job-ready skills in phone screen repair, circuit board soldering, and EV battery diagnostics. Our mission is to make device repair easier and to train the next generation of skilled technicians across Africa.</p>
       <p class="about-tagline reveal">True Colors. True TRUSCREN.</p>
-      <a href="#products" class="btn-teal">Explore Our Products →</a>
+      <a href="products.html" class="btn-teal">Explore Our Products →</a>
     </div>
     <div class="about-stat-grid r d1">
       <div class="about-stat reveal"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
@@ -1952,6 +1996,13 @@
   const mobMenu = document.getElementById('mob-menu');
   hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
 document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
+  // Language dropdown: keyboard support (Enter/Space opens, Escape closes)
+  document.querySelectorAll('.lang-toggle').forEach(function(t){
+    t.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();t.parentElement.querySelector('.lang-menu a').focus();}
+      if(e.key==='Escape'){t.blur();}
+    });
+  });
 
   // Scroll reveal
   const io = new IntersectionObserver(entries => {

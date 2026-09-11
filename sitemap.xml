@@ -10,7 +10,12 @@
   </url>
   <url><loc>https://www.truscrenafrica.com/tech-hub.html</loc></url>
   <url><loc>https://www.truscrenafrica.com/agent.html</loc></url>
-  <url><loc>https://www.truscrenafrica.com/about.html</loc></url>
+  <url>
+    <loc>https://www.truscrenafrica.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/about.html"/>
+  </url>
   <url>
     <loc>https://www.truscrenafrica.com/contact.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/contact.html"/>
@@ -113,5 +118,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/contact.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.truscrenafrica.com/fr/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/about.html"/>
   </url>
 </urlset>
