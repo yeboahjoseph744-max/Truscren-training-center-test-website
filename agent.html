@@ -7,6 +7,11 @@
   <title>Become a Phone Screen Reseller in Africa | Wholesale Distributor Partnership | TRUSCREN Africa</title>
   <meta name="description" content="Become a TRUSCREN reseller or distributor in Africa. Get wholesale pricing on genuine phone screens plus brand support to grow your repair or parts business across the continent.">
   <link rel="canonical" href="https://www.truscrenafrica.com/agent.html">
+
+  <!-- ═══ hreflang: tells Google and AI assistants about both language versions ═══ -->
+  <link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/agent.html">
+  <link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/agent.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/agent.html">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -211,6 +216,37 @@
     }
     .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
     .mob-auth .btn-reg { background: var(--brand); color: #fff; }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switch{position:relative;list-style:none;}
+    .lang-nav{flex-shrink:0;}
+    .lang-toggle{display:inline-flex;align-items:center;gap:0.4em;cursor:pointer;color:rgba(255,255,255,0.85);font-weight:600;font-size:0.9rem;text-shadow:0 1px 4px rgba(0,0,0,0.3);transition:color 0.2s;user-select:none;}
+    .lang-toggle:hover,.lang-switch:focus-within .lang-toggle{color:#FF6900;}
+    .flag{border-radius:2px;flex-shrink:0;display:block;box-shadow:0 0 0 1px rgba(255,255,255,0.28);}
+    .lang-menu{min-width:130px;left:auto;right:0;}
+    .lang-menu a{display:flex;align-items:center;gap:0.55rem;}
+    .lang-menu a.current{color:#FF6900;}
+    .mob-lang{display:flex;gap:0.6rem;padding:0 0 1.1rem;}
+    .mob-lang a{display:inline-flex;align-items:center;gap:0.45rem;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:600;padding:0.4rem 0.85rem;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-full);}
+    .mob-lang a.current{border-color:#FF6900;color:#FF6900;}
+
+    /* ── BRANCHES ── */
+    .ag-section{padding:3.5rem 1.5rem;background:#fff;position:relative;margin-top:64px;}
+    .ag-section::before{content:'';position:absolute;top:0;left:0;right:0;height:28px;pointer-events:none;z-index:0;background:linear-gradient(to bottom,rgba(38,46,61,0.4) 0%,transparent 100%);}
+    .ag-wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+    .ag-sec-label{font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--brand);margin-bottom:0.5rem;}
+    .ag-sec-h2{font-size:var(--text-subheading);font-weight:800;letter-spacing:-0.025em;line-height:var(--leading-subheading);color:var(--dark);margin-bottom:0.5rem;}
+    .ag-sec-sub{font-size:var(--text-body);color:var(--mid);line-height:var(--leading-body);margin-bottom:2rem;max-width:640px;}
+    .branch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1rem;}
+    .branch-card{border:1.5px solid var(--border);border-radius:var(--radius-3xl);padding:1.75rem;background:#fff;display:flex;flex-direction:column;}
+    .branch-flag{font-size:1.6rem;line-height:1;margin-bottom:0.75rem;}
+    .branch-country{font-size:var(--text-heading-2xs);font-weight:800;color:var(--dark);letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.15rem;}
+    .branch-role{font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem;}
+    .branch-detail{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.86rem;color:var(--mid);margin-bottom:0.7rem;line-height:1.5;}
+    .branch-detail svg{flex-shrink:0;margin-top:0.15em;color:var(--secondary);}
+    .branch-wa{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;padding:0.7rem 1rem;border-radius:8px;transition:background 0.18s,transform 0.18s;box-shadow:0 3px 12px rgba(37,211,102,0.22);}
+    .branch-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
+    @media (max-width:860px){.branch-grid{grid-template-columns:1fr;}}
 
     /* ── HERO ── */
     .hero {
@@ -1451,7 +1487,7 @@
       .cert-cards   { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
-      .nav-links, .nav-srch { display: none !important; }
+      .nav-links, .nav-srch, .lang-nav { display: none !important; }
       .nav-auth { display: none !important; }
       .hamburger { display: flex !important; margin-left: auto; z-index: 1001; position: relative; }
       .hero-in   { grid-template-columns: 1fr; }
@@ -1564,6 +1600,24 @@
 
     <div class="nav-gap"></div>
 
+    <!-- ── Language switcher ── -->
+    <ul class="nav-links lang-nav" style="gap:0;">
+      <li class="nav-dropdown lang-switch">
+        <span class="lang-toggle" tabindex="0" role="button" aria-haspopup="true" aria-label="Choose language">
+          <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+          EN <span class="nav-caret">▾</span>
+        </span>
+        <ul class="nav-dropdown-menu lang-menu">
+          <li><a href="/agent.html" hreflang="en" lang="en" class="current">
+            <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+            EN</a></li>
+          <li><a href="/fr/agent.html" hreflang="fr" lang="fr">
+            <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+            FR</a></li>
+        </ul>
+      </li>
+    </ul>
+
     <div class="nav-auth" id="nav-auth-out">
       <a href="#" class="btn-si">Sign In</a>
       <a href="tech-hub.html#enrol" class="btn-reg">Enrol Now</a>
@@ -1582,6 +1636,14 @@
 
 <!-- Mobile menu -->
 <div id="mob-menu">
+  <div class="mob-lang">
+    <a href="/agent.html" hreflang="en" lang="en" class="current">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+      EN</a>
+    <a href="/fr/agent.html" hreflang="fr" lang="fr">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+      FR</a>
+  </div>
   <div class="mob-srch" style="flex-wrap:wrap;">
     <input type="text" id="mob-srch-input" placeholder="Search courses, skills, repairs...">
     <button id="mob-srch-btn">
@@ -1614,21 +1676,87 @@
 </div>
 
 
+<!-- ══════════ BRANCHES ══════════ -->
+<section id="branches" class="ag-section">
+  <div class="ag-wrap">
+    <div class="ag-sec-label">Our Branches</div>
+    <h2 class="ag-sec-h2">Three countries, one standard of quality</h2>
+    <p class="ag-sec-sub">Every branch supplies genuine TRUSCREN screens with a 12-month guarantee. Message the branch in your country directly on WhatsApp.</p>
+    <div class="branch-grid">
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇬🇭</div>
+        <div class="branch-country">Ghana</div>
+        <div class="branch-role">Head Office &middot; Africa</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Accra — Spintex, Shell Signboard</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+233 54 122 4699</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27d%20like%20information%20about%20screens." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇹🇬</div>
+        <div class="branch-country">Togo</div>
+        <div class="branch-role">Branch &middot; Lomé</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Lomé — Dékon</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+228 73 04 08 19</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/22873040819?text=Hi%20TRUSCREN%20Togo%2C%20I%27d%20like%20information%20about%20screens." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇨🇮</div>
+        <div class="branch-country">Côte d'Ivoire</div>
+        <div class="branch-role">Branch &middot; Abidjan</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Abidjan</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+225 86 95 60 77</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/22586956077?text=Hi%20TRUSCREN%20C%C3%B4te%20d%27Ivoire%2C%20I%27d%20like%20information%20about%20screens." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ BECOME AN AGENT / PARTNER ══════════ -->
 <section id="partner" class="partner-section">
   <div class="partner-in">
     <div class="partner-copy r">
       <div class="sec-label" style="color:rgba(255,105,0,0.85);">Partnership</div>
-      <h2 class="reveal">Partner With<br>TRUSCREN Ghana</h2>
-      <p class="reveal">Want to grow your business with a trusted screen brand? We're looking for agents, distributors, and partners across Ghana who share our commitment to quality and service.</p>
+      <h2 class="reveal">Partner With<br>TRUSCREN Africa</h2>
+      <p class="reveal">Want to grow your business with a trusted screen brand? We're looking for agents, distributors, and partners across West Africa who share our commitment to quality and service.</p>
       <ul class="partner-points">
         <li>Sell premium, genuine TRUSCREN screens customers trust</li>
         <li>Competitive trade pricing and reliable supply</li>
         <li>Marketing and brand support</li>
-        <li>Be part of a fast-growing repair ecosystem in Ghana</li>
+        <li>Be part of a fast-growing repair ecosystem across West Africa</li>
       </ul>
       <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Ghana%2C%20I%27m%20interested%20in%20becoming%20a%20partner%20or%20agent." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.84rem;padding:0.72rem 1.25rem;">
+        <a href="https://wa.me/233541224699?text=Hi%20TRUSCREN%20Africa%2C%20I%27m%20interested%20in%20becoming%20a%20partner%20or%20agent." target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size:0.84rem;padding:0.72rem 1.25rem;">
           <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
           Chat With Us on WhatsApp
         </a>
@@ -2004,6 +2132,13 @@
   const mobMenu = document.getElementById('mob-menu');
   hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
 document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
+  // Language dropdown: keyboard support (Enter/Space opens, Escape closes)
+  document.querySelectorAll('.lang-toggle').forEach(function(t){
+    t.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();t.parentElement.querySelector('.lang-menu a').focus();}
+      if(e.key==='Escape'){t.blur();}
+    });
+  });
 
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
