@@ -38,7 +38,12 @@
   <url><loc>https://www.truscrenafrica.com/tecno-spark-30-screen.html</loc></url>
   <url><loc>https://www.truscrenafrica.com/infinix-note-50-screen.html</loc></url>
   <url><loc>https://www.truscrenafrica.com/infinix-hot-50-screen.html</loc></url>
-  <url><loc>https://www.truscrenafrica.com/find-an-agent.html</loc></url>
+  <url>
+    <loc>https://www.truscrenafrica.com/find-an-agent.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/find-an-agent.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/find-an-agent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/find-an-agent.html"/>
+  </url>
   <url>
     <loc>https://www.truscrenafrica.com/infinix-phone-screens-ghana.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/infinix-phone-screens-ghana.html"/>
@@ -135,5 +140,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/agent.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/agent.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/agent.html"/>
+  </url>
+  <url>
+    <loc>https://www.truscrenafrica.com/fr/find-an-agent.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/find-an-agent.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/find-an-agent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/find-an-agent.html"/>
   </url>
 </urlset>

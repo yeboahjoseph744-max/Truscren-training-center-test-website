@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Où acheter des écrans de téléphone TRUSCREN | Ghana, Togo, Côte d'Ivoire | TRUSCREN Africa</title>
+  <meta name="description" content="Trouvez une agence TRUSCREN près de chez vous. Écrans de téléphone premium d'origine et écrans de remplacement disponibles au Ghana, au Togo et en Côte d'Ivoire — contactez l'agence de votre pays sur WhatsApp.">
+  <link rel="canonical" href="https://www.truscrenafrica.com/fr/find-an-agent.html">
+
+  <!-- ═══ hreflang ═══ -->
+  <link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/find-an-agent.html">
+  <link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/find-an-agent.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/find-an-agent.html">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --primary:       #262E3D;
+      --primary-light: #1E2738;
+      --secondary:     #005843;
+      --brand:         #FF6900;
+      --brand-h:       #E05500;
+      --teal:          #007A5E;
+      --teal-d:        #005843;
+      --dark:          #1a1a1a;
+      --mid:           #555;
+      --light-bg:      #f6f6f6;
+      --border:        #e2e2e2;
+
+      --font-display: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --text-caption: 12px;
+      --leading-caption: 1.5;
+      --text-nav-label: 14px;
+      --leading-nav-label: 1.2;
+      --tracking-nav-label: 0.35px;
+      --text-body: 18px;
+      --leading-body: 1.5;
+      --text-heading-2xs: 24px;
+      --leading-heading-2xs: 1.25;
+      --tracking-heading-2xs: -0.48px;
+      --text-heading-xs: 27px;
+      --leading-heading-xs: 1;
+      --text-subheading: 36px;
+      --leading-subheading: 1.2;
+      --text-heading-sm: 42px;
+      --leading-heading-sm: 1.2;
+      --tracking-heading-sm: -1.68px;
+      --text-heading: 48px;
+      --leading-heading: 1.1;
+      --tracking-heading: -1.68px;
+      --text-heading-lg: 78px;
+      --leading-heading-lg: 1.1;
+      --tracking-heading-lg: -3.12px;
+      --spacing-6: 6px;
+      --spacing-12: 12px;
+      --spacing-18: 18px;
+      --spacing-24: 24px;
+      --spacing-30: 30px;
+      --spacing-36: 36px;
+      --spacing-60: 60px;
+      --spacing-96: 96px;
+      --spacing-120: 120px;
+      --radius-3xl: 24px;
+      --radius-full: 9999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-display);
+      background: #fff;
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
+      background: rgba(38, 46, 61, 0.45);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      height: 64px;
+      border-radius: 0;
+      display: flex; align-items: center;
+      box-shadow: 0 2px 16px rgba(38,46,61,0.28);
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 22px rgba(38,46,61,0.4); }
+    .nav-in {
+      width: 100%; max-width: 1280px;
+      margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .logo { text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 0.55rem; }
+    .logo-badge { height: 42px; width: auto; }
+    .logo-wordmark {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .nav-srch { flex: 1; max-width: 360px; position: relative; }
+    .nav-srch input {
+      width: 100%;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.17);
+      border-radius: 3px;
+      padding: 0.45rem 0.875rem 0.45rem 2.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; color: #fff; outline: none;
+      transition: background 0.2s;
+    }
+    .nav-srch input::placeholder { color: rgba(255,255,255,0.42); }
+    .nav-srch input:focus { background: rgba(255,255,255,0.17); }
+    .srch-ico {
+      position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,0.45); pointer-events: none;
+    }
+    .nav-links{display:flex;gap:1.6rem;list-style:none;padding:0;margin:0;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;font-size:0.9rem;letter-spacing:0.01em;transition:color 0.2s;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,0.3);}
+    .nav-links a:hover{color:#FF6900;}
+    .nav-links a.active{color:#FF6900;}
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 0.3em; }
+    .nav-caret { font-size: 0.6em; transition: transform 0.2s ease; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 0; margin: 0; padding: 0.75rem 0.4rem 0.4rem;
+      background: #262E3D; border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      min-width: 190px; list-style: none;
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 1100;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 0.55rem 0.75rem; border-radius: 6px;
+      color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap; transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown-menu a:hover, .nav-dropdown-menu a:focus-visible { background: rgba(255,105,0,0.12); color: #FF6900; }
+    .nav-gap { flex: 1; }
+    .nav-auth { display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .btn-si {
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
+      border: 1px solid rgba(255,255,255,0.32);
+      outline: none; box-shadow: none;
+      display: inline-flex; align-items: center;
+      background: rgba(255,255,255,0.08);
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .btn-si:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); color: #fff; }
+    .btn-reg {
+      background: var(--brand); color: #fff; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.42rem 0.875rem; border-radius: var(--radius-full);
+      transition: background 0.18s;
+    }
+    .btn-reg:hover { background: var(--brand-h); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px; padding: 4px; margin-left: auto;
+    }
+    .hamburger span {
+      display: block; width: 21px; height: 2px;
+      background: #fff; border-radius: 2px;
+    }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switch{position:relative;list-style:none;}
+    .lang-toggle{display:inline-flex;align-items:center;gap:0.4em;cursor:pointer;color:rgba(255,255,255,0.85);font-weight:600;font-size:0.9rem;text-shadow:0 1px 4px rgba(0,0,0,0.3);transition:color 0.2s;user-select:none;}
+    .lang-toggle:hover,.lang-switch:focus-within .lang-toggle{color:#FF6900;}
+    .flag{border-radius:2px;flex-shrink:0;display:block;box-shadow:0 0 0 1px rgba(255,255,255,0.28);}
+    .lang-menu{min-width:130px;left:auto;right:0;}
+    .lang-menu a{display:flex;align-items:center;gap:0.55rem;}
+    .lang-menu a.current{color:#FF6900;}
+    .mob-lang{display:flex;gap:0.6rem;padding:0.9rem 0 1.1rem;}
+    .mob-lang a{display:inline-flex;align-items:center;gap:0.45rem;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:600;padding:0.4rem 0.85rem;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-full);}
+    .mob-lang a.current{border-color:#FF6900;color:#FF6900;}
+
+    /* Mobile overlay */
+    #mob-menu {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(38, 46, 61, 0.45);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      z-index: 1050;
+      padding: 1.25rem 1.5rem; overflow-y: auto;
+    }
+    #mob-menu.open { display: block; }
+    .mob-srch { display: flex; border-radius: 3px; overflow: hidden; margin-bottom: 1.25rem; }
+    .mob-srch input {
+      flex: 1; padding: 0.7rem 0.875rem; border: none; outline: none;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem;
+    }
+    .mob-srch button {
+      background: var(--brand); border: none; padding: 0 0.875rem; cursor: pointer; color: #fff;
+    }
+    .mob-links { list-style: none; margin-bottom: 1.25rem; }
+    .mob-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mob-links a {
+      display: block; padding: 0.825rem 0;
+      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .mob-auth { display: flex; flex-direction: column; gap: 0.625rem; }
+    .mob-auth a {
+      text-align: center; padding: 0.7rem; border-radius: var(--radius-full);
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    }
+    .mob-auth .btn-si { color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    .mob-auth .btn-reg { background: var(--brand); color: #fff; }
+
+    /* ── SECTION UTIL ── */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .sec-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 0.625rem;
+    }
+    .sec-h2 {
+      font-size: var(--text-subheading); font-weight: 800;
+      letter-spacing: -0.025em; line-height: var(--leading-subheading);
+    }
+
+    /* ── SEARCH ── */
+    .srch-msg {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 1001;
+      background: #fff; border-radius: 5px; padding: 0.5rem 0.75rem;
+      font-size: 0.75rem; color: #555; line-height: 1.45;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18); display: none;
+    }
+    .srch-msg.show { display: block; }
+
+    /* ── REVEAL ── */
+    .r { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .r.on { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    /* ── SIGNIN MODAL ── */
+    #signin-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #signin-overlay.open { display: flex; }
+    #signin-modal {
+      width: 100%; max-width: 880px;
+      background: #fff; border-radius: 12px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      height: min(90vh, 680px); min-height: 0;
+    }
+    @keyframes si-modal-in {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .si-left {
+      background: var(--primary); position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; padding: 2rem;
+    }
+    .si-left::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 25% 75%, rgba(255,105,0,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 75% 25%, rgba(0,88,67,0.18) 0%, transparent 60%);
+    }
+    .si-ripples { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .si-ripples span {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: si-ripple 3.5s ease-in-out infinite;
+    }
+    @keyframes si-ripple {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.35; }
+      50%       { transform: translate(-50%, -50%) scale(0.92); opacity: 0.18; }
+    }
+    .si-float {
+      position: absolute; width: 28px; height: 28px;
+      animation: si-float 4s ease-in-out infinite;
+      opacity: 0.4; z-index: 1;
+    }
+    .si-float:nth-child(1) { top: 14%; left: 10%; animation-delay: 0s; }
+    .si-float:nth-child(2) { top: 16%; right: 10%; animation-delay: 0.9s; }
+    .si-float:nth-child(3) { bottom: 18%; left: 9%; animation-delay: 1.7s; }
+    .si-float:nth-child(4) { bottom: 14%; right: 12%; animation-delay: 2.4s; }
+    @keyframes si-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-9px); }
+    }
+    .si-left-cnt {
+      position: relative; z-index: 2; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    }
+    .si-badge-img { height: 68px; width: auto; }
+    .si-brand-name {
+      font-size: 1.4rem; font-weight: 800; letter-spacing: 0.06em;
+      color: #fff; text-transform: uppercase;
+    }
+    .si-brand-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.5); line-height: 1.55; max-width: 190px; }
+    .si-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.25rem; }
+    .si-stat {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 3px;
+      background: rgba(255,105,0,0.14); border: 1px solid rgba(255,105,0,0.28);
+      color: var(--brand);
+    }
+    .si-right {
+      background: #fff; display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      justify-content: flex-start; padding: 0;
+    }
+    .si-close {
+      position: absolute; top: 1rem; right: 1rem; z-index: 5;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .si-close:hover { color: #333; background: #f2f2f2; }
+    .si-right-scroll {
+      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 2.5rem 2.25rem 2rem;
+    }
+    .si-tabs {
+      display: flex; background: #f0f0f0; border-radius: 8px;
+      padding: 3px; margin-bottom: 1.375rem;
+    }
+    .si-tab {
+      flex: 1; padding: 0.5rem 0.75rem; border: none; background: none;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600;
+      color: #888; cursor: pointer; border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .si-tab.active { background: #fff; color: var(--dark); box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+    .si-panel { display: none; }
+    .si-panel.active { display: block; }
+    .si-auth-err {
+      font-size: 0.75rem; color: #c0392b; background: #fdf0ee;
+      border: 1px solid #f5c6c2; border-radius: 6px;
+      padding: 0.6rem 0.8rem; margin-bottom: 0.875rem; display: none;
+    }
+    .si-auth-err.show { display: block; }
+    .si-h2 { font-size: 1.6rem; font-weight: 800; color: var(--dark); letter-spacing: -0.025em; line-height: 1.15; }
+    .si-sub { font-size: 0.8rem; color: var(--mid); }
+    .si-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.7rem; }
+    .si-label { font-size: 0.75rem; font-weight: 600; color: var(--dark); }
+    .si-label span { color: #e53e3e; }
+    .si-input-wrap { border-radius: 8px; padding: 2px; transition: background 0.25s; }
+    .si-input {
+      width: 100%; background: #f7f7f7; border: none; outline: none;
+      border-radius: 6px; padding: 0.6rem 2.4rem 0.6rem 0.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--dark);
+      box-shadow: 0 0 0 1px rgba(25,28,33,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .si-input::placeholder { color: #bbb; }
+    .si-input:focus { box-shadow: 0 0 0 2px var(--brand); }
+    .si-eye {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #bbb; padding: 0.15rem;
+      transition: color 0.18s; line-height: 1;
+    }
+    .si-eye:hover { color: var(--dark); }
+    .si-err { font-size: 0.68rem; color: #e53e3e; display: none; margin-top: 0.1rem; }
+    .si-err.show { display: block; }
+    .si-submit {
+      width: 100%; padding: 0.68rem;
+      background: var(--brand); color: #fff; border: none;
+      border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.84rem; font-weight: 700; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: background 0.18s; margin-top: 0.1rem;
+    }
+    .si-submit:hover { background: var(--brand-h); }
+    .si-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .si-footer { font-size: 0.71rem; color: #999; text-align: center; margin-top: 0.75rem; }
+    .si-footer a { color: var(--brand); text-decoration: none; font-weight: 600; }
+    .si-footer a:hover { text-decoration: underline; }
+    .si-forgot { text-align: right; }
+    .si-forgot a { font-size: 0.71rem; color: var(--brand); text-decoration: none; font-weight: 600; }
+    .si-forgot a:hover { text-decoration: underline; }
+    .si-input-select {
+      width: 100%; background: #f7f7f7; border: none; outline: none;
+      border-radius: 6px; padding: 0.6rem 2rem 0.6rem 0.8rem;
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--dark);
+      box-shadow: 0 0 0 1px rgba(25,28,33,0.1), 0 1px 2px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s; appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.8rem center;
+    }
+    .si-input-select:focus { box-shadow: 0 0 0 2px var(--brand); }
+    .si-signup-success {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; gap: 0.75rem; padding: 1.25rem 0;
+    }
+    .si-signup-success.show { display: flex; }
+    .si-signup-success-ico {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(0,88,67,0.1); border: 2px solid rgba(0,88,67,0.22);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .si-signup-success h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); }
+    .si-signup-success p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; max-width: 280px; }
+
+    /* ── NAV LOGGED-IN STATE ── */
+    .nav-student-name {
+      font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;
+    }
+    .btn-dashboard {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
+      padding: 0.42rem 0.875rem; border-radius: 3px; cursor: pointer;
+      transition: background 0.18s; white-space: nowrap;
+    }
+    .btn-dashboard:hover { background: rgba(255,255,255,0.18); }
+    .btn-logout-nav {
+      background: none; font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.2); padding: 0.42rem 0.875rem;
+      border-radius: 3px; cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .btn-logout-nav:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+    /* ── DASHBOARD MODAL ── */
+    #dash-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2100;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    #dash-overlay.open { display: flex; }
+    #dash-modal {
+      width: 100%; max-width: 440px; max-height: 92dvh; overflow-y: auto;
+      background: #fff; border-radius: 12px; padding: 2rem;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+      animation: si-modal-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+    }
+    .dash-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer; padding: 0.3rem;
+      color: #bbb; border-radius: 4px; line-height: 1;
+      transition: color 0.18s, background 0.18s;
+    }
+    .dash-close:hover { color: #333; background: #f2f2f2; }
+    .dash-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.375rem; }
+    .dash-avatar {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 800; color: #fff; flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .dash-header-info h2 { font-size: 1.05rem; font-weight: 800; color: var(--dark); letter-spacing: -0.02em; }
+    .dash-header-info p { font-size: 0.76rem; color: #888; margin-top: 0.15rem; }
+    .dash-sec-label {
+      font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #bbb; margin: 1.125rem 0 0.45rem;
+    }
+    .dash-course-card {
+      background: var(--primary); border-radius: var(--radius-3xl); padding: 0.875rem 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    .dash-course-name { font-size: 0.875rem; font-weight: 700; color: #fff; }
+    .dash-level-pill {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem; border-radius: 3px;
+      background: rgba(255,105,0,0.18); border: 1px solid rgba(255,105,0,0.32);
+      color: var(--brand); white-space: nowrap; flex-shrink: 0;
+    }
+    .dash-progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; color: #888; margin-bottom: 0.4rem;
+    }
+    .dash-progress-track { height: 8px; background: #f0f0f0; border-radius: 100px; overflow: hidden; }
+    .dash-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--secondary), var(--brand));
+      border-radius: 100px; transition: width 0.85s cubic-bezier(0.22,1,0.36,1);
+    }
+    .dash-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-top: 0.375rem; }
+    .dash-info-item { background: #f8f8f8; border-radius: 6px; padding: 0.7rem; }
+    .dash-info-item label {
+      display: block; font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em; color: #bbb; margin-bottom: 0.18rem;
+    }
+    .dash-info-item span { font-size: 0.82rem; font-weight: 600; color: var(--dark); word-break: break-all; }
+    .btn-dash-logout {
+      width: 100%; margin-top: 1.375rem; padding: 0.7rem;
+      background: none; border: 1.5px solid #e2e2e2;
+      font-family: 'Inter', sans-serif; font-size: 0.84rem; font-weight: 600;
+      color: #888; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .btn-dash-logout:hover { border-color: #c0392b; color: #c0392b; background: rgba(192,57,43,0.04); }
+
+    @media (max-width: 600px) {
+      #signin-modal { grid-template-columns: 1fr; height: min(93dvh, 680px); }
+      .si-left { display: none; }
+      .si-right-scroll { padding: 2.5rem 1.5rem 1.75rem; }
+    }
+
+    /* ── LOCATIONS ── */
+    .loc-section { padding: 5rem 1.5rem; margin-top: 72px; background: #fff; }
+    .loc-grid {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem; align-items: start;
+    }
+    .loc-card {
+      background: var(--light-bg); border-radius: 8px; padding: 1.75rem;
+      border: 1.5px solid var(--border);
+    }
+    .loc-name {
+      font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 1.25rem;
+      letter-spacing: -0.015em; line-height: 1.3;
+    }
+    .loc-detail {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      font-size: 0.83rem; color: var(--mid); margin-bottom: 0.875rem; line-height: 1.5;
+    }
+    .loc-detail svg { flex-shrink: 0; margin-top: 0.1em; }
+    .loc-detail a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+    .loc-detail a:hover { text-decoration: underline; }
+    .loc-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: #25D366; color: #fff; text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; padding: 0.6rem 1rem;
+      border-radius: 6px; margin-top: 0.5rem;
+      transition: background 0.18s, transform 0.18s;
+      box-shadow: 0 3px 12px rgba(37,211,102,0.22);
+    }
+    .loc-btn:hover { background: #1ebe5d; transform: translateY(-1px); }
+    .loc-map { border-radius: 8px; overflow: hidden; height: 380px; border: 1.5px solid var(--border); }
+    .loc-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+    /* ── FOOTER ── */
+    footer { background: #111; padding: 3.5rem 1.5rem 2rem; position: relative; }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 28px; pointer-events: none; z-index: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%);
+    }
+    .foot-in { max-width: 1280px; margin: 0 auto; }
+    .foot-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+      gap: 2.5rem; padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 1.75rem;
+    }
+    .foot-brand .foot-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .foot-logo-badge { height: 38px; width: auto; }
+    .foot-logo-name {
+      font-size: 1.2rem; font-weight: 800; letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
+    }
+    .foot-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.65; max-width: 200px; margin-bottom: 1rem; }
+    .foot-social { display: flex; gap: 0.45rem; }
+    .soc {
+      width: 30px; height: 30px; background: rgba(255,255,255,0.08); border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: background 0.16s, color 0.16s;
+    }
+    .soc:hover { background: var(--brand); color: #fff; }
+    .foot-col h5 {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #fff; margin-bottom: 0.825rem;
+    }
+    .foot-col ul { list-style: none; }
+    .foot-col li { margin-bottom: 0.45rem; }
+    .foot-col a {
+      color: rgba(255,255,255,0.42); text-decoration: none;
+      font-size: 0.78rem; transition: color 0.16s;
+    }
+    .foot-col a:hover { color: var(--brand); }
+    .foot-trustpilot { max-width: 320px; margin: 20px auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .foot-btm {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+    }
+    .foot-btm-links { display: flex; gap: 1.375rem; }
+    .foot-btm a { color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.16s; }
+    .foot-btm a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .nav-links, .nav-srch { display: none !important; }
+      .nav-auth { display: none !important; }
+      .hamburger { display: flex !important; margin-left: auto; z-index: 1001; position: relative; }
+      .foot-top  { grid-template-columns: 1fr 1fr; }
+      .loc-grid  { grid-template-columns: 1fr; }
+      .loc-map   { height: 280px; }
+    }
+    @media (max-width: 540px) {
+      .foot-top     { grid-template-columns: 1fr; }
+      .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
+    }
+    html.reveal-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out;}
+    html.reveal-ready .reveal.is-visible{opacity:1;transform:none;}
+    @media (prefers-reduced-motion: reduce){
+      html.reveal-ready .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    .qa-cluster{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:9000;}
+    .qa-pill{position:relative;height:54px;width:54px;border-radius:27px;display:flex;align-items:center;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(45deg,var(--from),var(--to));box-shadow:0 6px 18px rgba(38,46,61,0.28);transition:width .42s cubic-bezier(0.4,0,0.2,1),box-shadow .3s;}
+    .qa-ico{position:absolute;left:0;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .qa-label{white-space:nowrap;font-weight:700;font-size:0.92rem;opacity:0;padding-left:54px;padding-right:22px;transition:opacity .3s .12s;}
+    .qa-pill:hover{width:186px;box-shadow:0 10px 26px rgba(38,46,61,0.4);}
+    .qa-pill:hover .qa-label{opacity:1;}
+    @media (max-width:640px){
+      #navbar{top:0;left:0;right:0;height:58px;border-radius:0;}
+      .qa-cluster{right:14px;bottom:14px;gap:10px;}.qa-pill{height:50px;width:50px;}.qa-ico{width:50px;height:50px;}
+    }
+
+    /* ==== TRUSCREN Glowing Card Border (Style C: orange + green beam) ==== */
+    @keyframes tsc-beam-spin { to { transform: rotate(360deg); } }
+    .tsc-glow { position: relative; isolation: isolate; overflow: hidden; }
+    .tsc-glow::before {
+      content: ""; position: absolute; z-index: 0; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #005843 290deg, #FF6900 330deg, transparent 360deg);
+      animation: tsc-beam-spin 5s linear infinite; pointer-events: none;
+    }
+    .tsc-glow::after {
+      content: ""; position: absolute; z-index: 0; inset: 2px; border-radius: inherit;
+      background: #262E3D; pointer-events: none;
+    }
+    .tsc-glow-light::after { background: #ffffff; }
+    .tsc-glow > * { position: relative; z-index: 1; }
+    .tsc-glow { color: inherit; }
+    @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
+  
+    /* ── AGENT / BRANCHES ── */
+    .ag-hero{background:var(--primary);padding:6.5rem 1.5rem 3.5rem;margin-top:72px;position:relative;overflow:hidden;}
+    .ag-hero::before{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 65% at 85% 40%,rgba(255,105,0,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 45% at 12% 70%,rgba(0,88,67,0.18) 0%,transparent 60%);pointer-events:none;}
+    .ag-hero-in{max-width:1000px;margin:0 auto;position:relative;z-index:2;text-align:center;}
+    .ag-tag{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(255,105,0,0.15);border:1px solid rgba(255,105,0,0.35);border-radius:var(--radius-full);padding:0.28rem 0.75rem;margin-bottom:1.25rem;font-size:0.72rem;font-weight:700;color:var(--brand);letter-spacing:0.07em;text-transform:uppercase;}
+    .ag-hero h1{font-size:var(--text-heading);font-weight:800;color:#fff;line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);margin-bottom:1rem;}
+    .ag-hero h1 em{color:var(--brand);font-style:normal;}
+    .ag-hero p{font-size:var(--text-body);color:rgba(255,255,255,0.65);line-height:var(--leading-body);max-width:620px;margin:0 auto;}
+    .ag-section{padding:3.5rem 1.5rem;background:#fff;position:relative;}
+    .ag-section::before{content:'';position:absolute;top:0;left:0;right:0;height:28px;pointer-events:none;z-index:0;background:linear-gradient(to bottom,rgba(38,46,61,0.4) 0%,transparent 100%);}
+    .ag-wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1;}
+    .ag-sec-label{font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--brand);margin-bottom:0.5rem;}
+    .ag-sec-h2{font-size:var(--text-subheading);font-weight:800;letter-spacing:-0.025em;line-height:var(--leading-subheading);color:var(--dark);margin-bottom:0.5rem;}
+    .ag-sec-sub{font-size:var(--text-body);color:var(--mid);line-height:var(--leading-body);margin-bottom:2rem;max-width:640px;}
+    .branch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1rem;}
+    .branch-card{border:1.5px solid var(--border);border-radius:var(--radius-3xl);padding:1.75rem;background:#fff;display:flex;flex-direction:column;}
+    .branch-flag{font-size:1.6rem;line-height:1;margin-bottom:0.75rem;}
+    .branch-country{font-size:var(--text-heading-2xs);font-weight:800;color:var(--dark);letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.15rem;}
+    .branch-role{font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand);margin-bottom:1rem;}
+    .branch-detail{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.86rem;color:var(--mid);margin-bottom:0.7rem;line-height:1.5;}
+    .branch-detail svg{flex-shrink:0;margin-top:0.15em;color:var(--secondary);}
+    .branch-wa{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;padding:0.7rem 1rem;border-radius:8px;transition:background 0.18s,transform 0.18s;box-shadow:0 3px 12px rgba(37,211,102,0.22);}
+    .branch-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
+    /* pitch */
+    .pitch-section{padding:1rem 1.5rem 4.5rem;background:#fff;}
+    .pitch-wrap{max-width:1080px;margin:0 auto;}
+    .pitch-box{background:var(--primary);border-radius:var(--radius-3xl);padding:3rem 2.5rem;position:relative;overflow:hidden;}
+    .pitch-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 88% 30%,rgba(255,105,0,0.14) 0%,transparent 62%),radial-gradient(ellipse 45% 55% at 10% 80%,rgba(0,88,67,0.16) 0%,transparent 60%);pointer-events:none;}
+    .pitch-in{position:relative;z-index:1;max-width:760px;}
+    .pitch-in .ag-sec-label{color:rgba(255,105,0,0.9);}
+    .pitch-in h2{font-size:var(--text-subheading);font-weight:800;color:#fff;letter-spacing:-0.025em;line-height:var(--leading-subheading);margin-bottom:0.75rem;}
+    .pitch-in p{font-size:var(--text-body);color:rgba(255,255,255,0.7);line-height:var(--leading-body);margin-bottom:1.5rem;}
+    .pitch-benefits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem 1.5rem;margin-bottom:1.75rem;}
+    .pitch-benefits li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.9rem;color:rgba(255,255,255,0.82);line-height:1.5;}
+    .pitch-benefits li svg{flex-shrink:0;margin-top:0.15em;color:var(--brand);}
+    .pitch-btns{display:flex;gap:0.75rem;flex-wrap:wrap;}
+    .pitch-wa{display:inline-flex;align-items:center;gap:0.55rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.9rem;font-weight:600;padding:0.8rem 1.5rem;border-radius:8px;transition:background 0.18s,transform 0.18s;box-shadow:0 4px 18px rgba(37,211,102,0.28);}
+    .pitch-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
+    @media (max-width:860px){.branch-grid{grid-template-columns:1fr;}.pitch-benefits{grid-template-columns:1fr;}.pitch-box{padding:2.25rem 1.5rem;}}
+</style>
+</head>
+<body>
+
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="/index.html" class="logo">
+      <img src="/Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="logo-badge">
+      <span class="logo-wordmark">TRUS<span style="color:#005843;">CREN</span></span>
+    </a>
+
+    <div class="nav-srch">
+      <svg class="srch-ico" width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="nav-srch-input" placeholder="Rechercher formations, compétences, réparations...">
+      <div class="srch-msg" id="srch-msg"></div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="/about.html">À propos</a></li>
+      <li><a href="/fr/products.html">Produits</a></li>
+      <li><a href="/tech-hub.html">TECH HUB</a></li>
+      <li class="nav-dropdown">
+        <a href="/agent.html" class="nav-dropdown-toggle">Agents <span class="nav-caret">▾</span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="/fr/agent.html">Devenir agent</a></li>
+          <li><a href="/fr/find-an-agent.html" style="color:#FF6900;">Trouver un agent</a></li>
+        </ul>
+      </li>
+      <li><a href="/fr/faq.html">FAQ</a></li>
+      <li><a href="/fr/contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-gap"></div>
+
+    <div class="nav-auth" id="nav-auth-out">
+      <!-- ── Language switcher ── -->
+      <ul class="nav-links" style="gap:0;">
+        <li class="nav-dropdown lang-switch">
+          <span class="lang-toggle" tabindex="0" role="button" aria-haspopup="true" aria-label="Choisir la langue">
+            <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+            FR <span class="nav-caret">▾</span>
+          </span>
+          <ul class="nav-dropdown-menu lang-menu">
+            <li><a href="/find-an-agent.html" hreflang="en" lang="en">
+              <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+              EN</a></li>
+            <li><a href="/fr/find-an-agent.html" hreflang="fr" lang="fr" class="current">
+              <svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+              FR</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="#" class="btn-si">Connexion</a>
+      <a href="/tech-hub.html#enrol" class="btn-reg">S'inscrire</a>
+    </div>
+    <div class="nav-auth" id="nav-auth-in" style="display:none;">
+      <span class="nav-student-name" id="nav-student-name"></span>
+      <a href="/learn.html" class="btn-dashboard" id="btn-open-dash" style="text-decoration:none;">Mes cours</a>
+      <button class="btn-logout-nav" id="btn-logout-nav">Déconnexion</button>
+    </div>
+
+    <button class="hamburger" id="ham-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mob-menu">
+  <div class="mob-lang">
+    <a href="/find-an-agent.html" hreflang="en" lang="en">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="30" height="20" fill="#006B3F"/><rect width="30" height="13.34" fill="#FCD116"/><rect width="30" height="6.67" fill="#CE1126"/><path d="M15 5.8 L15.97 8.67 L18.99 8.70 L16.57 10.51 L17.47 13.40 L15 11.65 L12.53 13.40 L13.43 10.51 L11.01 8.70 L14.03 8.67 Z" fill="#000"/></svg>
+      EN</a>
+    <a href="/fr/find-an-agent.html" hreflang="fr" lang="fr" class="current">
+      <svg class="flag" viewBox="0 0 30 20" width="18" height="12" aria-hidden="true"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>
+      FR</a>
+  </div>
+  <div class="mob-srch" style="flex-wrap:wrap;">
+    <input type="text" id="mob-srch-input" placeholder="Rechercher formations, compétences, réparations...">
+    <button id="mob-srch-btn">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="srch-msg mob-srch-msg" id="mob-srch-msg" style="position:static;margin-top:0.4rem;border-radius:4px;"></div>
+  </div>
+  <ul class="mob-links">
+    <li><a href="/index.html">Accueil</a></li>
+    <li><a href="/about.html">À propos</a></li>
+    <li><a href="/fr/products.html">Produits</a></li>
+    <li><a href="/tech-hub.html">TECH HUB</a></li>
+    <li><a href="/fr/agent.html">Devenir agent</a></li>
+    <li><a href="/fr/find-an-agent.html" style="color:#FF6900;">Trouver un agent</a></li>
+    <li><a href="/fr/faq.html">FAQ</a></li>
+    <li><a href="/fr/contact.html">Contact</a></li>
+  </ul>
+  <div class="mob-auth" id="mob-auth-out">
+    <a href="#" class="btn-si">Connexion</a>
+    <a href="/tech-hub.html#enrol" class="btn-reg">S'inscrire à la promotion 2026</a>
+  </div>
+  <div class="mob-auth" id="mob-auth-in" style="display:none;">
+    <p id="mob-student-name" style="color:rgba(255,255,255,0.55);font-size:0.8rem;padding:0.2rem 0;font-weight:500;"></p>
+    <a href="/learn.html" id="mob-open-dash" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:var(--brand);color:#fff;border:none;width:100%;text-decoration:none;box-sizing:border-box;">Mes cours</a>
+    <button id="mob-logout" style="display:block;text-align:center;padding:0.7rem;border-radius:3px;font-size:0.875rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;background:none;color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.25);width:100%;">Déconnexion</button>
+  </div>
+</div>
+
+
+<!-- ══════════ HERO ══════════ -->
+<section class="ag-hero">
+  <div class="ag-hero-in">
+    <div class="ag-tag">Ghana &middot; Togo &middot; Côte d'Ivoire</div>
+    <h1>Où acheter des écrans <em>TRUSCREN</em></h1>
+    <p>Vous cherchez un écran de téléphone d'origine près de chez vous&nbsp;? TRUSCREN Africa dispose d'une agence au Ghana, au Togo et en Côte d'Ivoire. Contactez celle de votre pays sur WhatsApp pour connaître les prix, la disponibilité et retirer votre écran.</p>
+  </div>
+</section>
+
+<!-- ══════════ BRANCHES ══════════ -->
+<section id="branches" class="ag-section">
+  <div class="ag-wrap">
+    <div class="ag-sec-label">Nos points de vente</div>
+    <h2 class="ag-sec-h2">Trouvez l'agence la plus proche</h2>
+    <p class="ag-sec-sub">Écrans TRUSCREN d'origine, garantie de 12 mois, tarifs pour particuliers, ateliers de réparation et grossistes. Écrivez à l'agence de votre pays.</p>
+    <div class="branch-grid">
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇬🇭</div>
+        <div class="branch-country">Ghana</div>
+        <div class="branch-role">Agence principale &middot; Accra</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Accra — Spintex, Shell Signboard</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+233 54 122 4699</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/233541224699?text=Bonjour%20TRUSCREN%20Ghana%2C%20je%20cherche%20un%20%C3%A9cran%20pr%C3%A8s%20de%20chez%20moi." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇹🇬</div>
+        <div class="branch-country">Togo</div>
+        <div class="branch-role">Agence &middot; Lomé</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Lomé — Dékon</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+228 73 04 08 19</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/22873040819?text=Bonjour%20TRUSCREN%20Togo%2C%20je%20cherche%20un%20%C3%A9cran%20pr%C3%A8s%20de%20chez%20moi." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+
+      <div class="branch-card tsc-glow tsc-glow-light reveal">
+        <div class="branch-flag">🇨🇮</div>
+        <div class="branch-country">Côte d'Ivoire</div>
+        <div class="branch-role">Agence &middot; Abidjan</div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Abidjan</span>
+        </div>
+        <div class="branch-detail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+225 86 95 60 77</span>
+        </div>
+        <a class="branch-wa" href="https://wa.me/22586956077?text=Bonjour%20TRUSCREN%20C%C3%B4te%20d%27Ivoire%2C%20je%20cherche%20un%20%C3%A9cran%20pr%C3%A8s%20de%20chez%20moi." target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <div class="ag-sec-sub reveal" style="margin-top:2rem;">
+      Votre pays n'est pas encore listé&nbsp;? TRUSCREN Africa se développe rapidement. <a href="https://wa.me/233541224699?text=Bonjour%20TRUSCREN%20Africa%2C%20o%C3%B9%20puis-je%20acheter%20un%20%C3%A9cran%20dans%20mon%20pays%20%3F" target="_blank" rel="noopener noreferrer" style="color:var(--secondary);font-weight:600;text-decoration:none;">Écrivez-nous</a> et nous vous orienterons vers le point de vente le plus proche.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">
+          <img src="/Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="foot-logo-badge">
+          <span class="foot-logo-name">TRUSCREN</span>
+        </div>
+        <p>TRUSCREN Africa — distributeur officiel pour l'Afrique des écrans de téléphone premium TRUSCREN et siège du centre de formation TRUSCREN TECH HUB, à Accra.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/truscrenghana" class="soc" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/truscrenghana" class="soc" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.tiktok.com/@truscrenghana" class="soc" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.55a8.23 8.23 0 004.82 1.56V6.66a4.85 4.85 0 01-1.05-.03z"/></svg></a>
+          <a href="https://www.youtube.com/@TruscrenGhana" class="soc" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.2 2.8 12 2.8 12 2.8s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.8 9.3.8 11.5v2.1c0 2.2.2 4.5.2 4.5s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.2 22.2 12 22.2 12 22.2s4.2 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.2-2.2.2-4.5v-2.1C23.2 9.3 23 7 23 7zm-13.5 9V8.5l8 3.8-8 3.7z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Formation</h5>
+        <ul>
+          <li><a href="/tech-hub.html">Réparation d'écrans</a></li>
+          <li><a href="/tech-hub.html">Micro-soudure</a></li>
+          <li><a href="/tech-hub.html">Batteries véhicules électriques</a></li>
+          <li><a href="/tech-hub.html">Récupération de données</a></li>
+          <li><a href="/tech-hub.html">Logiciel et flashage</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="/tech-hub.html#enrol">Certificat débutant</a></li>
+          <li><a href="/tech-hub.html#enrol">Diplôme avancé</a></li>
+          <li><a href="/tech-hub.html#enrol">Promotion à temps plein</a></li>
+          <li><a href="/tech-hub.html#enrol">Intensif week-end</a></li>
+          <li><a href="/tech-hub.html#enrol">Cours du soir</a></li>
+          <li><a href="/tech-hub.html#enrol">Formation en entreprise</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Produits et services</h5>
+        <ul>
+          <li><a href="/fr/products.html">Tous les écrans</a></li>
+          <li><a href="/phone-screen-replacement-ghana.html">Remplacement d'écran Ghana</a></li>
+          <li><a href="/lcd-screen-supplier-ghana.html">Fournisseur d'écrans LCD</a></li>
+          <li><a href="/fr/products.html">Écrans OLED</a></li>
+          <li><a href="/fr/iphone-screens-ghana.html">Écrans iPhone</a></li>
+          <li><a href="/fr/tecno-phone-screens-ghana.html">Écrans Tecno</a></li>
+          <li><a href="/fr/samsung-phone-screens-ghana.html">Écrans Samsung</a></li>
+          <li><a href="/fr/infinix-phone-screens-ghana.html">Écrans Infinix</a></li>
+          <li><a href="/fr/itel-phone-screens-ghana.html">Écrans Itel</a></li>
+          <li><a href="/fr/agent.html">Devenir agent</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Entreprise</h5>
+        <ul>
+          <li><a href="/fr/about.html">À propos de TRUSCREN Africa</a></li>
+          <li><a href="/agent.html">Devenir partenaire</a></li>
+          <li><a href="/fr/contact.html">Nos adresses</a></li>
+          <li><a href="https://wa.me/233541224699" target="_blank" rel="noopener noreferrer">Nous contacter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-trustpilot">
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a6f7297701e0ea478abe851" data-style-height="52px" data-style-width="100%" data-token="a9ca9528-58b9-40fd-b70c-1c938f0892e5">
+        <a href="https://www.trustpilot.com/review/www.truscrenafrica.com" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
+    <div class="foot-btm">
+      <span>© 2026 TRUSCREN Africa. Tous droits réservés.</span>
+      <div class="foot-btm-links">
+        <a href="/terms.html">Conditions d'utilisation</a>
+        <a href="/privacy.html">Politique de confidentialité</a>
+        <a href="#">Paramètres des cookies</a>
+        <a href="#">Plan du site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════ SIGN IN / SIGN UP MODAL ══════════ -->
+<div id="signin-overlay" role="dialog" aria-modal="true" aria-label="Compte TRUSCREN TECH HUB">
+  <div id="signin-modal">
+
+    <div class="si-left">
+      <div class="si-ripples">
+        <span style="width:70px;height:70px;animation-delay:0s"></span>
+        <span style="width:150px;height:150px;animation-delay:0.2s"></span>
+        <span style="width:230px;height:230px;animation-delay:0.4s"></span>
+        <span style="width:310px;height:310px;animation-delay:0.6s"></span>
+        <span style="width:390px;height:390px;animation-delay:0.8s;border-style:dashed"></span>
+      </div>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/><line x1="5" y1="12" x2="9" y2="12" stroke="#FF6900" stroke-width="2.5"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></span>
+      <span class="si-float"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+      <div class="si-left-cnt">
+        <img src="/Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" class="si-badge-img">
+        <div class="si-brand-name">TRUSCREN</div>
+        <div class="si-brand-tagline">Formation professionnelle à la réparation d'appareils — Accra</div>
+        <div class="si-stats">
+          <span class="si-stat">&lt;0,5 % de défauts</span>
+          <span class="si-stat">Lancement 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="si-right">
+      <button class="si-close" id="si-close-btn" aria-label="Fermer">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+          <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="si-right-scroll">
+      <div class="si-tabs">
+        <button class="si-tab active" data-panel="panel-signin">Connexion</button>
+        <button class="si-tab" data-panel="panel-signup">Créer un compte</button>
+      </div>
+
+      <div class="si-panel active" id="panel-signin">
+        <h2 class="si-h2">Bon retour.</h2>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Connectez-vous à votre compte TRUSCREN TECH HUB</p>
+        <div class="si-auth-err" id="si-login-err"></div>
+        <form id="si-form" novalidate>
+          <div class="si-field">
+            <label class="si-label" for="si-email">Adresse e-mail <span>*</span></label>
+            <div class="si-input-wrap" style="position:relative;">
+              <input class="si-input" type="email" id="si-email" placeholder="Saisissez votre adresse e-mail" autocomplete="email">
+            </div>
+            <span class="si-err" id="si-email-err">Veuillez saisir une adresse e-mail valide.</span>
+          </div>
+          <div class="si-field" style="margin-bottom:1rem;">
+            <label class="si-label" for="si-pw">Mot de passe <span>*</span></label>
+            <div class="si-input-wrap" id="si-pw-wrap" style="position:relative;">
+              <input class="si-input" type="password" id="si-pw" placeholder="Saisissez votre mot de passe" autocomplete="current-password">
+              <button type="button" class="si-eye" id="si-eye-btn" aria-label="Afficher ou masquer le mot de passe">
+                <svg id="si-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="si-err" id="si-pw-err">Le mot de passe doit contenir au moins 6 caractères.</span>
+            <div class="si-forgot"><a href="/forgot-password.html">Mot de passe oublié&nbsp;?</a></div>
+          </div>
+          <button type="submit" class="si-submit" id="si-login-btn">Se connecter →</button>
+          <div class="si-footer" style="margin-top:0.875rem;">
+            Pas encore de compte&nbsp;? <a href="#" id="si-switch-signup">Créez-en un gratuitement →</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="si-panel" id="panel-signup">
+        <h2 class="si-h2">Créer un compte.</h2>
+        <p class="si-sub" style="margin-bottom:1.125rem;">Rejoignez TRUSCREN TECH HUB — inscription gratuite</p>
+        <div class="si-signup-success" id="si-signup-ok">
+          <div class="si-signup-success-ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005843" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Vérifiez votre e-mail&nbsp;!</h3>
+          <p>Nous vous avons envoyé un lien de confirmation. Cliquez dessus pour activer votre compte, puis connectez-vous.</p>
+          <div class="si-footer" style="margin-top:0.5rem;"><a href="#" id="si-goto-login">Aller à la connexion →</a></div>
+        </div>
+        <div class="si-auth-err" id="si-signup-err"></div>
+        <form id="su-form" novalidate>
+          <div class="si-field">
+            <label class="si-label" for="su-name">Nom complet <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="text" id="su-name" placeholder="ex. Kwame Asante" autocomplete="name">
+            </div>
+            <span class="si-err" id="su-name-err">Le nom complet est obligatoire.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-phone">Numéro de téléphone <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="text" id="su-phone" placeholder="ex. 0244 000 000" autocomplete="tel">
+            </div>
+            <span class="si-err" id="su-phone-err">Le numéro de téléphone est obligatoire.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-email">Adresse e-mail <span>*</span></label>
+            <div class="si-input-wrap">
+              <input class="si-input" type="email" id="su-email" placeholder="vous@exemple.com" autocomplete="email">
+            </div>
+            <span class="si-err" id="su-email-err">Veuillez saisir une adresse e-mail valide.</span>
+          </div>
+          <div class="si-field">
+            <label class="si-label" for="su-pw">Mot de passe <span>*</span></label>
+            <div class="si-input-wrap" style="position:relative;">
+              <input class="si-input" type="password" id="su-pw" placeholder="Au moins 6 caractères" autocomplete="new-password">
+              <button type="button" class="si-eye" id="su-eye-btn" aria-label="Afficher ou masquer le mot de passe">
+                <svg id="su-eye-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="si-err" id="su-pw-err">Le mot de passe doit contenir au moins 6 caractères.</span>
+          </div>
+          <div class="si-field" style="margin-bottom:1rem;">
+            <label class="si-label" for="su-course">Formation <span>*</span></label>
+            <div class="si-input-wrap">
+              <select class="si-input si-input-select" id="su-course">
+                <option value="">Choisissez une formation...</option>
+                <optgroup label="Réparation d'écrans de téléphone">
+                  <option value="Phone Screen Repair|Beginner">Réparation d'écrans — Débutant</option>
+                  <option value="Phone Screen Repair|Advanced">Réparation d'écrans — Avancé</option>
+                </optgroup>
+                <optgroup label="Micro-soudure de cartes électroniques">
+                  <option value="Circuit Board Soldering|Beginner">Micro-soudure de cartes — Débutant</option>
+                  <option value="Circuit Board Soldering|Advanced">Micro-soudure de cartes — Avancé</option>
+                </optgroup>
+                <optgroup label="Diagnostic de batteries de véhicules électriques">
+                  <option value="EV Battery Diagnostics|Beginner">Batteries véhicules électriques — Débutant</option>
+                  <option value="EV Battery Diagnostics|Advanced">Batteries véhicules électriques — Avancé</option>
+                </optgroup>
+              </select>
+            </div>
+            <span class="si-err" id="su-course-err">Veuillez choisir une formation.</span>
+          </div>
+          <button type="submit" class="si-submit" id="su-submit-btn">Créer mon compte →</button>
+          <div class="si-footer" style="margin-top:0.875rem;">
+            Vous avez déjà un compte&nbsp;? <a href="#" id="si-switch-login">Connectez-vous →</a>
+          </div>
+        </form>
+      </div>
+
+      </div><!-- end si-right-scroll -->
+    </div><!-- end si-right -->
+  </div><!-- end signin-modal -->
+</div><!-- end signin-overlay -->
+
+
+<!-- ══════════ DASHBOARD MODAL ══════════ -->
+<div id="dash-overlay" role="dialog" aria-modal="true" aria-label="Espace étudiant">
+  <div id="dash-modal">
+    <button class="dash-close" id="dash-close-btn" aria-label="Fermer l'espace étudiant">
+      <svg width="17" height="17" viewBox="0 0 16 16" fill="none">
+        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="dash-header">
+      <div class="dash-avatar" id="dash-avatar">S</div>
+      <div class="dash-header-info">
+        <h2 id="dash-name">—</h2>
+        <p id="dash-email">—</p>
+      </div>
+    </div>
+
+    <div class="dash-sec-label">Formation suivie</div>
+    <div class="dash-course-card tsc-glow">
+      <div class="dash-course-name" id="dash-course">—</div>
+      <div class="dash-level-pill" id="dash-level">—</div>
+    </div>
+
+    <div class="dash-sec-label">Progression</div>
+    <div class="dash-progress-meta">
+      <span>Avancement de la formation</span>
+      <span id="dash-pct">0%</span>
+    </div>
+    <div class="dash-progress-track">
+      <div class="dash-progress-fill" id="dash-progress-fill" style="width:0%"></div>
+    </div>
+
+    <div class="dash-sec-label">Coordonnées</div>
+    <div class="dash-info-grid">
+      <div class="dash-info-item">
+        <label>Téléphone</label>
+        <span id="dash-phone">—</span>
+      </div>
+      <div class="dash-info-item">
+        <label>Inscrit depuis</label>
+        <span id="dash-since">—</span>
+      </div>
+    </div>
+
+    <button class="btn-dash-logout" id="dash-logout-btn">Déconnexion</button>
+  </div>
+</div>
+
+
+<script>
+  // Navbar scroll shadow
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+  // Mobile menu
+  const hamBtn = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+  document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
+
+  // Language dropdown: keyboard support (Enter/Space opens, Escape closes)
+  document.querySelectorAll('.lang-toggle').forEach(function(t){
+    t.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();t.parentElement.querySelector('.lang-menu a').focus();}
+      if(e.key==='Escape'){t.blur();}
+    });
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+  // Fallback: reveal all after 800ms
+  setTimeout(() => document.querySelectorAll('.r:not(.on)').forEach(el => el.classList.add('on')), 800);
+
+  // ── SUPABASE AUTH + DASHBOARD ──
+  (function () {
+    const SUPA_URL = 'https://dudbrvrbzpgzjqngvjim.supabase.co';
+    const SUPA_KEY = 'sb_publishable_1xkP8W5Ss0Bb3PoFmt4lMA_uyjSMY19';
+    const { createClient } = supabase;
+    const sb = createClient(SUPA_URL, SUPA_KEY);
+
+    const overlay      = document.getElementById('signin-overlay');
+    const closeBtn     = document.getElementById('si-close-btn');
+    const loginForm    = document.getElementById('si-form');
+    const signupForm   = document.getElementById('su-form');
+    const loginErrEl   = document.getElementById('si-login-err');
+    const signupErrEl  = document.getElementById('si-signup-err');
+    const signupOkEl   = document.getElementById('si-signup-ok');
+    const loginBtn     = document.getElementById('si-login-btn');
+    const suBtn        = document.getElementById('su-submit-btn');
+    const eyeBtn       = document.getElementById('si-eye-btn');
+    const eyeSvg       = document.getElementById('si-eye-svg');
+    const pwInput      = document.getElementById('si-pw');
+    const suEyeBtn     = document.getElementById('su-eye-btn');
+    const suEyeSvg     = document.getElementById('su-eye-svg');
+    const suPwInput    = document.getElementById('su-pw');
+    const navAuthOut   = document.getElementById('nav-auth-out');
+    const navAuthIn    = document.getElementById('nav-auth-in');
+    const navName      = document.getElementById('nav-student-name');
+    const mobAuthOut   = document.getElementById('mob-auth-out');
+    const mobAuthIn    = document.getElementById('mob-auth-in');
+    const mobName      = document.getElementById('mob-student-name');
+    const dashOverlay  = document.getElementById('dash-overlay');
+    const dashCloseBtn = document.getElementById('dash-close-btn');
+    const dashLogout   = document.getElementById('dash-logout-btn');
+    const btnLogoutNav = document.getElementById('btn-logout-nav');
+    const mobLogoutBtn = document.getElementById('mob-logout');
+
+    const EYE_OPEN   = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    const EYE_CLOSED = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+
+    let currentProfile = null;
+    let currentUser    = null;
+
+    function openModal(tab) {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      switchTab(tab || 'signin');
+      setTimeout(() => {
+        const f = tab === 'signup' ? document.getElementById('su-name') : document.getElementById('si-email');
+        if (f) f.focus();
+      }, 150);
+    }
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.btn-si').forEach(btn => {
+      if (btn.id === 'btn-logout-nav') return;
+      btn.addEventListener('click', e => { e.preventDefault(); openModal('signin'); });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (overlay.classList.contains('open'))    closeModal();
+        if (dashOverlay.classList.contains('open')) closeDash();
+      }
+    });
+
+    function switchTab(name) {
+      document.querySelectorAll('.si-tab').forEach(t =>
+        t.classList.toggle('active', t.dataset.panel === 'panel-' + name));
+      document.querySelectorAll('.si-panel').forEach(p =>
+        p.classList.toggle('active', p.id === 'panel-' + name));
+      loginErrEl.classList.remove('show');
+      signupErrEl.classList.remove('show');
+    }
+    document.querySelectorAll('.si-tab').forEach(tab =>
+      tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('panel-', ''))));
+    document.getElementById('si-switch-signup').addEventListener('click', e => { e.preventDefault(); switchTab('signup'); });
+    document.getElementById('si-switch-login').addEventListener('click',  e => { e.preventDefault(); switchTab('signin'); });
+    document.getElementById('si-goto-login').addEventListener('click',    e => { e.preventDefault(); switchTab('signin'); });
+
+    eyeBtn.addEventListener('click', () => {
+      const show = pwInput.type === 'password';
+      pwInput.type = show ? 'text' : 'password';
+      eyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
+    suEyeBtn.addEventListener('click', () => {
+      const show = suPwInput.type === 'password';
+      suPwInput.type = show ? 'text' : 'password';
+      suEyeSvg.innerHTML = show ? EYE_CLOSED : EYE_OPEN;
+    });
+
+    document.querySelectorAll('.si-input-wrap').forEach(wrap => {
+      wrap.addEventListener('mousemove', ev => {
+        const r = wrap.getBoundingClientRect();
+        wrap.style.background = `radial-gradient(90px circle at ${ev.clientX - r.left}px ${ev.clientY - r.top}px, rgba(255,105,0,0.18), transparent 80%)`;
+      });
+      wrap.addEventListener('mouseleave', () => { wrap.style.background = 'transparent'; });
+    });
+
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function setErr(id, msg) { const el = document.getElementById(id); el.textContent = msg || el.textContent; el.classList.add('show'); }
+    function clrErr(id) { document.getElementById(id).classList.remove('show'); }
+    function friendlyErr(msg) {
+      if (!msg) return 'Une erreur est survenue. Veuillez réessayer.';
+      const m = msg.toLowerCase();
+      if (m.includes('invalid login') || m.includes('invalid credentials') || m.includes('email not confirmed'))
+        return 'E-mail ou mot de passe incorrect, ou votre adresse e-mail n\'est pas encore confirmée.';
+      if (m.includes('already registered') || m.includes('user already exists'))
+        return 'Cette adresse e-mail est déjà enregistrée. Essayez plutôt de vous connecter.';
+      if (m.includes('rate limit') || m.includes('email rate'))
+        return 'Trop de tentatives. Veuillez patienter un instant avant de réessayer.';
+      return msg;
+    }
+
+    loginForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      loginErrEl.classList.remove('show');
+      const email = document.getElementById('si-email').value.trim();
+      const pw    = document.getElementById('si-pw').value;
+      let ok = true;
+      if (!validEmail(email)) { setErr('si-email-err', 'Veuillez saisir une adresse e-mail valide.'); ok = false; } else clrErr('si-email-err');
+      if (pw.length < 6)      { setErr('si-pw-err', 'Le mot de passe doit contenir au moins 6 caractères.'); ok = false; } else clrErr('si-pw-err');
+      if (!ok) return;
+      loginBtn.disabled = true; loginBtn.textContent = 'Connexion en cours...';
+      try {
+        const { error } = await sb.auth.signInWithPassword({ email, password: pw });
+        if (error) { loginErrEl.textContent = friendlyErr(error.message); loginErrEl.classList.add('show'); }
+        else { closeModal(); window.location.href = '/learn.html'; }
+      } catch (err) {
+        console.error('Sign-in failed:', err);
+        loginErrEl.textContent = friendlyErr(err && err.message);
+        loginErrEl.classList.add('show');
+      } finally {
+        loginBtn.disabled = false; loginBtn.textContent = 'Se connecter →';
+      }
+    });
+
+    signupForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      signupErrEl.classList.remove('show');
+      const name      = document.getElementById('su-name').value.trim();
+      const phone     = document.getElementById('su-phone').value.trim();
+      const email     = document.getElementById('su-email').value.trim();
+      const pw        = document.getElementById('su-pw').value;
+      const courseRaw = document.getElementById('su-course').value;
+      let ok = true;
+      if (!name)           { setErr('su-name-err',   'Le nom complet est obligatoire.');                     ok = false; } else clrErr('su-name-err');
+      if (!phone)          { setErr('su-phone-err',  'Le numéro de téléphone est obligatoire.');             ok = false; } else clrErr('su-phone-err');
+      if (!validEmail(email)) { setErr('su-email-err', 'Veuillez saisir une adresse e-mail valide.');        ok = false; } else clrErr('su-email-err');
+      if (pw.length < 6)   { setErr('su-pw-err',    'Le mot de passe doit contenir au moins 6 caractères.'); ok = false; } else clrErr('su-pw-err');
+      if (!courseRaw)      { setErr('su-course-err', 'Veuillez choisir une formation.');                     ok = false; } else clrErr('su-course-err');
+      if (!ok) return;
+      const [course, level] = courseRaw.split('|');
+      suBtn.disabled = true; suBtn.textContent = 'Création du compte...';
+      const { data, error } = await sb.auth.signUp({ email, password: pw });
+      if (error) {
+        signupErrEl.textContent = friendlyErr(error.message);
+        signupErrEl.classList.add('show');
+        suBtn.disabled = false; suBtn.textContent = 'Créer mon compte →';
+        return;
+      }
+      if (data.user) {
+        await sb.from('profiles').insert({ id: data.user.id, full_name: name, phone, course, level, progress: 0 });
+      }
+      suBtn.disabled = false; suBtn.textContent = 'Créer mon compte →';
+      signupForm.style.display = 'none';
+      signupOkEl.classList.add('show');
+    });
+
+    function updateTechHubNavLink(loggedIn) {
+      document.querySelectorAll('a[href="/tech-hub.html"], a[href="/tech-hub.html?enrol=1"]').forEach(a => {
+        a.setAttribute('href', loggedIn ? '/tech-hub.html?enrol=1' : '/tech-hub.html');
+      });
+    }
+
+    function updateNav(user, profile) {
+      try {
+        currentUser    = user;
+        currentProfile = profile;
+        const loggedIn = !!(user && profile);
+        navAuthOut.style.display = loggedIn ? 'none' : 'flex';
+        navAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        mobAuthOut.style.display = loggedIn ? 'none' : 'flex';
+        mobAuthIn.style.display  = loggedIn ? 'flex' : 'none';
+        updateTechHubNavLink(loggedIn);
+        if (loggedIn) {
+          const fallbackName = user.email ? user.email.split('@')[0] : 'Étudiant';
+          const fullName = profile.full_name || fallbackName;
+          const first = fullName.split(' ')[0];
+          navName.textContent = first;
+          mobName.textContent = 'Connecté en tant que ' + fullName;
+        }
+      } catch (err) {
+        console.error('updateNav failed:', err);
+      }
+    }
+
+    async function loadProfile(user) {
+      const { data } = await sb.from('profiles').select('*').eq('id', user.id).single();
+      return data;
+    }
+
+    sb.auth.onAuthStateChange(async (_event, session) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      } else {
+        updateNav(null, null);
+      }
+    });
+
+    sb.auth.getSession().then(async ({ data: { session } }) => {
+      if (session) {
+        const profile = await loadProfile(session.user);
+        updateNav(session.user, profile);
+      }
+    });
+
+    async function signOut() {
+      await sb.auth.signOut();
+      closeDash();
+    }
+    btnLogoutNav.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    mobLogoutBtn.addEventListener('click', e => { e.preventDefault(); signOut(); });
+    dashLogout.addEventListener('click',   signOut);
+
+    function closeDash() {
+      dashOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    dashCloseBtn.addEventListener('click', closeDash);
+    dashOverlay.addEventListener('click',  e => { if (e.target === dashOverlay) closeDash(); });
+  })();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); mobMenu.classList.remove('open'); }
+    });
+  });
+
+  // ── SCROLL REVEAL ──
+  (function(){
+    if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    document.documentElement.classList.add("reveal-ready");
+    var targets=document.querySelectorAll(".loc-card, .loc-map");
+    targets.forEach(function(el){if(!el.classList.contains("r"))el.classList.add("reveal");});
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add("is-visible");obs.unobserve(e.target);}
+      });
+    },{threshold:0.15});
+    document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+    setTimeout(function(){document.querySelectorAll(".reveal:not(.is-visible)").forEach(function(el){el.classList.add("is-visible");});},4000);
+  })();
+</script>
+
+<div class="qa-cluster">
+  <a class="qa-pill" href="https://wa.me/233541224699?text=Bonjour%20TRUSCREN%2C%20je%20souhaite%20plus%20d%27informations." target="_blank" rel="noopener noreferrer" style="--from:#25D366;--to:#128C7E;" aria-label="Discuter sur WhatsApp">
+    <span class="qa-ico"><svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333z"/></svg></span>
+    <span class="qa-label">WhatsApp</span>
+  </a>
+  <a class="qa-pill" href="tel:+233541224699" style="--from:#007A5E;--to:#005843;" aria-label="Appelez-nous">
+    <span class="qa-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+    <span class="qa-label">Appelez-nous</span>
+  </a>
+  <a class="qa-pill" href="/tech-hub.html#enrol" style="--from:#FF6900;--to:#E05500;" aria-label="S'inscrire">
+    <span class="qa-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+    <span class="qa-label">S'inscrire</span>
+  </a>
+</div>
+
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  const obsFinal = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-visible'); obsFinal.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obsFinal.observe(el));
+</script>
+</body>
+</html>
