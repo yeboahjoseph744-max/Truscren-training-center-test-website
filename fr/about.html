@@ -240,6 +240,8 @@
       border-radius: var(--radius-full); transition: background 0.18s;
     }
     .btn-teal:hover { background: var(--brand-h); }
+    .btn-wa{display:inline-flex;align-items:center;gap:0.55rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.88rem;font-weight:600;padding:0.8rem 1.5rem;border-radius:var(--radius-full);transition:background 0.18s,transform 0.18s;box-shadow:0 4px 18px rgba(37,211,102,0.28);}
+    .btn-wa:hover{background:#1ebe5d;transform:translateY(-1px);}
 
     /* ── SEARCH ── */
     .srch-msg {
@@ -540,6 +542,11 @@
     }
     .about-copy .sec-label { color: rgba(255,105,0,0.85); }
     .about-copy h1 { color: #fff; margin-bottom: 0.875rem; }
+    .about-copy h2 { color: #fff; margin-bottom: 0.875rem; }
+    /* continuation blocks below the About intro */
+    .about-section-cont { margin-top: 0; padding-top: 0; }
+    .about-block { max-width: 1280px; margin: 0 auto; }
+    .about-block .about-copy { max-width: 820px; }
     .about-copy p { font-size: var(--text-body); color: rgba(255,255,255,0.65); line-height: var(--leading-body); margin-bottom: 0.875rem; }
     .about-tagline {
       font-size: 1rem; font-weight: 700; color: var(--brand);
@@ -764,15 +771,59 @@
   <div class="about-in">
     <div class="about-copy r">
       <div class="sec-label">À propos</div>
-      <h1 class="sec-h2 reveal">À propos de TRUSCREN Africa</h1>
-      <p class="reveal">TRUSCREN Africa est le distributeur officiel pour l'Afrique des écrans de téléphone premium TRUSCREN. Depuis notre base d'Accra, au Ghana, nous approvisionnons les techniciens, les ateliers de réparation et les grossistes, et nous développons notre présence à travers l'Afrique de l'Ouest. Nous représentons la marque TRUSCREN, fournisseur d'écrans premium présent dans 38 pays, avec un taux de défaut inférieur à 0,5 %.</p>
-      <p class="reveal">Chaque écran que nous fournissons est d'origine, testé et couvert par une garantie de 12 mois. Nous proposons des tarifs professionnels aux ateliers et aux grossistes, ainsi qu'un partenariat pour les entrepreneurs souhaitant devenir agents TRUSCREN sur leur marché local. Nous abritons également le <strong>TRUSCREN TECH HUB</strong>, notre centre de formation d'Accra, où nous enseignons des compétences concrètes et directement employables&nbsp;: réparation d'écrans, micro-soudure de cartes électroniques et diagnostic de batteries de véhicules électriques. Notre mission&nbsp;: rendre la réparation d'appareils plus accessible et former la prochaine génération de techniciens qualifiés à travers l'Afrique.</p>
+      <h1 class="sec-h2 reveal">À propos de TRUSCREN</h1>
+      <p class="reveal">TRUSCREN est une entreprise spécialisée dans les pièces de réparation pour téléphones mobiles, dédiée à la fourniture de produits fiables et d'un accompagnement concret pour le secteur de la réparation en Afrique de l'Ouest.</p>
       <p class="about-tagline reveal">True Colors. True TRUSCREN.</p>
       <a href="/fr/products.html" class="btn-teal">Découvrir nos produits →</a>
     </div>
     <div class="about-stat-grid r d1">
       <div class="about-stat reveal"><span class="about-stat-n">38</span><span class="about-stat-l">Pays desservis par la marque TRUSCREN</span></div>
       <div class="about-stat reveal"><span class="about-stat-n">&lt;0,5&nbsp;%</span><span class="about-stat-l">Taux de défaut — un standard de qualité mondial</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PLUS QU'UN SIMPLE FOURNISSEUR ══════════ -->
+<section id="about-more" class="about-section about-section-cont">
+  <div class="about-block">
+    <div class="about-copy r">
+      <h2 class="sec-h2 reveal">Plus qu'un simple fournisseur de pièces pour téléphones mobiles</h2>
+      <p class="reveal">Notre gamme de produits comprend des écrans de téléphones mobiles, des batteries, de petites pièces de réparation, des outils de réparation et d'autres produits essentiels utilisés par les distributeurs, les grossistes, les ateliers de réparation et les techniciens.</p>
+      <p class="reveal">Cependant, nous estimons que fournir des produits n'est qu'une partie d'une entreprise de réparation prospère.</p>
+      <p class="reveal">Les entreprises de réparation ont également besoin d'une qualité stable, de normes de produits claires, d'un service après-vente efficace, de connaissances techniques, de techniciens formés et d'un support adapté au marché local.</p>
+      <p class="reveal">C'est pourquoi TRUSCREN construit un écosystème de réparation mobile plus large — reliant l'approvisionnement en produits, le contrôle qualité, les partenariats de distribution, la formation à la réparation et le service local à travers le Ghana, le Togo et la Côte d'Ivoire.</p>
+      <p class="reveal">Notre objectif n'est pas simplement de conclure davantage de transactions. Notre objectif est d'aider nos partenaires à réduire les incertitudes, à mieux servir leurs clients et à bâtir des entreprises plus solides sur le long terme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DISCUTONS ══════════ -->
+<section id="about-contact" class="about-section about-section-cont">
+  <div class="about-block">
+    <div class="about-copy r">
+      <h2 class="sec-h2 reveal">Besoin de plus d'informations sur nos produits&nbsp;? Discutons dès aujourd'hui&nbsp;!</h2>
+      <p class="about-tagline reveal">Nous ne fournissons pas seulement des pièces de réparation.</p>
+      <p class="about-tagline reveal">Nous accompagnons les entreprises derrière chaque réparation.</p>
+      <a href="https://wa.me/22586956077?text=Bonjour%20TRUSCREN%2C%20je%20souhaite%20plus%20d%27informations%20sur%20vos%20produits." target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.63 4.608 1.813 6.587L2.667 29.333l6.947-1.773A13.28 13.28 0 0 0 16.003 29.333C23.36 29.333 29.333 23.36 29.333 16c0-7.36-5.973-13.333-13.33-13.333zm0 2.667c5.893 0 10.667 4.773 10.667 10.666 0 5.894-4.774 10.667-10.667 10.667a10.62 10.62 0 0 1-5.493-1.533l-.387-.24-4.013 1.027 1.054-3.894-.267-.4A10.616 10.616 0 0 1 5.333 16c0-5.893 4.774-10.666 10.67-10.666zm-2.99 5.333c-.267 0-.694.1-.934.374-.24.267-.933.907-.933 2.213 0 1.307.96 2.574 1.093 2.747.134.16 1.88 2.947 4.614 4.013 2.24.88 2.733.707 3.226.667.494-.04 1.6-.654 1.827-1.28.226-.627.226-1.16.16-1.28-.067-.107-.24-.16-.507-.28-.267-.12-1.6-.787-1.84-.88-.24-.093-.413-.14-.587.14-.173.267-.667.88-.813 1.053-.147.16-.294.18-.547.06-.267-.12-1.107-.413-2.107-1.307-.774-.693-1.294-1.546-1.44-1.813-.16-.267-.014-.413.107-.547.12-.12.267-.306.4-.466.133-.16.173-.267.267-.44.093-.174.04-.334-.027-.48-.067-.134-.573-1.44-.8-1.96-.214-.494-.44-.427-.6-.427l-.56-.013z"/></svg>
+        Discuter sur WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NOS DÉBUTS ══════════ -->
+<section id="about-origins" class="about-section about-section-cont">
+  <div class="about-block">
+    <div class="about-copy r">
+      <div class="sec-label">Nos débuts</div>
+      <h2 class="sec-h2 reveal">Créé pour résoudre de vrais problèmes du secteur de la réparation</h2>
+      <p class="reveal">Le marché de la réparation de téléphones mobiles continue de croître, mais de nombreuses entreprises font toujours face aux mêmes problèmes.</p>
+      <p class="reveal">Les produits de différents lots peuvent offrir des performances différentes. Des écrans peuvent se ressembler tout en offrant une qualité d'affichage, une réactivité tactile ou une compatibilité inégales. Les responsabilités liées à la garantie peuvent être floues, et la communication après-vente lente ou difficile.</p>
+      <p class="reveal">Pour les distributeurs et les grossistes, ces problèmes entraînent des taux de retour plus élevés, davantage de réclamations clients et des coûts d'exploitation supplémentaires.</p>
+      <p class="reveal">Pour les ateliers de réparation et les techniciens, des pièces instables peuvent entraîner des réparations répétées, une perte de confiance des clients et un manque à gagner.</p>
+      <p class="reveal">TRUSCREN a été créé pour offrir une alternative plus fiable. Nous mettons l'accent sur un positionnement produit clair, un contrôle qualité standardisé, un service après-vente responsable et une coopération durable avec nos partenaires.</p>
+      <p class="reveal">Plutôt que de nous démarquer uniquement par le prix le plus bas, nous cherchons à créer une meilleure valeur grâce à la stabilité des produits, à un service concret et à des relations commerciales plus solides.</p>
     </div>
   </div>
 </section>
@@ -834,7 +885,7 @@
       <div class="foot-col">
         <h5>Entreprise</h5>
         <ul>
-          <li><a href="/fr/about.html">À propos de TRUSCREN Africa</a></li>
+          <li><a href="/fr/about.html">À propos de TRUSCREN</a></li>
           <li><a href="/agent.html">Devenir partenaire</a></li>
           <li><a href="/fr/contact.html">Nos adresses</a></li>
           <li><a href="https://wa.me/233541224699" target="_blank" rel="noopener noreferrer">Nous contacter</a></li>
