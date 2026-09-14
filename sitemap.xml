@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://www.truscrenafrica.com/</loc></url>
+  <url>
+    <loc>https://www.truscrenafrica.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/"/>
+  </url>
   <url>
     <loc>https://www.truscrenafrica.com/products.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/products.html"/>
@@ -75,6 +80,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/tecno-phone-screens-ghana.html"/>
   </url>
   <url><loc>https://www.truscrenafrica.com/privacy.html</loc></url>
+  <url><loc>https://www.truscrenafrica.com/terms.html</loc></url>
   <url>
     <loc>https://www.truscrenafrica.com/faq.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/faq.html"/>
@@ -146,5 +152,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/find-an-agent.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/find-an-agent.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/find-an-agent.html"/>
+  </url>
+  <url>
+    <loc>https://www.truscrenafrica.com/fr/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.truscrenafrica.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.truscrenafrica.com/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.truscrenafrica.com/"/>
   </url>
 </urlset>
