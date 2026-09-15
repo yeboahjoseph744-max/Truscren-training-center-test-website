@@ -1586,6 +1586,17 @@
     .cert-section::before    { height: 28px; background: linear-gradient(to bottom, rgba(0,88,67,0.4) 0%, transparent 100%); }
     footer::before           { height: 28px; background: linear-gradient(to bottom, rgba(246,246,246,0.4) 0%, transparent 100%); }
 
+    /* ── "What We Do" faded backdrop ──
+       ::before is already used above for the section blend, so the image goes
+       on ::after. The section is already position:relative from that rule. */
+    .teasers-section::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('Brand_assets/truscren-africa-banner.webp');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      opacity: 0.07; z-index: 0; pointer-events: none;
+    }
+    .teasers-section > div { position: relative; z-index: 1; }
+
     /* ── Fade-and-slide-up on scroll ── */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.reveal-visible { opacity: 1; transform: translateY(0); }
