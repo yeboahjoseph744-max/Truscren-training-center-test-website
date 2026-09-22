@@ -1834,7 +1834,7 @@
       </div>
     </div>
 
-    <div class="c-card r d1 reveal">
+    <a class="c-card r d1 reveal" href="micro-soldering-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb c-thumb-3">
         <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1844,7 +1844,7 @@
         <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Self-paced</span><span>·</span><span>Free</span><span>·</span><span>★ 4.9</span></div>
       </div>
-    </div>
+    </a>
 
     <div class="c-card r d2 reveal">
       <div class="c-thumb c-thumb-4">
@@ -2822,8 +2822,9 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 
     document.querySelectorAll('.c-card').forEach((card, i) => {
       card.addEventListener('click', () => {
-        if (i === 1 && window.__openMicroSoldering) window.__openMicroSoldering();
-        else openCourse(i);
+        // Card 1 (Micro-Soldering) is a link — let the browser navigate.
+        if (i === 1) return;
+        openCourse(i);
       });
       card.addEventListener('pointermove', e => {
         const r = card.getBoundingClientRect();
