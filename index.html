@@ -1822,7 +1822,7 @@
   </div>
 
   <div class="courses-grid">
-    <div class="c-card r reveal">
+    <a class="c-card r reveal" href="screen-repair-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb c-thumb-1">
         <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1832,7 +1832,7 @@
         <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Hands-on</span><span>·</span><span>4 weeks</span><span>·</span><span>★ 4.9</span></div>
       </div>
-    </div>
+    </a>
 
     <a class="c-card r d1 reveal" href="micro-soldering-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb c-thumb-3">
@@ -2822,8 +2822,8 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
 
     document.querySelectorAll('.c-card').forEach((card, i) => {
       card.addEventListener('click', () => {
-        // Card 1 (Micro-Soldering) is a link — let the browser navigate.
-        if (i === 1) return;
+        // Cards 0 (Screen Repair) and 1 (Micro-Soldering) are links — let the browser navigate.
+        if (i === 0 || i === 1) return;
         openCourse(i);
       });
       card.addEventListener('pointermove', e => {
