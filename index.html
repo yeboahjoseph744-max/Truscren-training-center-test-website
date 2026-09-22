@@ -1846,7 +1846,7 @@
       </div>
     </a>
 
-    <div class="c-card r d2 reveal">
+    <a class="c-card r d2 reveal" href="ev-battery-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb c-thumb-4">
         <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
       </div>
@@ -1856,7 +1856,7 @@
         <div class="c-partner">TRUSCREN TECH HUB</div>
         <div class="c-meta"><span>Workshop</span><span>·</span><span>5 weeks</span><span>·</span><span>★ 4.8</span></div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -2821,11 +2821,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     }
 
     document.querySelectorAll('.c-card').forEach((card, i) => {
-      card.addEventListener('click', () => {
-        // Cards 0 (Screen Repair) and 1 (Micro-Soldering) are links — let the browser navigate.
-        if (i === 0 || i === 1) return;
-        openCourse(i);
-      });
+      // All three cards are links now — no click handler needed.
       card.addEventListener('pointermove', e => {
         const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
