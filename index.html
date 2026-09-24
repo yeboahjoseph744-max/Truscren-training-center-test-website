@@ -1552,7 +1552,11 @@
       .foot-btm     { flex-direction: column; gap: 0.5rem; text-align: center; }
       .foot-btm-links { justify-content: center; flex-wrap: wrap; gap: 0.875rem; }
     }
-    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#262E3D;will-change:opacity,transform;}
+    #tc-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0E1116;will-change:opacity,transform;}
+    #tc-rays{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;}
+    #tc-rays span{position:absolute;top:50%;left:-50%;width:200%;height:1px;
+      background:#262E3D;opacity:0.9;display:block;transform-origin:center center;}
+    @media (prefers-reduced-motion: reduce){#tc-rays{display:none;}}
     #tc-word{position:relative;z-index:2;display:flex;align-items:center;color:#fff;font-size:clamp(2rem,7vw,3.75rem);font-weight:600;opacity:0;transform:translateY(8px);margin:0;font-family:'Inter',sans-serif;}
     #tc-word .tc-dot{display:inline-block;width:11px;height:11px;background:#FF6900;border-radius:50%;margin-right:12px;}
     #tc-brand{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.6vw,22px);opacity:0;transform:scale(0.7);pointer-events:none;will-change:opacity,transform;}
@@ -1634,6 +1638,7 @@
 <body>
 
 <div id="tc-preloader">
+  <div id="tc-rays" aria-hidden="true"></div>
   <p id="tc-word"><span class="tc-dot"></span><span id="tc-word-text">Hello</span></p>
   <div id="tc-brand">
     <img id="tc-brand-logo" src="Brand_assets/extracted/truscren-badge-round.png" alt="TRUSCREN" width="92" height="92">
@@ -3008,6 +3013,13 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   if(!pre){return;}
   if(sessionStorage.getItem('tc_seen')){document.documentElement.classList.remove('tc-pre-active');pre.parentNode&&pre.parentNode.removeChild(pre);return;}
 
+  var rays=document.getElementById('tc-rays');
+  if(rays){
+    var h='';
+    for(var r=0;r<156;r++){ h+='<span style="transform:rotate('+((180/156)*r)+'deg)"></span>'; }
+    rays.innerHTML=h;
+  }
+
   var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function finish(){
     document.documentElement.classList.remove('tc-pre-active');
@@ -3038,10 +3050,12 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
   function exitBrand(){
     document.documentElement.classList.remove('tc-pre-active');
     if(!pre)return;
-    pre.style.transition='opacity 0.5s cubic-bezier(0.4,0,0.2,1),transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+    brand.style.transition='opacity 0.75s ease-out,transform 0.75s cubic-bezier(.4,0,.6,1)';
+    brand.style.transform='scale(9)';
+    brand.style.opacity='0';
+    pre.style.transition='opacity 0.3s ease 0.45s';
     pre.style.opacity='0';
-    pre.style.transform='scale(1.05)';
-    schedule(function(){clearTimeout(safety);finish();},520);
+    schedule(function(){clearTimeout(safety);finish();},800);
   }
   function runBrand(){
     if(!pre)return;
@@ -3049,8 +3063,7 @@ document.querySelectorAll('#mob-menu a').forEach(function(a){ a.addEventListener
     brand.style.transition='opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)';
     brand.style.opacity='1';
     brand.style.transform='scale(1)';
-    schedule(function(){brandWord.classList.add('sweep');},900);
-    schedule(exitBrand,900+600);
+    schedule(exitBrand,900+500);
   }
 
   // ---- Phase 1: Hello / Welcome greeting ----
