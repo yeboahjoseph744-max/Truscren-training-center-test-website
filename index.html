@@ -1675,6 +1675,11 @@
       .cert-btns a { flex: 1 1 100%; justify-content: center; }
     }
     @media (prefers-reduced-motion: reduce) { .cert-bg img { filter: blur(28px); } }
+    /* The shared footer::before blend strip (28px of rgba(246,246,246,0.4))
+       reads as a lighter grey band where the dark Get Certified section meets
+       the #111 footer. Switched off for this page only; the shared rule above
+       is untouched, so every other page keeps its blend. */
+    footer::before { display: none; }
   </style>
 </head>
 <body>
