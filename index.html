@@ -1680,6 +1680,9 @@
        the #111 footer. Switched off for this page only; the shared rule above
        is untouched, so every other page keeps its blend. */
     footer::before { display: none; }
+    /* Card thumbnails now show the photo through a light 0.25 tint, so the
+       white labels get a shadow to stay legible over the brighter areas. */
+    .c-thumb-name, .c-thumb-partner { text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
   </style>
 </head>
 <body>
@@ -1877,7 +1880,7 @@
     <a class="c-card r reveal" href="screen-repair-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/course-screen-repair.webp" alt="Phone Screen &amp; Display Repair course at TRUSCREN TECH HUB" width="900" height="301" loading="lazy" style="width:100%;height:118px;object-fit:cover;display:block;">
-        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
+        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.25);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
           <div><div class="c-thumb-name">Phone Screen &amp; Display Repair</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
         </div>
       </div>
@@ -1892,7 +1895,7 @@
     <a class="c-card r d1 reveal" href="micro-soldering-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/course-micro-soldering.webp" alt="Circuit Board Micro-Soldering course at TRUSCREN TECH HUB" width="900" height="360" loading="lazy" style="width:100%;height:118px;object-fit:cover;display:block;">
-        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
+        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.25);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
           <div><div class="c-thumb-name">Circuit Board Micro-Soldering</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
         </div>
       </div>
@@ -1907,7 +1910,7 @@
     <a class="c-card r d2 reveal" href="ev-battery-course.html" style="text-decoration:none;color:inherit;display:block;">
       <div class="c-thumb" style="padding:0;position:relative;overflow:hidden;">
         <img src="Brand_assets/course-ev-battery.webp" alt="EV Battery Diagnostics course at TRUSCREN TECH HUB" width="900" height="291" loading="lazy" style="width:100%;height:118px;object-fit:cover;display:block;">
-        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.62);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
+        <div style="position:absolute;inset:0;background:rgba(38,46,61,0.25);display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;">
           <div><div class="c-thumb-name">EV Battery Diagnostics</div><div class="c-thumb-partner">TRUSCREN TECH HUB</div></div>
         </div>
       </div>

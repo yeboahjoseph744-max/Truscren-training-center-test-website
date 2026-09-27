@@ -1549,7 +1549,7 @@
     }
     .ab-veil {
       position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(18,22,28,0.92) 0%, rgba(18,22,28,0.92) 45%, rgba(18,22,28,0.6) 100%);
+      background: linear-gradient(90deg, rgba(18,22,28,0.78) 0%, rgba(18,22,28,0.72) 45%, rgba(18,22,28,0.35) 100%);
     }
     .ab-in {
       position: relative; z-index: 2;
@@ -1559,13 +1559,15 @@
     }
     .ab-copy { max-width: 60ch; }
     .ab-copy h1 { color: #fff; margin-bottom: 0.875rem; }
+    /* lift the body copy off the lighter veil (shared .about-copy p stays 0.65) */
+    .ab-copy p { color: rgba(255,255,255,0.85); }
     .ab-stats { display: grid; grid-template-columns: 1fr; gap: 0.875rem; }
     @media (max-width: 900px) {
       .ab-in    { grid-template-columns: 1fr; gap: 2.5rem; }
       .ab-copy  { order: 1; max-width: none; }
       .ab-stats { order: 2; }
       /* one column: text spans the full width, so go back to a flat veil */
-      .ab-veil  { background: rgba(18,22,28,0.86); }
+      .ab-veil  { background: rgba(18,22,28,0.78); }
     }
     /* The shared footer::before blend strip (28px of rgba(38,46,61,0.4))
        reads as a lighter grey band where the dark video section meets the
