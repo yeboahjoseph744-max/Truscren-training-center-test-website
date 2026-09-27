@@ -1539,6 +1539,41 @@
     .tsc-glow > * { position: relative; z-index: 1; }
     .tsc-glow { color: inherit; }
     @media (prefers-reduced-motion: reduce) { .tsc-glow::before { animation: none; } }
+    /* ═════ ABOUT — looping video background ═════
+       The old .about-in two-column rule is no longer used by any markup
+       but is left in place. Every new class here is ab- prefixed. */
+    .about-section { position: relative; overflow: hidden; background: #12161C; }
+    .ab-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+      background: url('Brand_assets/about-poster.webp') center/cover no-repeat;
+    }
+    .ab-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(18,22,28,0.92) 0%, rgba(18,22,28,0.92) 45%, rgba(18,22,28,0.6) 100%);
+    }
+    .ab-in {
+      position: relative; z-index: 2;
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: minmax(0,1fr) 300px;
+      gap: 3.5rem; align-items: center;
+    }
+    .ab-copy { max-width: 60ch; }
+    .ab-copy h1 { color: #fff; margin-bottom: 0.875rem; }
+    .ab-stats { display: grid; grid-template-columns: 1fr; gap: 0.875rem; }
+    @media (max-width: 900px) {
+      .ab-in    { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ab-copy  { order: 1; max-width: none; }
+      .ab-stats { order: 2; }
+      /* one column: text spans the full width, so go back to a flat veil */
+      .ab-veil  { background: rgba(18,22,28,0.86); }
+    }
+    /* The shared footer::before blend strip (28px of rgba(38,46,61,0.4))
+       reads as a lighter grey band where the dark video section meets the
+       #111 footer. Switched off for this page only; the shared rule above
+       is untouched, so every other page keeps its blend. */
+    footer::before { display: none; }
+    /* reduced motion: drop the moving video, leave the poster showing */
+    @media (prefers-reduced-motion: reduce) { .ab-bg video { display: none; } }
   </style>
 </head>
 <body>
@@ -1657,8 +1692,19 @@
 
 <!-- ══════════ ABOUT ══════════ -->
 <section id="about" class="about-section">
-  <div class="about-in">
-    <div class="about-copy r">
+
+  <div class="ab-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline
+           poster="Brand_assets/about-poster.webp"
+           style="width:100%;height:100%;object-fit:cover;display:block;">
+      <source src="Brand_assets/Videos/about-background.mp4" type="video/mp4">
+    </video>
+    <div class="ab-veil"></div>
+  </div>
+
+  <div class="ab-in">
+
+    <div class="ab-copy about-copy r">
       <div class="sec-label">About Us</div>
       <h1 class="sec-h2 reveal">About TRUSCREN Africa</h1>
       <p class="reveal">TRUSCREN Africa is the official African distributor of TRUSCREN premium phone screens, headquartered in Accra, Ghana — and home of the TRUSCREN TECH HUB, a professional device repair training school. We're part of the trusted TRUSCREN brand, a world-leading supplier of premium phone screens serving 38 countries with a defect rate under 0.5%.</p>
@@ -1666,10 +1712,12 @@
       <p class="about-tagline reveal">True Colors. True TRUSCREN.</p>
       <a href="products.html" class="btn-teal">Explore Our Products →</a>
     </div>
-    <div class="about-stat-grid r d1">
+
+    <div class="ab-stats r d1">
       <div class="about-stat reveal"><span class="about-stat-n">38</span><span class="about-stat-l">Countries served by the TRUSCREN brand</span></div>
       <div class="about-stat reveal"><span class="about-stat-n">&lt;0.5%</span><span class="about-stat-l">Screen defect rate — world-class quality standard</span></div>
     </div>
+
   </div>
 </section>
 
